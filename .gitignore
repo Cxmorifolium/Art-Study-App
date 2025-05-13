@@ -1,0 +1,80 @@
+# Build Folders
+bin/
+obj/
+[Bb]uild*/
+[Ll]ogs/
+
+# User-specific files
+*.user
+*.userosscache
+*.suo
+*.sln.docstates
+
+# Rider/VSCode/VS
+.idea/
+.vscode/
+.vs/
+
+# macOS files
+.DS_Store
+
+# Windows thumbnail cache
+Thumbs.db
+
+# MAUI cache and assets
+*.db
+*.db-shm
+*.db-wal
+
+# MAUI platforms build outputs
+Platforms/Android/obj/
+Platforms/Android/bin/
+Platforms/iOS/obj/
+Platforms/iOS/bin/
+Platforms/MacCatalyst/obj/
+Platforms/MacCatalyst/bin/
+Platforms/Tizen/obj/
+Platforms/Tizen/bin/
+Platforms/Windows/obj/
+Platforms/Windows/bin/
+
+# MAUI Assets that are user-generated or runtime
+AppPackages/
+*.apk
+*.aab
+*.app
+*.ipa
+
+# Dotnet-specific
+project.lock.json
+project.fragment.lock.json
+artifacts/
+
+# Temporary files
+*.tmp
+*.temp
+*.bak
+*.log
+
+# NuGet
+*.nupkg
+*.snupkg
+.nuget/
+packages/
+*.nuspec
+
+# Dotnet CLI
+*.dotnet-cli-info
+
+# Resharper
+_ReSharper*/
+*.DotSettings.user
+
+# Coverage reports
+coverage/
+*.coverage
+*.coveragexml
+
+# Others
+.env
+*.orig

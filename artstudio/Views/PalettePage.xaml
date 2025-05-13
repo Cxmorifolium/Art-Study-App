@@ -1,0 +1,83 @@
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:local="clr-namespace:artstudio.ViewModels"
+             x:Class="artstudio.Views.PalettePage"
+             Title="Palette"
+             >
+    <ContentPage.ToolbarItems>
+        <ToolbarItem 
+            IconImageSource="refresh.png"
+            Text="Refresh"
+            Command="{Binding RegenerateCommand}" />
+
+        <ToolbarItem 
+            IconImageSource="{Binding FavoritePaletteImage}"
+            Text="Favorite"
+            Command="{Binding ToggleFavoritePaletteCommand}" />
+
+        <ToolbarItem 
+            IconImageSource="download.png"
+            Text="Download"
+            Command="{Binding ExportPaletteCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <VerticalStackLayout Padding="20" Spacing="10" VerticalOptions="Center" HorizontalOptions="Fill">
+
+        <CollectionView ItemsSource="{Binding Swatches}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="5" Orientation="Vertical"/>
+
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <BoxView BackgroundColor="{Binding Color}"
+                                 HeightRequest="550"
+                                 VerticalOptions="Fill"
+                                 HorizontalOptions="Fill">
+
+
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ToggleActivateCommand}" />
+                                </BoxView.GestureRecognizers>
+
+                            </BoxView>
+
+                            <VerticalStackLayout VerticalOptions="End" HorizontalOptions="Center">
+                                <Button ImageSource="{Binding FavoriteColor}"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding ToggleFavoriteColorCommand}"
+                                    IsVisible="{Binding ButtonVisible}"
+                                    MaximumHeightRequest="120"
+                                    HorizontalOptions="Center"
+                                     />
+
+                                <Button ImageSource="{Binding LockImage}"
+                                    BackgroundColor="Transparent"
+                                    Command="{Binding ToggleLockCommand}"
+                                    MaximumHeightRequest="120"
+                                    IsVisible="{Binding ButtonVisible}"
+                                    HorizontalOptions="Center"
+                                    />
+
+                                <Button ImageSource="{Binding DeleteImage}"
+                                    BackgroundColor="Transparent"
+                                    IsVisible="{Binding DeleteButtonVisible}"
+                                    Command="{Binding ToggleDeleteCommand}"
+                                    MaximumHeightRequest="120"
+                                    HorizontalOptions="Center" />
+
+                                <Label Text="{Binding HexCode}"
+                                   FontSize="12"
+                                   HorizontalOptions="Center"
+                                   TextColor="Black"
+                                   IsVisible="{Binding ButtonVisible}" />
+
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+    </VerticalStackLayout>
+</ContentPage>

@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Shell
+    x:Class="artstudio.AppShell"
+    xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+    xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+    xmlns:local="clr-namespace:artstudio"
+    xmlns:view="clr-namespace:artstudio.Views"
+    Shell.FlyoutBehavior="Flyout"
+    Title="artstudio">
+
+    <Shell.ToolbarItems>
+        <ToolbarItem 
+            Text="Theme" 
+            IconImageSource="theme_icon.png"
+            Clicked="OnThemeToggleClicked" />
+    </Shell.ToolbarItems>
+
+    <ShellContent
+        Title="Home"
+        ContentTemplate="{DataTemplate view:GalleryPage}"
+        Route="MainPage"
+        IsVisible="True" />
+    
+    <!-- Flyout navigation items -->
+    <FlyoutItem Title="Palette">
+        <Tab>
+            <!-- 
+            <ShellContent ContentTemplate="{DataTemplate view:PalettePage}" />
+            -->
+            <ShellContent ContentTemplate="{DataTemplate view:PalettePage}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Word Prompt">
+        <Tab>
+            <!-- 
+            <ShellContent ContentTemplate="{DataTemplate view:WordPromptPage}" />
+            
+            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" /> -->
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Image Prompt">
+        <Tab>
+            <!-- 
+            <ShellContent ContentTemplate="{DataTemplate view:ImagePage}" />
+            -->
+            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Study Mode">
+        <Tab>
+            <!-- 
+            <ShellContent ContentTemplate="{DataTemplate view:StudyPage}" />
+            -->
+            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" />
+        </Tab>
+    </FlyoutItem>
+    <FlyoutItem Title="Reference Vault">
+        <Tab>
+            
+            <ShellContent ContentTemplate="{DataTemplate view:ReferenceVaultPage}" />
+
+            <!-- <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" /> -->
+        </Tab>
+    </FlyoutItem>
+</Shell>
