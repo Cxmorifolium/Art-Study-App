@@ -40,10 +40,11 @@
     </FlyoutItem>
     <FlyoutItem Title="Image Prompt">
         <Tab>
+          
+            <ShellContent ContentTemplate="{DataTemplate view:ImagePromptPage}" />
+            
             <!-- 
-            <ShellContent ContentTemplate="{DataTemplate view:ImagePage}" />
-            -->
-            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" />
+            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" /> -->
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Study Mode">

@@ -2,13 +2,20 @@
 <Application xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:local="clr-namespace:artstudio"
+             xmlns:converters="clr-namespace:artstudio.Converters"
              x:Class="artstudio.App">
+
     <Application.Resources>
         <ResourceDictionary>
             <ResourceDictionary.MergedDictionaries>
                 <ResourceDictionary Source="Resources/Styles/Colors.xaml" />
                 <ResourceDictionary Source="Resources/Styles/Styles.xaml" />
             </ResourceDictionary.MergedDictionaries>
+            <!-- Value Converters -->
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converters:BoolToLockColorConverter x:Key="BoolToLockColorConverter" />
+            <converters:BoolToLockIconConverter x:Key="BoolToLockIconConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>
