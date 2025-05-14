@@ -193,7 +193,7 @@ namespace artstudio.ViewModels
                 // Add Notification aka Snackbar
                 var snackbar = Snackbar.Make(
                 "Image deleted",
-                async () => UndoDelete(),
+                () => UndoDelete(),
                 "Undo",
                 TimeSpan.FromSeconds(5));
 

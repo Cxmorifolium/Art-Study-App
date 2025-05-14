@@ -19,18 +19,43 @@ namespace artstudio.ViewModels
 {
     public class PaletteViewModel : INotifyPropertyChanged
     {
+        #region Fields
+
+        private readonly IFileSaveService _fileSaveService;
+        private readonly Export _exportService;
+
+        private bool _isFavoritePalette;
+
+        #endregion
+
+        #region Properties
+
         public ObservableCollection<Swatch> Swatches { get; set; }
 
-        // Commands
+        public bool IsFavoritePalette
+        {
+            get => _isFavoritePalette;
+            set
+            {
+                if (_isFavoritePalette != value)
+                {
+                    _isFavoritePalette = value;
+                    OnPropertyChanged();
+                }
+            }
+        }
+
+        #endregion
+
+        #region Commands
+
         public ICommand RegenerateCommand { get; }
         public ICommand ExportPaletteCommand { get; }
         public ICommand ToggleFavoritePaletteCommand { get; }
 
+        #endregion
 
-        // Services
-        private readonly IFileSaveService _fileSaveService;
-        private readonly Export _exportService;
-
+        #region Constructor
 
         public PaletteViewModel(IFileSaveService fileSaveService, Export exportService)
         {
@@ -39,22 +64,26 @@ namespace artstudio.ViewModels
 
             // Initialize swatches
             Swatches = new ObservableCollection<Swatch>
-                {
-                    new Swatch(Colors.LightSalmon),
-                    new Swatch(Colors.SkyBlue),
-                    new Swatch(Colors.MediumSeaGreen),
-                    new Swatch(Colors.Goldenrod),
-                    new Swatch(Colors.MediumOrchid)
-                };
+            {
+                new Swatch(Colors.LightSalmon),
+                new Swatch(Colors.SkyBlue),
+                new Swatch(Colors.MediumSeaGreen),
+                new Swatch(Colors.Goldenrod),
+                new Swatch(Colors.MediumOrchid)
+            };
 
             // Initialize commands
             RegenerateCommand = new Command(GeneratePalette);
             ToggleFavoritePaletteCommand = new Command(() => IsFavoritePalette = !IsFavoritePalette);
             ExportPaletteCommand = new Command(async () => await ExportPaletteAsync());
 
-            // Initialize PropertyChanged event to avoid nullability issues
+            // Prevent null event handlers
             PropertyChanged += (sender, args) => { };
         }
+
+        #endregion
+
+        #region Methods
 
         private void GeneratePalette()
         {
@@ -83,22 +112,6 @@ namespace artstudio.ViewModels
             }
         }
 
-        // Favorite palette state --> Edit this once favorite has a place to store
-        private bool _isFavoritePalette;
-        public bool IsFavoritePalette
-        {
-            get => _isFavoritePalette;
-            set
-            {
-                if (_isFavoritePalette != value)
-                {
-                    _isFavoritePalette = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        // Export palette method
         private async Task ExportPaletteAsync()
         {
             var activeColors = Swatches
@@ -117,10 +130,7 @@ namespace artstudio.ViewModels
             }
 
             var currentPage = Application.Current?.Windows.FirstOrDefault()?.Page;
-            if (currentPage == null)
-            {
-                return;
-            }
+            if (currentPage == null) return;
 
             string action = await currentPage.DisplayActionSheet(
                 "Choose export method",
@@ -142,7 +152,6 @@ namespace artstudio.ViewModels
             }
         }
 
-        // Share palette method
         private async Task SharePaletteAsync(List<Color> activeColors)
         {
             var imageBytes = await Export.GeneratePaletteImageAsync(activeColors);
@@ -151,7 +160,6 @@ namespace artstudio.ViewModels
             var tempFilePath = Path.Combine(FileSystem.CacheDirectory, fileName);
             await File.WriteAllBytesAsync(tempFilePath, imageBytes);
 
-            // Using MAUI's Share API
             await Share.RequestAsync(new ShareFileRequest
             {
                 Title = "Share Palette",
@@ -159,12 +167,17 @@ namespace artstudio.ViewModels
             });
         }
 
+        #endregion
+
         #region INotifyPropertyChanged Implementation
+
         public event PropertyChangedEventHandler? PropertyChanged;
+
         public void OnPropertyChanged([CallerMemberName] string name = null!)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
         }
+
         #endregion
     }
 }
