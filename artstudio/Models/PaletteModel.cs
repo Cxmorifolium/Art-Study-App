@@ -201,22 +201,27 @@ namespace artstudio.Models
             return palette;
         }
 
-        // Randomization of Color but isn't necessarily cohesive
+        // Randomization of Color but controlled so there's still cohesion
         private Color AddRandomVariation(Color color, float randomFactor)
         {
             ColorToHsl(color, out float h, out float s, out float l);
 
-            // Add randomness to hue
-            h = (h + (float)random!.NextDouble() * randomFactor * 30 - 15) % 360;
+            // Smaller hue shift
+            float hueShift = (float)(random!.NextDouble() * randomFactor * 10 - 5);
+            h = (h + hueShift) % 360;
             if (h < 0) h += 360;
 
-            // Add randomness to saturation; clamp = range [0.1, 0.9]
-            s = Math.Clamp(s + ((float)random.NextDouble() * 2 - 1) * randomFactor * 0.2f, 0.1f, 0.9f);
+            // Randomize saturation and lightness that still relates to original palette
+            float satFactor = s > 0.7f ? 0.5f : 1.0f; // Reduce variance for already saturated colors
+            float satShift = (float)(random.NextDouble() * 2 - 1) * randomFactor * 0.15f * satFactor;
+            s = Math.Clamp(s + satShift, 0.1f, 0.9f);
 
-            // Add randomness to light clamp = range [0.1, 0.8]
-            l = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * randomFactor * 0.2f, 0.1f, 0.8f);
+            float lightFactor = (l < 0.3f || l > 0.7f) ? 0.5f : 1.0f;
+            float lightShift = (float)(random.NextDouble() * 2 - 1) * randomFactor * 0.15f * lightFactor;
+            l = Math.Clamp(l + lightShift, 0.1f, 0.8f);
 
             return HslToColor(h, s, l);
+
         }
         private List<Color> GenerateAnalogousPalette(float h, float s, float l, float randomFactor)
         {
