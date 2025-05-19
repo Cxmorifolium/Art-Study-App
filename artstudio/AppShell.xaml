@@ -32,10 +32,10 @@
     </FlyoutItem>
     <FlyoutItem Title="Word Prompt">
         <Tab>
-            <!-- 
-            <ShellContent ContentTemplate="{DataTemplate view:WordPromptPage}" />
             
-            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" /> -->
+            <ShellContent ContentTemplate="{DataTemplate view:WordPromptPage}" />
+            <!-- 
+            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" />  -->
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Image Prompt">
