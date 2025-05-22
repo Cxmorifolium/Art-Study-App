@@ -6,18 +6,15 @@
              >
     <ContentPage.ToolbarItems>
         <ToolbarItem 
-            IconImageSource="refresh.png"
             Text="Refresh"
             Command="{Binding RegenerateCommand}" />
 
         <ToolbarItem 
-            IconImageSource="{Binding FavoritePaletteImage}"
             Text="Favorite"
             Command="{Binding ToggleFavoritePaletteCommand}" />
 
         <ToolbarItem 
-            IconImageSource="download.png"
-            Text="Download"
+            Text="Export"
             Command="{Binding ExportPaletteCommand}" />
     </ContentPage.ToolbarItems>
 

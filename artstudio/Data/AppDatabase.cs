@@ -39,7 +39,7 @@ namespace artstudio.Data
                         typeof(Palette),
                         typeof(SwatchCollection),    // Add this
                         typeof(SwatchCollectionMap),
-                        typeof(ColorSwatch)
+                        typeof(ColorSwatch) );
                         //typeof(WordPrompt),
                         //typeof(WordPromptTag),
                         //typeof(ImagePrompt),

@@ -33,7 +33,7 @@
     <FlyoutItem Title="Word Prompt">
         <Tab>
             
-            <ShellContent ContentTemplate="{DataTemplate view:WordPromptPage}" />
+            <ShellContent ContentTemplate="{DataTemplate view:PromptGeneratorPage}" />
             <!-- 
             <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" />  -->
         </Tab>

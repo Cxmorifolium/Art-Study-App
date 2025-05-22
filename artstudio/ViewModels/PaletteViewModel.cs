@@ -1,19 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using artstudio.Models;
+using artstudio.Services;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.IO;
-using System.Linq;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using artstudio.Models;
-using artstudio.Services;
-using Microsoft.Maui.ApplicationModel;
-using Microsoft.Maui.Controls;
-using Microsoft.Maui.Graphics;
 //using artstudio.Data;
-using SQLite;
 
 namespace artstudio.ViewModels
 {
@@ -44,7 +35,7 @@ namespace artstudio.ViewModels
                 }
             }
         }
-
+        // PLACEHOLDER
         #endregion
 
         #region Commands

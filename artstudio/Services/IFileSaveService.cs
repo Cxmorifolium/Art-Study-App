@@ -1,7 +1,4 @@
-﻿
-using System.Threading.Tasks;
-
-namespace artstudio.Services
+﻿namespace artstudio.Services
 {
     // Create abstract class
     public interface IFileSaveService

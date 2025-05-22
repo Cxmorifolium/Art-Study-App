@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using artstudio.Models;
+﻿using artstudio.Models;
 using System.Net.Http.Headers;
 using System.Text.Json;
-using System.IO;
 
 namespace artstudio.Services
 {

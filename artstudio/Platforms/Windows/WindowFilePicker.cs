@@ -1,10 +1,7 @@
 ﻿#if WINDOWS
 using artstudio.Services;
-using Windows.Storage.Pickers;
 using Windows.Storage;
-using System.Collections.Generic;
-using System.Threading.Tasks;
-using Microsoft.Maui.Storage;
+using Windows.Storage.Pickers;
 
 namespace artstudio.Platforms.Windows
 {

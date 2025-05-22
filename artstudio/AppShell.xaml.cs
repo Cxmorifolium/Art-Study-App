@@ -1,5 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-
+﻿
 namespace artstudio
 {
     public partial class AppShell : Shell
@@ -7,20 +6,25 @@ namespace artstudio
         public AppShell()
         {
             InitializeComponent();
+
+            // Register routes for navigation  
+            Routing.RegisterRoute(nameof(Views.PromptGeneratorPage), typeof(Views.PromptGeneratorPage));
         }
 
         private void OnThemeToggleClicked(object sender, EventArgs e)
         {
-            // If the theme is currently light, switch to dark, and vice versa
-            if (Application.Current.UserAppTheme == AppTheme.Dark)
+            if (Application.Current != null)
             {
-                Application.Current.UserAppTheme = AppTheme.Light;
-            }
-            else
-            {
-                Application.Current.UserAppTheme = AppTheme.Dark;
+                // If the theme is currently light, switch to dark, and vice versa  
+                if (Application.Current.UserAppTheme == AppTheme.Dark)
+                {
+                    Application.Current.UserAppTheme = AppTheme.Light;
+                }
+                else
+                {
+                    Application.Current.UserAppTheme = AppTheme.Dark;
+                }
             }
         }
-
     }
 }

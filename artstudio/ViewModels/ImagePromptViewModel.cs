@@ -1,16 +1,11 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using artstudio.Models;
+using artstudio.Services;
+using CommunityToolkit.Maui.Alerts;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using artstudio.Models;
-using artstudio.Services;
-using Microsoft.Maui;
-using Microsoft.Maui.Controls;
-using CommunityToolkit.Maui.Alerts;
 
 namespace artstudio.ViewModels
 {

@@ -6,8 +6,8 @@ public partial class GalleryPage : ContentPage
 {
     public ObservableCollection<string> Artworks { get; set; } = new();
     public GalleryPage()
-	{
-		InitializeComponent();
+    {
+        InitializeComponent();
 
         Artworks = new ObservableCollection<string>
             {

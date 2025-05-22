@@ -1,0 +1,362 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:viewmodels="clr-namespace:artstudio.ViewModels"
+             xmlns:converters="clr-namespace:artstudio.Converters"
+             x:Class="artstudio.Views.PromptGeneratorPage"
+             Title="Prompt Generator">
+
+    <!-- Toolbar -->
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Favorites"
+                     Command="{Binding FavoriteCommand}" />
+        <ToolbarItem Text="History"
+                     Command="{Binding HistoryCommand}" />
+        <ToolbarItem Text="Export"
+                     Command="{Binding ExportCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:CountToBoolConverter x:Key="CountToBoolConverter"/>
+
+            <!-- Light Theme Colors -->
+            <Color x:Key="LightPrimaryBackground">#f7f7f7</Color>
+            <Color x:Key="LightCardBackground">#ffffff</Color>
+            <Color x:Key="LightBoxBackground">#eef1ff</Color>
+            <Color x:Key="LightTextColor">#333333</Color>
+
+            <!-- Dark Theme Colors -->
+            <Color x:Key="DarkPrimaryBackground">#1e1e1e</Color>
+            <Color x:Key="DarkCardBackground">#2d2d2d</Color>
+            <Color x:Key="DarkBoxBackground">#3d3d5c</Color>
+            <Color x:Key="DarkTextColor">#e6e6e6</Color>
+
+            <!-- Theme-aware colors -->
+            <OnPlatform x:TypeArguments="Color" x:Key="PrimaryBackground">
+                <On Platform="Android, iOS, WinUI" Value="{AppThemeBinding Light={StaticResource LightPrimaryBackground}, Dark={StaticResource DarkPrimaryBackground}}" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="Color" x:Key="CardBackground">
+                <On Platform="Android, iOS, WinUI" Value="{AppThemeBinding Light={StaticResource LightCardBackground}, Dark={StaticResource DarkCardBackground}}" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="Color" x:Key="BoxBackground">
+                <On Platform="Android, iOS, WinUI" Value="{AppThemeBinding Light={StaticResource LightBoxBackground}, Dark={StaticResource DarkBoxBackground}}" />
+            </OnPlatform>
+
+            <OnPlatform x:TypeArguments="Color" x:Key="TextColor">
+                <On Platform="Android, iOS, WinUI" Value="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+            </OnPlatform>
+
+            <!-- Button Colors (consistent across themes) -->
+            <Color x:Key="PrimaryButtonColor">#6750A4</Color>
+            <Color x:Key="SecondaryButtonColor">#625B71</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
+    <ContentPage.BindingContext>
+        <viewmodels:PromptGeneratorViewModel />
+    </ContentPage.BindingContext>
+
+    <ScrollView BackgroundColor="{StaticResource PrimaryBackground}">
+        <!-- Centered container that adjusts to window size -->
+        <Grid HorizontalOptions="Center" VerticalOptions="Center" Padding="20">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+                <RowDefinition Height="Auto" />
+            </Grid.RowDefinitions>
+
+            <!-- Main content centered -->
+            <StackLayout Grid.Row="1" HorizontalOptions="Center" VerticalOptions="Center" Spacing="20">
+                <!-- Responsive Grid that adjusts based on available width -->
+                <Grid x:Name="MainGrid" ColumnSpacing="15" RowSpacing="20">
+                    <Grid.ColumnDefinitions>
+                        <!-- Use Auto sizing for responsive behavior -->
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="*" />
+                        <RowDefinition Height="*" />
+                    </Grid.RowDefinitions>
+
+                    <!-- Box 1: Subjects -->
+                    <Border Grid.Column="0" Grid.Row="0"
+                            BackgroundColor="{StaticResource BoxBackground}"
+                            Padding="15"
+                            StrokeShape="RoundRectangle 10"
+                            MinimumHeightRequest="280"
+                            MinimumWidthRequest="250"
+                            Stroke="{AppThemeBinding Light=#d0d0ff, Dark=#4d4d6d}">
+                        <Grid RowDefinitions="Auto,*,Auto">
+                            <!-- Header -->
+                            <Label Grid.Row="0" 
+                                   Text="Subjects" 
+                                   FontAttributes="Bold" 
+                                   TextColor="{StaticResource TextColor}" 
+                                   HorizontalOptions="Center"
+                                   FontSize="16"
+                                   Margin="0,0,0,15"/>
+
+                            <!-- Tags Display using CollectionView -->
+                            <CollectionView Grid.Row="1" 
+                                            ItemsSource="{Binding Nouns}"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" 
+                                                     Span="2" 
+                                                     HorizontalItemSpacing="5" 
+                                                     VerticalItemSpacing="5"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="{AppThemeBinding Light=#6750A4, Dark=#8168C2}"
+                                                Padding="6,3"
+                                                StrokeShape="RoundRectangle 12"
+                                                HorizontalOptions="Fill">
+                                            <Label Text="{Binding}" 
+                                                   TextColor="White" 
+                                                   FontSize="12" 
+                                                   LineBreakMode="WordWrap"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalTextAlignment="Center"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                            <!-- Slider -->
+                            <StackLayout Grid.Row="2" Margin="0,15,0,0">
+                                <Slider Minimum="0" 
+                                        Maximum="5"
+                                        Value="{Binding NounCount, Mode=TwoWay}"
+                                        MinimumTrackColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}"
+                                        MaximumTrackColor="{AppThemeBinding Light=LightGray, Dark=#555555}"
+                                        ThumbColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}" />
+                                <Label Text="{Binding NounCount, StringFormat='{0}'}" 
+                                       HorizontalOptions="Center" 
+                                       TextColor="{StaticResource TextColor}"
+                                       FontSize="14"/>
+                            </StackLayout>
+                        </Grid>
+                    </Border>
+
+                    <!-- Box 2: Settings -->
+                    <Border Grid.Column="1" Grid.Row="0"
+                            BackgroundColor="{StaticResource BoxBackground}"
+                            Padding="15"
+                            StrokeShape="RoundRectangle 10"
+                            MinimumHeightRequest="280"
+                            MinimumWidthRequest="250"
+                            Stroke="{AppThemeBinding Light=#d0d0ff, Dark=#4d4d6d}">
+                        <Grid RowDefinitions="Auto,*,Auto">
+                            <!-- Header -->
+                            <Label Grid.Row="0" 
+                                   Text="Settings" 
+                                   FontAttributes="Bold" 
+                                   TextColor="{StaticResource TextColor}" 
+                                   HorizontalOptions="Center"
+                                   FontSize="16"
+                                   Margin="0,0,0,15"/>
+
+                            <!-- Tags Display using CollectionView -->
+                            <CollectionView Grid.Row="1" 
+                                            ItemsSource="{Binding Settings}"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" 
+                                                     Span="2" 
+                                                     HorizontalItemSpacing="5" 
+                                                     VerticalItemSpacing="5"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="{AppThemeBinding Light=#6750A4, Dark=#8168C2}"
+                                                Padding="6,3"
+                                                StrokeShape="RoundRectangle 12"
+                                                HorizontalOptions="Fill">
+                                            <Label Text="{Binding}" 
+                                                   TextColor="White" 
+                                                   FontSize="12" 
+                                                   LineBreakMode="WordWrap"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalTextAlignment="Center"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                            <!-- Slider -->
+                            <StackLayout Grid.Row="2" Margin="0,15,0,0">
+                                <Slider Minimum="0" 
+                                        Maximum="2"
+                                        Value="{Binding SettingCount, Mode=TwoWay}"
+                                        MinimumTrackColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}"
+                                        MaximumTrackColor="{AppThemeBinding Light=LightGray, Dark=#555555}"
+                                        ThumbColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}" />
+                                <Label Text="{Binding SettingCount, StringFormat='{0}'}" 
+                                       HorizontalOptions="Center" 
+                                       TextColor="{StaticResource TextColor}"
+                                       FontSize="14"/>
+                            </StackLayout>
+                        </Grid>
+                    </Border>
+
+                    <!-- Box 3: Styles -->
+                    <Border Grid.Column="2" Grid.Row="0"
+                            BackgroundColor="{StaticResource BoxBackground}"
+                            Padding="15"
+                            StrokeShape="RoundRectangle 10"
+                            MinimumHeightRequest="280"
+                            MinimumWidthRequest="250"
+                            Stroke="{AppThemeBinding Light=#d0d0ff, Dark=#4d4d6d}">
+                        <Grid RowDefinitions="Auto,*,Auto">
+                            <!-- Header -->
+                            <Label Grid.Row="0" 
+                                   Text="Styles" 
+                                   FontAttributes="Bold" 
+                                   TextColor="{StaticResource TextColor}" 
+                                   HorizontalOptions="Center"
+                                   FontSize="16"
+                                   Margin="0,0,0,15"/>
+
+                            <!-- Tags Display using CollectionView -->
+                            <CollectionView Grid.Row="1" 
+                                            ItemsSource="{Binding Styles}"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" 
+                                                     Span="2" 
+                                                     HorizontalItemSpacing="5" 
+                                                     VerticalItemSpacing="5"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="{AppThemeBinding Light=#6750A4, Dark=#8168C2}"
+                                                Padding="6,3"
+                                                StrokeShape="RoundRectangle 12"
+                                                HorizontalOptions="Fill">
+                                            <Label Text="{Binding}" 
+                                                   TextColor="White" 
+                                                   FontSize="12" 
+                                                   LineBreakMode="WordWrap"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalTextAlignment="Center"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                            <!-- Slider -->
+                            <StackLayout Grid.Row="2" Margin="0,15,0,0">
+                                <Slider Minimum="0" 
+                                        Maximum="2"
+                                        Value="{Binding StyleCount, Mode=TwoWay}"
+                                        MinimumTrackColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}"
+                                        MaximumTrackColor="{AppThemeBinding Light=LightGray, Dark=#555555}"
+                                        ThumbColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}" />
+                                <Label Text="{Binding StyleCount, StringFormat='{0}'}" 
+                                       HorizontalOptions="Center" 
+                                       TextColor="{StaticResource TextColor}"
+                                       FontSize="14"/>
+                            </StackLayout>
+                        </Grid>
+                    </Border>
+
+                    <!-- Box 4: Themes -->
+                    <Border Grid.Column="3" Grid.Row="0"
+                            BackgroundColor="{StaticResource BoxBackground}"
+                            Padding="15"
+                            StrokeShape="RoundRectangle 10"
+                            MinimumHeightRequest="280"
+                            MinimumWidthRequest="250"
+                            Stroke="{AppThemeBinding Light=#d0d0ff, Dark=#4d4d6d}">
+                        <Grid RowDefinitions="Auto,*,Auto">
+                            <!-- Header -->
+                            <Label Grid.Row="0" 
+                                   Text="Themes" 
+                                   FontAttributes="Bold" 
+                                   TextColor="{StaticResource TextColor}" 
+                                   HorizontalOptions="Center"
+                                   FontSize="16"
+                                   Margin="0,0,0,15"/>
+
+                            <!-- Tags Display using CollectionView -->
+                            <CollectionView Grid.Row="1" 
+                                            ItemsSource="{Binding Themes}"
+                                            HorizontalOptions="Fill"
+                                            VerticalOptions="Fill">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" 
+                                                     Span="2" 
+                                                     HorizontalItemSpacing="5" 
+                                                     VerticalItemSpacing="5"/>
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="{AppThemeBinding Light=#6750A4, Dark=#8168C2}"
+                                                Padding="6,3"
+                                                StrokeShape="RoundRectangle 12"
+                                                HorizontalOptions="Fill">
+                                            <Label Text="{Binding}" 
+                                                   TextColor="White" 
+                                                   FontSize="12" 
+                                                   LineBreakMode="WordWrap"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalTextAlignment="Center"/>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+
+                            <!-- Slider -->
+                            <StackLayout Grid.Row="2" Margin="0,15,0,0">
+                                <Slider Minimum="0" 
+                                        Maximum="1"
+                                        Value="{Binding ThemeCount, Mode=TwoWay}"
+                                        MinimumTrackColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}"
+                                        MaximumTrackColor="{AppThemeBinding Light=LightGray, Dark=#555555}"
+                                        ThumbColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}" />
+                                <Label Text="{Binding ThemeCount, StringFormat='{0}'}" 
+                                       HorizontalOptions="Center" 
+                                       TextColor="{StaticResource TextColor}"
+                                       FontSize="14"/>
+                            </StackLayout>
+                        </Grid>
+                    </Border>
+
+                    <!-- Action Buttons -->
+                    <Grid Grid.Row="1" Grid.ColumnSpan="4" 
+                          ColumnDefinitions="*, *" 
+                          ColumnSpacing="15" 
+                          Margin="0,10,0,0"
+                          HorizontalOptions="Center"
+                          MinimumWidthRequest="300">
+                        <Button Grid.Column="0" 
+                                Text="Generate" 
+                                Command="{Binding GenerateCommand}" 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource PrimaryButtonColor}, Dark=#8168C2}" 
+                                TextColor="White"
+                                FontAttributes="Bold"
+                                HeightRequest="50"
+                                MinimumWidthRequest="140" />
+                        <Button Grid.Column="1" 
+                                Text="Clear" 
+                                Command="{Binding ClearCommand}" 
+                                BackgroundColor="{AppThemeBinding Light={StaticResource SecondaryButtonColor}, Dark=#7A6F8A}" 
+                                TextColor="White"
+                                HeightRequest="50"
+                                MinimumWidthRequest="140" />
+                    </Grid>
+                </Grid>
+            </StackLayout>
+        </Grid>
+    </ScrollView>
+</ContentPage>

@@ -1,12 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
-using SQLite;
-
-namespace artstudio.Models
+﻿namespace artstudio.Models
 {
     public class PaletteModel
     {
@@ -125,9 +117,9 @@ namespace artstudio.Models
         {
             Random random = new Random();
 
-            float h = (float)(random.NextDouble() * 360.0); 
-            float s = (float)(random.NextDouble()); 
-            float l = (float)(random.NextDouble()); 
+            float h = (float)(random.NextDouble() * 360.0);
+            float s = (float)(random.NextDouble());
+            float l = (float)(random.NextDouble());
 
             return HslToColor(h, s, l);
         }

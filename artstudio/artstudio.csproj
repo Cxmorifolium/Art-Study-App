@@ -67,13 +67,83 @@
 	  <MauiXaml Remove="Data\**" />
 	  <None Remove="Data\**" />
 	</ItemGroup>
+	
+	<!-- .JSON data-->
+	<ItemGroup>
+		<MauiAsset Include="Resources\prompt_data\nouns\cats.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\common.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>	  
+		<MauiAsset Include="Resources\prompt_data\nouns\flowers.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\fruits.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\greek_gods.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\greek_monsters.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\herbs_n_spices.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\instruments.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\monsters.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\norse_gods.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\objects.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\nouns\premodern_weapons.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\settings\atmosphere.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\settings\bookuniverse.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\settings\eras.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\settings\gameuniverse.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\styles\animation.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\styles\artist.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\styles\isms.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\styles\narrative.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+		<MauiAsset Include="Resources\prompt_data\themes\subjects.json">
+		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+		</MauiAsset>
+	</ItemGroup>
 
 	<ItemGroup>
 		<PackageReference Include="CommunityToolkit.Maui" Version="11.2.0" />
 		<PackageReference Include="CommunityToolkit.Maui.Core" Version="11.2.0" />
+		<PackageReference Include="CommunityToolkit.Mvvm" Version="8.4.0" />
+		<PackageReference Include="Microsoft.Extensions.DependencyInjection" Version="9.0.5" />
 		<PackageReference Include="Microsoft.Maui.Controls" Version="9.0.60" />
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.4" />
 		<PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="9.0.60" />
+		<PackageReference Include="Microsoft.VisualStudio.Utilities" Version="17.14.40264" />
 		<PackageReference Include="SkiaSharp" Version="3.119.0" />
 		<PackageReference Include="sqlite-net" Version="1.6.292" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
@@ -82,6 +152,9 @@
 	<ItemGroup>
 	  <Compile Update="Views\ImagePromptPage.xaml.cs">
 	    <DependentUpon>ImagePromptPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\PromptGeneratorPage.xaml.cs">
+	    <DependentUpon>PromptGeneratorPage.xaml</DependentUpon>
 	  </Compile>
 	</ItemGroup>
 
@@ -104,7 +177,7 @@
 	  <MauiXaml Update="Views\UnderConstruction.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\WordPromptPage.xaml">
+	  <MauiXaml Update="Views\PromptGeneratorPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	</ItemGroup>

@@ -1,8 +1,4 @@
-﻿using Microsoft.Maui.Controls;
-using artstudio.Views;
-using Microsoft.Extensions.DependencyInjection; 
-
-namespace artstudio
+﻿namespace artstudio
 {
     public partial class App : Application
     {
@@ -11,7 +7,7 @@ namespace artstudio
             InitializeComponent();
             Application.Current.UserAppTheme = Application.Current.RequestedTheme;
 
-            
+
         }
 
         protected override Window CreateWindow(IActivationState? activationState)

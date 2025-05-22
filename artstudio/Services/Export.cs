@@ -1,9 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.IO;
-using System.Threading.Tasks;
-using Microsoft.Maui.Graphics;
-using Microsoft.Maui.Graphics.Skia;
+﻿using Microsoft.Maui.Graphics.Skia;
 
 namespace artstudio.Services
 {

@@ -1,12 +1,6 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.ComponentModel;
+﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-using Microsoft.Maui.Graphics;
 
 namespace artstudio.Models
 {
@@ -90,7 +84,7 @@ namespace artstudio.Models
                     OnPropertyChanged(nameof(DeleteImage));
                     OnPropertyChanged(nameof(ButtonVisible));
 
-                    
+
                 }
             }
         }
@@ -131,14 +125,14 @@ namespace artstudio.Models
         {
             if (IsDeleted)
             {
-                Color = _previousColor;  
+                Color = _previousColor;
                 IsDeleted = false;
                 IsActive = false;
             }
             else
             {
-                _previousColor = Color;  
-                Color = Colors.Transparent; 
+                _previousColor = Color;
+                Color = Colors.Transparent;
                 IsDeleted = true;
                 IsActive = false;
             }
