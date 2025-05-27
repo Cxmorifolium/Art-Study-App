@@ -55,7 +55,7 @@ namespace artstudio.ViewModels
             AddImagesCommand = new Command(async () => await AddImagesAsync(), () => !IsLoading);
             RegenerateImagesCommand = new Command(async () => await RegenerateImagesAsync(), () => !IsLoading);
             ToggleLockCommand = new Command<ImageItem>(ToggleLock);
-            DeleteImageCommand = new Command<ImageItem>(DeleteImage);
+            DeleteImageCommand = new Command<ImageItem>(async (imageItem) => await DeleteImageAsync(imageItem));
             UndoDeleteCommand = new Command(UndoDelete, () => CanUndo);
 
             // Load initial images on main thread
@@ -159,7 +159,7 @@ namespace artstudio.ViewModels
             }
         }
 
-        private async void DeleteImage(ImageItem? imageItem)
+        private async Task DeleteImageAsync(ImageItem? imageItem)
         {
             if (imageItem != null && Images.Contains(imageItem))
             {
@@ -178,7 +178,8 @@ namespace artstudio.ViewModels
 
                 await snackbar.Show();
             }
-        }
+        }            
+
 
         private void UndoDelete()
         {
@@ -216,54 +217,5 @@ namespace artstudio.ViewModels
         }
 
         #endregion
-    }
-
-    public class ImageItem : INotifyPropertyChanged
-    {
-        private bool _isLocked;
-        private bool _isDeleted;
-
-        public UnsplashImage UnsplashImage { get; }
-
-        public bool IsLocked
-        {
-            get => _isLocked;
-            set
-            {
-                if (_isLocked != value)
-                {
-                    _isLocked = value;
-                    OnPropertyChanged();
-                }
-            }
-        }
-
-        public bool IsDeleted
-        {
-            get => _isDeleted;
-            set
-            {
-                if (_isDeleted != value)
-                {
-                    _isDeleted = value;
-                    OnPropertyChanged();
-                    OnPropertyChanged(nameof(DeleteOrUndoIcon));
-                }
-            }
-        }
-
-        public string DeleteOrUndoIcon => IsDeleted ? "undo.png" : "delete.png";
-
-        public ImageItem(UnsplashImage unsplashImage)
-        {
-            UnsplashImage = unsplashImage;
-        }
-
-        public event PropertyChangedEventHandler? PropertyChanged;
-
-        protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
-        {
-            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
     }
 }

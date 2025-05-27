@@ -25,21 +25,21 @@ namespace artstudio.ViewModels
         {
             DebugLog("=== PromptGeneratorViewModel Constructor Started ===");
 
-            // Initialize collections
+            // Initialize collections  
             Nouns = new ObservableCollection<string>();
             Settings = new ObservableCollection<string>();
             Styles = new ObservableCollection<string>();
             Themes = new ObservableCollection<string>();
 
-            // Initialize commands
+            // Initialize commands  
             GenerateCommand = new RelayCommand(GeneratePrompt);
             ClearCommand = new RelayCommand(ClearPrompt);
             ExportCommand = new AsyncRelayCommand(ExportToClipboardAsync);
             FavoriteCommand = new RelayCommand(SaveToFavorites);
             HistoryCommand = new RelayCommand(ViewHistory);
 
-            // Initialize the prompt generator asynchronously
-            Task.Run(InitializeGeneratorAsync);
+            // Initialize the prompt generator asynchronously  
+            _ = InitializeGeneratorAsync();
 
             DebugLog("=== PromptGeneratorViewModel Constructor Completed ===");
         }
@@ -67,12 +67,12 @@ namespace artstudio.ViewModels
 
                 if (Directory.Exists(dataPath))
                 {
-                    await LogDirectoryContents(dataPath);
+                    await LogDirectoryContentsAsync(dataPath);
 
                     // Create the generator
                     _generator = new PromptGenerator(dataPath);
 
-                    await TestGenerator();
+                    await TestGeneratorAsync();
 
                     _isInitialized = true;
                     StatusMessage = "Ready";
@@ -109,57 +109,32 @@ namespace artstudio.ViewModels
             }
         }
 
-        private async Task LogDirectoryContents(string dataPath)
+        private static async Task LogDirectoryContentsAsync(string dataPath)
         {
             try
             {
-                var dirs = Directory.GetDirectories(dataPath);
-                DebugLog($"Found {dirs.Length} subdirectories:");
-
-                foreach (var dir in dirs)
+                await Task.Run(() =>
                 {
-                    DebugLog($"  - {Path.GetFileName(dir)}");
-                    var files = Directory.GetFiles(dir, "*.json");
-                    DebugLog($"    Files: {files.Length}");
+                    var dirs = Directory.GetDirectories(dataPath);
+                    DebugLog($"Found {dirs.Length} subdirectories:");
 
-                    foreach (var file in files)
+                    foreach (var dir in dirs)
                     {
-                        var fileInfo = new FileInfo(file);
-                        DebugLog($"      - {Path.GetFileName(file)} ({fileInfo.Length} bytes)");
+                        DebugLog($"  - {Path.GetFileName(dir)}");
+                        var files = Directory.GetFiles(dir, "*.json");
+                        DebugLog($"    Files: {files.Length}");
+
+                        foreach (var file in files)
+                        {
+                            var fileInfo = new FileInfo(file);
+                            DebugLog($"      - {Path.GetFileName(file)} ({fileInfo.Length} bytes)");
+                        }
                     }
-                }
+                });
             }
             catch (Exception ex)
             {
                 DebugLog($"Error logging directory contents: {ex.Message}");
-            }
-        }
-
-        private async Task TestGenerator()
-        {
-            try
-            {
-                if (_generator == null) return;
-
-                DebugLog("=== Testing Generator ===");
-                var categories = _generator.GetAvailableCategories();
-                DebugLog($"Available categories: {string.Join(", ", categories)}");
-
-                foreach (var category in categories)
-                {
-                    int count = _generator.GetCategoryItemsCount(category);
-                    DebugLog($"Category '{category}': {count} items");
-
-                    if (count > 0)
-                    {
-                        var sample = _generator.GetRandomItems(category, count: Math.Min(3, count));
-                        DebugLog($"  Sample items: {string.Join(", ", sample)}");
-                    }
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugLog($"Error testing generator: {ex.Message}");
             }
         }
 
@@ -247,6 +222,38 @@ namespace artstudio.ViewModels
             }
         }
 
+        private async Task TestGeneratorAsync()
+        {
+            try
+            {
+                if (_generator == null) return;
+
+                DebugLog("=== Testing Generator ===");
+
+                await Task.Run(() =>
+                {
+                    var categories = _generator.GetAvailableCategories();
+                    DebugLog($"Available categories: {string.Join(", ", categories)}");
+
+                    foreach (var category in categories)
+                    {
+                        int count = _generator.GetCategoryItemsCount(category);
+                        DebugLog($"Category '{category}': {count} items");
+
+                        if (count > 0)
+                        {
+                            var sample = _generator.GetRandomItems(category, count: Math.Min(3, count));
+                            DebugLog($"  Sample items: {string.Join(", ", sample)}");
+                        }
+                    }
+                });
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error testing generator: {ex.Message}");
+            }
+        }
+
         private void UpdateCollection(ObservableCollection<string> collection, List<string> newItems)
         {
             collection.Clear();
@@ -323,5 +330,6 @@ namespace artstudio.ViewModels
                 // Ignore file write errors
             }
         }
+        
     }
 }

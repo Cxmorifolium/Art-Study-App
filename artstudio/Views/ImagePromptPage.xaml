@@ -6,87 +6,87 @@
             x:Class="artstudio.Views.ImagePromptPage"
             Title="Image Prompt">
 
-   <ContentPage.Resources>
-       <ResourceDictionary>
-           <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
-           <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
-           <converters:BoolToLockColorConverter x:Key="BoolToLockColorConverter" />
-           <converters:BoolToLockIconConverter x:Key="BoolToLockIconConverter" />
-       </ResourceDictionary>
-   </ContentPage.Resources>
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
+            <converters:BoolToLockColorConverter x:Key="BoolToLockColorConverter" />
+            <converters:BoolToLockIconConverter x:Key="BoolToLockIconConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-   <ContentPage.BindingContext>
-       <viewmodels:ImagePromptViewModel />
-   </ContentPage.BindingContext>
+    <ContentPage.BindingContext>
+        <viewmodels:ImagePromptViewModel />
+    </ContentPage.BindingContext>
 
-   <Grid Padding="20">
-       <Grid.RowDefinitions>
-           <RowDefinition Height="Auto" />
-           <RowDefinition Height="*" />
-           <RowDefinition Height="Auto" />
-       </Grid.RowDefinitions>
+    <Grid Padding="20">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="Auto" />
+        </Grid.RowDefinitions>
 
-       <!-- Header Section -->
-       <StackLayout Grid.Row="0" Margin="0,0,0,20">
-           <Label Text="Unsplash Images" 
+        <!-- Header Section -->
+        <StackLayout Grid.Row="0" Margin="0,0,0,20">
+            <Label Text="Unsplash Images" 
                   FontSize="24" 
                   FontAttributes="Bold" 
                   Margin="0,0,0,10"/>
-           <Label Text="Test your conceptualization! Lock the ones you like before regenerating." 
+            <Label Text="Test your conceptualization! Lock the ones you like before regenerating." 
                   FontSize="14" 
                   Opacity="0.7"/>
-       </StackLayout>
+        </StackLayout>
 
-       <!-- Images Section -->
-       <ScrollView Grid.Row="1">
-           <CollectionView ItemsSource="{Binding Images}">
-               <CollectionView.ItemsLayout>
-                   <GridItemsLayout Orientation="Vertical" 
+        <!-- Images Section -->
+        <ScrollView Grid.Row="1">
+            <CollectionView ItemsSource="{Binding Images}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" 
                                     Span="2" 
                                     HorizontalItemSpacing="10" 
                                     VerticalItemSpacing="10" />
-               </CollectionView.ItemsLayout>
-               <CollectionView.ItemTemplate>
-                   <DataTemplate>
-                       <Border Margin="5" 
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="5" 
                                Stroke="{Binding IsLocked, Converter={StaticResource BoolToLockColorConverter}}"
                                StrokeShape="RoundRectangle"
                                StrokeThickness="1"
                                BackgroundColor="Transparent"
                                HeightRequest="200">
-                           <Grid>
-                               <Image Source="{Binding UnsplashImage.urls.Regular}" 
+                            <Grid>
+                                <Image Source="{Binding UnsplashImage.urls.Regular}" 
                                       Aspect="AspectFill" />
 
-                               <Grid BackgroundColor="#77000000" 
+                                <Grid BackgroundColor="#77000000" 
                                      VerticalOptions="End">
-                                   <Grid Margin="10,5">
-                                       <Grid.ColumnDefinitions>
-                                           <ColumnDefinition Width="*" />
-                                           <ColumnDefinition Width="Auto" />
-                                           <ColumnDefinition Width="Auto" />
+                                    <Grid Margin="10,5">
+                                        <Grid.ColumnDefinitions>
+                                            <ColumnDefinition Width="*" />
+                                            <ColumnDefinition Width="Auto" />
+                                            <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
-                                       <StackLayout Grid.Column="0">
-                                           <Label Text="{Binding UnsplashImage.Description}" 
+                                        <StackLayout Grid.Column="0">
+                                            <Label Text="{Binding UnsplashImage.Description}" 
                                                   TextColor="White"
                                                   FontAttributes="Bold"
                                                   LineBreakMode="TailTruncation"
                                                   MaxLines="2" />
-                                           <Label Text="{Binding UnsplashImage.user.Name, StringFormat='By {0}'}" 
+                                            <Label Text="{Binding UnsplashImage.user.Name, StringFormat='By {0}'}" 
                                                   TextColor="White"
                                                   FontSize="12"
                                                   Margin="0,5,0,0" />
-                                       </StackLayout>
+                                        </StackLayout>
 
-                                       <ImageButton Grid.Column="1" 
+                                        <ImageButton Grid.Column="1" 
                                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ImagePromptViewModel}}, Path=ToggleLockCommand}"
                                                     CommandParameter="{Binding}"
                                                     Source="{Binding IsLocked, Converter={StaticResource BoolToLockIconConverter}}" 
                                                     WidthRequest="24" 
                                                     HeightRequest="24"
                                                     Background="Transparent" />
-                                       <ImageButton Grid.Column="2"
+                                        <ImageButton Grid.Column="2"
                                                     Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ImagePromptViewModel}}, Path=DeleteImageCommand}"
                                                     CommandParameter="{Binding}"
                                                     Source="delete.png"
@@ -96,46 +96,46 @@
                                                     Margin="10,0,0,0" />
 
                                     </Grid>
-                               </Grid>
-                           </Grid>
-                       </Border>
-                   </DataTemplate>
-               </CollectionView.ItemTemplate>
-           </CollectionView>
-       </ScrollView>
+                                </Grid>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </ScrollView>
 
-       <!-- Loading Indicator -->
-       <Grid Grid.Row="1" 
+        <!-- Loading Indicator -->
+        <Grid Grid.Row="1" 
              BackgroundColor="#44000000" 
              IsVisible="{Binding IsLoading, Converter={StaticResource BoolToVisibilityConverter}}">
-           <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
-               <ActivityIndicator IsRunning="{Binding IsLoading}" 
+            <StackLayout VerticalOptions="Center" HorizontalOptions="Center">
+                <ActivityIndicator IsRunning="{Binding IsLoading}" 
                                  Color="White" 
                                  HeightRequest="50" 
                                  WidthRequest="50" />
-               <Label Text="Loading images..." 
+                <Label Text="Loading images..." 
                       TextColor="White" 
                       HorizontalOptions="Center" />
-           </StackLayout>
-       </Grid>
+            </StackLayout>
+        </Grid>
 
-       <!-- Button Controls Section -->
-       <StackLayout Grid.Row="2" 
+        <!-- Button Controls Section -->
+        <StackLayout Grid.Row="2" 
                     Orientation="Horizontal" 
                     HorizontalOptions="Center" 
                     Margin="0,20,0,0">
-           <Button Text="Regenerate Images" 
+            <Button Text="Regenerate Images" 
                    Padding="15,10" 
                    Margin="5,0" 
                    Command="{Binding RegenerateImagesCommand}" 
                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"/>
 
-           <Button Text="Add More Images" 
+            <Button Text="Add More Images" 
                    Padding="15,10" 
                    Margin="5,0" 
                    Command="{Binding AddImagesCommand}" 
                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"/>
-           <Button Text="Undo"
+            <Button Text="Undo"
                    Padding="15,10"
                    Margin="5,0"
                    Command="{Binding UndoDeleteCommand}"
@@ -143,12 +143,12 @@
 
         </StackLayout>
 
-       <!-- Attribution Text -->
-       <Label Grid.Row="2" 
+        <!-- Attribution Text -->
+        <Label Grid.Row="2" 
               Text="Images provided by Unsplash" 
               HorizontalOptions="End" 
               Margin="0,70,0,0" 
               Opacity="0.7"
               FontSize="12"/>
-   </Grid>
+    </Grid>
 </ContentPage>

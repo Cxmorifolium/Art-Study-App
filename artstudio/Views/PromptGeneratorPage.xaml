@@ -4,6 +4,7 @@
              xmlns:viewmodels="clr-namespace:artstudio.ViewModels"
              xmlns:converters="clr-namespace:artstudio.Converters"
              x:Class="artstudio.Views.PromptGeneratorPage"
+             x:DataType="viewmodels:PromptGeneratorViewModel"
              Title="Prompt Generator">
 
     <!-- Toolbar -->
@@ -114,12 +115,12 @@
                                                      VerticalItemSpacing="5"/>
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate>
+                                    <DataTemplate x:DataType="x:String">
                                         <Border BackgroundColor="{AppThemeBinding Light=#6750A4, Dark=#8168C2}"
                                                 Padding="6,3"
                                                 StrokeShape="RoundRectangle 12"
                                                 HorizontalOptions="Fill">
-                                            <Label Text="{Binding}" 
+                                            <Label Text="{Binding .}" 
                                                    TextColor="White" 
                                                    FontSize="12" 
                                                    LineBreakMode="WordWrap"
@@ -176,12 +177,12 @@
                                                      VerticalItemSpacing="5"/>
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate>
+                                    <DataTemplate x:DataType="x:String">
                                         <Border BackgroundColor="{AppThemeBinding Light=#6750A4, Dark=#8168C2}"
                                                 Padding="6,3"
                                                 StrokeShape="RoundRectangle 12"
                                                 HorizontalOptions="Fill">
-                                            <Label Text="{Binding}" 
+                                            <Label Text="{Binding .}" 
                                                    TextColor="White" 
                                                    FontSize="12" 
                                                    LineBreakMode="WordWrap"
@@ -238,12 +239,12 @@
                                                      VerticalItemSpacing="5"/>
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate>
+                                    <DataTemplate x:DataType="x:String">
                                         <Border BackgroundColor="{AppThemeBinding Light=#6750A4, Dark=#8168C2}"
                                                 Padding="6,3"
                                                 StrokeShape="RoundRectangle 12"
                                                 HorizontalOptions="Fill">
-                                            <Label Text="{Binding}" 
+                                            <Label Text="{Binding .}" 
                                                    TextColor="White" 
                                                    FontSize="12" 
                                                    LineBreakMode="WordWrap"
@@ -300,12 +301,12 @@
                                                      VerticalItemSpacing="5"/>
                                 </CollectionView.ItemsLayout>
                                 <CollectionView.ItemTemplate>
-                                    <DataTemplate>
+                                    <DataTemplate x:DataType="x:String">
                                         <Border BackgroundColor="{AppThemeBinding Light=#6750A4, Dark=#8168C2}"
                                                 Padding="6,3"
                                                 StrokeShape="RoundRectangle 12"
                                                 HorizontalOptions="Fill">
-                                            <Label Text="{Binding}" 
+                                            <Label Text="{Binding .}" 
                                                    TextColor="White" 
                                                    FontSize="12" 
                                                    LineBreakMode="WordWrap"

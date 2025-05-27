@@ -39,6 +39,16 @@ public static class MauiProgram
         // Register pages and view models  
         builder.Services.AddTransient<PalettePage>();
         builder.Services.AddTransient<PaletteViewModel>();
+        builder.Services.AddTransient<StudyPageViewModel>();
+
+
+        // Register the PromptGenerator service with a base directory
+        builder.Services.AddSingleton<PromptGenerator>(provider =>
+        {
+            string baseDir = FileSystem.AppDataDirectory;
+            return new PromptGenerator(baseDir);
+        });
+
 
         builder.Services.AddSingleton<App>();
 

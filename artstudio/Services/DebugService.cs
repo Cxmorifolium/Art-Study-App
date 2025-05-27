@@ -115,7 +115,7 @@ namespace artstudio.Services
             {
                 if (File.Exists(_logFilePath))
                 {
-                    File.Delete(_logFilePath);
+                    await Task.Run(() => File.Delete(_logFilePath));
                 }
             }
             catch (Exception ex)
