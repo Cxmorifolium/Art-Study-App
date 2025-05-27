@@ -1,12 +1,112 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:artstudio.ViewModels"
+             xmlns:models="clr-namespace:artstudio.Models"
              x:Class="artstudio.Views.StudyPage"
+             x:DataType="vm:StudyPageViewModel"
              Title="StudyPage">
-    <VerticalStackLayout>
-        <Label 
-            Text="Welcome to .NET MAUI!"
-            VerticalOptions="Center" 
-            HorizontalOptions="Center" />
-    </VerticalStackLayout>
+    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto"
+          ColumnDefinitions="*,*"
+          Padding="20"
+          RowSpacing="10"
+          ColumnSpacing="10">
+
+        <!-- Mode Picker -->
+        <Label Grid.Row="0" Grid.Column="0" Text="Mode" VerticalOptions="Center" />
+        <Picker Grid.Row="0" Grid.Column="1"
+                ItemsSource="{Binding ModeOptions}"
+                SelectedItem="{Binding SelectedMode}" />
+
+        <!-- Quick Time Picker -->
+        <Label Grid.Row="1" Grid.Column="0" Text="Quick Time" 
+               IsVisible="{Binding IsQuickMode}" VerticalOptions="Center" />
+        <Picker Grid.Row="1" Grid.Column="1"
+                IsVisible="{Binding IsQuickMode}"
+                ItemsSource="{Binding QuickTimeOptions}"
+                SelectedItem="{Binding SelectedQuickTime}" />
+
+        <!-- Custom Session Toggle -->
+        <Label Grid.Row="2" Grid.Column="0" Text="Custom Session" 
+               VerticalOptions="Center" IsVisible="{Binding IsSessionMode}" />
+        <Switch Grid.Row="2" Grid.Column="1" 
+                IsToggled="{Binding UseCustomSession}"
+                IsVisible="{Binding IsSessionMode}" />
+
+        <!-- Time Display -->
+        <Label Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding TimeLeftDisplay}"
+               FontSize="32" HorizontalOptions="Center" />
+
+        <!-- Content (palette, words, images, etc.) -->
+        <ScrollView Grid.Row="4" Grid.ColumnSpan="2">
+            <VerticalStackLayout Spacing="10">
+
+                <!-- Words Section -->
+                <Label Text="Words:" FontAttributes="Bold" />
+                <FlexLayout Wrap="Wrap" Direction="Row" JustifyContent="Start"
+                           BindableLayout.ItemsSource="{Binding CurrentWords}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type x:String}">
+                            <Label Text="{Binding .}" Margin="4"
+                                   BackgroundColor="LightGray" Padding="5" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
+                <!-- Palette Section -->
+                <Label Text="Palette:" FontAttributes="Bold" IsVisible="{Binding ShowPalette}" />
+                <FlexLayout Direction="Row" Wrap="Wrap" IsVisible="{Binding ShowPalette}"
+                           BindableLayout.ItemsSource="{Binding CurrentPalette}">
+                    <BindableLayout.ItemTemplate>
+                        <DataTemplate x:DataType="{x:Type x:String}">
+                            <BoxView WidthRequest="30" HeightRequest="30" Margin="2"
+                                     BackgroundColor="{Binding .}" />
+                        </DataTemplate>
+                    </BindableLayout.ItemTemplate>
+                </FlexLayout>
+
+                <!-- Images Section -->
+                <Label Text="Images:" FontAttributes="Bold" />
+                <CollectionView ItemsSource="{Binding CurrentImages}" 
+                               ItemsLayout="HorizontalList"
+                               HeightRequest="120">
+                    <CollectionView.ItemTemplate>
+                        <DataTemplate x:DataType="models:ImageItem">
+                            <Border Padding="5" Margin="5" BackgroundColor="White" >
+                                <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="8,8,8,8" />
+                                   </Border.StrokeShape>
+                                <Image Source="{Binding ImageSource}" 
+                                       HeightRequest="100" 
+                                       WidthRequest="100"
+                                       Aspect="AspectFill" />
+                            </Border>
+                        </DataTemplate>
+                    </CollectionView.ItemTemplate>
+                </CollectionView>
+
+            </VerticalStackLayout>
+        </ScrollView>
+
+        <!-- Controls -->
+        <Grid Grid.Row="5" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*">
+            <Button Grid.Column="0" Text="{Binding PlayPauseButtonText}" 
+                    BackgroundColor="{Binding PlayPauseButtonColor}"
+                    TextColor="White"
+                    Command="{Binding PlayPauseCommand}"
+                    Margin="5" />
+            <Button Grid.Column="1" Text="Reset" 
+                    BackgroundColor="#F44336"
+                    TextColor="White"
+                    Command="{Binding ResetCommand}"
+                    Margin="5" />
+            <Button Grid.Column="2" Text="Undo" 
+                    BackgroundColor="#2196F3"
+                    TextColor="White"
+                    IsEnabled="{Binding CanUndo}" 
+                    Command="{Binding UndoCommand}"
+                    Margin="5" />
+        </Grid>
+
+    </Grid>
 </ContentPage>
