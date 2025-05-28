@@ -71,7 +71,7 @@
                                ItemsLayout="HorizontalList"
                                HeightRequest="120">
                     <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="models:ImageItem">
+                        <DataTemplate x:DataType="vm:ImagePromptViewModel">
                             <Border Padding="5" Margin="5" BackgroundColor="White" >
                                 <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="8,8,8,8" />
