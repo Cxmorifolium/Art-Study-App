@@ -7,9 +7,9 @@ namespace artstudio.Models.Database
         [PrimaryKey, AutoIncrement]
         public int Id { get; set; }
 
-        public string ColorHex { get; set; } // #RRGGBB format
+        public string? ColorHex { get; set; } // #RRGGBB format
 
-        public string Name { get; set; }
+        public string? Name { get; set; }
 
         public bool IsFavorite { get; set; }
 
