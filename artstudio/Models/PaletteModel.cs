@@ -88,7 +88,7 @@
             else
             {
                 float q = l < 0.5f ? l * (l + s) : l + s - l * s;
-                float p = 2 * 1 - q;
+                float p = 2 * l - q;
 
                 // RGB 120° each
                 r = HueToRgb(p, q, h / 360f + 1 / 3f); // Red section
@@ -115,7 +115,10 @@
 
         private Color GenerateRandomColor()
         {
-            Random random = new Random();
+            if (random == null)
+            {
+                random = new Random();
+            }
 
             float h = (float)(random.NextDouble() * 360.0);
             float s = (float)(random.NextDouble());
@@ -167,7 +170,22 @@
                 generatedPalette.RemoveAt(generatedPalette.Count - 1);
 
             while (generatedPalette.Count < 5)
-                generatedPalette.Add(AddRandomVariation(generatedPalette[random!.Next(palette.Count)], randomFactor));
+                generatedPalette.Add(AddRandomVariation(
+                    generatedPalette[random!.Next(generatedPalette.Count)], randomFactor));
+
+            // Duplicate handling
+            for (int i = 0; i < generatedPalette.Count; i++)
+            {
+                for (int j = i + 1; j < generatedPalette.Count; j++)
+                {
+                    if (DuplicateColors(generatedPalette[i], generatedPalette[j]))
+                    {
+                        generatedPalette[j] = AddRandomVariation(generatedPalette[j], randomFactor);
+                        i = -1; // Restart checking from the beginning
+                        break; // Exit inner loop to recheck from the start
+                    }
+                }
+            }
 
             if (existingPalette != null && lockedColors != null && existingPalette.Count == 5 && lockedColors.Length == 5)
             {
@@ -190,7 +208,55 @@
                 // Just use the generated palette if no locks are provided
                 palette = generatedPalette;
             }
+            RemoveDuplicateColors(palette, randomFactor);
             return palette;
+        }
+
+        // Helper method to check if colors are too similar
+        private bool DuplicateColors(Color c1, Color c2, float threshold = 10f)
+        {
+            ColorToHsl(c1, out float h1, out float s1, out float l1);
+            ColorToHsl(c2, out float h2, out float s2, out float l2);
+
+            float hueDiff = Math.Min(Math.Abs(h1 - h2), 360 - Math.Abs(h1 - h2));
+            float satDiff = Math.Abs(s1 - s2) * 100;
+            float lightDiff = Math.Abs(l1 - l2) * 100;
+
+            // Adjust these weights as needed
+            float hueWeight = 1.5f; 
+            float satWeight = 1.0f;
+            float lightWeight = 0.8f; 
+
+            float totalDiff =
+                (hueDiff * hueWeight) +
+                (satDiff * satWeight) +
+                (lightDiff * lightWeight);
+
+            return totalDiff < threshold;
+        }
+
+        // Helper method to check against lock conditions
+        private void RemoveDuplicateColors(List<Color> palette, float randomFactor, float threshold = 10f)
+        {
+            bool duplicatesFound;
+
+            do
+            {
+                duplicatesFound = false;
+
+                for (int i = 0; i < palette.Count; i++)
+                {
+                    for (int j = i + 1; j < palette.Count; j++)
+                    {
+                        if (DuplicateColors(palette[i], palette[j], threshold))
+                        {
+                            palette[j] = AddRandomVariation(palette[j], randomFactor);
+                            duplicatesFound = true;
+                        }
+                    }
+                }
+            }
+            while (duplicatesFound);
         }
 
         // Randomization of Color but controlled so there's still cohesion
@@ -198,29 +264,24 @@
         {
             ColorToHsl(color, out float h, out float s, out float l);
 
-            // Smaller hue shift
-            float hueShift = (float)(random!.NextDouble() * randomFactor * 10 - 5);
-            h = (h + hueShift) % 360;
-            if (h < 0) h += 360;
+            float hueShift = (float)(random!.NextDouble() * 2 - 1) * randomFactor * 8; // smaller range
+            h = (h + hueShift + 360) % 360;
 
-            // Randomize saturation and lightness that still relates to original palette
-            float satFactor = s > 0.7f ? 0.5f : 1.0f; // Reduce variance for already saturated colors
-            float satShift = (float)(random.NextDouble() * 2 - 1) * randomFactor * 0.15f * satFactor;
-            s = Math.Clamp(s + satShift, 0.1f, 0.9f);
+            float satShift = (float)(random.NextDouble() * 2 - 1) * randomFactor * 0.08f;
+            s = Math.Clamp(s + satShift, 0.2f, 0.9f);
 
-            float lightFactor = (l < 0.3f || l > 0.7f) ? 0.5f : 1.0f;
-            float lightShift = (float)(random.NextDouble() * 2 - 1) * randomFactor * 0.15f * lightFactor;
-            l = Math.Clamp(l + lightShift, 0.1f, 0.8f);
+            float lightShift = (float)(random.NextDouble() * 2 - 1) * randomFactor * 0.08f;
+            l = Math.Clamp(l + lightShift, 0.2f, 0.85f);
 
             return HslToColor(h, s, l);
-
         }
+
         private List<Color> GenerateAnalogousPalette(float h, float s, float l, float randomFactor)
         {
             List<Color> palette = new List<Color>();
 
             // Angles for Analogous Colors
-            float[] angles = { -60, -30, 0, 30, 60 };
+            float[] angles = { -45, -22.5f, 0, 22.5f, 45 };
 
             foreach (float angle in angles)
             {
@@ -228,8 +289,8 @@
                 if (newHue < 0) newHue += 360;
 
                 // Variation in s and l 
-                float newSat = Math.Clamp(s + ((float)random!.NextDouble() * 2 - 1) * 0.1f, 0.1f, 0.9f);
-                float newLight = Math.Clamp(1 + ((float)random.NextDouble() * 2 - 1) * 0.1f, 0.2f, 0.8f);
+                float newSat = Math.Clamp(s + ((float)random!.NextDouble() * 2 - 1) * 0.1f, 0.4f, 0.9f);
+                float newLight = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * 0.15f, 0.3f, 0.7f);
 
                 palette.Add(HslToColor(newHue, newSat, newLight));
             }
@@ -250,9 +311,9 @@
             palette.Add(HslToColor(complementaryHue, s, l));
 
             // Variation of those colors
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.1f, 0.9f), Math.Clamp(1 + 0.1f, 0.2f, 0.8f)));
-            palette.Add(HslToColor(h, Math.Clamp(s + 0.1f, 0.1f, 0.9f), Math.Clamp(1 - 0.2f, 0.2f, 0.8f)));
-            palette.Add(HslToColor(complementaryHue, Math.Clamp(s - 0.1f, 0.1f, 0.9f), Math.Clamp(1 + 0.2f, 0.2f, 0.8f)));
+            palette.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.1f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
+            palette.Add(HslToColor(h, Math.Clamp(s + 0.1f, 0.1f, 0.9f), Math.Clamp(l - 0.2f, 0.2f, 0.8f)));
+            palette.Add(HslToColor(complementaryHue, Math.Clamp(s - 0.1f, 0.1f, 0.9f), Math.Clamp(l + 0.2f, 0.2f, 0.8f)));
 
             return palette;
         }
@@ -264,15 +325,23 @@
             palette.Add(HslToColor(h, s, l));
 
             // Split complementary 150° and 210° from base color
-            float comp1 = (h + 150) % 360;
-            float comp2 = (h + 210) % 360;
+            float compHue = (h + 180) % 360;
+            //float comp1 = (h + 150) % 360;
+            //float comp2 = (h + 210) % 360;
+            // Base color and its complement
+            palette.Add(HslToColor(h, s, l));
+            palette.Add(HslToColor(compHue, s, l));
 
-            palette.Add(HslToColor(comp1, s, l));
-            palette.Add(HslToColor(comp2, s, l));
+            //palette.Add(HslToColor(comp1, s, l));
+            //palette.Add(HslToColor(comp2, s, l));
 
             // Variation
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.15f, 0.1f, 0.9f), Math.Clamp(l + 0.15f, 0.2f, 0.8f)));
-            palette.Add(HslToColor(h, Math.Clamp(s + 0.15f, 0.1f, 0.9f), Math.Clamp(l - 0.15f, 0.2f, 0.8f)));
+            //palette.Add(HslToColor(h, Math.Clamp(s - 0.15f, 0.1f, 0.9f), Math.Clamp(l + 0.15f, 0.2f, 0.8f)));
+            //palette.Add(HslToColor(h, Math.Clamp(s + 0.15f, 0.1f, 0.9f), Math.Clamp(l - 0.15f, 0.2f, 0.8f)));
+            palette.Add(HslToColor(h, Math.Clamp(s + 0.1f, 0.1f, 0.9f), Math.Clamp(l - 0.1f, 0.2f, 0.8f)));
+            palette.Add(HslToColor(compHue, Math.Clamp(s - 0.1f, 0.1f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
+            float midHue = (h + 90) % 360;
+            palette.Add(HslToColor(midHue, Math.Clamp(s * 0.9f, 0.1f, 0.9f), Math.Clamp(l * 1.1f, 0.2f, 0.8f)));
 
             return palette;
         }
@@ -289,25 +358,36 @@
             }
 
             // Variations
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.1f, 0.9f), Math.Clamp(1 + 0.1f, 0.2f, 0.8f)));
-            palette.Add(HslToColor((h + 120) % 360, Math.Clamp(s - 0.1f, 0.1f, 0.9f), Math.Clamp(1 + 0.2f, 0.2f, 0.8f)));
+            palette.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.1f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
+            palette.Add(HslToColor((h + 120) % 360, Math.Clamp(s - 0.1f, 0.1f, 0.9f), Math.Clamp(l + 0.2f, 0.2f, 0.8f)));
 
             return palette;
         }
 
         private List<Color> GenerateSquarePalette(float h, float s, float l, float randomFactor)
         {
-            List<Color> palette = new List<Color>();
+            List<Color> palette = new List<Color>()
+                ;
+            if (random == null)
+            {
+                random = new Random();
+            }
 
             // Four colors spaced 90° apart
             for (int i = 0; i < 4; i++)
             {
                 float newHue = (h + i * 90) % 360;
-                palette.Add(HslToColor(newHue, s, l));
+                float newS = Math.Clamp(s + ((float)random!.NextDouble() * 2 - 1) * 0.1f, 0.4f, 0.9f);
+                float newL = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * 0.1f, 0.3f, 0.7f);
+                
+                palette.Add(HslToColor(newHue, newS, newL));
             }
 
-            // Add a variation
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.15f, 0.1f, 0.9f), Math.Clamp(l + 0.15f, 0.2f, 0.8f)));
+            // Add a variation based on the previous colors
+            int anchorIndex = random.Next(4);
+            Color anchorColor = palette[anchorIndex];
+            Color variedColor = AddRandomVariation(anchorColor, randomFactor * 1.5f);
+            palette.Add(variedColor);
 
             return palette;
         }
@@ -317,16 +397,23 @@
         {
             List<Color> palette = new List<Color>();
 
-            palette.Add(HslToColor(h, s, l)); // Base color
+            palette.Add(HslToColor(h, s, l)); // Base
 
-            // Vary saturation and lightness
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.3f, 0.1f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.15f, 0.1f, 0.9f), Math.Clamp(l + 0.2f, 0.2f, 0.8f)));
-            palette.Add(HslToColor(h, Math.Clamp(s + 0.15f, 0.1f, 0.9f), Math.Clamp(l - 0.2f, 0.2f, 0.8f)));
-            palette.Add(HslToColor(h, Math.Clamp(s + 0.3f, 0.1f, 0.9f), Math.Clamp(l - 0.1f, 0.2f, 0.8f)));
+            // Deep shade (darker and more saturated)
+            palette.Add(HslToColor(h, Math.Clamp(s + 0.2f, 0.1f, 0.9f), Math.Clamp(l - 0.25f, 0.2f, 0.8f)));
+
+            // Tint (lighter and less saturated)
+            palette.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.1f, 0.9f), Math.Clamp(l + 0.25f, 0.2f, 0.8f)));
+
+            // Mid-range shade (slightly darker)
+            palette.Add(HslToColor(h, Math.Clamp(s + 0.1f, 0.1f, 0.9f), Math.Clamp(l - 0.1f, 0.2f, 0.8f)));
+
+            // Mid-range tint (slightly lighter)
+            palette.Add(HslToColor(h, Math.Clamp(s - 0.1f, 0.1f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
 
             return palette;
         }
+
     }
 
 }

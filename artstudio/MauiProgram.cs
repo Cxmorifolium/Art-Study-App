@@ -1,5 +1,6 @@
 ﻿using artstudio.Services;
 using artstudio.ViewModels;
+using artstudio.Models;
 using artstudio.Views;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
@@ -33,22 +34,23 @@ public static class MauiProgram
                 fonts.AddFont("OpenSans-Semibold.ttf", "OpenSansSemibold");
             });
 
-        // Register services  
-        RegisterServices(builder.Services);
-
-        // Register pages and view models  
-        builder.Services.AddTransient<PalettePage>();
-        builder.Services.AddTransient<PaletteViewModel>();
-        builder.Services.AddTransient<StudyPageViewModel>();
-
-
-        // Register the PromptGenerator service with a base directory
+        // Register the PromptGenerator
         builder.Services.AddSingleton<PromptGenerator>(provider =>
         {
-            string baseDir = FileSystem.AppDataDirectory;
+            string baseDir = Path.Combine(FileSystem.AppDataDirectory, "prompt_data"); // Add prompt_data
             return new PromptGenerator(baseDir);
         });
 
+        // Register other services
+        RegisterServices(builder.Services);
+        builder.Services.AddTransient<Unsplash>();
+        builder.Services.AddTransient<PaletteModel>();
+
+        // Register pages and view models
+        builder.Services.AddTransient<PalettePage>();
+        builder.Services.AddTransient<PaletteViewModel>();
+        builder.Services.AddTransient<StudyPage>();
+        builder.Services.AddTransient<StudyPageViewModel>();
 
         builder.Services.AddSingleton<App>();
 

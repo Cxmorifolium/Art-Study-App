@@ -1,7 +1,6 @@
 ﻿using artstudio.Services;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Mvvm.Input;
-using CommunityToolkit.Mvvm.ComponentModel;
 using System.Collections.ObjectModel;
 using System.Windows.Input;
 using System.Diagnostics;

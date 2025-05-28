@@ -5,7 +5,6 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
-//using artstudio.Data;
 
 namespace artstudio.ViewModels
 {
@@ -17,6 +16,7 @@ namespace artstudio.ViewModels
         private readonly Export _exportService;
 
         private bool _isFavoritePalette;
+        private PaletteModel _paletteModel;
 
         #endregion
 
@@ -36,7 +36,6 @@ namespace artstudio.ViewModels
                 }
             }
         }
-        // PLACEHOLDER
         #endregion
 
         #region Commands
@@ -53,6 +52,7 @@ namespace artstudio.ViewModels
         {
             _fileSaveService = fileSaveService ?? throw new ArgumentNullException(nameof(fileSaveService));
             _exportService = exportService ?? throw new ArgumentNullException(nameof(exportService));
+            _paletteModel = new PaletteModel();
 
             // Initialize swatches
             Swatches = new ObservableCollection<Swatch>
@@ -71,6 +71,8 @@ namespace artstudio.ViewModels
 
             // Prevent null event handlers
             PropertyChanged += (sender, args) => { };
+
+            GeneratePalette();
         }
 
         #endregion
@@ -78,30 +80,42 @@ namespace artstudio.ViewModels
         #region Methods
 
         private void GeneratePalette()
-        {
+        {        
             var random = new Random();
+            var harmonyTypes = Enum.GetValues(typeof(PaletteModel.ColorHarmonyType)).Cast<PaletteModel.ColorHarmonyType>().ToArray();
+            var randomHarmony = harmonyTypes[random.Next(harmonyTypes.Length)];
+            // Collect current palette colors and locked states
+            var existingColors = Swatches.Select(s => s.Color).ToList();
+            var lockedFlags = Swatches.Select(s => s.IsLocked).ToArray();
 
-            foreach (var swatch in Swatches)
+            // Generate new palette using harmony type, with random factor (can be parameterized)
+            var newPalette = _paletteModel.HarmonyPaletteGenerator(
+                              randomHarmony,
+                              randomFactor: 0.1f,
+                              existingPalette: existingColors,
+                              lockedColors: lockedFlags);
+
+            // Update swatches only if not locked or deleted
+            for (int i = 0; i < Swatches.Count; i++)
             {
-                if (swatch.IsDeleted)
+                if (Swatches[i].IsDeleted)
                 {
-                    swatch.Color = swatch.PreviousColor;
-                    swatch.IsDeleted = false;
-                    swatch.IsActive = false;
+                    // Restore previous color if deleted
+                    Swatches[i].Color = Swatches[i].PreviousColor;
+                    Swatches[i].IsDeleted = false;
+                    Swatches[i].IsActive = false;
                 }
 
-                if (!swatch.IsLocked)
+                if (!Swatches[i].IsLocked)
                 {
-                    swatch.Color = Color.FromRgb(
-                        random.Next(256),
-                        random.Next(256),
-                        random.Next(256));
+                    Swatches[i].Color = newPalette[i];
                 }
 
-                swatch.OnPropertyChanged(nameof(swatch.Color));
-                swatch.OnPropertyChanged(nameof(swatch.ButtonVisible));
-                swatch.OnPropertyChanged(nameof(swatch.DeleteButtonVisible));
+                Swatches[i].OnPropertyChanged(nameof(Swatch.Color));
+                Swatches[i].OnPropertyChanged(nameof(Swatch.ButtonVisible));
+                Swatches[i].OnPropertyChanged(nameof(Swatch.DeleteButtonVisible));
             }
+
         }
 
         private async Task ExportPaletteAsync()

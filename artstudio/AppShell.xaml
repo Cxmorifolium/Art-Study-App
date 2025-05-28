@@ -32,10 +32,9 @@
     </FlyoutItem>
     <FlyoutItem Title="Word Prompt">
         <Tab>
-            
+
             <ShellContent ContentTemplate="{DataTemplate view:PromptGeneratorPage}" />
-            <!-- 
-            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" />  -->
+            
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Image Prompt">
@@ -43,16 +42,13 @@
           
             <ShellContent ContentTemplate="{DataTemplate view:ImagePromptPage}" />
             
-            <!-- 
-            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" /> -->
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Study Mode">
         <Tab>
              
             <ShellContent ContentTemplate="{DataTemplate view:StudyPage}" />
-            <!--
-            <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" /> -->
+
         </Tab>
     </FlyoutItem>
     <FlyoutItem Title="Reference Vault">
@@ -60,7 +56,6 @@
             
             <ShellContent ContentTemplate="{DataTemplate view:ReferenceVaultPage}" />
 
-            <!-- <ShellContent ContentTemplate="{DataTemplate view:UnderConstruction}" /> -->
         </Tab>
     </FlyoutItem>
 </Shell>

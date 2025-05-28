@@ -178,7 +178,7 @@ namespace artstudio.ViewModels
 
                 await snackbar.Show();
             }
-        }            
+        }
 
 
         private void UndoDelete()

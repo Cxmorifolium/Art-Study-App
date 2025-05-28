@@ -5,108 +5,199 @@
              xmlns:models="clr-namespace:artstudio.Models"
              x:Class="artstudio.Views.StudyPage"
              x:DataType="vm:StudyPageViewModel"
-             Title="StudyPage">
-    <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto"
-          ColumnDefinitions="*,*"
-          Padding="20"
-          RowSpacing="10"
-          ColumnSpacing="10">
+             Title="Study Mode">
 
-        <!-- Mode Picker -->
-        <Label Grid.Row="0" Grid.Column="0" Text="Mode" VerticalOptions="Center" />
-        <Picker Grid.Row="0" Grid.Column="1"
-                ItemsSource="{Binding ModeOptions}"
-                SelectedItem="{Binding SelectedMode}" />
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <Color x:Key="LightBoxBackground">#eef1ff</Color>
+            <Color x:Key="LightTextColor">#333333</Color>
+            <Color x:Key="DarkBoxBackground">#3d3d5c</Color>
+            <Color x:Key="DarkTextColor">#e6e6e6</Color>
+        </ResourceDictionary>
+    </ContentPage.Resources>
 
-        <!-- Quick Time Picker -->
-        <Label Grid.Row="1" Grid.Column="0" Text="Quick Time" 
-               IsVisible="{Binding IsQuickMode}" VerticalOptions="Center" />
-        <Picker Grid.Row="1" Grid.Column="1"
-                IsVisible="{Binding IsQuickMode}"
-                ItemsSource="{Binding QuickTimeOptions}"
-                SelectedItem="{Binding SelectedQuickTime}" />
+    <Grid>
+        <!-- Main Content Grid -->
+        <Grid RowDefinitions="Auto,Auto,Auto,Auto,*,Auto"
+              ColumnDefinitions="*,*"
+              Padding="20"
+              RowSpacing="10"
+              ColumnSpacing="10">
 
-        <!-- Custom Session Toggle -->
-        <Label Grid.Row="2" Grid.Column="0" Text="Custom Session" 
-               VerticalOptions="Center" IsVisible="{Binding IsSessionMode}" />
-        <Switch Grid.Row="2" Grid.Column="1" 
-                IsToggled="{Binding UseCustomSession}"
-                IsVisible="{Binding IsSessionMode}" />
+            <!-- Mode Picker -->
+            <Label Grid.Row="0" Grid.Column="0" Text="Mode" VerticalOptions="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+            <Picker Grid.Row="0" Grid.Column="1"
+                    ItemsSource="{Binding ModeOptions}"
+                    SelectedItem="{Binding SelectedMode}"
+                    TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightBoxBackground}, Dark={StaticResource DarkBoxBackground}}" />
 
-        <!-- Time Display -->
-        <Label Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding TimeLeftDisplay}"
-               FontSize="32" HorizontalOptions="Center" />
+            <!-- Quick Time Picker -->
+            <Label Grid.Row="1" Grid.Column="0" Text="Duration" 
+                   IsVisible="{Binding IsQuickMode}" VerticalOptions="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+            <Picker Grid.Row="1" Grid.Column="1"
+                    IsVisible="{Binding IsQuickMode}"
+                    ItemsSource="{Binding QuickTimeOptions}"
+                    SelectedItem="{Binding SelectedQuickTime}"
+                    TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightBoxBackground}, Dark={StaticResource DarkBoxBackground}}" />
 
-        <!-- Content (palette, words, images, etc.) -->
-        <ScrollView Grid.Row="4" Grid.ColumnSpan="2">
-            <VerticalStackLayout Spacing="10">
+            <!-- Session Time Picker -->
+            <Label Grid.Row="1" Grid.Column="0" Text="Duration" 
+                   IsVisible="{Binding IsSessionMode}" VerticalOptions="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+            <Picker Grid.Row="1" Grid.Column="1"
+                    IsVisible="{Binding IsSessionMode}"
+                    ItemsSource="{Binding SessionTimeOptions}"
+                    SelectedItem="{Binding SelectedSessionTime}"
+                    TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+                    BackgroundColor="{AppThemeBinding Light={StaticResource LightBoxBackground}, Dark={StaticResource DarkBoxBackground}}" />
 
-                <!-- Words Section -->
-                <Label Text="Words:" FontAttributes="Bold" />
-                <FlexLayout Wrap="Wrap" Direction="Row" JustifyContent="Start"
-                           BindableLayout.ItemsSource="{Binding CurrentWords}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type x:String}">
-                            <Label Text="{Binding .}" Margin="4"
-                                   BackgroundColor="LightGray" Padding="5" />
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </FlexLayout>
+            <!-- Custom Duration -->
+            <Label Grid.Row="2" Grid.Column="0" Text="Duration (min)" 
+                   IsVisible="{Binding ShowCustomDuration}" VerticalOptions="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+            <Stepper Grid.Row="2" Grid.Column="1" 
+                     Minimum="1" Maximum="180" Increment="5"
+                     Value="{Binding CustomDuration}" 
+                     IsVisible="{Binding ShowCustomDuration}" />
 
-                <!-- Palette Section -->
-                <Label Text="Palette:" FontAttributes="Bold" IsVisible="{Binding ShowPalette}" />
-                <FlexLayout Direction="Row" Wrap="Wrap" IsVisible="{Binding ShowPalette}"
-                           BindableLayout.ItemsSource="{Binding CurrentPalette}">
-                    <BindableLayout.ItemTemplate>
-                        <DataTemplate x:DataType="{x:Type x:String}">
-                            <BoxView WidthRequest="30" HeightRequest="30" Margin="2"
-                                     BackgroundColor="{Binding .}" />
-                        </DataTemplate>
-                    </BindableLayout.ItemTemplate>
-                </FlexLayout>
+            <!-- Time Display -->
+            <Label Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding TimeLeftDisplay}"
+                   FontSize="32" HorizontalOptions="Center"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
 
-                <!-- Images Section -->
-                <Label Text="Images:" FontAttributes="Bold" />
-                <CollectionView ItemsSource="{Binding CurrentImages}" 
-                               ItemsLayout="HorizontalList"
-                               HeightRequest="120">
-                    <CollectionView.ItemTemplate>
-                        <DataTemplate x:DataType="vm:ImagePromptViewModel">
-                            <Border Padding="5" Margin="5" BackgroundColor="White" >
-                                <Border.StrokeShape>
-                                        <RoundRectangle CornerRadius="8,8,8,8" />
-                                   </Border.StrokeShape>
-                                <Image Source="{Binding ImageSource}" 
-                                       HeightRequest="100" 
-                                       WidthRequest="100"
-                                       Aspect="AspectFill" />
-                            </Border>
-                        </DataTemplate>
-                    </CollectionView.ItemTemplate>
-                </CollectionView>
+            <!-- Content (palette, words, images, etc.) -->
+            <ScrollView Grid.Row="4" Grid.ColumnSpan="2">
+                <VerticalStackLayout Spacing="10">
 
-            </VerticalStackLayout>
-        </ScrollView>
+                    <!-- Words Section -->
+                    <Label Text="Words:" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+                    <FlexLayout Wrap="Wrap" Direction="Row" JustifyContent="Start"
+                               BindableLayout.ItemsSource="{Binding CurrentWords}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="{x:Type x:String}">
+                                <Label Text="{Binding .}" Margin="4" Padding="5"
+                                       BackgroundColor="{AppThemeBinding Light={StaticResource LightBoxBackground}, Dark={StaticResource DarkBoxBackground}}"
+                                       TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </FlexLayout>
 
-        <!-- Controls -->
-        <Grid Grid.Row="5" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*">
-            <Button Grid.Column="0" Text="{Binding PlayPauseButtonText}" 
-                    BackgroundColor="{Binding PlayPauseButtonColor}"
-                    TextColor="White"
-                    Command="{Binding PlayPauseCommand}"
-                    Margin="5" />
-            <Button Grid.Column="1" Text="Reset" 
-                    BackgroundColor="#F44336"
-                    TextColor="White"
-                    Command="{Binding ResetCommand}"
-                    Margin="5" />
-            <Button Grid.Column="2" Text="Undo" 
-                    BackgroundColor="#2196F3"
-                    TextColor="White"
-                    IsEnabled="{Binding CanUndo}" 
-                    Command="{Binding UndoCommand}"
-                    Margin="5" />
+                    <!-- Palette Section -->
+                    <Label Text="Palette:" FontAttributes="Bold" IsVisible="{Binding ShowPalette}"
+                            TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+
+                    <StackLayout Orientation="Horizontal" IsVisible="{Binding ShowPalette}"
+                                 BindableLayout.ItemsSource="{Binding CurrentPalette}">
+                        <BindableLayout.ItemTemplate>
+                            <DataTemplate x:DataType="{x:Type Color}">
+                                <Border WidthRequest="50" HeightRequest="50" Margin="2"
+                                        BackgroundColor="{Binding .}">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="8" />
+                                    </Border.StrokeShape>
+                                </Border>
+                            </DataTemplate>
+                        </BindableLayout.ItemTemplate>
+                    </StackLayout>
+
+                    <!-- Images Section -->
+                    <Label Text="Images:" FontAttributes="Bold" />
+                    <CollectionView ItemsSource="{Binding CurrentImages}" ItemsLayout="HorizontalList" HeightRequest="380">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate x:DataType="models:ImageItem">
+
+                                <Border Padding="5" Margin="5">
+                                    <Border.StrokeShape>
+                                        <RoundRectangle CornerRadius="8" />
+                                    </Border.StrokeShape>
+                                    <Grid>
+                                        <!-- Background image -->
+                                        <Image Source="{Binding ImageSource}"
+                                               HeightRequest="300"
+                                               WidthRequest="300"
+                                               Aspect="AspectFill" />
+
+                                        <!-- Attribution Overlay -->
+                                        <Grid VerticalOptions="End"
+                                              BackgroundColor="#80000000"
+                                              Padding="8"
+                                              HeightRequest="60">   
+                                            <StackLayout>
+                                                <Label Text="{Binding Description}" 
+                                                       TextColor="White"
+                                                       FontAttributes="Bold"
+                                                       LineBreakMode="TailTruncation"
+                                                       MaxLines="1"
+                                                       FontSize="14" />
+                                                <Label Text="{Binding UnsplashImage.user.Name, StringFormat='By {0}'}"
+                                                       TextColor="White"
+                                                       FontSize="12"
+                                                       LineBreakMode="TailTruncation"
+                                                       MaxLines="1"
+                                                       Margin="0,2,0,0" />
+                                            </StackLayout>
+                                        </Grid>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+
+                </VerticalStackLayout>
+            </ScrollView>
+
+            <!-- Controls -->
+            <Grid Grid.Row="5" Grid.ColumnSpan="2" ColumnDefinitions="*,*,*">
+                <Button Grid.Column="0" Text="{Binding PlayPauseButtonText}" 
+                        BackgroundColor="{Binding PlayPauseButtonColor}"
+                        TextColor="White"
+                        Command="{Binding PlayPauseCommand}"
+                        Margin="5" />
+                <Button Grid.Column="1" Text="Reset" 
+                        BackgroundColor="#F44336"
+                        TextColor="White"
+                        Command="{Binding ResetCommand}"
+                        Margin="5" />
+                <Button Grid.Column="2" Text="Undo" 
+                        BackgroundColor="#2196F3"
+                        TextColor="White"
+                        IsEnabled="{Binding CanUndo}" 
+                        Command="{Binding UndoCommand}"
+                        Margin="5" />
+            </Grid>
+
         </Grid>
+
+        <!-- WIP Reminder Overlay -->
+        <Border IsVisible="{Binding ShowWipAlert}"
+                BackgroundColor="#80000000"
+                HorizontalOptions="Fill"
+                VerticalOptions="Fill">
+            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2d2d30}"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center"
+                    Padding="20"
+                    WidthRequest="250"
+                    HeightRequest="100">
+                <Border.StrokeShape>
+                    <RoundRectangle CornerRadius="10" />
+                </Border.StrokeShape>
+                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
+                    <Label Text="⏰" FontSize="24" HorizontalOptions="Center" />
+                    <Label Text="Time for a WIP shot!" 
+                           FontSize="16" 
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+                </StackLayout>
+            </Border>
+        </Border>
 
     </Grid>
 </ContentPage>

@@ -19,22 +19,25 @@ namespace artstudio.ViewModels
         private bool _isRunning;
         private bool _isPaused;
         private int _timeLeft;
+        private int _totalTime;
         private string _selectedMode = "Quick Sketch";
         private string _selectedQuickTime = "30 sec";
-        private bool _useCustomSession;
+        private string _selectedSessionTime = "30 min";
+        private bool _useCustomTime;
         private bool _showWipAlert;
-        private int _countdownAlert;
         private int _customDuration = 120;
-        private int _customPauseInterval = 10;
+
 
         private readonly PromptGenerator _promptGenerator;
         private readonly Unsplash _unsplash;
+        private readonly PaletteModel _paletteModel;
 
         public ObservableCollection<string> ModeOptions { get; } = new()
         {
             "Quick Sketch",
             "Session"
         };
+
         public ObservableCollection<string> QuickTimeOptions { get; } = new()
         {
             "30 sec",
@@ -44,17 +47,29 @@ namespace artstudio.ViewModels
             "30 min"
         };
 
+        public ObservableCollection<string> SessionTimeOptions { get; } = new()
+        {
+            "30 min",
+            "45 min",
+            "1 hr",
+            "1.5 hr",
+            "2 hr",
+            "2.5 hr",
+            "3 hr"
+        };
+
         #endregion
 
         #region Constructor
 
-        public StudyPageViewModel(PromptGenerator promptGenerator, Unsplash unsplash)
+        public StudyPageViewModel(PromptGenerator promptGenerator, Unsplash unsplash, PaletteModel paletteModel)
         {
             _promptGenerator = promptGenerator;
             _unsplash = unsplash;
+            _paletteModel = paletteModel;
 
             InitializeCommands();
-            InitializeData();
+            DebugPromptGenerator();
         }
 
         #endregion
@@ -65,7 +80,7 @@ namespace artstudio.ViewModels
 
         public string CurrentModeDisplay =>
             _selectedMode == "Quick Sketch" ? $"Quick: {_selectedQuickTime}" :
-            _useCustomSession ? $"Custom: {_customDuration}m" : "Session";
+            _useCustomTime ? $"Session: {_customDuration}m" : $"Session: {_selectedSessionTime}";
 
         public string PlayPauseButtonText =>
             !_isRunning ? "Start" : (_isPaused ? "Resume" : "Pause");
@@ -103,19 +118,33 @@ namespace artstudio.ViewModels
             }
         }
 
-        public bool UseCustomSession
+        public string SelectedSessionTime
         {
-            get => _useCustomSession;
+            get => _selectedSessionTime;
             set
             {
-                _useCustomSession = value;
+                _selectedSessionTime = value;
+                _useCustomTime = value == "Custom";
                 OnPropertyChanged();
-                OnPropertyChanged(nameof(ShowCustomSettings));
+                OnPropertyChanged(nameof(UseCustomTime));
+                OnPropertyChanged(nameof(ShowCustomDuration));
                 OnPropertyChanged(nameof(CurrentModeDisplay));
             }
         }
 
-        public bool ShowCustomSettings => _useCustomSession && IsSessionMode;
+        public bool UseCustomTime
+        {
+            get => _useCustomTime;
+            set
+            {
+                _useCustomTime = value;
+                OnPropertyChanged();
+                OnPropertyChanged(nameof(ShowCustomDuration));
+                OnPropertyChanged(nameof(CurrentModeDisplay));
+            }
+        }
+
+        public bool ShowCustomDuration => _useCustomTime && IsSessionMode;
 
         public bool ShowWipAlert
         {
@@ -123,16 +152,6 @@ namespace artstudio.ViewModels
             set
             {
                 _showWipAlert = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public int CountdownAlert
-        {
-            get => _countdownAlert;
-            set
-            {
-                _countdownAlert = value;
                 OnPropertyChanged();
             }
         }
@@ -148,18 +167,8 @@ namespace artstudio.ViewModels
             }
         }
 
-        public int CustomPauseInterval
-        {
-            get => _customPauseInterval;
-            set
-            {
-                _customPauseInterval = value;
-                OnPropertyChanged();
-            }
-        }
-
-        public ObservableCollection<string> CurrentPalette { get; private set; } = new();
-        public ObservableCollection<string> CurrentWords { get; private set; } = new();
+        public ObservableCollection<Color> CurrentPalette { get; private set; } = new();
+        public ObservableCollection<string> CurrentWords { get; } = new ObservableCollection<string>();
         public ObservableCollection<ImageItem> CurrentImages { get; private set; } = new();
         public ObservableCollection<ContentSnapshot> PreviousContent { get; private set; } = new();
 
@@ -169,7 +178,6 @@ namespace artstudio.ViewModels
 
         public ICommand PlayPauseCommand { get; private set; } = default!;
         public ICommand ResetCommand { get; private set; } = default!;
-        public ICommand ToggleSettingsCommand { get; private set; } = default!;
         public ICommand UndoCommand { get; private set; } = default!;
 
         private void InitializeCommands()
@@ -177,6 +185,7 @@ namespace artstudio.ViewModels
             PlayPauseCommand = new Command(ExecutePlayPause);
             ResetCommand = new Command(ExecuteReset);
             UndoCommand = new Command(ExecuteUndo, () => CanUndo);
+            ((Command)UndoCommand).ChangeCanExecute();
         }
 
         #endregion
@@ -200,6 +209,7 @@ namespace artstudio.ViewModels
             _isRunning = false;
             _isPaused = false;
             _timeLeft = 0;
+            _totalTime = 0;
             ShowWipAlert = false;
 
             OnPropertyChanged(nameof(TimeLeftDisplay));
@@ -242,6 +252,7 @@ namespace artstudio.ViewModels
             GenerateNewContent();
 
             _timeLeft = GetTimerDuration();
+            _totalTime = _timeLeft;
             _isRunning = true;
             _isPaused = false;
 
@@ -260,28 +271,40 @@ namespace artstudio.ViewModels
 
             _timeLeft--;
 
-            // Ensure UI updates happen on the main thread
             MainThread.BeginInvokeOnMainThread(() =>
             {
                 OnPropertyChanged(nameof(TimeLeftDisplay));
             });
 
-            if (_timeLeft <= 0)
+            // Check for WIP reminder every 15 minutes during session mode
+            if (IsSessionMode && _timeLeft > 0)
             {
-                if (IsSessionMode && _timeLeft <= -30)
+                int elapsedTime = _totalTime - _timeLeft;
+                if (elapsedTime > 0 && elapsedTime % 900 == 0) // 900 seconds = 15 minutes
                 {
-                    MainThread.BeginInvokeOnMainThread(() =>
+                    MainThread.BeginInvokeOnMainThread(async () =>
                     {
-                        ShowWipAlert = true;
-                        _ = StartCountdownAsync().ConfigureAwait(false);
+                        await ShowWipReminderAsync();
                     });
                 }
-                else if (IsQuickMode)
+            }
+
+            if (_timeLeft <= 0)
+            {
+                if (IsQuickMode)
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
                         GenerateNewContent();
                         _timeLeft = GetTimerDuration();
+                        _totalTime = _timeLeft;
+                    });
+                }
+                else if (IsSessionMode)
+                {
+                    MainThread.BeginInvokeOnMainThread(() =>
+                    {
+                        ExecuteReset();
                     });
                 }
             }
@@ -289,8 +312,9 @@ namespace artstudio.ViewModels
 
         private int GetTimerDuration()
         {
-            return IsQuickMode
-                ? _selectedQuickTime switch
+            if (IsQuickMode)
+            {
+                return _selectedQuickTime switch
                 {
                     "30 sec" => 30,
                     "1 min" => 60,
@@ -298,8 +322,25 @@ namespace artstudio.ViewModels
                     "10 min" => 600,
                     "30 min" => 1800,
                     _ => 30
+                };
+            }
+            else // Session mode
+            {
+                if (_useCustomTime)
+                {
+                    return _customDuration * 60;
                 }
-                : _useCustomSession ? _customDuration * 60 : 30;
+                else
+                {
+                    return _selectedSessionTime switch
+                    {
+                        "30 min" => 1800,
+                        "45 min" => 2700,
+                        "1 hr" => 3600,
+                        _ => 1800
+                    };
+                }
+            }
         }
 
         private void GenerateNewContent()
@@ -314,53 +355,139 @@ namespace artstudio.ViewModels
         private void GeneratePalette()
         {
             CurrentPalette.Clear();
-
-            var paletteModel = new PaletteModel();
             var random = new Random();
             var harmonyTypes = Enum.GetValues<PaletteModel.ColorHarmonyType>();
             var randomHarmonyType = harmonyTypes[random.Next(harmonyTypes.Length)];
 
-            var generatedColors = paletteModel.HarmonyPaletteGenerator(randomHarmonyType, 0.15f);
+            var generatedColors = _paletteModel.HarmonyPaletteGenerator(randomHarmonyType, 0.6f);
 
-            foreach (var color in generatedColors)
+            var distinctColors = generatedColors.Distinct().Take(5); // Just in case
+
+            foreach (var color in distinctColors)
             {
-                paletteModel.ColorToHsl(color, out float h, out float s, out float l);
-                var hslString = $"hsl({h:F0}, {s * 100:F0}%, {l * 100:F0}%)";
-                CurrentPalette.Add(hslString);
+                CurrentPalette.Add(color);
             }
 
+
+            //while (CurrentPalette.Count < 5)
+            //{
+            //    var additionalColors = _paletteModel.HarmonyPaletteGenerator(randomHarmonyType, 0.6f);
+            //    foreach (var color in additionalColors.Where(c => !CurrentPalette.Contains(c)).Take(5 - CurrentPalette.Count))
+            //    {
+            //        CurrentPalette.Add(color);
+            //    }
+
+            //    if (CurrentPalette.Count < 5)
+            //    {
+            //        randomHarmonyType = harmonyTypes[random.Next(harmonyTypes.Length)];
+            //    }
+            //}
+
+            Debug.WriteLine($"Generated {CurrentPalette.Count} distinct colors");
             OnPropertyChanged(nameof(ShowPalette));
+        }
+
+        // Leaving debug here just in case; problem solved mixmatch directories hence why it was using default
+        private void DebugPromptGenerator()
+        {
+            try
+            {
+                Debug.WriteLine("[StudyPage] Debugging PromptGenerator...");
+
+                // Check available categories
+                var categories = _promptGenerator.GetAvailableCategories();
+                Debug.WriteLine($"[StudyPage] Available categories: {string.Join(", ", categories)}");
+
+                // Check item counts
+                foreach (var category in categories)
+                {
+                    var count = _promptGenerator.GetCategoryItemsCount(category);
+                    Debug.WriteLine($"[StudyPage] Category '{category}' has {count} items");
+                }
+
+                // Test a simple generation
+                var (testPrompt, testComponents) = _promptGenerator.GenerateDefaultPrompt();
+                Debug.WriteLine($"[StudyPage] Test prompt: '{testPrompt}'");
+                Debug.WriteLine($"[StudyPage] Test components count: {testComponents.Count}");
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[StudyPage] Error in DebugPromptGenerator: {ex.Message}");
+            }
         }
 
         private void GenerateWords()
         {
-            CurrentWords.Clear();
+            try
+            {
+                Debug.WriteLine("[StudyPage] GenerateWords called");
+                CurrentWords.Clear();
 
-            var includeNouns = RandomBool();
-            var includeSettings = RandomBool();
-            var includeStyles = RandomBool();
-            var includeThemes = RandomBool();
+                var includeNouns = RandomBool();
+                var includeSettings = RandomBool();
+                var includeStyles = RandomBool();
+                var includeThemes = RandomBool();
 
-            if (!includeNouns && !includeSettings && !includeStyles && !includeThemes)
-                includeNouns = true;
+                Debug.WriteLine($"[StudyPage] Include flags - Nouns: {includeNouns}, Settings: {includeSettings}, Styles: {includeStyles}, Themes: {includeThemes}");
 
-            var (prompt, components) = _promptGenerator.GeneratePrompt(
-                includeNouns, includeSettings, includeStyles, includeThemes,
-                nounCount: 3,
-                settingMin: 1, settingMax: 2,
-                styleMin: 1, styleMax: 2,
-                themeCount: 1,
-                settingProbability: 0.5f,
-                themeProbability: 0.7f
-            );
+                // Ensure at least one category is included
+                if (!includeNouns && !includeSettings && !includeStyles && !includeThemes)
+                {
+                    includeNouns = true;
+                    Debug.WriteLine("[StudyPage] No categories selected, defaulting to nouns");
+                }
 
-            foreach (var list in components.Values)
-                foreach (var word in list)
-                    if (!string.IsNullOrWhiteSpace(word))
-                        CurrentWords.Add(word);
+                var (prompt, components) = _promptGenerator.GeneratePrompt(
+                    includeNouns: includeNouns,
+                    includeSettings: includeSettings,
+                    includeStyles: includeStyles,
+                    includeThemes: includeThemes,
+                    nounCount: 3,
+                    settingMin: 1,
+                    settingMax: 2,
+                    styleMin: 1,
+                    styleMax: 2,
+                    themeCount: 1,
+                    settingProbability: 0.5, 
+                    themeProbability: 0.7 
+                );
+
+                Debug.WriteLine($"[StudyPage] Generated prompt: '{prompt}'");
+                Debug.WriteLine($"[StudyPage] Components returned: {components.Count}");
+
+                int wordCount = 0;
+                foreach (var categoryPair in components)
+                {
+                    Debug.WriteLine($"[StudyPage] Processing category: {categoryPair.Key} with {categoryPair.Value.Count} items");
+
+                    foreach (var word in categoryPair.Value)
+                    {
+                        if (!string.IsNullOrWhiteSpace(word))
+                        {
+                            CurrentWords.Add(word);
+                            wordCount++;
+                            Debug.WriteLine($"[StudyPage] Added word: '{word}'");
+                        }
+                    }
+                }
+
+                Debug.WriteLine($"[StudyPage] Total words added: {wordCount}");
+                Debug.WriteLine($"[StudyPage] CurrentWords.Count: {CurrentWords.Count}");
+
+                // Notify UI of changes
+                OnPropertyChanged(nameof(CurrentWords));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"[StudyPage] Error in GenerateWords: {ex.Message}");
+                Debug.WriteLine($"[StudyPage] Stack trace: {ex.StackTrace}");
+            }
         }
 
-        private bool RandomBool() => new Random().Next(2) == 0;
+        private static bool RandomBool()
+        {
+            return new Random().Next() > 0.5;
+        }
 
         private async Task ExecuteGenerateImagesAsync()
         {
@@ -383,7 +510,7 @@ namespace artstudio.ViewModels
             {
                 var snapshot = new ContentSnapshot
                 {
-                    Palette = new List<string>(CurrentPalette),
+                    Palette = new List<Color>(CurrentPalette),
                     Words = new List<string>(CurrentWords),
                     Images = new List<ImageItem>(CurrentImages),
                     Timestamp = DateTime.Now
@@ -397,25 +524,11 @@ namespace artstudio.ViewModels
             }
         }
 
-        private void InitializeData()
+        private async Task ShowWipReminderAsync()
         {
-            CurrentPalette = new ObservableCollection<string>();
-            CurrentWords = new ObservableCollection<string>();
-            CurrentImages = new ObservableCollection<ImageItem>();
-            PreviousContent = new ObservableCollection<ContentSnapshot>();
-        }
-
-        private async Task StartCountdownAsync()
-        {
-            for (int i = 5; i > 0; i--)
-            {
-                CountdownAlert = i;
-                await Task.Delay(1000);
-            }
-
+            ShowWipAlert = true;
+            await Task.Delay(3000); // Show for 3 seconds
             ShowWipAlert = false;
-            GenerateNewContent();
-            _timeLeft = GetTimerDuration();
         }
 
         #endregion
@@ -434,7 +547,7 @@ namespace artstudio.ViewModels
 
     public class ContentSnapshot
     {
-        public List<string>? Palette { get; set; }
+        public List<Color>? Palette { get; set; }
         public List<string>? Words { get; set; }
         public List<ImageItem>? Images { get; set; }
         public DateTime Timestamp { get; set; }
