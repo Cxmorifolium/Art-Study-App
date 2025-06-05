@@ -1,68 +1,396 @@
-<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
-             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-             xmlns:models="clr-namespace:artstudio.Models"
-             xmlns:local="clr-namespace:artstudio.ViewModels"
-             x:Class="artstudio.Views.PalettePage"
-             x:DataType="local:PaletteViewModel"
-             Title="Palette"
-             >
+﻿<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+            xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+            xmlns:models="clr-namespace:artstudio.Models;assembly=artstudio"  
+            xmlns:local="clr-namespace:artstudio.ViewModels;assembly=artstudio"
+            xmlns:converters="clr-namespace:artstudio.Converters"
+            x:Class="artstudio.Views.PalettePage"  
+            x:DataType="local:PaletteViewModel"  
+            Title="Palette">
+
+    <ContentPage.Resources>
+        <ResourceDictionary>
+            <converters:HexToColorConverter x:Key="HexToColorConverter" />
+        </ResourceDictionary>
+    </ContentPage.Resources>
+
     <ContentPage.ToolbarItems>
-        <ToolbarItem 
-            Text="Refresh"
-            Command="{Binding RegenerateCommand}" />
-        <ToolbarItem 
-            Text="Favorite"
-            Command="{Binding ToggleFavoritePaletteCommand}" />
-        <ToolbarItem 
-            Text="Export"
-            Command="{Binding ExportPaletteCommand}" />
+        <ToolbarItem  
+           Text="Refresh"  
+           Command="{Binding RegenerateCommand}" />
+        <ToolbarItem  
+           Text="Favorite"  
+           Command="{Binding SavePaletteToFavoritesCommand}" />
+        <ToolbarItem  
+           Text="Export"  
+           Command="{Binding ExportPaletteCommand}" />
+        <ToolbarItem  
+           Text="⋮"  
+           Command="{Binding ToggleFavoritesPanelCommand}" />
     </ContentPage.ToolbarItems>
-    <VerticalStackLayout Padding="20" Spacing="10" VerticalOptions="Center" HorizontalOptions="Fill">
-        <CollectionView ItemsSource="{Binding Swatches}">
-            <CollectionView.ItemsLayout>
-                <GridItemsLayout Span="5" Orientation="Vertical"/>
-            </CollectionView.ItemsLayout>
-            <CollectionView.ItemTemplate>
-                <DataTemplate x:DataType="models:Swatch">
-                    <Grid>
-                        <BoxView BackgroundColor="{Binding Color}"
-                                 HeightRequest="550"
-                                 VerticalOptions="Fill"
-                                 HorizontalOptions="Fill">
-                            <BoxView.GestureRecognizers>
-                                <TapGestureRecognizer Command="{Binding ToggleActivateCommand}" />
-                            </BoxView.GestureRecognizers>
-                        </BoxView>
-                        <VerticalStackLayout VerticalOptions="End" HorizontalOptions="Center">
-                            <Button ImageSource="{Binding FavoriteColor}"
-                                    BackgroundColor="Transparent"
-                                    Command="{Binding ToggleFavoriteColorCommand}"
-                                    IsVisible="{Binding ButtonVisible}"
-                                    MaximumHeightRequest="120"
-                                    HorizontalOptions="Center"
-                                     />
-                            <Button ImageSource="{Binding LockImage}"
-                                    BackgroundColor="Transparent"
-                                    Command="{Binding ToggleLockCommand}"
-                                    MaximumHeightRequest="120"
-                                    IsVisible="{Binding ButtonVisible}"
-                                    HorizontalOptions="Center"
-                                    />
-                            <Button ImageSource="{Binding DeleteImage}"
-                                    BackgroundColor="Transparent"
-                                    IsVisible="{Binding DeleteButtonVisible}"
-                                    Command="{Binding ToggleDeleteCommand}"
-                                    MaximumHeightRequest="120"
-                                    HorizontalOptions="Center" />
-                            <Label Text="{Binding HexCode}"
-                                   FontSize="12"
-                                   HorizontalOptions="Center"
-                                   TextColor="Black"
-                                   IsVisible="{Binding ButtonVisible}" />
-                        </VerticalStackLayout>
-                    </Grid>
-                </DataTemplate>
-            </CollectionView.ItemTemplate>
-        </CollectionView>
-    </VerticalStackLayout>
+
+    <Grid>
+        <!-- Main Palette Content -->
+        <VerticalStackLayout Padding="20" 
+                            Spacing="10" 
+                            VerticalOptions="Center" 
+                            HorizontalOptions="Fill">
+            <CollectionView ItemsSource="{Binding Swatches}">
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Span="5" Orientation="Vertical"/>
+                </CollectionView.ItemsLayout>
+                <CollectionView.ItemTemplate>
+                    <DataTemplate x:DataType="models:Swatch">
+                        <Grid>
+                            <BoxView BackgroundColor="{Binding Color}"  
+                                    HeightRequest="550"  
+                                    VerticalOptions="Fill"  
+                                    HorizontalOptions="Fill">
+                                <BoxView.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding ToggleActivateCommand}" />
+                                </BoxView.GestureRecognizers>
+                            </BoxView>
+                            <VerticalStackLayout VerticalOptions="End" HorizontalOptions="Center">
+                                <Button ImageSource="{Binding FavoriteColor}"  
+                                       BackgroundColor="Transparent"  
+                                       Command="{Binding ToggleFavoriteColorCommand}"
+                                       IsVisible="{Binding ButtonVisible}"  
+                                       MaximumHeightRequest="120"  
+                                       HorizontalOptions="Center" />
+                                <Button ImageSource="{Binding LockImage}"  
+                                       BackgroundColor="Transparent"  
+                                       Command="{Binding ToggleLockCommand}"  
+                                       MaximumHeightRequest="120"  
+                                       IsVisible="{Binding ButtonVisible}"  
+                                       HorizontalOptions="Center" />
+                                <Button ImageSource="{Binding DeleteImage}"  
+                                       BackgroundColor="Transparent"  
+                                       IsVisible="{Binding DeleteButtonVisible}"  
+                                       Command="{Binding ToggleDeleteCommand}"  
+                                       MaximumHeightRequest="120"  
+                                       HorizontalOptions="Center" />
+                                <Label Text="{Binding HexCode}"  
+                                      FontSize="12"  
+                                      HorizontalOptions="Center"  
+                                      TextColor="Black"  
+                                      IsVisible="{Binding ButtonVisible}" />
+                            </VerticalStackLayout>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+        </VerticalStackLayout>
+
+        <!-- Favorites Flyout Overlay -->
+        <BoxView IsVisible="{Binding IsFavoritesPanelOpen}"
+                 BackgroundColor="#80000000"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseFavoritesPanelCommand}" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Favorites Flyout Panel with Rounded Design -->
+        <Border IsVisible="{Binding IsFavoritesPanelOpen}"
+                BackgroundColor="#2d2d2d"
+                Stroke="#5d5d7d"
+                StrokeThickness="2"
+                StrokeShape="RoundRectangle 10,0,0,10"
+                HorizontalOptions="End"
+                VerticalOptions="Fill"
+                WidthRequest="350"
+                Margin="0,0,0,0">
+
+            <Grid>
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="Auto" />
+                    <RowDefinition Height="*" />
+                </Grid.RowDefinitions>
+
+                <!-- Panel Header -->
+                <Grid Grid.Row="0" 
+                     BackgroundColor="#6750A4"
+                     Padding="16,12">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="Auto" />
+                    </Grid.ColumnDefinitions>
+
+                    <Label Grid.Column="0"
+                          Text="Favorites"
+                          FontSize="18"
+                          FontAttributes="Bold"
+                          VerticalOptions="Center"
+                          TextColor="White" />
+
+                    <Button Grid.Column="1"
+                           Text="✕"
+                           Command="{Binding CloseFavoritesPanelCommand}"
+                           BackgroundColor="Transparent"
+                           TextColor="White"
+                           FontSize="16"
+                           Padding="8,4" />
+                </Grid>
+
+                <!-- Tab Selector -->
+                <Grid Grid.Row="1" 
+                     BackgroundColor="#3a3a5a"
+                     Padding="8">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="*" />
+                        <ColumnDefinition Width="*" />
+                    </Grid.ColumnDefinitions>
+
+                    <Border Grid.Column="0"
+                           BackgroundColor="{Binding SwatchesTabBackgroundColor}"
+                           Stroke="#5a5a7a"
+                           StrokeThickness="1"
+                           Margin="4">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Label Text="Swatches"
+                              FontSize="14"
+                              FontAttributes="Bold"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center"
+                              Padding="0,8"
+                              TextColor="{Binding SwatchesTabTextColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectSwatchesFavTabCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Border>
+
+                    <Border Grid.Column="1"
+                           BackgroundColor="{Binding PalettesTabBackgroundColor}"
+                           Stroke="#5a5a7a"
+                           StrokeThickness="1"
+                           Margin="4">
+                        <Border.StrokeShape>
+                            <RoundRectangle CornerRadius="8" />
+                        </Border.StrokeShape>
+                        <Label Text="Palettes"
+                              FontSize="14"
+                              FontAttributes="Bold"
+                              HorizontalOptions="Center"
+                              VerticalOptions="Center"
+                              Padding="0,8"
+                              TextColor="{Binding PalettesTabTextColor}">
+                            <Label.GestureRecognizers>
+                                <TapGestureRecognizer Command="{Binding SelectPalettesFavTabCommand}" />
+                            </Label.GestureRecognizers>
+                        </Label>
+                    </Border>
+                </Grid>
+
+                <!-- Favorites Content -->
+                <ScrollView Grid.Row="2">
+                    <StackLayout Padding="12" Spacing="12">
+
+                        <!-- Swatches Content -->
+                        <StackLayout IsVisible="{Binding IsSwatchesFavTabVisible}">
+
+                            <!-- Empty State -->
+                            <StackLayout IsVisible="{Binding HasNoFavoriteSwatches}"
+                                        Padding="20">
+                                <Label Text="🎨"
+                                      FontSize="32"
+                                      HorizontalOptions="Center"
+                                      Opacity="0.5" />
+                                <Label Text="No favorite colors yet"
+                                      FontSize="14"
+                                      FontAttributes="Bold"
+                                      HorizontalOptions="Center"
+                                      HorizontalTextAlignment="Center"
+                                      Opacity="0.7"
+                                      TextColor="#e6e6e6" />
+                                <Label Text="Tap the heart on any color to save it here"
+                                      FontSize="12"
+                                      HorizontalOptions="Center"
+                                      HorizontalTextAlignment="Center"
+                                      Opacity="0.5"
+                                      Margin="0,4,0,0"
+                                      TextColor="#aaaaaa" />
+                            </StackLayout>
+
+                            <!-- Favorite Swatches Grid -->
+                            <CollectionView ItemsSource="{Binding FavoriteSwatches}"
+                                           SelectionMode="None">
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" 
+                                                    Span="3" 
+                                                    HorizontalItemSpacing="8" 
+                                                    VerticalItemSpacing="8" />
+                                </CollectionView.ItemsLayout>
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="local:FavoriteSwatchItem">
+                                        <Grid Padding="4">
+                                            <!-- Color Swatch -->
+                                            <Border BackgroundColor="{Binding HexColor, Converter={StaticResource HexToColorConverter}}"
+                                                   WidthRequest="60"
+                                                   HeightRequest="60"
+                                                   StrokeThickness="2"
+                                                   Stroke="#6a6a8a">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="8" />
+                                                </Border.StrokeShape>
+                                                <Border.GestureRecognizers>
+                                                    <!-- Single tap to load -->
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:PaletteViewModel}}, Path=LoadSwatchColorCommand}"
+                                                                         CommandParameter="{Binding HexColor}" />
+                                                    <!-- Double tap for context menu -->
+                                                    <TapGestureRecognizer NumberOfTapsRequired="2" 
+                                                                         Tapped="OnSwatchDoubleTapped" />
+                                                </Border.GestureRecognizers>
+                                            </Border>
+
+                                            <!-- Hex Code Label -->
+                                            <Label Text="{Binding HexColor}"
+                                                  FontSize="9"
+                                                  HorizontalOptions="Center"
+                                                  VerticalOptions="End"
+                                                  Margin="0,65,0,0"
+                                                  TextColor="#e6e6e6" />
+                                        </Grid>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+
+                        <!-- Palettes Content -->
+                        <StackLayout IsVisible="{Binding IsPalettesFavTabVisible}">
+
+                            <!-- Empty State -->
+                            <StackLayout IsVisible="{Binding HasNoFavoritePalettes}"
+                                        Padding="20">
+                                <Label Text="🎭"
+                                      FontSize="32"
+                                      HorizontalOptions="Center"
+                                      Opacity="0.5" />
+                                <Label Text="No favorite palettes yet"
+                                      FontSize="14"
+                                      FontAttributes="Bold"
+                                      HorizontalOptions="Center"
+                                      HorizontalTextAlignment="Center"
+                                      Opacity="0.7"
+                                      TextColor="#e6e6e6" />
+                                <Label Text="Save palettes to see them here"
+                                      FontSize="12"
+                                      HorizontalOptions="Center"
+                                      HorizontalTextAlignment="Center"
+                                      Opacity="0.5"
+                                      Margin="0,4,0,0"
+                                      TextColor="#aaaaaa" />
+                            </StackLayout>
+
+                            <!-- Favorite Palettes List -->
+                            <CollectionView ItemsSource="{Binding FavoritePalettes}"
+                                           SelectionMode="None">
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate x:DataType="local:FavoritePaletteItem">
+                                        <Border BackgroundColor="#3a3a5a"
+                                               Stroke="#5a5a7a"
+                                               StrokeThickness="1"
+                                               Margin="0,4"
+                                               Padding="12">
+                                            <Border.StrokeShape>
+                                                <RoundRectangle CornerRadius="8" />
+                                            </Border.StrokeShape>
+
+                                            <Grid>
+                                                <Grid.RowDefinitions>
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                    <RowDefinition Height="Auto" />
+                                                </Grid.RowDefinitions>
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <!-- Title -->
+                                                <Label Grid.Row="0" 
+                                                      Grid.Column="0"
+                                                      Text="{Binding Title}"
+                                                      FontSize="14"
+                                                      FontAttributes="Bold"
+                                                      Margin="0,0,0,8"
+                                                      TextColor="#e6e6e6" />
+
+                                                <!-- Options Button -->
+                                                <Button Grid.Row="0"
+                                                       Grid.Column="1"
+                                                       Text="⋮"
+                                                       Clicked="OnPaletteOptionsClicked"
+                                                       BackgroundColor="Transparent"
+                                                       TextColor="#e6e6e6"
+                                                       FontSize="16"
+                                                       Padding="8,4"
+                                                       WidthRequest="40"
+                                                       HeightRequest="30" />
+
+                                                <!-- Color Strip (Clickable) -->
+                                                <Border Grid.Row="1"
+                                                       Grid.ColumnSpan="2"
+                                                       StrokeThickness="1"
+                                                       Stroke="#6a6a8a"
+                                                       HeightRequest="40">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle CornerRadius="6" />
+                                                    </Border.StrokeShape>
+
+                                                    <StackLayout Orientation="Horizontal" Spacing="0">
+                                                        <CollectionView ItemsSource="{Binding Colors}"
+                                                                       VerticalOptions="Fill"
+                                                                       HorizontalOptions="Fill">
+                                                            <CollectionView.ItemsLayout>
+                                                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="0" />
+                                                            </CollectionView.ItemsLayout>
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate x:DataType="x:String">
+                                                                    <Border BackgroundColor="{Binding ., Converter={StaticResource HexToColorConverter}}"
+                                                                           WidthRequest="50"
+                                                                           HeightRequest="40"
+                                                                           StrokeThickness="0">
+                                                                        <Border.StrokeShape>
+                                                                            <Rectangle />
+                                                                        </Border.StrokeShape>
+                                                                    </Border>
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
+                                                    </StackLayout>
+
+                                                    <!-- Tap gesture for loading palette -->
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:PaletteViewModel}}, Path=LoadFavoritePaletteCommand}"
+                                                                             CommandParameter="{Binding .}" />
+                                                        <!-- Double tap for context menu -->
+                                                        <TapGestureRecognizer NumberOfTapsRequired="2" 
+                                                                             Tapped="OnPaletteDoubleTapped" />
+                                                    </Border.GestureRecognizers>
+                                                </Border>
+
+                                                <!-- Load hint text -->
+                                                <Label Grid.Row="2"
+                                                      Grid.ColumnSpan="2"
+                                                      Text="Tap to load palette"
+                                                      FontSize="10"
+                                                      Opacity="0.6"
+                                                      Margin="0,4,0,0"
+                                                      HorizontalOptions="Center"
+                                                      TextColor="#aaaaaa" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+            </Grid>
+        </Border>
+    </Grid>
 </ContentPage>

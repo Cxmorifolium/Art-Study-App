@@ -1,12 +1,13 @@
 ﻿using artstudio.Services;
 using artstudio.ViewModels;
 using artstudio.Models;
+using artstudio.Data;
 using artstudio.Views;
 using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
 using System.Text.Json;
-using System.IO;
 using System.Diagnostics;
+
 
 #if WINDOWS
 using artstudio.Platforms.Windows;
@@ -37,7 +38,7 @@ public static class MauiProgram
         // Register the PromptGenerator
         builder.Services.AddSingleton<PromptGenerator>(provider =>
         {
-            string baseDir = Path.Combine(FileSystem.AppDataDirectory, "prompt_data"); // Add prompt_data
+            string baseDir = Path.Combine(FileSystem.AppDataDirectory, "prompt_data");
             return new PromptGenerator(baseDir);
         });
 
@@ -45,13 +46,26 @@ public static class MauiProgram
         RegisterServices(builder.Services);
         builder.Services.AddTransient<Unsplash>();
         builder.Services.AddTransient<PaletteModel>();
+        builder.Services.AddSingleton<DatabaseService>();
+        builder.Services.AddSingleton<WordPromptService>();
+        builder.Services.AddSingleton<PaletteService>();
+
+        // Register Toast Service
+#if WINDOWS
+        builder.Services.AddSingleton<IToastService, WindowsToastService>();
+#else
+        builder.Services.AddSingleton<IToastService, ToastService>();
+#endif
 
         // Register pages and view models
         builder.Services.AddTransient<PalettePage>();
         builder.Services.AddTransient<PaletteViewModel>();
         builder.Services.AddTransient<StudyPage>();
         builder.Services.AddTransient<StudyPageViewModel>();
-
+        builder.Services.AddTransient<ImagePromptViewModel>();
+        builder.Services.AddTransient<ImagePromptPage>();
+        builder.Services.AddTransient<PromptGeneratorViewModel>();
+        builder.Services.AddTransient<PromptGeneratorPage>();
         builder.Services.AddSingleton<App>();
 
 #if DEBUG
@@ -75,8 +89,6 @@ public static class MauiProgram
         // Register other services
         services.AddSingleton<Export>();
 
-        // Register ViewModels
-        services.AddTransient<PromptGeneratorViewModel>();
 
 #if WINDOWS
         services.AddSingleton<IFileSaveService, FileSaveService>();
@@ -279,7 +291,6 @@ public static class MauiProgram
         }
     }
 
-    // Simple debug logging that WORKS in MAUI
     private static void DebugLog(string message)
     {
         var timestamp = DateTime.Now.ToString("HH:mm:ss.fff");

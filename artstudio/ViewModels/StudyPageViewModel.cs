@@ -185,7 +185,7 @@ namespace artstudio.ViewModels
             PlayPauseCommand = new Command(ExecutePlayPause);
             ResetCommand = new Command(ExecuteReset);
             UndoCommand = new Command(ExecuteUndo, () => CanUndo);
-            ((Command)UndoCommand).ChangeCanExecute();
+            //((Command)UndoCommand).ChangeCanExecute();
         }
 
         #endregion
@@ -367,21 +367,6 @@ namespace artstudio.ViewModels
             {
                 CurrentPalette.Add(color);
             }
-
-
-            //while (CurrentPalette.Count < 5)
-            //{
-            //    var additionalColors = _paletteModel.HarmonyPaletteGenerator(randomHarmonyType, 0.6f);
-            //    foreach (var color in additionalColors.Where(c => !CurrentPalette.Contains(c)).Take(5 - CurrentPalette.Count))
-            //    {
-            //        CurrentPalette.Add(color);
-            //    }
-
-            //    if (CurrentPalette.Count < 5)
-            //    {
-            //        randomHarmonyType = harmonyTypes[random.Next(harmonyTypes.Length)];
-            //    }
-            //}
 
             Debug.WriteLine($"Generated {CurrentPalette.Count} distinct colors");
             OnPropertyChanged(nameof(ShowPalette));

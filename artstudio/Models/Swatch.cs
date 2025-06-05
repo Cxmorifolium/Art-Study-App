@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
+using CommunityToolkit.Mvvm.Input;
+using artstudio.Services;
 
 namespace artstudio.Models
 {
@@ -11,6 +13,10 @@ namespace artstudio.Models
         private bool _isLocked;
         private bool _isDeleted;
         private Color _previousColor;
+
+        // Services for database operations
+        private PaletteService? _paletteService;
+        private IToastService? _toastService;
 
         public Color Color
         {
@@ -25,6 +31,7 @@ namespace artstudio.Models
                 }
             }
         }
+
         public Color PreviousColor
         {
             get => _previousColor;
@@ -39,7 +46,6 @@ namespace artstudio.Models
         public ImageSource FavoriteColor => ImageSource.FromFile(IsFavoriteColor ? "heart.png" : "unheart.png");
         public ImageSource LockImage => ImageSource.FromFile(IsLocked ? "padlock.png" : "unlock.png");
         public ImageSource DeleteImage => ImageSource.FromFile(IsDeleted ? "undo.png" : "delete.png");
-
 
         public bool ButtonVisible => !IsDeleted && IsActive;
         public bool DeleteButtonVisible => IsActive || IsDeleted;
@@ -83,8 +89,6 @@ namespace artstudio.Models
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(DeleteImage));
                     OnPropertyChanged(nameof(ButtonVisible));
-
-
                 }
             }
         }
@@ -105,7 +109,6 @@ namespace artstudio.Models
             }
         }
 
-
         public ICommand ToggleFavoriteColorCommand { get; }
         public ICommand ToggleLockCommand { get; }
         public ICommand ToggleDeleteCommand { get; }
@@ -115,10 +118,116 @@ namespace artstudio.Models
         {
             _color = color;
             _previousColor = Colors.Transparent;
-            ToggleFavoriteColorCommand = new Command(() => IsFavoriteColor = !IsFavoriteColor);
+
+            // Use AsyncRelayCommand for the favorite command to handle database operations
+            ToggleFavoriteColorCommand = new AsyncRelayCommand(ToggleFavoriteColorAsync);
             ToggleLockCommand = new Command(() => IsLocked = !IsLocked);
             ToggleDeleteCommand = new Command(ToggleDelete);
             ToggleActivateCommand = new Command(() => IsActive = !IsActive);
+        }
+
+        // Method to inject services (call this from your ViewModel)
+        public void SetServices(PaletteService paletteService, IToastService toastService)
+        {
+            _paletteService = paletteService;
+            _toastService = toastService;
+        }
+
+        // Method to check and update favorite status from database
+        public async Task RefreshFavoriteStatusAsync()
+        {
+            if (_paletteService != null)
+            {
+                try
+                {
+                    bool isFavorite = await _paletteService.IsSwatchFavoriteAsync(Color);
+                    IsFavoriteColor = isFavorite;
+                }
+                catch (Exception ex)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Error refreshing favorite status: {ex.Message}");
+                    // Reset to unfavorited on error
+                    IsFavoriteColor = false;
+                }
+            }
+            else
+            {
+                // Reset to unfavorited if no service available
+                IsFavoriteColor = false;
+            }
+        }
+
+        private async Task ToggleFavoriteColorAsync()
+        {
+            try
+            {
+                if (!IsFavoriteColor)
+                {
+                    // Adding to favorites - show options and save to database
+                    if (_paletteService != null && _toastService != null)
+                    {
+                        var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                        if (mainPage != null)
+                        {
+                            string action = await mainPage.DisplayActionSheet(
+                                "Save Color to Favorites",
+                                "Cancel",
+                                null,
+                                "Save to Default",
+                                "Save to Collection"
+                            );
+
+                            if (action == "Save to Default")
+                            {
+                                await _paletteService.SaveSwatchToFavoritesAsync(Color);
+                                IsFavoriteColor = true;
+                                await _toastService.ShowToastAsync("Color saved to favorites! 💖");
+                            }
+                            else if (action == "Save to Collection")
+                            {
+                                string collectionName = await mainPage.DisplayPromptAsync(
+                                    "Collection Name",
+                                    "Enter collection name:",
+                                    "Save",
+                                    "Cancel",
+                                    placeholder: "e.g., Blues, Reds, Nature"
+                                );
+
+                                if (!string.IsNullOrWhiteSpace(collectionName))
+                                {
+                                    await _paletteService.SaveSwatchToFavoritesAsync(
+                                        Color,
+                                        collection: collectionName.Trim());
+                                    IsFavoriteColor = true;
+                                    await _toastService.ShowToastAsync($"Color saved to '{collectionName}' collection! 💖");
+                                }
+                            }
+                        }
+                    }
+                    else
+                    {
+                        // Fallback: just toggle visually if services aren't available
+                        IsFavoriteColor = true;
+                    }
+                }
+                else
+                {
+                    // Removing from favorites
+                    IsFavoriteColor = false;
+                    if (_toastService != null)
+                    {
+                        await _toastService.ShowToastAsync("Color removed from favorites");
+                    }
+                }
+            }
+            catch (Exception ex)
+            {
+                System.Diagnostics.Debug.WriteLine($"Error toggling swatch favorite: {ex.Message}");
+                if (_toastService != null)
+                {
+                    await _toastService.ShowToastAsync("Error saving color");
+                }
+            }
         }
 
         private void ToggleDelete()
@@ -142,10 +251,8 @@ namespace artstudio.Models
             OnPropertyChanged(nameof(DeleteButtonVisible));
         }
 
-
         public event PropertyChangedEventHandler? PropertyChanged;
         public void OnPropertyChanged([CallerMemberName] string name = null!) =>
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(name));
     }
 }
-

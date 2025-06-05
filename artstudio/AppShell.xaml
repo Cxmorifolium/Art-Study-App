@@ -20,42 +20,30 @@
         ContentTemplate="{DataTemplate view:GalleryPage}"
         Route="MainPage"
         IsVisible="True" />
-    
+
     <!-- Flyout navigation items -->
     <FlyoutItem Title="Palette">
         <Tab>
-            <!-- 
-            <ShellContent ContentTemplate="{DataTemplate view:PalettePage}" />
-            -->
             <ShellContent ContentTemplate="{DataTemplate view:PalettePage}" />
         </Tab>
     </FlyoutItem>
+
     <FlyoutItem Title="Word Prompt">
         <Tab>
-
             <ShellContent ContentTemplate="{DataTemplate view:PromptGeneratorPage}" />
-            
         </Tab>
     </FlyoutItem>
+
     <FlyoutItem Title="Image Prompt">
         <Tab>
-          
             <ShellContent ContentTemplate="{DataTemplate view:ImagePromptPage}" />
-            
         </Tab>
     </FlyoutItem>
+
     <FlyoutItem Title="Study Mode">
         <Tab>
-             
             <ShellContent ContentTemplate="{DataTemplate view:StudyPage}" />
-
         </Tab>
     </FlyoutItem>
-    <FlyoutItem Title="Reference Vault">
-        <Tab>
-            
-            <ShellContent ContentTemplate="{DataTemplate view:ReferenceVaultPage}" />
 
-        </Tab>
-    </FlyoutItem>
 </Shell>
