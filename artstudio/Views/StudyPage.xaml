@@ -106,11 +106,11 @@
                     </StackLayout>
 
                     <!-- Images Section -->
-                    <Label Text="Images:" FontAttributes="Bold" />
+                    <Label Text="Images:" FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
                     <CollectionView ItemsSource="{Binding CurrentImages}" ItemsLayout="HorizontalList" HeightRequest="380">
                         <CollectionView.ItemTemplate>
                             <DataTemplate x:DataType="models:ImageItem">
-
                                 <Border Padding="5" Margin="5">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="8" />
@@ -126,20 +126,50 @@
                                         <Grid VerticalOptions="End"
                                               BackgroundColor="#80000000"
                                               Padding="8"
-                                              HeightRequest="60">   
+                                              HeightRequest="80">
                                             <StackLayout>
+                                                <!-- Make image title/description clickable to open Unsplash page -->
+                                                <Button Text="{Binding Description}" 
+                                                       Command="{Binding OpenImagePageCommand}"
+                                                       BackgroundColor="Transparent"
+                                                       TextColor="White"
+                                                       FontAttributes="Bold"
+                                                       FontSize="14"
+                                                       Padding="0"
+                                                       HorizontalOptions="Start"
+                                                       IsVisible="{Binding HasImageUrl}"
+                                                       BorderWidth="0"
+                                                       LineBreakMode="TailTruncation" />
+
+                                                <!-- Fallback for when no image URL is available -->
                                                 <Label Text="{Binding Description}" 
                                                        TextColor="White"
                                                        FontAttributes="Bold"
                                                        LineBreakMode="TailTruncation"
                                                        MaxLines="1"
-                                                       FontSize="14" />
-                                                <Label Text="{Binding UnsplashImage.user.Name, StringFormat='By {0}'}"
+                                                       FontSize="14"
+                                                       IsVisible="{Binding HasImageUrl, Converter={StaticResource InverseBoolConverter}}" />
+
+                                                <!-- Make attribution clickable -->
+                                                <Button Text="{Binding AttributionText}"
+                                                       Command="{Binding OpenUserProfileCommand}"
+                                                       BackgroundColor="Transparent"
+                                                       TextColor="LightBlue"
+                                                       FontSize="12"
+                                                       Padding="0"
+                                                       Margin="0,2,0,0"
+                                                       HorizontalOptions="Start"
+                                                       IsVisible="{Binding HasUserUrl}"
+                                                       BorderWidth="0" />
+
+                                                <!-- Fallback for when no URL is available -->
+                                                <Label Text="{Binding AttributionText}"
                                                        TextColor="White"
                                                        FontSize="12"
                                                        LineBreakMode="TailTruncation"
                                                        MaxLines="1"
-                                                       Margin="0,2,0,0" />
+                                                       Margin="0,2,0,0"
+                                                       IsVisible="{Binding HasUserUrl, Converter={StaticResource InverseBoolConverter}}" />
                                             </StackLayout>
                                         </Grid>
                                     </Grid>
@@ -147,7 +177,6 @@
                             </DataTemplate>
                         </CollectionView.ItemTemplate>
                     </CollectionView>
-
 
                 </VerticalStackLayout>
             </ScrollView>
@@ -173,31 +202,6 @@
             </Grid>
 
         </Grid>
-
-        <!-- WIP Reminder Overlay -->
-        <Border IsVisible="{Binding ShowWipAlert}"
-                BackgroundColor="#80000000"
-                HorizontalOptions="Fill"
-                VerticalOptions="Fill">
-            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2d2d30}"
-                    HorizontalOptions="Center"
-                    VerticalOptions="Center"
-                    Padding="20"
-                    WidthRequest="250"
-                    HeightRequest="100">
-                <Border.StrokeShape>
-                    <RoundRectangle CornerRadius="10" />
-                </Border.StrokeShape>
-                <StackLayout HorizontalOptions="Center" VerticalOptions="Center">
-                    <Label Text="⏰" FontSize="24" HorizontalOptions="Center" />
-                    <Label Text="Time for a WIP shot!" 
-                           FontSize="16" 
-                           FontAttributes="Bold"
-                           HorizontalOptions="Center"
-                           TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
-                </StackLayout>
-            </Border>
-        </Border>
 
     </Grid>
 </ContentPage>

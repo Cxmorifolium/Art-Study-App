@@ -9,12 +9,13 @@ using System.Windows.Input;
 
 namespace artstudio.ViewModels
 {
-    public class ImagePromptViewModel : INotifyPropertyChanged
+    public class ImagePromptViewModel : INotifyPropertyChanged, IDisposable
     {
         private readonly Unsplash _unsplashService;
         private const int DefaultImageCount = 3;
         private const int AdditionalImages = 1;
         private bool _isLoading;
+        private bool _disposed = false;
 
         private readonly Stack<(ImageItem item, int index)> _undoStack = new();
 
@@ -51,16 +52,40 @@ namespace artstudio.ViewModels
         {
             _unsplashService = new Unsplash();
 
-            LoadInitialImagesCommand = new Command(async () => await LoadInitialImagesAsync(), () => !IsLoading);
-            AddImagesCommand = new Command(async () => await AddImagesAsync(), () => !IsLoading);
-            RegenerateImagesCommand = new Command(async () => await RegenerateImagesAsync(), () => !IsLoading);
+            LoadInitialImagesCommand = new Command(ExecuteLoadInitialImages, () => !IsLoading);
+            AddImagesCommand = new Command(ExecuteAddImages, () => !IsLoading);
+            RegenerateImagesCommand = new Command(ExecuteRegenerateImages, () => !IsLoading);
             ToggleLockCommand = new Command<ImageItem>(ToggleLock);
-            DeleteImageCommand = new Command<ImageItem>(async (imageItem) => await DeleteImageAsync(imageItem));
+            DeleteImageCommand = new Command<ImageItem>(ExecuteDeleteImage);
             UndoDeleteCommand = new Command(UndoDelete, () => CanUndo);
 
             // Load initial images on main thread
-            MainThread.BeginInvokeOnMainThread(async () => await LoadInitialImagesAsync());
+            MainThread.BeginInvokeOnMainThread(ExecuteLoadInitialImages);
         }
+
+        #region Command Wrappers
+
+        private void ExecuteLoadInitialImages()
+        {
+            _ = LoadInitialImagesAsync();
+        }
+
+        private void ExecuteAddImages()
+        {
+            _ = AddImagesAsync();
+        }
+
+        private void ExecuteRegenerateImages()
+        {
+            _ = RegenerateImagesAsync();
+        }
+
+        private void ExecuteDeleteImage(ImageItem imageItem)
+        {
+            _ = DeleteImageAsync(imageItem);
+        }
+
+        #endregion
 
         #region Command Logic
 
@@ -77,9 +102,35 @@ namespace artstudio.ViewModels
                     Images.Add(new ImageItem(image));
                 }
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Debug.WriteLine($"Invalid image count parameter: {ex.Message}");
+                await ShowErrorMessageAsync("Invalid image count. Please try again.");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Debug.WriteLine($"API key issue: {ex.Message}");
+                await ShowErrorMessageAsync("Unable to access image service. Please check your connection and try again.");
+            }
+            catch (TimeoutException ex)
+            {
+                Debug.WriteLine($"Request timeout: {ex.Message}");
+                await ShowErrorMessageAsync("Request timed out. Please check your connection and try again.");
+            }
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine($"Network error: {ex.Message}");
+                await ShowErrorMessageAsync("Network error. Please check your connection and try again.");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Debug.WriteLine($"Service error: {ex.Message}");
+                await ShowErrorMessageAsync("Service temporarily unavailable. Please try again later.");
+            }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error fetching images: {ex.Message}");
+                Debug.WriteLine($"Unexpected error fetching images: {ex.Message}");
+                await ShowErrorMessageAsync("An unexpected error occurred. Please try again.");
             }
             finally
             {
@@ -105,9 +156,35 @@ namespace artstudio.ViewModels
                     Images.Add(new ImageItem(image));
                 }
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Debug.WriteLine($"Invalid image count parameter: {ex.Message}");
+                await ShowErrorMessageAsync("Invalid image count. Please try again.");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Debug.WriteLine($"API key issue: {ex.Message}");
+                await ShowErrorMessageAsync("Unable to access image service. Please check your connection and try again.");
+            }
+            catch (TimeoutException ex)
+            {
+                Debug.WriteLine($"Request timeout: {ex.Message}");
+                await ShowErrorMessageAsync("Request timed out. Please check your connection and try again.");
+            }
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine($"Network error: {ex.Message}");
+                await ShowErrorMessageAsync("Network error. Please check your connection and try again.");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Debug.WriteLine($"Service error: {ex.Message}");
+                await ShowErrorMessageAsync("Service temporarily unavailable. Please try again later.");
+            }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error adding images: {ex.Message}");
+                Debug.WriteLine($"Unexpected error adding images: {ex.Message}");
+                await ShowErrorMessageAsync("An unexpected error occurred. Please try again.");
             }
             finally
             {
@@ -141,9 +218,35 @@ namespace artstudio.ViewModels
                         Images[index] = new ImageItem(newImages[i]);
                 }
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Debug.WriteLine($"Invalid image count parameter: {ex.Message}");
+                await ShowErrorMessageAsync("Invalid image count. Please try again.");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Debug.WriteLine($"API key issue: {ex.Message}");
+                await ShowErrorMessageAsync("Unable to access image service. Please check your connection and try again.");
+            }
+            catch (TimeoutException ex)
+            {
+                Debug.WriteLine($"Request timeout: {ex.Message}");
+                await ShowErrorMessageAsync("Request timed out. Please check your connection and try again.");
+            }
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine($"Network error: {ex.Message}");
+                await ShowErrorMessageAsync("Network error. Please check your connection and try again.");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Debug.WriteLine($"Service error: {ex.Message}");
+                await ShowErrorMessageAsync("Service temporarily unavailable. Please try again later.");
+            }
             catch (Exception ex)
             {
-                Console.WriteLine($"Error regenerating images: {ex.Message}");
+                Debug.WriteLine($"Unexpected error regenerating images: {ex.Message}");
+                await ShowErrorMessageAsync("An unexpected error occurred. Please try again.");
             }
             finally
             {
@@ -180,7 +283,6 @@ namespace artstudio.ViewModels
             }
         }
 
-
         private void UndoDelete()
         {
             if (_undoStack.Count > 0)
@@ -205,6 +307,20 @@ namespace artstudio.ViewModels
             OnPropertyChanged(nameof(CanUndo));
         }
 
+        private async Task ShowErrorMessageAsync(string message)
+        {
+            try
+            {
+                var toast = Toast.Make(message, CommunityToolkit.Maui.Core.ToastDuration.Long);
+                await toast.Show();
+            }
+            catch
+            {
+                // Fallback if toast fails
+                Debug.WriteLine($"Error message: {message}");
+            }
+        }
+
         #endregion
 
         #region INotifyPropertyChanged Implementation
@@ -214,6 +330,25 @@ namespace artstudio.ViewModels
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
+        }
+
+        #endregion
+
+        #region IDisposable Implementation
+
+        public void Dispose()
+        {
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed && disposing)
+            {
+                _unsplashService?.Dispose();
+                _disposed = true;
+            }
         }
 
         #endregion

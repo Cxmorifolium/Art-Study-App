@@ -44,7 +44,7 @@ public static class MauiProgram
 
         // Register other services
         RegisterServices(builder.Services);
-        builder.Services.AddTransient<Unsplash>();
+        builder.Services.AddScoped<Unsplash>();
         builder.Services.AddTransient<PaletteModel>();
         builder.Services.AddSingleton<DatabaseService>();
         builder.Services.AddSingleton<WordPromptService>();
@@ -118,7 +118,7 @@ public static class MauiProgram
             }
 
             // Create category folders
-            string[] categories = { "nouns", "settings", "styles", "themes" };
+            string[] categories = ["nouns", "settings", "styles", "themes"];
             foreach (var category in categories)
             {
                 string categoryPath = Path.Combine(baseTargetDir, category);
@@ -277,12 +277,14 @@ public static class MauiProgram
         await WriteJsonFileAsync(filePath, data);
     }
 
+    private static readonly JsonSerializerOptions CachedJsonSerializerOptions = new() { WriteIndented = true };
+
     private static async Task WriteJsonFileAsync(string filePath, Dictionary<string, object> data)
     {
         try
         {
             using FileStream fs = File.Create(filePath);
-            await JsonSerializer.SerializeAsync(fs, data, new JsonSerializerOptions { WriteIndented = true });
+            await JsonSerializer.SerializeAsync(fs, data, CachedJsonSerializerOptions);
             DebugLog($"Created default file: {Path.GetFileName(filePath)}");
         }
         catch (Exception ex)

@@ -53,7 +53,7 @@
                                StrokeShape="RoundRectangle"
                                StrokeThickness="1"
                                BackgroundColor="Transparent"
-                               HeightRequest="200">
+                               HeightRequest="300">
                             <Grid>
                                 <Image Source="{Binding UnsplashImage.urls.Regular}" 
                                       Aspect="AspectFill" />
@@ -68,15 +68,45 @@
                                         </Grid.ColumnDefinitions>
 
                                         <StackLayout Grid.Column="0">
+                                            <!-- Make image title/description clickable to open Unsplash page -->
+                                            <Button Text="{Binding UnsplashImage.Description}" 
+                                                   Command="{Binding OpenImagePageCommand}"
+                                                   BackgroundColor="Transparent"
+                                                   TextColor="White"
+                                                   FontAttributes="Bold"
+                                                   FontSize="14"
+                                                   Padding="0"
+                                                   HorizontalOptions="Start"
+                                                   IsVisible="{Binding HasImageUrl}"
+                                                   BorderWidth="0"
+                                                   LineBreakMode="TailTruncation"/>
+
+                                            <!-- Fallback for when no image URL is available -->
                                             <Label Text="{Binding UnsplashImage.Description}" 
                                                   TextColor="White"
                                                   FontAttributes="Bold"
                                                   LineBreakMode="TailTruncation"
-                                                  MaxLines="2" />
-                                            <Label Text="{Binding UnsplashImage.user.Name, StringFormat='By {0}'}" 
+                                                  MaxLines="2"
+                                                  IsVisible="{Binding HasImageUrl, Converter={StaticResource InverseBoolConverter}}" />
+
+                                            <!-- Make attribution clickable -->
+                                            <Button Text="{Binding AttributionText}"
+                                                   Command="{Binding OpenUserProfileCommand}"
+                                                   BackgroundColor="Transparent"
+                                                   TextColor="LightBlue"
+                                                   FontSize="12"
+                                                   Padding="0"
+                                                   Margin="0,5,0,0"
+                                                   HorizontalOptions="Start"
+                                                   IsVisible="{Binding HasUserUrl}"
+                                                   BorderWidth="0" />
+
+                                            <!-- Fallback for when no URL is available -->
+                                            <Label Text="{Binding AttributionText}" 
                                                   TextColor="White"
                                                   FontSize="12"
-                                                  Margin="0,5,0,0" />
+                                                  Margin="0,5,0,0"
+                                                  IsVisible="{Binding HasUserUrl, Converter={StaticResource InverseBoolConverter}}" />
                                         </StackLayout>
 
                                         <ImageButton Grid.Column="1" 

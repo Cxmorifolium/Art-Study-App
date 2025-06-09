@@ -452,7 +452,10 @@ namespace artstudio.Data
 
         public void Dispose()
         {
-            _database?.CloseAsync();
+            if (_database != null)
+            {
+                _ = _database.CloseAsync();  
+            }
         }
 
         #endregion

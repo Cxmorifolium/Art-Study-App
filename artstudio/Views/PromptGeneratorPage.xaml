@@ -10,7 +10,7 @@
 
     <!-- Toolbar -->
     <ContentPage.ToolbarItems>
-        <ToolbarItem Text="Favorites"
+        <ToolbarItem Text="Save"
                      Command="{Binding FavoriteCommand}" />
         <ToolbarItem Text="Export"
                      Command="{Binding ExportCommand}" />

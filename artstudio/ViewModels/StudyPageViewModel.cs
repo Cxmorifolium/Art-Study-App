@@ -24,12 +24,11 @@ namespace artstudio.ViewModels
         private string _selectedQuickTime = "30 sec";
         private string _selectedSessionTime = "30 min";
         private bool _useCustomTime;
-        private bool _showWipAlert;
         private int _customDuration = 120;
-
 
         private readonly PromptGenerator _promptGenerator;
         private readonly Unsplash _unsplash;
+        private bool _disposed = false;
         private readonly PaletteModel _paletteModel;
 
         public ObservableCollection<string> ModeOptions { get; } = new()
@@ -146,16 +145,6 @@ namespace artstudio.ViewModels
 
         public bool ShowCustomDuration => _useCustomTime && IsSessionMode;
 
-        public bool ShowWipAlert
-        {
-            get => _showWipAlert;
-            set
-            {
-                _showWipAlert = value;
-                OnPropertyChanged();
-            }
-        }
-
         public int CustomDuration
         {
             get => _customDuration;
@@ -185,7 +174,6 @@ namespace artstudio.ViewModels
             PlayPauseCommand = new Command(ExecutePlayPause);
             ResetCommand = new Command(ExecuteReset);
             UndoCommand = new Command(ExecuteUndo, () => CanUndo);
-            //((Command)UndoCommand).ChangeCanExecute();
         }
 
         #endregion
@@ -210,7 +198,6 @@ namespace artstudio.ViewModels
             _isPaused = false;
             _timeLeft = 0;
             _totalTime = 0;
-            ShowWipAlert = false;
 
             OnPropertyChanged(nameof(TimeLeftDisplay));
             OnPropertyChanged(nameof(PlayPauseButtonText));
@@ -275,19 +262,6 @@ namespace artstudio.ViewModels
             {
                 OnPropertyChanged(nameof(TimeLeftDisplay));
             });
-
-            // Check for WIP reminder every 15 minutes during session mode
-            if (IsSessionMode && _timeLeft > 0)
-            {
-                int elapsedTime = _totalTime - _timeLeft;
-                if (elapsedTime > 0 && elapsedTime % 900 == 0) // 900 seconds = 15 minutes
-                {
-                    MainThread.BeginInvokeOnMainThread(async () =>
-                    {
-                        await ShowWipReminderAsync();
-                    });
-                }
-            }
 
             if (_timeLeft <= 0)
             {
@@ -359,16 +333,19 @@ namespace artstudio.ViewModels
             var harmonyTypes = Enum.GetValues<PaletteModel.ColorHarmonyType>();
             var randomHarmonyType = harmonyTypes[random.Next(harmonyTypes.Length)];
 
-            var generatedColors = _paletteModel.HarmonyPaletteGenerator(randomHarmonyType, 0.6f);
+            // Generate completely new palette=
+            var generatedColors = _paletteModel.HarmonyPaletteGenerator(
+                randomHarmonyType,
+                randomFactor: 0.6f); 
 
-            var distinctColors = generatedColors.Distinct().Take(5); // Just in case
+            var distinctColors = generatedColors.Distinct().Take(5);
 
             foreach (var color in distinctColors)
             {
                 CurrentPalette.Add(color);
             }
 
-            Debug.WriteLine($"Generated {CurrentPalette.Count} distinct colors");
+            Debug.WriteLine($"Generated {CurrentPalette.Count} distinct colors using {randomHarmonyType} harmony");
             OnPropertyChanged(nameof(ShowPalette));
         }
 
@@ -433,8 +410,8 @@ namespace artstudio.ViewModels
                     styleMin: 1,
                     styleMax: 2,
                     themeCount: 1,
-                    settingProbability: 0.5, 
-                    themeProbability: 0.7 
+                    settingProbability: 0.5,
+                    themeProbability: 0.7
                 );
 
                 Debug.WriteLine($"[StudyPage] Generated prompt: '{prompt}'");
@@ -483,9 +460,29 @@ namespace artstudio.ViewModels
                 foreach (var image in images)
                     CurrentImages.Add(new ImageItem(image));
             }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                Debug.WriteLine($"Invalid image count parameter: {ex.Message}");
+            }
+            catch (UnauthorizedAccessException ex)
+            {
+                Debug.WriteLine($"API key issue: {ex.Message}");
+            }
+            catch (TimeoutException ex)
+            {
+                Debug.WriteLine($"Request timeout: {ex.Message}");
+            }
+            catch (HttpRequestException ex)
+            {
+                Debug.WriteLine($"Network error: {ex.Message}");
+            }
+            catch (InvalidOperationException ex)
+            {
+                Debug.WriteLine($"Service error: {ex.Message}");
+            }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Error fetching images: {ex.Message}");
+                Debug.WriteLine($"Unexpected error fetching images: {ex.Message}");
             }
         }
 
@@ -509,11 +506,24 @@ namespace artstudio.ViewModels
             }
         }
 
-        private async Task ShowWipReminderAsync()
+        #endregion
+
+        #region IDisposable Implementation
+
+        public void Dispose()
         {
-            ShowWipAlert = true;
-            await Task.Delay(3000); // Show for 3 seconds
-            ShowWipAlert = false;
+            Dispose(true);
+            GC.SuppressFinalize(this);
+        }
+
+        protected virtual void Dispose(bool disposing)
+        {
+            if (!_disposed && disposing)
+            {
+                _timer?.Dispose();
+                _unsplash?.Dispose();
+                _disposed = true;
+            }
         }
 
         #endregion

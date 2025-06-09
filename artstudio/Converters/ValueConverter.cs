@@ -66,7 +66,7 @@ namespace artstudio.Converters
         {
             if (parameter != null && value is bool boolValue && boolValue)
             {
-                return Enum.Parse(targetType, parameter.ToString());
+                return Enum.Parse(targetType, parameter.ToString() ?? string.Empty);
             }
             return Binding.DoNothing;
         }

@@ -5,6 +5,8 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using CommunityToolkit.Mvvm.Input;
+using System.Diagnostics;
+using artstudio.ViewModels;
 
 namespace artstudio.ViewModels
 {
@@ -102,14 +104,12 @@ namespace artstudio.ViewModels
         public Color PalettesTabBackgroundColor => CurrentFavTab == FavTabType.Palettes ? Colors.MediumPurple : Colors.Transparent;
         public Color SwatchesTabTextColor => CurrentFavTab == FavTabType.Swatches ? Colors.White : Colors.Black;
         public Color PalettesTabTextColor => CurrentFavTab == FavTabType.Palettes ? Colors.White : Colors.Black;
-
-        // Collections
         public ObservableCollection<FavoriteSwatchItem> FavoriteSwatches { get; set; }
-        public ObservableCollection<FavoritePaletteItem> FavoritePalettes { get; set; }
+        public ObservableCollection<PaletteCollectionGroup> GroupedFavoritePalettes { get; set; }
 
-        // Empty states
+        // Empty states - Updated to use GroupedFavoritePalettes
         public bool HasNoFavoriteSwatches => !FavoriteSwatches.Any();
-        public bool HasNoFavoritePalettes => !FavoritePalettes.Any();
+        public bool HasNoFavoritePalettes => !GroupedFavoritePalettes.Any();
 
         #endregion
 
@@ -165,12 +165,18 @@ namespace artstudio.ViewModels
 
             // Initialize favorites collections
             FavoriteSwatches = new ObservableCollection<FavoriteSwatchItem>();
-            FavoritePalettes = new ObservableCollection<FavoritePaletteItem>();
+            GroupedFavoritePalettes = new ObservableCollection<PaletteCollectionGroup>();
+
+            // Subscribe to swatch property changes for live updates
+            foreach (var swatch in Swatches)
+            {
+                swatch.PropertyChanged += OnSwatchPropertyChanged;
+            }
 
             // Initialize commands
             RegenerateCommand = new Command(GeneratePalette);
             ToggleFavoritePaletteCommand = new Command(() => IsFavoritePalette = !IsFavoritePalette);
-            ExportPaletteCommand = new Command(async () => await ExportPaletteAsync());
+            ExportPaletteCommand = new Command(ExecuteExportPalette);
             SortColorsCommand = new Command<ColorSortingMethod>(SortColors);
 
             // Database commands
@@ -196,6 +202,23 @@ namespace artstudio.ViewModels
             _ = RefreshAllFavoriteStatesAsync();
         }
 
+        private void ExecuteExportPalette()
+        {
+            _ = ExportPaletteAsync();
+        }
+
+        private void OnSwatchPropertyChanged(object? sender, PropertyChangedEventArgs e)
+        {
+            if (e.PropertyName == nameof(Swatch.Color) || e.PropertyName == nameof(Swatch.IsFavoriteColor))
+            {
+                // Trigger refresh of favorites panel if it's open
+                if (IsFavoritesPanelOpen)
+                {
+                    _ = LoadFavoritesDataAsync();
+                }
+            }
+        }
+
         #endregion
 
         #region Palette Generation Methods
@@ -210,52 +233,99 @@ namespace artstudio.ViewModels
             var existingColors = Swatches.Select(s => s.Color).ToList();
             var lockedFlags = Swatches.Select(s => s.IsLocked).ToArray();
 
-            // Generate new palette using harmony type, with random factor (can be parameterized)
-            var newPalette = _paletteModel.HarmonyPaletteGenerator(
-                              randomHarmony,
-                              randomFactor: 0.1f,
-                              existingPalette: existingColors,
-                              lockedColors: lockedFlags);
+            List<Color> newPalette;
 
-            // Update swatches only if not locked or deleted
-            for (int i = 0; i < Swatches.Count; i++)
+            // Check if we have any locked colors to respect
+            if (lockedFlags.Any(locked => locked))
             {
-                if (Swatches[i].IsDeleted)
+                // Generate new palette respecting locks
+                newPalette = _paletteModel.HarmonyPaletteGenerator(
+                    randomHarmony,
+                    randomFactor: 0.6f, // Increased for more variation
+                    existingPalette: existingColors,
+                    lockedColors: lockedFlags);
+
+                System.Diagnostics.Debug.WriteLine($"Generated palette with locks using {randomHarmony} harmony");
+            }
+            else
+            {
+                // Generate completely new palette
+                newPalette = _paletteModel.HarmonyPaletteGenerator(
+                    randomHarmony,
+                    randomFactor: 0.6f);
+
+                System.Diagnostics.Debug.WriteLine($"Generated new palette using {randomHarmony} harmony");
+            }
+
+            // Update swatches based on lock status and deletion state
+            for (int i = 0; i < Swatches.Count && i < newPalette.Count; i++)
+            {
+                var swatch = Swatches[i];
+
+                // Handle deleted swatches - restore them
+                if (swatch.IsDeleted)
                 {
-                    // Restore previous color if deleted
-                    Swatches[i].Color = Swatches[i].PreviousColor;
-                    Swatches[i].IsDeleted = false;
-                    Swatches[i].IsActive = false;
+                    swatch.Color = swatch.PreviousColor;
+                    swatch.IsDeleted = false;
+                    swatch.IsActive = false;
                 }
 
-                if (!Swatches[i].IsLocked)
+                // Only update color if swatch is not locked
+                if (!swatch.IsLocked)
                 {
-                    Swatches[i].Color = newPalette[i];
+                    var oldColor = swatch.Color;
+                    swatch.Color = newPalette[i];
+
+                    System.Diagnostics.Debug.WriteLine($"Swatch {i}: {(swatch.IsLocked ? "LOCKED" : "Updated")} - " +
+                        $"Old: {oldColor.ToHex()}, New: {newPalette[i].ToHex()}");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine($"Swatch {i}: LOCKED - Keeping: {swatch.Color.ToHex()}");
                 }
 
                 // Ensure services are injected (in case of new swatches)
-                Swatches[i].SetServices(_paletteService, _toastService);
+                swatch.SetServices(_paletteService, _toastService);
 
-                Swatches[i].OnPropertyChanged(nameof(Swatch.Color));
-                Swatches[i].OnPropertyChanged(nameof(Swatch.ButtonVisible));
-                Swatches[i].OnPropertyChanged(nameof(Swatch.DeleteButtonVisible));
+                // Notify UI of changes
+                swatch.OnPropertyChanged(nameof(Swatch.Color));
+                swatch.OnPropertyChanged(nameof(Swatch.ButtonVisible));
+                swatch.OnPropertyChanged(nameof(Swatch.DeleteButtonVisible));
             }
 
-            var colors = Swatches.Where(s => !s.IsDeleted).Select(s => s.Color).ToList();
-            var sortedColors = colors.SortCoolorsStyle();
-
-            var activeSwatches = Swatches.Where(s => !s.IsDeleted).ToList();
-            for (int i = 0; i < activeSwatches.Count && i < sortedColors.Count; i++)
-            {
-                if (!activeSwatches[i].IsLocked)
-                {
-                    activeSwatches[i].Color = sortedColors[i];
-                    activeSwatches[i].OnPropertyChanged(nameof(Swatch.Color));
-                }
-            }
+            // Apply Coolors-style sorting to unlocked colors only
+            ApplyCoolorsStyleSorting();
 
             // Refresh favorite states for all swatches after color generation
             _ = RefreshAllFavoriteStatesAsync();
+
+            System.Diagnostics.Debug.WriteLine("Palette generation completed");
+        }
+
+        private void ApplyCoolorsStyleSorting()
+        {
+            // Get all active, unlocked swatches
+            var unlockedSwatches = Swatches
+                .Where(s => !s.IsDeleted && !s.IsLocked)
+                .ToList();
+
+            if (unlockedSwatches.Count <= 1) return;
+
+            // Extract colors from unlocked swatches
+            var unlockedColors = unlockedSwatches.Select(s => s.Color).ToList();
+
+            // Apply Coolors-style sorting
+            var sortedColors = unlockedColors.SortCoolorsStyle();
+
+            // Apply sorted colors back to unlocked swatches
+            for (int i = 0; i < unlockedSwatches.Count && i < sortedColors.Count; i++)
+            {
+                var oldColor = unlockedSwatches[i].Color;
+                unlockedSwatches[i].Color = sortedColors[i];
+                unlockedSwatches[i].OnPropertyChanged(nameof(Swatch.Color));
+
+                System.Diagnostics.Debug.WriteLine($"Sorted unlocked swatch: {oldColor.ToHex()} → {sortedColors[i].ToHex()}");
+            }
         }
 
         private async Task RefreshAllFavoriteStatesAsync()
@@ -511,13 +581,20 @@ namespace artstudio.ViewModels
             if (string.IsNullOrEmpty(title))
                 return "Default";
 
-            // For titles like "Sunset - Palette 1", "Ocean - Palette 2", extract the collection name
+            // Handle "Palette - MMM dd, HH:mm" format -> "Default"
             if (title.StartsWith("Palette -"))
                 return "Default";
 
+            // Handle "CollectionName - Palette X" format -> "CollectionName"
             var parts = title.Split(" - ");
             if (parts.Length >= 2)
-                return parts[0].Trim();
+            {
+                var collectionName = parts[0].Trim();
+
+                // Don't return empty collection names
+                if (!string.IsNullOrWhiteSpace(collectionName))
+                    return collectionName;
+            }
 
             return "Default";
         }
@@ -554,7 +631,7 @@ namespace artstudio.ViewModels
         {
             try
             {
-                // Load favorite swatches
+                // Load favorite swatches (unchanged)
                 FavoriteSwatches.Clear();
                 var favoriteSwatches = await _paletteService.GetFavoriteSwatchesAsync();
                 foreach (var swatch in favoriteSwatches)
@@ -562,30 +639,68 @@ namespace artstudio.ViewModels
                     FavoriteSwatches.Add(new FavoriteSwatchItem
                     {
                         HexColor = swatch.HexColor,
-                        CollectionName = swatch.Collection, // Use Collection property from your service
+                        CollectionName = swatch.Collection,
                         CreatedAt = swatch.CreatedAt
                     });
                 }
 
-                // Load favorite palettes
-                FavoritePalettes.Clear();
-                var favoritePalettes = await _paletteService.GetFavoritePalettesAsync();
-                foreach (var palette in favoritePalettes)
-                {
-                    FavoritePalettes.Add(new FavoritePaletteItem
-                    {
-                        Title = palette.Title ?? "Untitled",
-                        Colors = palette.ColorsList?.Select(c => c.ToHex()).ToList() ?? new List<string>(), // Use ColorsList property
-                        CreatedAt = palette.CreatedAt
-                    });
-                }
+                // Load and group favorite palettes
+                await LoadGroupedFavoritePalettesAsync();
 
                 OnPropertyChanged(nameof(HasNoFavoriteSwatches));
                 OnPropertyChanged(nameof(HasNoFavoritePalettes));
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error loading favorites data: {ex.Message}");
+                Debug.WriteLine($"Error loading favorites data: {ex.Message}");
+            }
+        }
+
+        private async Task LoadGroupedFavoritePalettesAsync()
+        {
+            try
+            {
+                GroupedFavoritePalettes.Clear();
+                var favoritePalettes = await _paletteService.GetFavoritePalettesAsync();
+
+                Debug.WriteLine($"=== Loading {favoritePalettes.Count} favorite palettes ===");
+
+                // Group palettes by collection name
+                var grouped = favoritePalettes
+                    .GroupBy(p => GetCollectionNameFromTitle(p.Title))
+                    .OrderBy(g => g.Key == "Default" ? "ZZZ" : g.Key) // Put Default collection at the end
+                    .ToList();
+
+                Debug.WriteLine($"=== Found {grouped.Count} groups ===");
+
+                foreach (var group in grouped)
+                {
+                    var paletteItems = group.Select(p => new FavoritePaletteItem
+                    {
+                        Id = p.Id, // Make sure to include the ID for database operations
+                        Title = p.Title ?? "Untitled",
+                        Colors = p.ColorsList?.Select(c => c.ToHex()).ToList() ?? new List<string>(),
+                        CreatedAt = p.CreatedAt
+                    }).OrderByDescending(p => p.CreatedAt).ToList(); // Sort by newest first within group
+
+                    Debug.WriteLine($"=== Group '{group.Key}' has {paletteItems.Count} palettes ===");
+                    foreach (var item in paletteItems)
+                    {
+                        Debug.WriteLine($"  - {item.Title} ({item.Colors.Count} colors) - {item.CreatedAt}");
+                    }
+
+                    var collectionGroup = new PaletteCollectionGroup(group.Key, paletteItems);
+                    GroupedFavoritePalettes.Add(collectionGroup);
+                }
+
+                Debug.WriteLine($"=== Final GroupedFavoritePalettes count: {GroupedFavoritePalettes.Count} ===");
+                OnPropertyChanged(nameof(GroupedFavoritePalettes));
+                OnPropertyChanged(nameof(HasNoFavoritePalettes));
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error loading grouped favorite palettes: {ex.Message}");
+                Debug.WriteLine($"Stack trace: {ex.StackTrace}");
             }
         }
 
@@ -615,7 +730,7 @@ namespace artstudio.ViewModels
             }
         }
 
-        private async Task LoadFavoritePaletteAsync(FavoritePaletteItem palette)
+        private async Task LoadFavoritePaletteAsync(FavoritePaletteItem? palette)
         {
             try
             {
@@ -650,48 +765,71 @@ namespace artstudio.ViewModels
             }
         }
 
-        private async Task RemoveFavoriteSwatchAsync(FavoriteSwatchItem swatchItem)
+        private async Task RemoveFavoriteSwatchAsync(FavoriteSwatchItem? swatchItem)
         {
             try
             {
-                if (swatchItem == null) return;
+                // Add debug output to confirm method is being called
+                System.Diagnostics.Debug.WriteLine($"=== RemoveFavoriteSwatchAsync called for {swatchItem?.HexColor} ===");
 
-                var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
-                if (mainPage != null)
+                if (swatchItem == null)
                 {
-                    bool confirm = await mainPage.DisplayAlert(
-                        "Remove Color",
-                        $"Remove {swatchItem.HexColor} from favorites?",
-                        "Remove",
-                        "Cancel");
+                    System.Diagnostics.Debug.WriteLine("SwatchItem is null!");
+                    return;
+                }
 
-                    if (confirm)
+                System.Diagnostics.Debug.WriteLine($"Attempting to remove swatch: {swatchItem.HexColor}");
+
+                // Remove from database first
+                var favoriteSwatches = await _paletteService.GetFavoriteSwatchesAsync();
+                var dbSwatch = favoriteSwatches.FirstOrDefault(s => s.HexColor == swatchItem.HexColor);
+
+                if (dbSwatch != null)
+                {
+                    System.Diagnostics.Debug.WriteLine($"Found swatch in database with ID: {dbSwatch.Id}");
+
+                    await _paletteService.RemoveSwatchFromFavoritesAsync(dbSwatch.Id);
+                    System.Diagnostics.Debug.WriteLine("Database removal completed");
+
+                    // Remove from UI immediately for instant feedback
+                    var itemToRemove = FavoriteSwatches.FirstOrDefault(s => s.HexColor == swatchItem.HexColor);
+                    if (itemToRemove != null)
                     {
-                        // Find the actual database item by hex color
-                        var favoriteSwatches = await _paletteService.GetFavoriteSwatchesAsync();
-                        var dbSwatch = favoriteSwatches.FirstOrDefault(s => s.HexColor == swatchItem.HexColor);
-
-                        if (dbSwatch != null)
-                        {
-                            await _paletteService.RemoveSwatchFromFavoritesAsync(dbSwatch.Id);
-
-                            // Remove from UI
-                            FavoriteSwatches.Remove(swatchItem);
-                            OnPropertyChanged(nameof(HasNoFavoriteSwatches));
-
-                            await _toastService.ShowToastAsync("Color removed from favorites ✓");
-                        }
+                        FavoriteSwatches.Remove(itemToRemove);
+                        System.Diagnostics.Debug.WriteLine($"Removed from FavoriteSwatches collection. Count is now: {FavoriteSwatches.Count}");
                     }
+                    else
+                    {
+                        System.Diagnostics.Debug.WriteLine("Item not found in FavoriteSwatches collection!");
+                    }
+
+                    // Force refresh of UI properties
+                    OnPropertyChanged(nameof(FavoriteSwatches));
+                    OnPropertyChanged(nameof(HasNoFavoriteSwatches));
+
+                    // Show success message
+                    await _toastService.ShowToastAsync("Color removed from favorites ✓");
+
+                    System.Diagnostics.Debug.WriteLine($"=== Successfully removed swatch {swatchItem.HexColor} ===");
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine($"Swatch {swatchItem.HexColor} not found in database!");
+                    await _toastService.ShowToastAsync("Color not found in favorites");
                 }
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error removing favorite swatch: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"ERROR in RemoveFavoriteSwatchAsync: {ex.Message}");
+                System.Diagnostics.Debug.WriteLine($"Stack trace: {ex.StackTrace}");
                 await _toastService.ShowToastAsync("Error removing color");
+
+                // If there's an error, reload to ensure UI is in sync with database
+                _ = Task.Run(async () => await LoadFavoritesDataAsync());
             }
         }
 
-        private async Task RemoveFavoritePaletteAsync(FavoritePaletteItem paletteItem)
+        private async Task RemoveFavoritePaletteAsync(FavoritePaletteItem? paletteItem)
         {
             try
             {
@@ -708,21 +846,45 @@ namespace artstudio.ViewModels
 
                     if (confirm)
                     {
-                        // Find the actual database item by title and date
-                        var favoritePalettes = await _paletteService.GetFavoritePalettesAsync();
-                        var dbPalette = favoritePalettes.FirstOrDefault(p =>
-                            p.Title == paletteItem.Title && p.CreatedAt == paletteItem.CreatedAt);
-
-                        if (dbPalette != null)
+                        // Use the ID if available, otherwise fall back to title/date matching
+                        if (paletteItem.Id > 0)
                         {
-                            await _paletteService.DeletePaletteCollectionAsync(dbPalette.Id);
-
-                            // Remove from UI
-                            FavoritePalettes.Remove(paletteItem);
-                            OnPropertyChanged(nameof(HasNoFavoritePalettes));
-
-                            await _toastService.ShowToastAsync("Palette removed from favorites ✓");
+                            await _paletteService.DeletePaletteCollectionAsync(paletteItem.Id);
                         }
+                        else
+                        {
+                            // Fallback method
+                            var favoritePalettes = await _paletteService.GetFavoritePalettesAsync();
+                            var dbPalette = favoritePalettes.FirstOrDefault(p =>
+                                p.Title == paletteItem.Title && p.CreatedAt == paletteItem.CreatedAt);
+
+                            if (dbPalette != null)
+                            {
+                                await _paletteService.DeletePaletteCollectionAsync(dbPalette.Id);
+                            }
+                        }
+
+                        // Fix: Remove from UI groups properly
+                        foreach (var group in GroupedFavoritePalettes.ToList())
+                        {
+                            var itemToRemove = group.Palettes.FirstOrDefault(p =>
+                                p.Title == paletteItem.Title && p.CreatedAt == paletteItem.CreatedAt);
+
+                            if (itemToRemove != null)
+                            {
+                                group.Remove(itemToRemove); // Use the Remove method we added to PaletteCollectionGroup
+
+                                // Remove empty groups
+                                if (group.Count == 0)
+                                {
+                                    GroupedFavoritePalettes.Remove(group);
+                                }
+                                break;
+                            }
+                        }
+
+                        OnPropertyChanged(nameof(HasNoFavoritePalettes));
+                        await _toastService.ShowToastAsync("Palette removed from favorites ✓");
                     }
                 }
             }
@@ -750,29 +912,16 @@ namespace artstudio.ViewModels
                 return false;
 
             field = value;
-            OnPropertyChanged(propertyName);
+
+            // Ensure propertyName is not null before calling OnPropertyChanged
+            if (propertyName != null)
+            {
+                OnPropertyChanged(propertyName);
+            }
+
             return true;
         }
 
         #endregion
     }
-
-    #region Helper Classes
-
-    // Helper classes for favorites data
-    public class FavoriteSwatchItem
-    {
-        public string HexColor { get; set; } = string.Empty;
-        public string? CollectionName { get; set; }
-        public DateTime CreatedAt { get; set; }
-    }
-
-    public class FavoritePaletteItem
-    {
-        public string Title { get; set; } = string.Empty;
-        public List<string> Colors { get; set; } = new();
-        public DateTime CreatedAt { get; set; }
-    }
-
-    #endregion
 }

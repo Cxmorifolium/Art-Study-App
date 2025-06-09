@@ -12,70 +12,48 @@
             Monochromatic
         }
 
-        private Random? random;
+        private Random _random;
 
         public PaletteModel()
         {
-            random = new Random();
+            _random = new Random();
         }
 
-        // Converting MAUI ARGB to HSL values
+        // Convert MAUI Color to HSL
         public void ColorToHsl(Color color, out float h, out float s, out float l)
         {
-            // Extract RGB 
             float r = color.Red;
             float g = color.Green;
             float b = color.Blue;
 
-            // Find Min and Max of RGB values
             float max = Math.Max(r, Math.Max(g, b));
             float min = Math.Min(r, Math.Min(g, b));
 
-            // Calculating light "l" as avg of max and min
             h = s = l = (max + min) / 2;
 
-            //Achromatic
             if (max == min)
             {
-                h = s = 0;
+                h = s = 0; // Achromatic
             }
             else
             {
-                // Saturation
                 float d = max - min;
-
-                // If light is > 0.5 = brighter ; else darker
                 s = l > 0.5f ? d / (2 - max - min) : d / (max + min);
 
                 if (max == r)
-                {
-                    h = (g - b) / d + (g < b ? 6 : 0); //Red
-                }
+                    h = (g - b) / d + (g < b ? 6 : 0);
                 else if (max == g)
-                {
-                    h = (b - r) / d + 2; // Green 
-                }
+                    h = (b - r) / d + 2;
                 else
-                {
-                    h = (r - g) / d + 4; // Blue
-                }
+                    h = (r - g) / d + 4;
 
-                h *= 60; // Convert to degrees
-                /* 
-                    * 0° = red
-                    * 60° = yellow
-                    * 120° = green
-                    * 180° = cyan
-                    * 240° = blue
-                    * 300° = magenta
-                    * 360° = red
-                */
+                h *= 60;
             }
 
             if (h < 0) h += 360;
         }
 
-        // Convert back to MAUI color
+        // Convert HSL back to MAUI Color
         public Color HslToColor(float h, float s, float l)
         {
             float r, g, b;
@@ -86,597 +64,382 @@
             }
             else
             {
-                float q = l < 0.5f ? l * (l + s) : l + s - l * s;
+                float q = l < 0.5f ? l * (1 + s) : l + s - l * s;
                 float p = 2 * l - q;
 
-                // RGB 120° each
-                r = HueToRgb(p, q, h / 360f + 1 / 3f); // Red section
-                g = HueToRgb(p, q, h / 360f); // Green section
-                b = HueToRgb(p, q, h / 360f - 1 / 3f); // Blue section
+                r = HueToRgb(p, q, (h / 360f) + 1f / 3f);
+                g = HueToRgb(p, q, h / 360f);
+                b = HueToRgb(p, q, (h / 360f) - 1f / 3f);
             }
-            return new Color(r, g, b);
 
+            return new Color(Math.Clamp(r, 0, 1), Math.Clamp(g, 0, 1), Math.Clamp(b, 0, 1));
         }
 
-        // Helper method for HsltoColor to interpolate
-        // t = hue position
-        // q = upper bound "light"
-        // p = lower bound "shadow"
-        public static float HueToRgb(float p, float q, float t)
+        private static float HueToRgb(float p, float q, float t)
         {
             if (t < 0) t += 1;
             if (t > 1) t -= 1;
-            if (t < 1 / 6f) return p + (q - p) * 6 * t;
-            if (t < 1 / 2F) return q;
-            if (t < 2 / 3f) return p + (q - p) * (2 / 3f - t) * 6;
+            if (t < 1f / 6f) return p + (q - p) * 6 * t;
+            if (t < 1f / 2f) return q;
+            if (t < 2f / 3f) return p + (q - p) * (2f / 3f - t) * 6;
             return p;
         }
 
-        private Color GenerateRandomColor()
-        {
-            if (random == null)
-            {
-                random = new Random();
-            }
-
-            float h = (float)(random.NextDouble() * 360.0);
-            // Generate random saturation and lightness within a reasonable range
-            float s = (float)(0.4 + random.NextDouble() * 0.5); // 0.4 to 0.9
-            float l = (float)(0.3 + random.NextDouble() * 0.4); // 0.3 to 0.7
-
-            return HslToColor(h, s, l);
-        }
-
-        public List<Color> HarmonyPaletteGenerator(
-                            ColorHarmonyType colorHarmonyType,
-                            float randomFactor = 0.1f,
-                            List<Color>? existingPalette = null,
-                            bool[]? lockedColors = null)
-        {
-            List<Color> palette = new List<Color>();
-
-            // Handle locked colors case
-            if (existingPalette != null && lockedColors != null && existingPalette.Count == 5 && lockedColors.Length == 5)
-            {
-                // Start with the existing palette
-                palette = new List<Color>(existingPalette);
-
-                // Get locked colors for reference
-                List<Color> lockedColorsList = GetLockedColors(existingPalette, lockedColors);
-
-                // If we have locked colors, use one of them as the base for harmony generation
-                Color baseColor;
-                if (lockedColorsList.Count > 0)
-                {
-                    // Use the first locked color as our harmony base
-                    baseColor = lockedColorsList[0];
-                }
-                else
-                {
-                    // No locked colors, generate a new base that's different from existing
-                    baseColor = GenerateBaseColorAvoidingExisting(existingPalette);
-                }
-
-                ColorToHsl(baseColor, out float h, out float s, out float l);
-
-                // Generate harmony colors based on the base color
-                List<Color> harmonyColors = GenerateHarmonyColors(colorHarmonyType, h, s, l, randomFactor);
-
-                // Now intelligently replace non-locked colors
-                int harmonyIndex = 0;
-                for (int i = 0; i < 5; i++)
-                {
-                    if (!lockedColors[i])
-                    {
-                        // This position needs a new color
-                        Color newColor;
-
-                        if (harmonyIndex < harmonyColors.Count)
-                        {
-                            // Try to use a harmony color
-                            newColor = harmonyColors[harmonyIndex];
-                            harmonyIndex++;
-                        }
-                        else
-                        {
-                            // Generate additional color using theory
-                            Color referenceColor = lockedColorsList.Count > 0 ? lockedColorsList[0] : baseColor;
-                            newColor = GenerateColorFromTheory(referenceColor, colorHarmonyType, randomFactor);
-                        }
-
-                        // Ensure this new color doesn't duplicate any existing colors
-                        List<Color> allExistingColors = new List<Color>();
-                        for (int j = 0; j < palette.Count; j++)
-                        {
-                            if (j != i) // Don't include the position we're replacing
-                            {
-                                allExistingColors.Add(palette[j]);
-                            }
-                        }
-
-                        newColor = GenerateNonDuplicateColor(newColor, allExistingColors, colorHarmonyType, randomFactor);
-                        palette[i] = newColor;
-                    }
-                }
-
-                // Final cleanup - ensure no duplicates while respecting locks
-                RemoveDuplicateColorsWithLocks(palette, lockedColors, colorHarmonyType, randomFactor);
-            }
-            else
-            {
-                // No locks - use original logic
-                Color baseColor = GenerateRandomColor();
-                ColorToHsl(baseColor, out float h, out float s, out float l);
-
-                List<Color> generatedPalette = GenerateHarmonyColors(colorHarmonyType, h, s, l, randomFactor);
-                generatedPalette.Insert(0, baseColor);
-
-                while (generatedPalette.Count > 5)
-                    generatedPalette.RemoveAt(generatedPalette.Count - 1);
-
-                while (generatedPalette.Count < 5)
-                    generatedPalette.Add(AddRandomTheory(
-                        generatedPalette[random!.Next(generatedPalette.Count)], colorHarmonyType, randomFactor));
-
-                palette = generatedPalette;
-                RemoveDuplicateColors(palette, colorHarmonyType, randomFactor);
-            }
-
-            return palette;
-        }
-
-        // Generate harmony colors based on type
-        private List<Color> GenerateHarmonyColors(ColorHarmonyType colorHarmonyType, float h, float s, float l, float randomFactor)
-        {
-            return colorHarmonyType switch
-            {
-                ColorHarmonyType.Analogous => GenerateAnalogousPalette(h, s, l, randomFactor),
-                ColorHarmonyType.Complementary => GenerateComplementaryPalette(h, s, l, randomFactor),
-                ColorHarmonyType.SplitComplementary => GenerateSplitComplementaryPalette(h, s, l, randomFactor),
-                ColorHarmonyType.Triadic => GenerateTriadicPalette(h, s, l, randomFactor),
-                ColorHarmonyType.Square => GenerateSquarePalette(h, s, l, randomFactor),
-                ColorHarmonyType.Monochromatic => GenerateMonochromaticPalette(h, s, l, randomFactor),
-                _ => new List<Color>()
-            };
-        }
-        private Color GenerateReplacementColor(List<Color> palette, int replaceIndex, bool[] lockedColors, ColorHarmonyType theory, float randomFactor, int attempt)
-        {
-            // Get all colors to avoid (all current palette colors except the one being replaced)
-            List<Color> avoidColors = new List<Color>();
-            for (int i = 0; i < palette.Count; i++)
-            {
-                if (i != replaceIndex)
-                {
-                    avoidColors.Add(palette[i]);
-                }
-            }
-
-            // Find a locked color to use as reference for harmony
-            Color referenceColor = null;
-            for (int i = 0; i < lockedColors.Length; i++)
-            {
-                if (lockedColors[i])
-                {
-                    referenceColor = palette[i];
-                    break;
-                }
-            }
-
-            // If no locked color found, use a different color from palette as reference
-            if (referenceColor == null)
-            {
-                referenceColor = palette[replaceIndex == 0 ? 1 : 0];
-            }
-
-            // Generate new color based on theory and reference
-            Color newColor = GenerateColorFromTheory(referenceColor, theory, randomFactor * (1 + attempt * 0.15f));
-
-            // Ensure it doesn't duplicate existing colors
-            return GenerateNonDuplicateColor(newColor, avoidColors, theory, randomFactor * (1 + attempt * 0.1f), 15);
-        }
-        // Generate a color that doesn't duplicate any in the avoid list
-        private Color GenerateNonDuplicateColor(Color startingColor, List<Color> avoidColors, ColorHarmonyType theory, float randomFactor, int maxAttempts = 15)
-        {
-            Color candidate = startingColor;
-
-            for (int attempt = 0; attempt < maxAttempts; attempt++)
-            {
-                bool isDuplicate = false;
-
-                foreach (Color avoidColor in avoidColors)
-                {
-                    if (DuplicateColors(candidate, avoidColor))
-                    {
-                        isDuplicate = true;
-                        break;
-                    }
-                }
-
-                if (!isDuplicate)
-                {
-                    return candidate;
-                }
-
-                // Generate progressively more different variations
-                if (attempt < maxAttempts / 3)
-                {
-                    // First third: small theory-based changes
-                    candidate = GenerateColorFromTheory(startingColor, theory, randomFactor * (1 + attempt * 0.2f));
-                }
-                else if (attempt < (maxAttempts * 2) / 3)
-                {
-                    // Second third: medium changes with different theory
-                    var alternativeTheories = new[] { ColorHarmonyType.Analogous, ColorHarmonyType.Complementary, ColorHarmonyType.Monochromatic };
-                    var altTheory = alternativeTheories[attempt % alternativeTheories.Length];
-                    candidate = GenerateColorFromTheory(startingColor, altTheory, randomFactor * (1 + attempt * 0.3f));
-                }
-                else
-                {
-                    // Final third: dramatic changes
-                    ColorToHsl(startingColor, out float h, out float s, out float l);
-
-                    float hueShift = (float)(random!.NextDouble() * 120 + 60); // 60-180 degree shift
-                    if (random.NextDouble() > 0.5) hueShift = -hueShift;
-
-                    float newH = (h + hueShift + 360) % 360;
-                    float newS = Math.Clamp(s + ((float)random.NextDouble() * 2 - 1) * 0.4f, 0.2f, 0.9f);
-                    float newL = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * 0.4f, 0.2f, 0.8f);
-
-                    candidate = HslToColor(newH, newS, newL);
-                }
-            }
-
-            // Last resort: generate a completely random color
-            return GenerateRandomColor();
-        }
-        private Color GenerateBaseColorAvoidingExisting(List<Color> existingPalette, int maxAttempts = 15)
-        {
-            for (int attempt = 0; attempt < maxAttempts; attempt++)
-            {
-                Color candidate = GenerateRandomColor();
-                bool isDuplicate = false;
-
-                foreach (Color existingColor in existingPalette)
-                {
-                    if (DuplicateColors(candidate, existingColor))
-                    {
-                        isDuplicate = true;
-                        break;
-                    }
-                }
-
-                if (!isDuplicate)
-                {
-                    return candidate;
-                }
-            }
-
-            // If we still can't find a unique color, create one dramatically different from the first existing color
-            Color baseColor = existingPalette[0];
-            ColorToHsl(baseColor, out float h, out float s, out float l);
-
-            // Create a dramatically different color
-            float newH = (h + 180 + (float)(random!.NextDouble() * 60 - 30)) % 360;
-            float newS = s > 0.5f ? Math.Max(0.2f, s - 0.4f) : Math.Min(0.9f, s + 0.4f);
-            float newL = l > 0.5f ? Math.Max(0.2f, l - 0.3f) : Math.Min(0.8f, l + 0.3f);
-
-            return HslToColor(newH, newS, newL);
-        }
-        // Helper method to check if colors are too similar
-        private bool DuplicateColors(Color c1, Color c2, float threshold = 12f) // Slightly increased threshold
+        // Enhanced perceptual color difference calculation
+        private float GetPerceptualColorDistance(Color c1, Color c2)
         {
             ColorToHsl(c1, out float h1, out float s1, out float l1);
             ColorToHsl(c2, out float h2, out float s2, out float l2);
 
-            float hueDiff = Math.Min(Math.Abs(h1 - h2), 360 - Math.Abs(h1 - h2));
-            float satDiff = Math.Abs(s1 - s2) * 100;
-            float lightDiff = Math.Abs(l1 - l2) * 100;
+            // Calculate hue difference (circular)
+            float hueDiff = Math.Abs(h1 - h2);
+            if (hueDiff > 180) hueDiff = 360 - hueDiff;
 
-            // Adjust these weights as needed
-            float hueWeight = 1.5f;
+            // Weight the differences based on human perception
+            float hueWeight = 2.0f;
             float satWeight = 1.0f;
-            float lightWeight = 0.8f;
+            float lightWeight = 1.0f;
 
-            float totalDiff =
-                (hueDiff * hueWeight) +
-                (satDiff * satWeight) +
-                (lightDiff * lightWeight);
+            // Normalize to 0-100 scale for easier thresholds
+            float normalizedHueDiff = (hueDiff / 180f) * 100f;
+            float normalizedSatDiff = Math.Abs(s1 - s2) * 100f;
+            float normalizedLightDiff = Math.Abs(l1 - l2) * 100f;
 
-            return totalDiff < threshold;
+            return (normalizedHueDiff * hueWeight) +
+                   (normalizedSatDiff * satWeight) +
+                   (normalizedLightDiff * lightWeight);
         }
 
-        private void RemoveDuplicateColorsWithLocks(List<Color> palette, bool[] lockedColors, ColorHarmonyType currentTheory, float randomFactor, float threshold = 15f)
+        // Check if two colors are too similar (Coolors uses around 15-20 threshold)
+        private bool AreColorsTooSimilar(Color c1, Color c2, float threshold = 18f)
         {
-            bool duplicatesFound;
-            int maxIterations = 25; // Increased iterations
-            int iterations = 0;
-
-            do
-            {
-                duplicatesFound = false;
-                iterations++;
-
-                // Check each pair of colors
-                for (int i = 0; i < palette.Count && !duplicatesFound; i++)
-                {
-                    for (int j = i + 1; j < palette.Count && !duplicatesFound; j++)
-                    {
-                        if (DuplicateColors(palette[i], palette[j], threshold))
-                        {
-                            // Found duplicates - determine which to change
-                            if (lockedColors[i] && lockedColors[j])
-                            {
-                                // Both locked - can't fix this, but let's try increasing threshold temporarily
-                                continue;
-                            }
-                            else if (lockedColors[i])
-                            {
-                                // Change j (i is locked)
-                                palette[j] = GenerateReplacementColor(palette, j, lockedColors, currentTheory, randomFactor, iterations);
-                                duplicatesFound = true;
-                            }
-                            else if (lockedColors[j])
-                            {
-                                // Change i (j is locked)
-                                palette[i] = GenerateReplacementColor(palette, i, lockedColors, currentTheory, randomFactor, iterations);
-                                duplicatesFound = true;
-                            }
-                            else
-                            {
-                                // Neither locked - change the later one (j)
-                                palette[j] = GenerateReplacementColor(palette, j, lockedColors, currentTheory, randomFactor, iterations);
-                                duplicatesFound = true;
-                            }
-                        }
-                    }
-                }
-            }
-            while (duplicatesFound && iterations < maxIterations);
+            return GetPerceptualColorDistance(c1, c2) < threshold;
         }
 
-        // Get list of all locked colors - updated to work with existing palette
-        private List<Color> GetLockedColors(List<Color> existingPalette, bool[] lockedColors)
+        // Generate a high-quality random color
+        private Color GenerateRandomColor()
         {
-            List<Color> lockedColorsList = new List<Color>();
-            for (int i = 0; i < Math.Min(existingPalette.Count, lockedColors.Length); i++)
-            {
-                if (lockedColors[i])
-                {
-                    lockedColorsList.Add(existingPalette[i]);
-                }
-            }
-            return lockedColorsList;
-        }
+            // Use golden ratio for better hue distribution
+            float goldenAngle = 137.508f;
+            float h = (_random.NextSingle() * goldenAngle) % 360f;
 
-        // Duplicate removal method (for when no locks are present)
-        private void RemoveDuplicateColors(List<Color> palette, ColorHarmonyType currentTheory, float randomFactor, float threshold = 12f)
-        {
-            bool duplicatesFound;
-            int maxIterations = 20;
-            int iterations = 0;
-
-            do
-            {
-                duplicatesFound = false;
-                iterations++;
-
-                for (int i = 0; i < palette.Count; i++)
-                {
-                    for (int j = i + 1; j < palette.Count; j++)
-                    {
-                        if (DuplicateColors(palette[i], palette[j], threshold))
-                        {
-                            palette[j] = AddRandomTheory(palette[j], currentTheory, randomFactor * (1 + iterations * 0.1f));
-                            duplicatesFound = true;
-                        }
-                    }
-                }
-            }
-            while (duplicatesFound && iterations < maxIterations);
-        }
-
-
-        // Compliment theories less than 3 colors by merging other color harmonies
-        private Color AddRandomTheory(Color baseColor, ColorHarmonyType currentTheory, float randomFactor)
-        {
-            // Define compatible theory combinations
-            var theoryCompatibility = new Dictionary<ColorHarmonyType, List<ColorHarmonyType>>
-            {
-                [ColorHarmonyType.Triadic] = new List<ColorHarmonyType>
-            { ColorHarmonyType.Analogous, ColorHarmonyType.Monochromatic, ColorHarmonyType.Complementary },
-                [ColorHarmonyType.Complementary] = new List<ColorHarmonyType>
-            { ColorHarmonyType.Monochromatic, ColorHarmonyType.Analogous },
-                [ColorHarmonyType.Analogous] = new List<ColorHarmonyType>
-            { ColorHarmonyType.Monochromatic, ColorHarmonyType.Complementary },
-                [ColorHarmonyType.SplitComplementary] = new List<ColorHarmonyType>
-            { ColorHarmonyType.Analogous, ColorHarmonyType.Monochromatic },
-                [ColorHarmonyType.Square] = new List<ColorHarmonyType>
-            { ColorHarmonyType.Monochromatic, ColorHarmonyType.Analogous },
-                [ColorHarmonyType.Monochromatic] = new List<ColorHarmonyType>
-            { ColorHarmonyType.Analogous, ColorHarmonyType.Complementary }
-            };
-
-            // Get compatible theories for the current theory
-            var compatibleTheories = theoryCompatibility[currentTheory];
-            var secondaryTheory = compatibleTheories[random!.Next(compatibleTheories.Count)];
-
-            // Generate variation based on the secondary theory
-            return GenerateColorFromTheory(baseColor, secondaryTheory, randomFactor);
-        }
-
-        private Color GenerateColorFromTheory(Color baseColor, ColorHarmonyType theory, float randomFactor)
-        {
-            ColorToHsl(baseColor, out float h, out float s, out float l);
-
-            switch (theory)
-            {
-                case ColorHarmonyType.Analogous:
-                    // Small hue shift (±30°)
-                    float analogousShift = (float)(random!.NextDouble() * 60 - 30) * randomFactor;
-                    h = (h + analogousShift + 360) % 360;
-                    // Slight saturation/lightness variation
-                    s = Math.Clamp(s + ((float)random.NextDouble() * 2 - 1) * 0.1f * randomFactor, 0.2f, 0.9f);
-                    l = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * 0.1f * randomFactor, 0.2f, 0.85f);
-                    break;
-
-                case ColorHarmonyType.Complementary:
-                    // Move toward complementary (180°) with some variation
-                    float complementaryHue = (h + 180) % 360;
-                    float complementaryShift = (float)(random!.NextDouble() * 40 - 20) * randomFactor; // ±20° variation
-                    h = (complementaryHue + complementaryShift + 360) % 360;
-                    // Adjust saturation/lightness for contrast
-                    s = Math.Clamp(s + ((float)random.NextDouble() * 2 - 1) * 0.15f * randomFactor, 0.3f, 0.9f);
-                    l = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * 0.2f * randomFactor, 0.2f, 0.8f);
-                    break;
-
-                case ColorHarmonyType.Monochromatic:
-                    // Keep same hue, vary saturation and lightness significantly
-                    float satVariation = (float)(random!.NextDouble() * 2 - 1) * 0.3f * randomFactor;
-                    float lightVariation = (float)(random.NextDouble() * 2 - 1) * 0.4f * randomFactor;
-                    s = Math.Clamp(s + satVariation, 0.2f, 0.95f);
-                    l = Math.Clamp(l + lightVariation, 0.15f, 0.9f);
-                    break;
-
-                default:
-                    // Fallback to original AddRandomVariation logic
-                    float hueShift = (float)(random!.NextDouble() * 2 - 1) * randomFactor * 8;
-                    h = (h + hueShift + 360) % 360;
-                    s = Math.Clamp(s + ((float)random.NextDouble() * 2 - 1) * randomFactor * 0.08f, 0.2f, 0.9f);
-                    l = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * randomFactor * 0.08f, 0.2f, 0.85f);
-                    break;
-            }
+            // Constrain saturation and lightness to pleasing ranges
+            float s = 0.35f + (_random.NextSingle() * 0.55f); // 35% to 90%
+            float l = 0.25f + (_random.NextSingle() * 0.5f);  // 25% to 75%
 
             return HslToColor(h, s, l);
         }
 
-        private List<Color> GenerateAnalogousPalette(float h, float s, float l, float randomFactor)
+        // Main palette generation method
+        public List<Color> HarmonyPaletteGenerator(
+            ColorHarmonyType colorHarmonyType,
+            float randomFactor = 0.1f,
+            List<Color>? existingPalette = null,
+            bool[]? lockedColors = null)
         {
-            List<Color> palette = new List<Color>();
+            const int paletteSize = 5;
 
-            // Angles for Analogous Colors
-            float[] angles = { -45, -22.5f, 0, 22.5f, 45 };
-
-            foreach (float angle in angles)
+            // If we have an existing palette with locks, regenerate unlocked colors
+            if (existingPalette != null && lockedColors != null &&
+                existingPalette.Count == paletteSize && lockedColors.Length == paletteSize)
             {
-                float newHue = (h + angle) % 360;
-                if (newHue < 0) newHue += 360;
-
-                // Variation in s and l 
-                float newSat = Math.Clamp(s + ((float)random!.NextDouble() * 2 - 1) * 0.1f, 0.4f, 0.9f);
-                float newLight = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * 0.15f, 0.3f, 0.7f);
-
-                palette.Add(HslToColor(newHue, newSat, newLight));
+                return RegenerateWithLocks(existingPalette, lockedColors, colorHarmonyType, randomFactor);
             }
 
-            return palette;
+            // Generate completely new palette
+            return GenerateNewPalette(colorHarmonyType, randomFactor, paletteSize);
         }
 
-        private List<Color> GenerateComplementaryPalette(float h, float s, float l, float randomFactor)
+        private List<Color> RegenerateWithLocks(List<Color> existingPalette, bool[] lockedColors,
+            ColorHarmonyType harmonyType, float randomFactor)
         {
-            List<Color> palette = new List<Color>();
+            var newPalette = new List<Color>(existingPalette);
+            var lockedIndices = new List<int>();
 
-            // Start with base color
-            palette.Add(HslToColor(h, s, l));
+            // Identify locked positions
+            for (int i = 0; i < lockedColors.Length; i++)
+            {
+                if (lockedColors[i])
+                {
+                    lockedIndices.Add(i);
+                }
+            }
 
-            // Complementary hue
-            float complementaryHue = (h + 180) % 360;
-            palette.Add(HslToColor(complementaryHue, s, l));
+            // Generate new colors for unlocked positions
+            for (int i = 0; i < newPalette.Count; i++)
+            {
+                if (!lockedColors[i])
+                {
+                    Color newColor;
+                    int attempts = 0;
+                    const int maxAttempts = 50;
 
-            // Variation of those colors
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.1f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
-            palette.Add(HslToColor(h, Math.Clamp(s + 0.1f, 0.1f, 0.9f), Math.Clamp(l - 0.2f, 0.2f, 0.8f)));
-            palette.Add(HslToColor(complementaryHue, Math.Clamp(s - 0.1f, 0.1f, 0.9f), Math.Clamp(l + 0.2f, 0.2f, 0.8f)));
+                    do
+                    {
+                        // Generate color based on harmony type and existing palette context
+                        if (lockedIndices.Count > 0)
+                        {
+                            // Use a locked color as reference for harmony
+                            var referenceColor = newPalette[lockedIndices[_random.Next(lockedIndices.Count)]];
+                            newColor = GenerateHarmoniousColor(referenceColor, harmonyType, randomFactor, attempts);
+                        }
+                        else
+                        {
+                            // No locked colors - generate based on harmony type
+                            newColor = GenerateHarmoniousColor(GenerateRandomColor(), harmonyType, randomFactor, attempts);
+                        }
 
-            return palette;
+                        attempts++;
+                    }
+                    while (IsColorTooSimilarToExisting(newColor, newPalette, i) && attempts < maxAttempts);
+
+                    newPalette[i] = newColor;
+                }
+            }
+
+            return newPalette;
         }
 
-        private List<Color> GenerateSplitComplementaryPalette(float h, float s, float l, float randomFactor)
+        private List<Color> GenerateNewPalette(ColorHarmonyType harmonyType, float randomFactor, int paletteSize)
         {
-            List<Color> palette = new List<Color>();
+            var palette = new List<Color>();
 
-            // Base color
-            Color baseColor = HslToColor(h, s, l);
+            // Start with a base color
+            var baseColor = GenerateRandomColor();
             palette.Add(baseColor);
 
-            // Split complementary colors (150° and 210° from base)
-            float comp1 = (h + 150) % 360;
-            float comp2 = (h + 210) % 360;
+            // Generate harmony colors based on type
+            var harmonyColors = GenerateHarmonyColorsFromBase(baseColor, harmonyType, randomFactor);
 
-            palette.Add(HslToColor(comp1, s, l));
-            palette.Add(HslToColor(comp2, s, l));
+            // Add harmony colors, ensuring no duplicates
+            foreach (var color in harmonyColors)
+            {
+                if (palette.Count >= paletteSize) break;
 
-            // Add theory-based variations for remaining slots
-            palette.Add(AddRandomTheory(baseColor, ColorHarmonyType.SplitComplementary, randomFactor));
-            palette.Add(AddRandomTheory(palette[1], ColorHarmonyType.SplitComplementary, randomFactor));
+                if (!IsColorTooSimilarToExisting(color, palette, -1))
+                {
+                    palette.Add(color);
+                }
+            }
+
+            // Fill remaining slots with diverse colors
+            while (palette.Count < paletteSize)
+            {
+                var newColor = GenerateComplementaryColor(palette, harmonyType, randomFactor);
+                if (!IsColorTooSimilarToExisting(newColor, palette, -1))
+                {
+                    palette.Add(newColor);
+                }
+            }
 
             return palette;
         }
 
-        private List<Color> GenerateTriadicPalette(float h, float s, float l, float randomFactor)
+        private bool IsColorTooSimilarToExisting(Color candidateColor, List<Color> palette, int skipIndex)
         {
-            List<Color> palette = new List<Color>();
-
-            // Three colors spaced apart 120°
-            for (int i = 0; i < 3; i++)
+            for (int i = 0; i < palette.Count; i++)
             {
-                float newHue = (h + i * 120) % 360;
-                palette.Add(HslToColor(newHue, s, l));
+                if (i == skipIndex) continue; // Skip the position we're replacing
+
+                if (AreColorsTooSimilar(candidateColor, palette[i]))
+                {
+                    return true;
+                }
             }
-
-            // Add theory-based variations for remaining slots
-            palette.Add(AddRandomTheory(palette[0], ColorHarmonyType.Triadic, randomFactor));
-            palette.Add(AddRandomTheory(palette[1], ColorHarmonyType.Triadic, randomFactor));
-
-            return palette;
+            return false;
         }
 
-        private List<Color> GenerateSquarePalette(float h, float s, float l, float randomFactor)
+        private Color GenerateHarmoniousColor(Color referenceColor, ColorHarmonyType harmonyType,
+            float randomFactor, int attemptNumber = 0)
         {
-            List<Color> palette = new List<Color>();
-            if (random == null)
+            ColorToHsl(referenceColor, out float h, out float s, out float l);
+
+            // Add some variation based on attempt number to avoid infinite loops
+            float variation = 1f + (attemptNumber * 0.1f);
+
+            return harmonyType switch
             {
-                random = new Random();
-            }
-
-            // Four colors spaced 90° apart
-            for (int i = 0; i < 4; i++)
-            {
-                float newHue = (h + i * 90) % 360;
-                float newS = Math.Clamp(s + ((float)random!.NextDouble() * 2 - 1) * 0.1f, 0.4f, 0.9f);
-                float newL = Math.Clamp(l + ((float)random.NextDouble() * 2 - 1) * 0.1f, 0.3f, 0.7f);
-
-                palette.Add(HslToColor(newHue, newS, newL));
-            }
-
-            // Add a variation based on the previous colors using theory-based approach
-            int anchorIndex = random.Next(4);
-            Color anchorColor = palette[anchorIndex];
-            Color variedColor = AddRandomTheory(anchorColor, ColorHarmonyType.Square, randomFactor * 1.5f);
-            palette.Add(variedColor);
-
-            return palette;
+                ColorHarmonyType.Analogous => GenerateAnalogousColor(h, s, l, randomFactor * variation),
+                ColorHarmonyType.Complementary => GenerateComplementaryColor(h, s, l, randomFactor * variation),
+                ColorHarmonyType.SplitComplementary => GenerateSplitComplementaryColor(h, s, l, randomFactor * variation),
+                ColorHarmonyType.Triadic => GenerateTriadicColor(h, s, l, randomFactor * variation),
+                ColorHarmonyType.Square => GenerateSquareColor(h, s, l, randomFactor * variation),
+                ColorHarmonyType.Monochromatic => GenerateMonochromaticColor(h, s, l, randomFactor * variation),
+                _ => GenerateRandomColor()
+            };
         }
 
-        // Generate monochromatic harmony (same hue, different S/L)
-        private List<Color> GenerateMonochromaticPalette(float h, float s, float l, float randomFactor)
+        private List<Color> GenerateHarmonyColorsFromBase(Color baseColor, ColorHarmonyType harmonyType, float randomFactor)
         {
-            List<Color> palette = new List<Color>();
+            ColorToHsl(baseColor, out float h, out float s, out float l);
 
-            palette.Add(HslToColor(h, s, l)); // Base
+            return harmonyType switch
+            {
+                ColorHarmonyType.Analogous => GenerateAnalogousColors(h, s, l, randomFactor),
+                ColorHarmonyType.Complementary => GenerateComplementaryColors(h, s, l, randomFactor),
+                ColorHarmonyType.SplitComplementary => GenerateSplitComplementaryColors(h, s, l, randomFactor),
+                ColorHarmonyType.Triadic => GenerateTriadicColors(h, s, l, randomFactor),
+                ColorHarmonyType.Square => GenerateSquareColors(h, s, l, randomFactor),
+                ColorHarmonyType.Monochromatic => GenerateMonochromaticColors(h, s, l, randomFactor),
+                _ => new List<Color>()
+            };
+        }
 
-            // Deep shade (darker and more saturated)
-            palette.Add(HslToColor(h, Math.Clamp(s + 0.2f, 0.1f, 0.9f), Math.Clamp(l - 0.25f, 0.2f, 0.8f)));
+        // Individual harmony color generators
+        private Color GenerateAnalogousColor(float h, float s, float l, float randomFactor)
+        {
+            float hueShift = (-30f + _random.NextSingle() * 60f) * randomFactor;
+            float newH = (h + hueShift + 360f) % 360f;
+            float newS = Math.Clamp(s + (-0.1f + _random.NextSingle() * 0.2f) * randomFactor, 0.2f, 0.9f);
+            float newL = Math.Clamp(l + (-0.1f + _random.NextSingle() * 0.2f) * randomFactor, 0.2f, 0.8f);
+            return HslToColor(newH, newS, newL);
+        }
 
-            // Tint (lighter and less saturated)
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.1f, 0.9f), Math.Clamp(l + 0.25f, 0.2f, 0.8f)));
+        private Color GenerateComplementaryColor(float h, float s, float l, float randomFactor)
+        {
+            float complementaryH = (h + 180f + (-15f + _random.NextSingle() * 30f) * randomFactor) % 360f;
+            float newS = Math.Clamp(s + (-0.2f + _random.NextSingle() * 0.4f) * randomFactor, 0.3f, 0.9f);
+            float newL = Math.Clamp(l + (-0.2f + _random.NextSingle() * 0.4f) * randomFactor, 0.2f, 0.8f);
+            return HslToColor(complementaryH, newS, newL);
+        }
 
-            // Mid-range shade (slightly darker)
-            palette.Add(HslToColor(h, Math.Clamp(s + 0.1f, 0.1f, 0.9f), Math.Clamp(l - 0.1f, 0.2f, 0.8f)));
+        private Color GenerateSplitComplementaryColor(float h, float s, float l, float randomFactor)
+        {
+            float[] angles = { 150f, 210f };
+            float angle = angles[_random.Next(angles.Length)];
+            float newH = (h + angle + (-10f + _random.NextSingle() * 20f) * randomFactor) % 360f;
+            float newS = Math.Clamp(s + (-0.15f + _random.NextSingle() * 0.3f) * randomFactor, 0.3f, 0.9f);
+            float newL = Math.Clamp(l + (-0.15f + _random.NextSingle() * 0.3f) * randomFactor, 0.2f, 0.8f);
+            return HslToColor(newH, newS, newL);
+        }
 
-            // Mid-range tint (slightly lighter)
-            palette.Add(HslToColor(h, Math.Clamp(s - 0.1f, 0.1f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
+        private Color GenerateTriadicColor(float h, float s, float l, float randomFactor)
+        {
+            float[] angles = { 120f, 240f };
+            float angle = angles[_random.Next(angles.Length)];
+            float newH = (h + angle + (-10f + _random.NextSingle() * 20f) * randomFactor) % 360f;
+            float newS = Math.Clamp(s + (-0.15f + _random.NextSingle() * 0.3f) * randomFactor, 0.3f, 0.9f);
+            float newL = Math.Clamp(l + (-0.15f + _random.NextSingle() * 0.3f) * randomFactor, 0.2f, 0.8f);
+            return HslToColor(newH, newS, newL);
+        }
 
-            return palette;
+        private Color GenerateSquareColor(float h, float s, float l, float randomFactor)
+        {
+            float[] angles = { 90f, 180f, 270f };
+            float angle = angles[_random.Next(angles.Length)];
+            float newH = (h + angle + (-10f + _random.NextSingle() * 20f) * randomFactor) % 360f;
+            float newS = Math.Clamp(s + (-0.15f + _random.NextSingle() * 0.3f) * randomFactor, 0.3f, 0.9f);
+            float newL = Math.Clamp(l + (-0.15f + _random.NextSingle() * 0.3f) * randomFactor, 0.2f, 0.8f);
+            return HslToColor(newH, newS, newL);
+        }
+
+        private Color GenerateMonochromaticColor(float h, float s, float l, float randomFactor)
+        {
+            // Keep hue the same, vary saturation and lightness significantly
+            float newS = Math.Clamp(s + (-0.3f + _random.NextSingle() * 0.6f) * randomFactor, 0.2f, 0.9f);
+            float newL = Math.Clamp(l + (-0.4f + _random.NextSingle() * 0.8f) * randomFactor, 0.15f, 0.85f);
+            return HslToColor(h, newS, newL);
+        }
+
+        // Generate multiple colors for initial palette creation
+        private List<Color> GenerateAnalogousColors(float h, float s, float l, float randomFactor)
+        {
+            var colors = new List<Color>();
+            float[] offsets = { -30f, -15f, 15f, 30f };
+
+            foreach (float offset in offsets)
+            {
+                float newH = (h + offset) % 360f;
+                if (newH < 0) newH += 360f;
+
+                float newS = Math.Clamp(s + (-0.1f + _random.NextSingle() * 0.2f), 0.3f, 0.9f);
+                float newL = Math.Clamp(l + (-0.15f + _random.NextSingle() * 0.3f), 0.25f, 0.75f);
+
+                colors.Add(HslToColor(newH, newS, newL));
+            }
+
+            return colors;
+        }
+
+        private List<Color> GenerateComplementaryColors(float h, float s, float l, float randomFactor)
+        {
+            var colors = new List<Color>();
+
+            // Main complementary color
+            float compH = (h + 180f) % 360f;
+            colors.Add(HslToColor(compH, s, l));
+
+            // Variations
+            colors.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.2f, 0.9f), Math.Clamp(l + 0.15f, 0.2f, 0.8f)));
+            colors.Add(HslToColor(compH, Math.Clamp(s + 0.1f, 0.2f, 0.9f), Math.Clamp(l - 0.15f, 0.2f, 0.8f)));
+
+            return colors;
+        }
+
+        private List<Color> GenerateSplitComplementaryColors(float h, float s, float l, float randomFactor)
+        {
+            var colors = new List<Color>();
+
+            float comp1 = (h + 150f) % 360f;
+            float comp2 = (h + 210f) % 360f;
+
+            colors.Add(HslToColor(comp1, s, l));
+            colors.Add(HslToColor(comp2, s, l));
+            colors.Add(HslToColor(h, Math.Clamp(s - 0.15f, 0.2f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
+
+            return colors;
+        }
+
+        private List<Color> GenerateTriadicColors(float h, float s, float l, float randomFactor)
+        {
+            var colors = new List<Color>();
+
+            float h1 = (h + 120f) % 360f;
+            float h2 = (h + 240f) % 360f;
+
+            colors.Add(HslToColor(h1, s, l));
+            colors.Add(HslToColor(h2, s, l));
+            colors.Add(HslToColor(h, Math.Clamp(s - 0.1f, 0.2f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
+
+            return colors;
+        }
+
+        private List<Color> GenerateSquareColors(float h, float s, float l, float randomFactor)
+        {
+            var colors = new List<Color>();
+
+            float[] angles = { 90f, 180f, 270f };
+            foreach (float angle in angles)
+            {
+                float newH = (h + angle) % 360f;
+                colors.Add(HslToColor(newH, s, l));
+            }
+
+            return colors;
+        }
+
+        private List<Color> GenerateMonochromaticColors(float h, float s, float l, float randomFactor)
+        {
+            var colors = new List<Color>();
+
+            // Dark shade
+            colors.Add(HslToColor(h, Math.Clamp(s + 0.2f, 0.3f, 0.9f), Math.Clamp(l - 0.25f, 0.15f, 0.8f)));
+
+            // Light tint  
+            colors.Add(HslToColor(h, Math.Clamp(s - 0.2f, 0.2f, 0.9f), Math.Clamp(l + 0.25f, 0.2f, 0.85f)));
+
+            // Medium variations
+            colors.Add(HslToColor(h, Math.Clamp(s + 0.1f, 0.2f, 0.9f), Math.Clamp(l - 0.1f, 0.2f, 0.8f)));
+            colors.Add(HslToColor(h, Math.Clamp(s - 0.1f, 0.2f, 0.9f), Math.Clamp(l + 0.1f, 0.2f, 0.8f)));
+
+            return colors;
+        }
+
+        private Color GenerateComplementaryColor(List<Color> existingPalette, ColorHarmonyType harmonyType, float randomFactor)
+        {
+            // Generate a color that's different from existing palette
+            var referenceColor = existingPalette[_random.Next(existingPalette.Count)];
+            return GenerateHarmoniousColor(referenceColor, harmonyType, randomFactor + 0.2f);
         }
     }
 }

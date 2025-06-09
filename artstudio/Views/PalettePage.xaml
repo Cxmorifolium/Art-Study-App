@@ -10,6 +10,7 @@
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:HexToColorConverter x:Key="HexToColorConverter" />
+            <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -240,10 +241,29 @@
                                                     <!-- Single tap to load -->
                                                     <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:PaletteViewModel}}, Path=LoadSwatchColorCommand}"
                                                                          CommandParameter="{Binding HexColor}" />
-                                                    <!-- Double tap for context menu -->
-                                                    <TapGestureRecognizer NumberOfTapsRequired="2" 
-                                                                         Tapped="OnSwatchDoubleTapped" />
                                                 </Border.GestureRecognizers>
+
+                                                <!-- Small X button overlay for removal with semi-transparent background -->
+                                                <Border BackgroundColor="#80000000"
+                                                       WidthRequest="18"
+                                                       HeightRequest="18"
+                                                       HorizontalOptions="End"
+                                                       VerticalOptions="Start"
+                                                       Margin="2">
+                                                    <Border.StrokeShape>
+                                                        <RoundRectangle CornerRadius="9" />
+                                                    </Border.StrokeShape>
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Tapped="OnSwatchRemoveClicked" />
+                                                    </Border.GestureRecognizers>
+                                                    <Label Text="✕"
+                                                          TextColor="White"
+                                                          FontSize="10"
+                                                          HorizontalOptions="Center"
+                                                          VerticalOptions="Center"
+                                                          Padding="0"
+                                                          InputTransparent="True" />
+                                                </Border>
                                             </Border>
 
                                             <!-- Hex Code Label -->
@@ -259,7 +279,7 @@
                             </CollectionView>
                         </StackLayout>
 
-                        <!-- Palettes Content -->
+                        <!-- Palettes Content with Grouped Collections -->
                         <StackLayout IsVisible="{Binding IsPalettesFavTabVisible}">
 
                             <!-- Empty State -->
@@ -285,108 +305,143 @@
                                       TextColor="#aaaaaa" />
                             </StackLayout>
 
-                            <!-- Favorite Palettes List -->
-                            <CollectionView ItemsSource="{Binding FavoritePalettes}"
-                                           SelectionMode="None">
-                                <CollectionView.ItemTemplate>
-                                    <DataTemplate x:DataType="local:FavoritePaletteItem">
-                                        <Border BackgroundColor="#3a3a5a"
-                                               Stroke="#5a5a7a"
-                                               StrokeThickness="1"
-                                               Margin="0,4"
-                                               Padding="12">
-                                            <Border.StrokeShape>
-                                                <RoundRectangle CornerRadius="8" />
-                                            </Border.StrokeShape>
+                            <!-- Grouped Collections - BACK TO WORKING VERSION -->
+                            <StackLayout BindableLayout.ItemsSource="{Binding GroupedFavoritePalettes}"
+                                        IsVisible="{Binding HasNoFavoritePalettes, Converter={StaticResource InverseBoolConverter}}">
+                                <BindableLayout.ItemTemplate>
+                                    <DataTemplate x:DataType="local:PaletteCollectionGroup">
+                                        <!-- Collection Group -->
+                                        <StackLayout Margin="0,0,0,16">
+                                            <!-- Collection Header -->
+                                            <Border BackgroundColor="#4a4a6a" 
+                                                   Padding="12,8"
+                                                   Margin="0,0,0,8">
+                                                <Border.StrokeShape>
+                                                    <RoundRectangle CornerRadius="6" />
+                                                </Border.StrokeShape>
+                                                <Grid ColumnDefinitions="*,Auto">
+                                                    <Label Grid.Column="0"
+                                                           Text="{Binding DisplayName}"
+                                                           FontAttributes="Bold"
+                                                           FontSize="15"
+                                                           TextColor="#ffffff"
+                                                           VerticalOptions="Center" />
+                                                    <Label Grid.Column="1"
+                                                           Text="{Binding CountText}"
+                                                           FontSize="11"
+                                                           TextColor="#cccccc"
+                                                           VerticalOptions="Center" />
+                                                </Grid>
+                                            </Border>
 
-                                            <Grid>
-                                                <Grid.RowDefinitions>
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                    <RowDefinition Height="Auto" />
-                                                </Grid.RowDefinitions>
-                                                <Grid.ColumnDefinitions>
-                                                    <ColumnDefinition Width="*" />
-                                                    <ColumnDefinition Width="Auto" />
-                                                </Grid.ColumnDefinitions>
+                                            <!-- Palettes in this Collection using WORKING StackLayout approach -->
+                                            <StackLayout BindableLayout.ItemsSource="{Binding Palettes}">
+                                                <BindableLayout.ItemTemplate>
+                                                    <DataTemplate x:DataType="local:FavoritePaletteItem">
+                                                        <Border BackgroundColor="#3a3a5a"
+                                                               Stroke="#5a5a7a"
+                                                               StrokeThickness="1"
+                                                               Margin="0,2"
+                                                               Padding="10">
+                                                            <Border.StrokeShape>
+                                                                <RoundRectangle CornerRadius="8" />
+                                                            </Border.StrokeShape>
 
-                                                <!-- Title -->
-                                                <Label Grid.Row="0" 
-                                                      Grid.Column="0"
-                                                      Text="{Binding Title}"
-                                                      FontSize="14"
-                                                      FontAttributes="Bold"
-                                                      Margin="0,0,0,8"
-                                                      TextColor="#e6e6e6" />
+                                                            <Grid>
+                                                                <Grid.RowDefinitions>
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                    <RowDefinition Height="Auto" />
+                                                                </Grid.RowDefinitions>
+                                                                <Grid.ColumnDefinitions>
+                                                                    <ColumnDefinition Width="*" />
+                                                                    <ColumnDefinition Width="Auto" />
+                                                                </Grid.ColumnDefinitions>
 
-                                                <!-- Options Button -->
-                                                <Button Grid.Row="0"
-                                                       Grid.Column="1"
-                                                       Text="⋮"
-                                                       Clicked="OnPaletteOptionsClicked"
-                                                       BackgroundColor="Transparent"
-                                                       TextColor="#e6e6e6"
-                                                       FontSize="16"
-                                                       Padding="8,4"
-                                                       WidthRequest="40"
-                                                       HeightRequest="30" />
+                                                                <!-- Title -->
+                                                                <Label Grid.Row="0" 
+                                                                      Grid.Column="0"
+                                                                      Text="{Binding DisplayTitle}"
+                                                                      FontSize="13"
+                                                                      FontAttributes="Bold"
+                                                                      Margin="0,0,0,6"
+                                                                      TextColor="#e6e6e6" />
 
-                                                <!-- Color Strip (Clickable) -->
-                                                <Border Grid.Row="1"
-                                                       Grid.ColumnSpan="2"
-                                                       StrokeThickness="1"
-                                                       Stroke="#6a6a8a"
-                                                       HeightRequest="40">
-                                                    <Border.StrokeShape>
-                                                        <RoundRectangle CornerRadius="6" />
-                                                    </Border.StrokeShape>
+                                                                <!-- Options Button -->
+                                                                <Button Grid.Row="0"
+                                                                       Grid.Column="1"
+                                                                       Text="⋮"
+                                                                       Clicked="OnPaletteOptionsClicked"
+                                                                       BackgroundColor="Transparent"
+                                                                       TextColor="#e6e6e6"
+                                                                       FontSize="14"
+                                                                       Padding="6,2"
+                                                                       WidthRequest="32"
+                                                                       HeightRequest="24" />
 
-                                                    <StackLayout Orientation="Horizontal" Spacing="0">
-                                                        <CollectionView ItemsSource="{Binding Colors}"
-                                                                       VerticalOptions="Fill"
-                                                                       HorizontalOptions="Fill">
-                                                            <CollectionView.ItemsLayout>
-                                                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="0" />
-                                                            </CollectionView.ItemsLayout>
-                                                            <CollectionView.ItemTemplate>
-                                                                <DataTemplate x:DataType="x:String">
-                                                                    <Border BackgroundColor="{Binding ., Converter={StaticResource HexToColorConverter}}"
-                                                                           WidthRequest="50"
-                                                                           HeightRequest="40"
-                                                                           StrokeThickness="0">
-                                                                        <Border.StrokeShape>
-                                                                            <Rectangle />
-                                                                        </Border.StrokeShape>
-                                                                    </Border>
-                                                                </DataTemplate>
-                                                            </CollectionView.ItemTemplate>
-                                                        </CollectionView>
-                                                    </StackLayout>
+                                                                <!-- Color Strip (Clickable) - BACK TO WORKING VERSION -->
+                                                                <Border Grid.Row="1"
+                                                                       Grid.ColumnSpan="2"
+                                                                       StrokeThickness="1"
+                                                                       Stroke="#6a6a8a"
+                                                                       HeightRequest="35"
+                                                                       Margin="0,0,0,4">
+                                                                    <Border.StrokeShape>
+                                                                        <RoundRectangle CornerRadius="5" />
+                                                                    </Border.StrokeShape>
 
-                                                    <!-- Tap gesture for loading palette -->
-                                                    <Border.GestureRecognizers>
-                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:PaletteViewModel}}, Path=LoadFavoritePaletteCommand}"
-                                                                             CommandParameter="{Binding .}" />
-                                                        <!-- Double tap for context menu -->
-                                                        <TapGestureRecognizer NumberOfTapsRequired="2" 
-                                                                             Tapped="OnPaletteDoubleTapped" />
-                                                    </Border.GestureRecognizers>
-                                                </Border>
+                                                                    <!-- WORKING VERSION: StackLayout with BindableLayout -->
+                                                                    <StackLayout Orientation="Horizontal" 
+                                                                                Spacing="0"
+                                                                                BindableLayout.ItemsSource="{Binding Colors}">
+                                                                        <BindableLayout.ItemTemplate>
+                                                                            <DataTemplate x:DataType="x:String">
+                                                                                <Border BackgroundColor="{Binding ., Converter={StaticResource HexToColorConverter}}"
+                                                                                       WidthRequest="45"
+                                                                                       HeightRequest="35"
+                                                                                       StrokeThickness="0">
+                                                                                    <Border.StrokeShape>
+                                                                                        <Rectangle />
+                                                                                    </Border.StrokeShape>
+                                                                                </Border>
+                                                                            </DataTemplate>
+                                                                        </BindableLayout.ItemTemplate>
+                                                                    </StackLayout>
 
-                                                <!-- Load hint text -->
-                                                <Label Grid.Row="2"
-                                                      Grid.ColumnSpan="2"
-                                                      Text="Tap to load palette"
-                                                      FontSize="10"
-                                                      Opacity="0.6"
-                                                      Margin="0,4,0,0"
-                                                      HorizontalOptions="Center"
-                                                      TextColor="#aaaaaa" />
-                                            </Grid>
-                                        </Border>
+                                                                    <!-- Tap gesture for loading palette -->
+                                                                    <Border.GestureRecognizers>
+                                                                        <TapGestureRecognizer Tapped="OnPaletteLoadClicked" />
+                                                                    </Border.GestureRecognizers>
+                                                                </Border>
+
+                                                                <!-- Load hint text -->
+                                                                <Label Grid.Row="2"
+                                                                      Grid.ColumnSpan="2"
+                                                                      Text="Tap palette to load • ⋮ for options"
+                                                                      FontSize="9"
+                                                                      Opacity="0.6"
+                                                                      HorizontalOptions="Center"
+                                                                      TextColor="#aaaaaa"
+                                                                      Margin="0,4,0,0" />
+
+                                                                <!-- Date -->
+                                                                <Label Grid.Row="3"
+                                                                      Grid.ColumnSpan="2"
+                                                                      Text="{Binding CreatedAt, StringFormat='{0:MMM dd, yyyy HH:mm}'}"
+                                                                      FontSize="9"
+                                                                      TextColor="#999999"
+                                                                      Margin="0,4,0,0"
+                                                                      HorizontalOptions="Start" />
+                                                            </Grid>
+                                                        </Border>
+                                                    </DataTemplate>
+                                                </BindableLayout.ItemTemplate>
+                                            </StackLayout>
+                                        </StackLayout>
                                     </DataTemplate>
-                                </CollectionView.ItemTemplate>
-                            </CollectionView>
+                                </BindableLayout.ItemTemplate>
+                            </StackLayout>
                         </StackLayout>
                     </StackLayout>
                 </ScrollView>

@@ -1,6 +1,8 @@
 ﻿using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using artstudio.Models;
+using System.Windows.Input;
+using System.Diagnostics;
 
 namespace artstudio.Models
 {
@@ -39,8 +41,8 @@ namespace artstudio.Models
         }
 
         public string DeleteOrUndoIcon => IsDeleted ? "undo.png" : "delete.png";
-
         public string ImageSource => UnsplashImage.urls?.Small ?? "placeholder_image.png";
+
         public string Description
         {
             get
@@ -50,11 +52,57 @@ namespace artstudio.Models
             }
         }
 
+        // Add properties for attribution and URL handling
+        public string AttributionText => $"By {UnsplashImage.user?.Name ?? "Unknown"}";
+        public string UserProfileUrl => UnsplashImage.user?.PortfolioUrl ?? string.Empty;
+        public bool HasUserUrl => !string.IsNullOrEmpty(UserProfileUrl);
 
+        // Add properties for image URL handling
+        public string ImagePageUrl => !string.IsNullOrEmpty(UnsplashImage.Id)
+            ? $"https://unsplash.com/photos/{UnsplashImage.Id}"
+            : string.Empty;
+        public bool HasImageUrl => !string.IsNullOrEmpty(ImagePageUrl);
+
+        // Commands
+        public ICommand OpenUserProfileCommand { get; }
+        public ICommand OpenImagePageCommand { get; }
 
         public ImageItem(UnsplashImage unsplashImage)
         {
             UnsplashImage = unsplashImage;
+            OpenUserProfileCommand = new Command(async () => await OpenUserProfileAsync());
+            OpenImagePageCommand = new Command(async () => await OpenImagePageAsync());
+        }
+
+        private async Task OpenUserProfileAsync()
+        {
+            if (HasUserUrl)
+            {
+                try
+                {
+                    await Launcher.OpenAsync(new Uri(UserProfileUrl));
+                }
+                catch (Exception)
+                {
+                    Debug.WriteLine($"Failed to open URL: {UserProfileUrl}");
+                }
+            }
+        }
+
+        private async Task OpenImagePageAsync()
+        {
+            if (HasImageUrl)
+            {
+                try
+                {
+                    // Replace WebAuthenticator.OpenAsync with Launcher.OpenAsync
+                    await Launcher.OpenAsync(new Uri(ImagePageUrl));
+                }
+                catch (Exception)
+                {
+                    Debug.WriteLine($"Failed to open image page: {ImagePageUrl}");
+                }
+            }
         }
 
         public event PropertyChangedEventHandler? PropertyChanged;
@@ -64,17 +112,16 @@ namespace artstudio.Models
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
         }
     }
+
     public class UnsplashImage
     {
-        // just in case properties for future
         public string? Id { get; set; }
         public string? Description { get; set; }
         public Urls? urls { get; set; }
-        public User? user { get ; set; }
+        public User? user { get; set; }
 
         public class Urls
-        {   
-            // just in case properties for future
+        {
             public string? Raw { get; set; }
             public string? Full { get; set; }
             public string? Regular { get; set; }
@@ -84,9 +131,9 @@ namespace artstudio.Models
 
         public class User
         {
-            // just in case properties for future
             public string? Name { get; set; }
-            public string? Portfolio_Url { get; set; }
+            // Changed from Portfolio_Url to follow C# naming conventions
+            public string? PortfolioUrl { get; set; }
         }
     }
 }

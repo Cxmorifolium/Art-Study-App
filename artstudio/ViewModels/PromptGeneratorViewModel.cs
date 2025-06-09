@@ -145,7 +145,6 @@ namespace artstudio.ViewModels
         public ICommand RefreshFavoritesCommand { get; }
         public ICommand RemoveFavoriteCommand { get; }
         public ICommand LoadCollectionCommand { get; }
-        public ICommand AddToFavoritesCommand { get; }
 
         // Favorites flyout commands
         public ICommand ToggleFavoritesCommand { get; }

@@ -5,11 +5,11 @@ using System.Runtime.CompilerServices;
 namespace artstudio.Data.Models
 {
     [Table("WordCollection")]
-    public class WordCollection : INotifyPropertyChanged
+    public partial class WordCollection : INotifyPropertyChanged
     {
         private int _id;
         private string? _title;
-        private List<string> _wordsList = new();
+        private List<string> _wordsList = [];
         private DateTime _createdAt;
         private string? _promptType;
         private bool _isFavorite;
@@ -31,7 +31,7 @@ namespace artstudio.Data.Models
         public List<string> WordsList
         {
             get => _wordsList;
-            set => SetProperty(ref _wordsList, value ?? new List<string>());
+            set => SetProperty(ref _wordsList, value ?? []);
         }
 
         public DateTime CreatedAt
@@ -61,11 +61,13 @@ namespace artstudio.Data.Models
         {
             get
             {
-                if (WordsList == null || !WordsList.Any())
+                if (WordsList == null || WordsList.Count == 0)
                     return "No words generated";
 
                 var joinedWords = string.Join(", ", WordsList);
-                return joinedWords.Length > 100 ? joinedWords.Substring(0, 97) + "..." : joinedWords;
+                return joinedWords.Length > 100
+                    ? string.Concat(joinedWords.AsSpan(0, 97), "...")
+                    : joinedWords;
             }
         }
 
