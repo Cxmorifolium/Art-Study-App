@@ -70,7 +70,12 @@
 	  <MauiXaml Remove="Views\FavoritePalettesPage.xaml" />
 	  <MauiXaml Remove="Views\FavoritePromptsPage.xaml" />
 	</ItemGroup>
-	
+
+	<PropertyGroup>
+		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
+	</PropertyGroup>
+
+
 	<!-- .JSON data-->
 	<ItemGroup>
 		<MauiAsset Include="Resources\prompt_data\nouns\cats.json">
@@ -136,6 +141,10 @@
 		<MauiAsset Include="Resources\prompt_data\themes\subjects.json">
 		  <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
 		</MauiAsset>
+	</ItemGroup>
+	<ItemGroup>
+	  <None Include="artstudio.sln" />
+	  <None Include="artstudy.csproj.user" />
 	</ItemGroup>
 
 	<ItemGroup>

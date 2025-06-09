@@ -17,7 +17,7 @@ namespace artstudio.Converters
             try
             {
                 // Ensure hex string starts with #
-                if (!hexString.StartsWith("#"))
+                if (!hexString.StartsWith('#'))
                 {
                     hexString = "#" + hexString;
                 }

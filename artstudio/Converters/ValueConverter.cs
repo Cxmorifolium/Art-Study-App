@@ -8,7 +8,7 @@ namespace artstudio.Converters
         {
             if (value is bool boolValue)
             {
-                return boolValue ? true : false;
+                return boolValue;
             }
             return false;
         }
@@ -80,7 +80,7 @@ namespace artstudio.Converters
             {
                 if (int.TryParse(paramStr, out int threshold))
                 {
-                    return paramStr == "0" ? count == 0 : count > 0;
+                    return count > threshold; // Use 'threshold' directly without unnecessary assignment
                 }
             }
             return false;
@@ -91,6 +91,7 @@ namespace artstudio.Converters
             throw new NotImplementedException();
         }
     }
+
 
     public class InverseBoolConverter : IValueConverter
     {

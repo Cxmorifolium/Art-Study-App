@@ -4,7 +4,7 @@ using System.Diagnostics;
 
 namespace artstudio.Data
 {
-    public class DatabaseService : IDisposable
+    public partial class DatabaseService : IDisposable
     {
         private SQLiteAsyncConnection? _database;
         private readonly string _dbPath;
@@ -151,13 +151,13 @@ namespace artstudio.Data
                 if (_database == null) return 0;
 
                 // Get expired collections (not favorited and past expiration date)
-                var expiredCollections = await _database.QueryAsync<WordCollection>(@"
-                    SELECT Id FROM WordCollection 
-                    WHERE ExpiresAt IS NOT NULL 
-                    AND ExpiresAt < datetime('now') 
-                    AND COALESCE(IsFavorite, 0) = 0");
+                var expiredCollections = await _database.QueryAsync<WordCollection>
+                        (@" SELECT Id FROM WordCollection 
+                            WHERE ExpiresAt IS NOT NULL 
+                            AND ExpiresAt < datetime('now') 
+                            AND COALESCE(IsFavorite, 0) = 0");
 
-                if (expiredCollections.Any())
+                if (expiredCollections.Count > 0) // Replace Any() with Count > 0
                 {
                     DebugLog($"Manually cleaning up {expiredCollections.Count} expired collections");
 
@@ -183,6 +183,7 @@ namespace artstudio.Data
                 return 0;
             }
         }
+
 
         public async Task<List<WordCollection>> GetHistoryAsync()
         {
@@ -210,7 +211,7 @@ namespace artstudio.Data
             {
                 DebugLog($"Error getting history: {ex.Message}");
                 DebugLog($"Stack trace: {ex.StackTrace}");
-                return new List<WordCollection>();
+                return [];
             }
         }
 
@@ -238,7 +239,7 @@ namespace artstudio.Data
             catch (Exception ex)
             {
                 DebugLog($"Error getting favorites: {ex.Message}");
-                return new List<WordCollection>();
+                return [];
             }
         }
 
@@ -320,7 +321,7 @@ namespace artstudio.Data
             catch (Exception ex)
             {
                 DebugLog($"Error getting favorite palettes: {ex.Message}");
-                return new List<PaletteCollection>();
+                return [];
             }
         }
 
@@ -375,7 +376,7 @@ namespace artstudio.Data
             catch (Exception ex)
             {
                 DebugLog($"Error getting favorite swatches: {ex.Message}");
-                return new List<FavoriteSwatch>();
+                return [];
             }
         }
 
@@ -395,7 +396,7 @@ namespace artstudio.Data
             catch (Exception ex)
             {
                 DebugLog($"Error getting swatch collection names: {ex.Message}");
-                return new List<string>();
+                return [];
             }
         }
 
@@ -454,8 +455,10 @@ namespace artstudio.Data
         {
             if (_database != null)
             {
-                _ = _database.CloseAsync();  
+                _ = _database.CloseAsync();
             }
+
+            GC.SuppressFinalize(this);
         }
 
         #endregion
