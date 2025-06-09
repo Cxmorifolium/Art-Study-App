@@ -5,12 +5,19 @@ using System.Text.Json;
 
 namespace artstudio.Services
 {
-    public class Unsplash : IDisposable
+    public partial class Unsplash : IDisposable
     {
         private const string BaseUrl = "https://api.unsplash.com/";
         private readonly HttpClient _httpClient;
         private readonly string _accessKey;
         private bool _disposed = false;
+
+        // Cache JsonSerializerOptions to avoid recreating on every operation
+        private static readonly JsonSerializerOptions JsonOptions = new()
+        {
+            PropertyNameCaseInsensitive = true,
+            PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
+        };
 
         public Unsplash()
         {
@@ -80,21 +87,15 @@ namespace artstudio.Services
             }
         }
 
-        private List<UnsplashImage> DeserializeImages(string content)
+        private static List<UnsplashImage> DeserializeImages(string content)
         {
             try
             {
-                var options = new JsonSerializerOptions
-                {
-                    PropertyNameCaseInsensitive = true,
-                    PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
-                };
+                var apiImages = JsonSerializer.Deserialize<List<UnsplashApiResponse>>(content, JsonOptions);
 
-                var apiImages = JsonSerializer.Deserialize<List<UnsplashApiResponse>>(content, options);
-
-                if (apiImages == null || !apiImages.Any())
+                if (apiImages == null || apiImages.Count == 0)
                 {
-                    return new List<UnsplashImage>();
+                    return [];
                 }
 
                 var images = new List<UnsplashImage>();
@@ -125,10 +126,7 @@ namespace artstudio.Services
 
         private static UnsplashImage ConvertToUnsplashImage(UnsplashApiResponse apiResponse)
         {
-            if (apiResponse == null)
-            {
-                throw new ArgumentNullException(nameof(apiResponse));
-            }
+            ArgumentNullException.ThrowIfNull(apiResponse, nameof(apiResponse));
 
             return new UnsplashImage
             {

@@ -14,13 +14,14 @@ namespace artstudio.ViewModels
         public SwatchCollectionGroup(string collectionName, IEnumerable<FavoriteSwatch> swatches)
         {
             CollectionName = collectionName;
-            Swatches = new ObservableCollection<FavoriteSwatch>(swatches);
+            Swatches = new ObservableCollection<FavoriteSwatch>(swatches); 
+            //MSG IDE0306 says it can be simplified, but we keep it explicit for collection visibility
         }
     }
 
     // Fix: PaletteCollectionGroup should NOT inherit from ObservableCollection<FavoritePaletteItem>
     // because it creates confusion in the DataTemplate binding
-    public class PaletteCollectionGroup : INotifyPropertyChanged
+    public partial class PaletteCollectionGroup : INotifyPropertyChanged
     {
         public string CollectionName { get; }
 

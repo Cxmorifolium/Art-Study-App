@@ -11,7 +11,7 @@ using System.IO;
 
 namespace artstudio.ViewModels
 {
-    public class PromptGeneratorViewModel : ObservableObject
+    public partial class PromptGeneratorViewModel : ObservableObject
     {
         private PromptGenerator? _generator;
         private readonly WordPromptService _wordPromptService;
@@ -24,7 +24,7 @@ namespace artstudio.ViewModels
         private int _themeCount = 1;
         private bool _isInitialized = false;
         private string _statusMessage = "Initializing...";
-        private Dictionary<string, List<string>> _lastGeneratedComponents = new();
+        private Dictionary<string, List<string>> _lastGeneratedComponents = [];
 
         // Favorites flyout properties
         private bool _isFavoritesVisible = false;
@@ -39,12 +39,12 @@ namespace artstudio.ViewModels
             _toastService = toastService;
 
             // Initialize collections  
-            Nouns = new ObservableCollection<string>();
-            Settings = new ObservableCollection<string>();
-            Styles = new ObservableCollection<string>();
-            Themes = new ObservableCollection<string>();
-            FavoriteCollections = new ObservableCollection<WordCollection>();
-            FavoriteGroups = new ObservableCollection<PromptCollectionGroup>();
+            Nouns = [];
+            Settings = [];
+            Styles = [];
+            Themes = [];
+            FavoriteCollections = [];
+            FavoriteGroups = [];
 
             // Initialize commands  
             GenerateCommand = new RelayCommand(GeneratePrompt);
@@ -66,7 +66,6 @@ namespace artstudio.ViewModels
 
             DebugLog("=== PromptGeneratorViewModel Constructor Completed ===");
         }
-
 
         protected virtual void Dispose(bool disposing)
         {
@@ -127,7 +126,7 @@ namespace artstudio.ViewModels
             set => SetProperty(ref _isLoadingFavorites, value);
         }
 
-        public bool HasNoFavorites => !FavoriteGroups.Any() && !IsLoadingFavorites;
+        public bool HasNoFavorites => FavoriteGroups.Count == 0 && !IsLoadingFavorites;
 
         // Collections
         public ObservableCollection<string> Nouns { get; }
@@ -194,7 +193,7 @@ namespace artstudio.ViewModels
                 // Group by collection name (or "Default" if no specific collection)
                 var grouped = favorites
                     .GroupBy(f => GetCollectionGroupName(f.Title))
-                    .Select(g => new PromptCollectionGroup(g.Key, g.ToList()))
+                    .Select(g => new PromptCollectionGroup(g.Key, g))
                     .OrderBy(g => g.CollectionName == "Default" ? "ZZZ" : g.CollectionName) // Put Default at the end
                     .ToList();
 
@@ -259,7 +258,7 @@ namespace artstudio.ViewModels
                     group.Remove(collection); // Remove from the ObservableCollection base
 
                     // Remove empty groups
-                    if (!group.Prompts.Any())
+                    if (group.Prompts.Count == 0)
                     {
                         FavoriteGroups.Remove(group);
                     }
@@ -286,7 +285,7 @@ namespace artstudio.ViewModels
             }
         }
 
-        private string GetCollectionGroupName(string? title)
+        private static string GetCollectionGroupName(string? title)
         {
             if (string.IsNullOrEmpty(title))
                 return "Default";
@@ -350,8 +349,6 @@ namespace artstudio.ViewModels
                     _isInitialized = true;
                     StatusMessage = "Ready (using defaults)";
                 }
-
-
             }
             catch (Exception ex)
             {
@@ -426,12 +423,15 @@ namespace artstudio.ViewModels
                 GeneratedPrompt = prompt;
                 _lastGeneratedComponents = components;
 
-                // Update the component collections
-                UpdateCollection(Nouns, components.ContainsKey("nouns") ? components["nouns"] : new List<string>());
-                UpdateCollection(Settings, components.ContainsKey("settings") ? components["settings"] : new List<string>());
-                UpdateCollection(Styles, components.ContainsKey("styles") ? components["styles"] : new List<string>());
-                UpdateCollection(Themes, components.ContainsKey("themes") ? components["themes"] : new List<string>());
-
+                // Update the component collections using TryGetValue
+                UpdateCollection(Nouns,
+                    components.TryGetValue("nouns", out var nouns) ? nouns : []);
+                UpdateCollection(Settings,
+                    components.TryGetValue("settings", out var settings) ? settings : []);
+                UpdateCollection(Styles,
+                    components.TryGetValue("styles", out var styles) ? styles : []);
+                UpdateCollection(Themes,
+                    components.TryGetValue("themes", out var themes) ? themes : []);
 
                 DebugLog($"Prompt generated successfully: {prompt}");
             }
@@ -441,7 +441,6 @@ namespace artstudio.ViewModels
                 GeneratedPrompt = "Error generating prompt. Please try again.";
             }
         }
-
 
         private async Task TestGeneratorAsync()
         {
@@ -475,7 +474,7 @@ namespace artstudio.ViewModels
             }
         }
 
-        private void UpdateCollection(ObservableCollection<string> collection, List<string> newItems)
+        private static void UpdateCollection(ObservableCollection<string> collection, List<string> newItems)
         {
             collection.Clear();
             foreach (var item in newItems)
@@ -523,13 +522,13 @@ namespace artstudio.ViewModels
         {
             try
             {
-                if (!_lastGeneratedComponents.Any())
+                if (_lastGeneratedComponents.Count == 0)
                 {
                     await _toastService.ShowToastAsync("No prompt to save!");
                     return;
                 }
 
-                var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                var mainPage = Application.Current?.Windows.Count > 0 ? Application.Current.Windows[0].Page : null;
                 if (mainPage != null)
                 {
                     // Give user options for saving favorites
@@ -558,7 +557,6 @@ namespace artstudio.ViewModels
             }
         }
 
-
         private async Task SaveToDefaultFavoritesAsync()
         {
             try
@@ -585,25 +583,30 @@ namespace artstudio.ViewModels
             }
         }
 
-
         private async Task SaveToCollectionAsync()
         {
             try
             {
-                var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                var mainPage = Application.Current?.Windows.Count > 0 ? Application.Current.Windows[0].Page : null;
                 if (mainPage != null)
                 {
                     // Get existing collection names for suggestion
                     var existingCollections = await _wordPromptService.GetFavoritesAsync();
-                    var collectionNames = existingCollections
-                        .Select(c => GetCollectionNameFromTitle(c.Title))
-                        .Where(name => !string.IsNullOrEmpty(name) && name != "Default")
-                        .Distinct()
-                        .OrderBy(name => name)
-                        .ToList();
+                    var collectionNames = new List<string>();
+                    var seenNames = new HashSet<string>();
+
+                    for (int i = 0; i < existingCollections.Count; i++)
+                    {
+                        var name = GetCollectionNameFromTitle(existingCollections[i].Title);
+                        if (!string.IsNullOrEmpty(name) && name != "Default" && seenNames.Add(name))
+                        {
+                            collectionNames.Add(name);
+                        }
+                    }
+                    collectionNames.Sort();
 
                     string promptText = "Enter a collection name:";
-                    if (collectionNames.Any())
+                    if (collectionNames.Count > 0)
                     {
                         promptText += $"\n\nExisting collections: {string.Join(", ", collectionNames)}";
                     }
@@ -623,13 +626,18 @@ namespace artstudio.ViewModels
 
                         // Create title that indicates this belongs to a collection
                         // Format: "CollectionName - Prompt {count}"
-                        var existingInCollection = existingCollections
-                            .Where(c => GetCollectionNameFromTitle(c.Title) == cleanName)
-                            .Count();
+                        int existingInCollection = 0;
+                        for (int i = 0; i < existingCollections.Count; i++)
+                        {
+                            if (GetCollectionNameFromTitle(existingCollections[i].Title) == cleanName)
+                            {
+                                existingInCollection++;
+                            }
+                        }
 
                         var title = $"{cleanName} - {GeneratedPrompt}";
                         if (title.Length > 100) // Limit title length
-                            title = title.Substring(0, 97) + "...";
+                            title = string.Concat(title.AsSpan(0, 97), "...");
 
                         var savedCollection = await _wordPromptService.SaveWordCollectionWithCategoriesAsync(
                             _lastGeneratedComponents,
@@ -651,7 +659,7 @@ namespace artstudio.ViewModels
             }
         }
 
-        private string GetCollectionNameFromTitle(string? title)
+        private static string GetCollectionNameFromTitle(string? title)
         {
             if (string.IsNullOrEmpty(title))
                 return "Default";
@@ -687,19 +695,6 @@ namespace artstudio.ViewModels
             }
         }
 
-        private async Task LoadHistoryAsync()
-        {
-            try
-            {
-                await Shell.Current.GoToAsync("PromptHistoryPage");
-                DebugLog("Navigated to history page");
-            }
-            catch (Exception ex)
-            {
-                DebugLog($"Error navigating to history: {ex.Message}");
-            }
-        }
-
         private async Task RemoveFavoriteAsync(WordCollection? collection)
         {
             try
@@ -727,10 +722,14 @@ namespace artstudio.ViewModels
 
                 var categorizedWords = await _wordPromptService.GetWordsByCategoryAsync(collection);
 
-                UpdateCollection(Nouns, categorizedWords.ContainsKey("nouns") ? categorizedWords["nouns"] : new List<string>());
-                UpdateCollection(Settings, categorizedWords.ContainsKey("settings") ? categorizedWords["settings"] : new List<string>());
-                UpdateCollection(Styles, categorizedWords.ContainsKey("styles") ? categorizedWords["styles"] : new List<string>());
-                UpdateCollection(Themes, categorizedWords.ContainsKey("themes") ? categorizedWords["themes"] : new List<string>());
+                UpdateCollection(Nouns,
+                    categorizedWords.TryGetValue("nouns", out var nouns) ? nouns : []);
+                UpdateCollection(Settings,
+                    categorizedWords.TryGetValue("settings", out var settings) ? settings : []);
+                UpdateCollection(Styles,
+                    categorizedWords.TryGetValue("styles", out var styles) ? styles : []);
+                UpdateCollection(Themes,
+                    categorizedWords.TryGetValue("themes", out var themes) ? themes : []);
 
                 var allWords = new List<string>();
                 allWords.AddRange(categorizedWords.Values.SelectMany(words => words));
@@ -772,15 +771,10 @@ namespace artstudio.ViewModels
     }
 
     // Helper classes for grouping
-    public class PromptCollectionGroup : ObservableCollection<WordCollection>
+    public partial class PromptCollectionGroup(string collectionName, IEnumerable<WordCollection> prompts)
+        : ObservableCollection<WordCollection>(prompts)
     {
-        public string CollectionName { get; }
-        public ObservableCollection<WordCollection> Prompts { get; }
-
-        public PromptCollectionGroup(string collectionName, IEnumerable<WordCollection> prompts) : base(prompts)
-        {
-            CollectionName = collectionName;
-            Prompts = new ObservableCollection<WordCollection>(prompts);
-        }
+        public string CollectionName { get; } = collectionName;
+        public ObservableCollection<WordCollection> Prompts { get; } = [];
     }
 }

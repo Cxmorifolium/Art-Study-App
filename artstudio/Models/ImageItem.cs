@@ -6,7 +6,7 @@ using System.Diagnostics;
 
 namespace artstudio.Models
 {
-    public class ImageItem : INotifyPropertyChanged
+    public partial class ImageItem : INotifyPropertyChanged
     {
         private bool _isLocked;
         private bool _isDeleted;
@@ -48,9 +48,10 @@ namespace artstudio.Models
             get
             {
                 string desc = UnsplashImage.Description ?? "Untitled";
-                return desc.Length > 40 ? desc.Substring(0, 40) + "..." : desc;
+                return desc.Length > 40 ? $"{desc[..40]}..." : desc;
             }
         }
+
 
         // Add properties for attribution and URL handling
         public string AttributionText => $"By {UnsplashImage.user?.Name ?? "Unknown"}";
@@ -70,8 +71,8 @@ namespace artstudio.Models
         public ImageItem(UnsplashImage unsplashImage)
         {
             UnsplashImage = unsplashImage;
-            OpenUserProfileCommand = new Command(async () => await OpenUserProfileAsync());
-            OpenImagePageCommand = new Command(async () => await OpenImagePageAsync());
+            OpenUserProfileCommand = new Command(() => _ = OpenUserProfileAsync());
+            OpenImagePageCommand = new Command(() => _ = OpenImagePageAsync());
         }
 
         private async Task OpenUserProfileAsync()

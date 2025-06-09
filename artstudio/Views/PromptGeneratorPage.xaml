@@ -446,7 +446,7 @@
                                             Margin="0,3,0,3">
                                         <Border.GestureRecognizers>
                                             <TapGestureRecognizer NumberOfTapsRequired="2"
-                                                                Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:PromptGeneratorViewModel}}, Path=LoadFavoriteCommand}"
+                                                                Command="{Binding Source={x:Reference PageRoot}, Path=BindingContext.LoadFavoriteCommand}"
                                                                 CommandParameter="{Binding .}" />
                                         </Border.GestureRecognizers>
 
@@ -466,7 +466,7 @@
                                                     FontSize="16"
                                                     BackgroundColor="Transparent"
                                                     TextColor="#e6e6e6"
-                                                    Clicked="OnFavoriteOptionsClicked"
+                                                    Clicked="OnFavoriteOptionsClickedAsync"
                                                     Padding="8"
                                                     MinimumWidthRequest="32"
                                                     MinimumHeightRequest="32"

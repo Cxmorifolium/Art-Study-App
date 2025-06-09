@@ -6,7 +6,7 @@ using artstudio.Services;
 
 namespace artstudio.Models
 {
-    public class Swatch : INotifyPropertyChanged
+    public partial class Swatch : INotifyPropertyChanged
     {
         private Color _color;
         private bool _isFavoriteColor;
@@ -166,7 +166,7 @@ namespace artstudio.Models
                     // Adding to favorites - show options and save to database
                     if (_paletteService != null && _toastService != null)
                     {
-                        var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                        var mainPage = Application.Current?.Windows.Count > 0 ? Application.Current.Windows[0].Page : null;
                         if (mainPage != null)
                         {
                             string action = await mainPage.DisplayActionSheet(

@@ -75,6 +75,11 @@
 		<AllowUnsafeBlocks>true</AllowUnsafeBlocks>
 	</PropertyGroup>
 
+	<!-- Suppress warning for now until crossplatform dev (Android/iOS)-->
+	<PropertyGroup>
+		<NoWarn>$(NoWarn);CA1416</NoWarn>
+	</PropertyGroup>
+
 
 	<!-- .JSON data-->
 	<ItemGroup>
