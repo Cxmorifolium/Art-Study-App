@@ -193,13 +193,25 @@
                         TextColor="White"
                         Command="{Binding ResetCommand}"
                         Margin="5" />
-                <Button Grid.Column="2" Text="Undo" 
+                
+                <!-- Undo Button - Only visible in Quick Sketch mode -->
+                <Button Grid.Column="2" 
+                        Text="Undo" 
                         BackgroundColor="#2196F3"
                         TextColor="White"
-                        IsEnabled="{Binding CanUndo}" 
                         Command="{Binding UndoCommand}"
+                        IsVisible="{Binding IsQuickMode}"
                         Margin="5" />
-            </Grid>
+
+                <!-- Regenerate Button - Only visible in Session mode -->
+                <Button Grid.Column="2" 
+                        Text="Regenerate" 
+                        BackgroundColor="#2196F3"
+                        TextColor="White"
+                        Command="{Binding RegenerateCommand}"
+                        IsVisible="{Binding IsSessionMode}"
+                        Margin="5" />
+             </Grid>
 
         </Grid>
 

@@ -3,15 +3,14 @@ using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Diagnostics;
 using System.Runtime.CompilerServices;
-using System.Windows.Input;
-using Microsoft.Maui.Controls;
+using CommunityToolkit.Mvvm.Input;
 using artstudio.Models;
 using artstudio.Services;
 
 namespace artstudio.ViewModels
 {
 
-    public class StudyPageViewModel : INotifyPropertyChanged
+    public partial class StudyPageViewModel : INotifyPropertyChanged
     {
         #region Fields
 
@@ -90,20 +89,59 @@ namespace artstudio.ViewModels
         public bool IsQuickMode => _selectedMode == "Quick Sketch";
         public bool IsSessionMode => _selectedMode == "Session";
         public bool ShowPalette => IsSessionMode && CurrentPalette.Count > 0;
-        public bool CanUndo => PreviousContent.Count > 0;
+        public bool CanUndo => IsQuickMode && PreviousContent.Count > 0;
+        public bool CanRegenerate => IsSessionMode;
 
         public string SelectedMode
         {
             get => _selectedMode;
             set
             {
-                _selectedMode = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(IsQuickMode));
-                OnPropertyChanged(nameof(IsSessionMode));
-                OnPropertyChanged(nameof(ShowPalette));
-                OnPropertyChanged(nameof(CurrentModeDisplay));
+                if (_selectedMode != value)
+                {
+                    _selectedMode = value;
+
+                    // Reset states when switching modes
+                    ResetModeStates();
+
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(IsQuickMode));
+                    OnPropertyChanged(nameof(IsSessionMode));
+                    OnPropertyChanged(nameof(ShowPalette));
+                    OnPropertyChanged(nameof(CurrentModeDisplay));
+                    OnPropertyChanged(nameof(CanUndo));
+                    OnPropertyChanged(nameof(CanRegenerate));
+                    UndoCommand.NotifyCanExecuteChanged();
+                    RegenerateCommand.NotifyCanExecuteChanged();
+                }
             }
+        }
+
+        private void ResetModeStates()
+        {
+            Debug.WriteLine($"[StudyPage] Switching modes - clearing all states");
+
+            // Stop any running timer
+            _timer?.Dispose();
+            _isRunning = false;
+            _isPaused = false;
+            _timeLeft = 0;
+            _totalTime = 0;
+
+            // Clear all content
+            CurrentPalette.Clear();
+            CurrentWords.Clear();
+            CurrentImages.Clear();
+
+            // Clear undo history
+            PreviousContent.Clear();
+
+            // Notify UI of changes
+            OnPropertyChanged(nameof(TimeLeftDisplay));
+            OnPropertyChanged(nameof(PlayPauseButtonText));
+            OnPropertyChanged(nameof(PlayPauseButtonColor));
+            OnPropertyChanged(nameof(ShowPalette));
+            OnPropertyChanged(nameof(CanUndo));
         }
 
         public string SelectedQuickTime
@@ -165,15 +203,17 @@ namespace artstudio.ViewModels
 
         #region Commands
 
-        public ICommand PlayPauseCommand { get; private set; } = default!;
-        public ICommand ResetCommand { get; private set; } = default!;
-        public ICommand UndoCommand { get; private set; } = default!;
+        public RelayCommand PlayPauseCommand { get; private set; } = default!;
+        public RelayCommand ResetCommand { get; private set; } = default!;
+        public RelayCommand UndoCommand { get; private set; } = default!;
+        public RelayCommand RegenerateCommand { get; private set; } = default!;
 
         private void InitializeCommands()
         {
-            PlayPauseCommand = new Command(ExecutePlayPause);
-            ResetCommand = new Command(ExecuteReset);
-            UndoCommand = new Command(ExecuteUndo, () => CanUndo);
+            PlayPauseCommand = new RelayCommand(ExecutePlayPause);
+            ResetCommand = new RelayCommand(ExecuteReset);
+            UndoCommand = new RelayCommand(ExecuteUndo, () => CanUndo);
+            RegenerateCommand = new RelayCommand(ExecuteRegenerate, () => CanRegenerate);
         }
 
         #endregion
@@ -204,6 +244,15 @@ namespace artstudio.ViewModels
             OnPropertyChanged(nameof(PlayPauseButtonColor));
         }
 
+        private void ExecuteRegenerate()
+        {
+            if (IsSessionMode)
+            {
+                SaveCurrentContent();
+                GenerateNewContent();
+            }
+        }
+
         private void ExecuteUndo()
         {
             if (PreviousContent.Count > 0)
@@ -230,12 +279,15 @@ namespace artstudio.ViewModels
 
                 PreviousContent.RemoveAt(0);
                 OnPropertyChanged(nameof(CanUndo));
+                OnPropertyChanged(nameof(ShowPalette));
+
+                // RelayCommand automatically handles CanExecuteChanged when CanUndo changes
+                UndoCommand.NotifyCanExecuteChanged();
             }
         }
 
         private async Task StartTimerAsync()
         {
-            SaveCurrentContent();
             GenerateNewContent();
 
             _timeLeft = GetTimerDuration();
@@ -269,6 +321,7 @@ namespace artstudio.ViewModels
                 {
                     MainThread.BeginInvokeOnMainThread(() =>
                     {
+                        SaveCurrentContent();
                         GenerateNewContent();
                         _timeLeft = GetTimerDuration();
                         _totalTime = _timeLeft;
@@ -336,7 +389,7 @@ namespace artstudio.ViewModels
             // Generate completely new palette=
             var generatedColors = _paletteModel.HarmonyPaletteGenerator(
                 randomHarmonyType,
-                randomFactor: 0.6f); 
+                randomFactor: 0.6f);
 
             var distinctColors = generatedColors.Distinct().Take(5);
 
@@ -488,7 +541,8 @@ namespace artstudio.ViewModels
 
         private void SaveCurrentContent()
         {
-            if (CurrentPalette.Count > 0 || CurrentWords.Count > 0 || CurrentImages.Count > 0)
+            // Only save content for Quick Sketch mode (for undo functionality)
+            if (IsQuickMode && (CurrentPalette.Count > 0 || CurrentWords.Count > 0 || CurrentImages.Count > 0))
             {
                 var snapshot = new ContentSnapshot
                 {
@@ -503,6 +557,9 @@ namespace artstudio.ViewModels
                     PreviousContent.RemoveAt(5);
 
                 OnPropertyChanged(nameof(CanUndo));
+
+                // Notify that the UndoCommand's CanExecute state may have changed
+                UndoCommand.NotifyCanExecuteChanged();
             }
         }
 

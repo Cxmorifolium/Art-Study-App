@@ -15,7 +15,7 @@ namespace artstudio.ViewModels
         {
             CollectionName = collectionName;
             Swatches = new ObservableCollection<FavoriteSwatch>(swatches); 
-            //MSG IDE0306 says it can be simplified, but we keep it explicit for collection visibility
+            //NOTE!!!: MSG IDE0306 says it can be simplified, but keep it explicit for collection visibility
         }
     }
 

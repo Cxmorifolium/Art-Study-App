@@ -188,7 +188,8 @@ namespace artstudio.ViewModels
                 IsLoadingFavorites = true;
                 OnPropertyChanged(nameof(HasNoFavorites));
 
-                var favorites = await _wordPromptService.GetFavoritesAsync();
+                // Use the new method that populates words
+                var favorites = await _wordPromptService.GetFavoritesWithWordsAsync();
 
                 // Group by collection name (or "Default" if no specific collection)
                 var grouped = favorites
@@ -203,7 +204,13 @@ namespace artstudio.ViewModels
                     FavoriteGroups.Add(group);
                 }
 
-                DebugLog($"Loaded {favorites.Count} favorite prompts in {grouped.Count} groups");
+                DebugLog($"Loaded {favorites.Count} favorite prompts in {grouped.Count} groups with words populated");
+
+                // Log some details about what was loaded
+                foreach (var favorite in favorites)
+                {
+                    DebugLog($"Favorite '{favorite.Title}': {favorite.WordsList?.Count ?? 0} words");
+                }
             }
             catch (Exception ex)
             {
@@ -746,6 +753,7 @@ namespace artstudio.ViewModels
                 await _toastService.ShowToastAsync("Error loading collection");
             }
         }
+
 
         // Simple debug logging method
         private static void DebugLog(string message)

@@ -96,6 +96,70 @@ namespace artstudio.Services
             }
         }
 
+        public async Task<List<WordCollection>> GetFavoritesWithWordsAsync()
+        {
+            try
+            {
+                DebugLog("=== GetFavoritesWithWordsAsync START ===");
+
+                // Get all favorite collections
+                var favorites = await GetFavoritesAsync();
+                DebugLog($"Found {favorites.Count} favorite collections");
+
+                // For each collection, populate the WordsList property
+                foreach (var collection in favorites)
+                {
+                    try
+                    {
+                        // Get all words for this collection
+                        var words = await GetWordsForCollectionAsync(collection.Id);
+
+                        // Populate the WordsList property
+                        collection.WordsList = words.Select(w => w.Text).ToList();
+
+                        DebugLog($"Loaded {words.Count} words for collection '{collection.Title}' (ID: {collection.Id})");
+                        DebugLog($"  Words: {string.Join(", ", collection.WordsList)}");
+                    }
+                    catch (Exception ex)
+                    {
+                        DebugLog($"Error loading words for collection {collection.Id}: {ex.Message}");
+                        // Continue with empty word list if there's an error
+                        collection.WordsList = new List<string>();
+                    }
+                }
+
+                DebugLog("=== GetFavoritesWithWordsAsync COMPLETE ===");
+                return favorites;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error in GetFavoritesWithWordsAsync: {ex.Message}");
+                return new List<WordCollection>();
+            }
+        }
+
+        // Get words for a specific collection
+        public async Task<List<Word>> GetWordsForCollectionAsync(int collectionId)
+        {
+            try
+            {
+                var db = await _databaseService.GetDatabaseAsync();
+
+                var words = await db.QueryAsync<Word>(
+                    "SELECT * FROM Word WHERE WordCollectionId = ? ORDER BY Category, Id",
+                    collectionId);
+
+                DebugLog($"Retrieved {words.Count} words for collection {collectionId}");
+                return words;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error getting words for collection {collectionId}: {ex.Message}");
+                DebugLog($"This might be because the Word table doesn't exist yet");
+                return new List<Word>();
+            }
+        }
+
         public async Task ToggleFavoriteAsync(int collectionId)
         {
             try
@@ -125,11 +189,10 @@ namespace artstudio.Services
         {
             try
             {
-                var db = await _databaseService.GetDatabaseAsync();
+                var words = await GetWordsForCollectionAsync(collection.Id);
 
-                var words = await db.QueryAsync<Word>(
-                    "SELECT * FROM Word WHERE WordCollectionId = ? ORDER BY Category, Id",
-                    collection.Id);
+                // Also populate the collection's WordsList property for display purposes
+                collection.WordsList = words.Select(w => w.Text).ToList();
 
                 var categorizedWords = new Dictionary<string, List<string>>();
 

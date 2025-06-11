@@ -8,7 +8,7 @@ namespace artstudio.Data
     {
         private SQLiteAsyncConnection? _database;
         private readonly string _dbPath;
-        private const int CurrentDatabaseVersion = 3; // Increment this when schema changes
+        private const int CurrentDatabaseVersion = 4; // Increment this when schema changes
 
         public DatabaseService()
         {
@@ -67,14 +67,14 @@ namespace artstudio.Data
 
             // Word/Prompt related tables
             await _database.CreateTableAsync<WordCollection>();
-            //await _database.CreateTableAsync<Word>();
+            await _database.CreateTableAsync<Word>();
 
             // Palette related tables
             await _database.CreateTableAsync<PaletteCollection>();
             await _database.CreateTableAsync<PaletteColor>();
             await _database.CreateTableAsync<FavoriteSwatch>();
 
-            DebugLog("Created all tables: WordCollection, PaletteCollection, PaletteColor, FavoriteSwatch");
+            DebugLog("Created all tables: WordCollection, Word, PaletteCollection, PaletteColor, FavoriteSwatch");
         }
 
         private async Task MigrateDatabaseAsync(int fromVersion)
@@ -120,6 +120,17 @@ namespace artstudio.Data
                         DebugLog("ExpiresAt column already exists");
                     }
                 }
+
+                // Create Word table if it doesn't exist
+                try
+                {
+                    await _database.CreateTableAsync<Word>();
+                    DebugLog("Created Word table during migration");
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Word table might already exist: {ex.Message}");
+                }
             }
 
             if (fromVersion < 3)
@@ -137,12 +148,38 @@ namespace artstudio.Data
                     DebugLog($"Error creating palette tables: {ex.Message}");
                     // Tables might already exist, continue
                 }
+
+                // Ensure Word table exists for version 3 as well
+                try
+                {
+                    await _database.CreateTableAsync<Word>();
+                    DebugLog("Ensured Word table exists in version 3 migration");
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Word table creation in v3 migration: {ex.Message}");
+                }
             }
 
-            // Add future migrations here as needed
+            if (fromVersion < 4)
+            {
+                // Migration to version 4: Ensure Word table exists
+                try
+                {
+                    await _database.CreateTableAsync<Word>();
+                    DebugLog("Created Word table in version 4 migration");
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Word table creation in v4 migration: {ex.Message}");
+                    // Table might already exist, continue
+                }
+            }
+
+            // Add future migrations here
         }
 
-        #region Word Collections (Existing Functionality)
+        #region Word Collections
 
         public async Task<int> CleanupExpiredItemsAsync()
         {
