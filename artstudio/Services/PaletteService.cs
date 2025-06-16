@@ -152,26 +152,41 @@ namespace artstudio.Services
 
         #region Individual Swatch Favorites
 
-        public async Task<FavoriteSwatch> SaveSwatchToFavoritesAsync(
-            Color color,
-            string? colorName = null,
-            string? collection = null)
+        public async Task<FavoriteSwatch> SaveSwatchToFavoritesAsync(Color color, string? colorName = null)
         {
             try
             {
+                var hexColor = color.ToArgbHex();
+
+                // Check for duplicates first
+                if (await IsSwatchAlreadyFavoritedAsync(hexColor))
+                {
+                    // Return the existing swatch instead of creating a duplicate
+                    var db = await _databaseService.GetDatabaseAsync();
+                    var existingSwatch = await db.Table<FavoriteSwatch>()
+                        .Where(s => s.HexColor.ToLower() == hexColor.ToLower())
+                        .FirstOrDefaultAsync();
+
+                    if (existingSwatch != null)
+                    {
+                        Debug.WriteLine($"Swatch {hexColor} already exists - returning existing");
+                        return existingSwatch;
+                    }
+                }
+
                 var swatch = new FavoriteSwatch
                 {
-                    HexColor = color.ToArgbHex(),
+                    HexColor = hexColor.ToUpper(),
                     ColorName = colorName,
-                    Collection = collection ?? "Default",
+                    Collection = null, // No collections!
                     CreatedAt = DateTime.Now,
                     IsFavorite = true
                 };
 
-                var db = await _databaseService.GetDatabaseAsync();
-                await db.InsertAsync(swatch);
+                var database = await _databaseService.GetDatabaseAsync();
+                await database.InsertAsync(swatch);
 
-                Debug.WriteLine($"Saved swatch to favorites: {swatch.HexColor} in collection '{swatch.Collection}'");
+                Debug.WriteLine($"Saved swatch to favorites: {swatch.HexColor}");
                 return swatch;
             }
             catch (Exception ex)
@@ -181,55 +196,23 @@ namespace artstudio.Services
             }
         }
 
-        public async Task<List<FavoriteSwatch>> GetFavoriteSwatchesAsync(string? collection = null)
+        public async Task<List<FavoriteSwatch>> GetFavoriteSwatchesAsync()
         {
             try
             {
                 var db = await _databaseService.GetDatabaseAsync();
 
-                List<FavoriteSwatch> swatches;
-                if (string.IsNullOrEmpty(collection))
-                {
-                    // Get all favorite swatches
-                    swatches = await db.QueryAsync<FavoriteSwatch>(
-                        "SELECT * FROM FavoriteSwatch WHERE IsFavorite = 1 ORDER BY CreatedAt DESC");
-                }
-                else
-                {
-                    // Get swatches from specific collection
-                    swatches = await db.QueryAsync<FavoriteSwatch>(
-                        "SELECT * FROM FavoriteSwatch WHERE IsFavorite = 1 AND Collection = ? ORDER BY CreatedAt DESC",
-                        collection);
-                }
+                // Get all favorite swatches (no collection filtering)
+                var swatches = await db.QueryAsync<FavoriteSwatch>(
+                    "SELECT * FROM FavoriteSwatch WHERE IsFavorite = 1 ORDER BY CreatedAt DESC");
 
-                Debug.WriteLine($"Retrieved {swatches.Count} favorite swatches" +
-                    (collection != null ? $" from collection '{collection}'" : ""));
+                Debug.WriteLine($"Retrieved {swatches.Count} favorite swatches");
                 return swatches;
             }
             catch (Exception ex)
             {
                 Debug.WriteLine($"Error getting favorite swatches: {ex.Message}");
                 return new List<FavoriteSwatch>();
-            }
-        }
-
-        public async Task<List<string>> GetSwatchCollectionNamesAsync()
-        {
-            try
-            {
-                var db = await _databaseService.GetDatabaseAsync();
-
-                var collections = await db.QueryAsync<FavoriteSwatch>(
-                        "SELECT DISTINCT Collection FROM FavoriteSwatch WHERE IsFavorite = 1 ORDER BY Collection");
-                var collectionNames = collections.Select(c => c.Collection ?? string.Empty).ToList();
-
-                Debug.WriteLine($"Found {collections.Count} swatch collections");
-                return collectionNames;
-            }
-            catch (Exception ex)
-            {
-                Debug.WriteLine($"Error getting swatch collection names: {ex.Message}");
-                return new List<string>();
             }
         }
 
@@ -249,11 +232,11 @@ namespace artstudio.Services
             }
         }
 
-        public async Task<List<FavoriteSwatch>> GetSwatchesSortedAsync(SwatchSortMethod sortMethod, string? collection = null)
+        public async Task<List<FavoriteSwatch>> GetSwatchesSortedAsync(SwatchSortMethod sortMethod)
         {
             try
             {
-                var swatches = await GetFavoriteSwatchesAsync(collection);
+                var swatches = await GetFavoriteSwatchesAsync(); // No collection parameter
 
                 return sortMethod switch
                 {
@@ -261,7 +244,8 @@ namespace artstudio.Services
                     SwatchSortMethod.DateOldest => swatches.OrderBy(s => s.CreatedAt).ToList(),
                     SwatchSortMethod.ColorName => swatches.OrderBy(s => s.DisplayName).ToList(),
                     SwatchSortMethod.HexValue => swatches.OrderBy(s => s.HexColor).ToList(),
-                    SwatchSortMethod.Collection => swatches.OrderBy(s => s.Collection).ThenByDescending(s => s.CreatedAt).ToList(),
+                    SwatchSortMethod.HueGradient => SortSwatchesByHue(swatches).ToList(), // 🌈 Rainbow!
+                    SwatchSortMethod.Brightness => SortSwatchesByBrightness(swatches).ToList(),
                     _ => swatches
                 };
             }
@@ -274,20 +258,123 @@ namespace artstudio.Services
 
         public async Task<bool> IsSwatchFavoriteAsync(Color color)
         {
+            return await IsSwatchAlreadyFavoritedAsync(color.ToHex());
+        }
+        public async Task<bool> IsSwatchAlreadyFavoritedAsync(string hexColor)
+        {
             try
             {
                 var db = await _databaseService.GetDatabaseAsync();
-                var hexColor = color.ToHex();
+                var existingSwatch = await db.Table<FavoriteSwatch>()
+                    .Where(s => s.HexColor.ToLower() == hexColor.ToLower() && s.IsFavorite == true)
+                    .FirstOrDefaultAsync();
 
-                var existingSwatch = await db.FindAsync<FavoriteSwatch>(s => s.HexColor == hexColor);
                 return existingSwatch != null;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Error checking if swatch is favorite: {ex.Message}");
+                Debug.WriteLine($"Error checking if swatch is favorited: {ex.Message}");
                 return false;
             }
         }
+
+        public async Task<bool> AddSwatchToFavoritesAsync(string hexColor)
+        {
+            try
+            {
+                // Check if this color is already favorited
+                if (await IsSwatchAlreadyFavoritedAsync(hexColor))
+                {
+                    Debug.WriteLine($"Swatch {hexColor} is already in favorites - skipping duplicate");
+                    return false; // Return false to indicate it wasn't added (already exists)
+                }
+
+                var favoriteSwatch = new FavoriteSwatch
+                {
+                    HexColor = hexColor.ToUpper(), // Normalize to uppercase
+                    Collection = null, // No collections needed!
+                    CreatedAt = DateTime.Now,
+                    IsFavorite = true
+                };
+
+                var db = await _databaseService.GetDatabaseAsync();
+                await db.InsertAsync(favoriteSwatch);
+                Debug.WriteLine($"Added new swatch {hexColor} to favorites");
+                return true; // Successfully added new swatch
+            }
+            catch (Exception ex)
+            {
+                Debug.WriteLine($"Error adding swatch to favorites: {ex.Message}");
+                return false;
+            }
+        }
+
+        private IEnumerable<FavoriteSwatch> SortSwatchesByHue(IEnumerable<FavoriteSwatch> swatches)
+        {
+            return swatches.OrderBy(s =>
+            {
+                try
+                {
+                    var color = Color.FromArgb(s.HexColor);
+                    return GetHueValue(color);
+                }
+                catch
+                {
+                    return 999f; // Put invalid colors at the end
+                }
+            });
+        }
+
+        private IEnumerable<FavoriteSwatch> SortSwatchesByBrightness(IEnumerable<FavoriteSwatch> swatches)
+        {
+            return swatches.OrderByDescending(s =>
+            {
+                try
+                {
+                    var color = Color.FromArgb(s.HexColor);
+                    // Calculate perceived brightness (luminance)
+                    return (0.299 * color.Red + 0.587 * color.Green + 0.114 * color.Blue);
+                }
+                catch
+                {
+                    return 0f;
+                }
+            });
+        }
+
+        private float GetHueValue(Color color)
+        {
+            var r = color.Red;
+            var g = color.Green;
+            var b = color.Blue;
+
+            var max = Math.Max(r, Math.Max(g, b));
+            var min = Math.Min(r, Math.Min(g, b));
+            var delta = max - min;
+
+            if (delta == 0) return 0f; // Grayscale colors get hue 0
+
+            float hue = 0f;
+
+            if (max == r)
+            {
+                hue = ((g - b) / delta) % 6;
+            }
+            else if (max == g)
+            {
+                hue = (b - r) / delta + 2;
+            }
+            else if (max == b)
+            {
+                hue = (r - g) / delta + 4;
+            }
+
+            hue *= 60;
+            if (hue < 0) hue += 360;
+
+            return hue;
+        }
+
 
         #endregion
     }
@@ -298,6 +385,8 @@ namespace artstudio.Services
         DateOldest,
         ColorName,
         HexValue,
-        Collection
+        HueGradient,
+        Brightness 
     }
+
 }

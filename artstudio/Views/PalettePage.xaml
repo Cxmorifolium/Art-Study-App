@@ -40,7 +40,7 @@
                     <GridItemsLayout Span="5" Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Swatch">
+                    <DataTemplate x:DataType="local:SwatchViewModel">
                         <Grid>
                             <BoxView BackgroundColor="{Binding Color}"  
                                     HeightRequest="550"  
@@ -216,6 +216,55 @@
                                       TextColor="#aaaaaa" />
                             </StackLayout>
 
+                            <StackLayout Orientation="Horizontal" 
+                                         Spacing="6" 
+                                         Margin="12,8,12,4"
+                                         HorizontalOptions="Center"
+                                         IsVisible="{Binding HasNoFavoriteSwatches, Converter={StaticResource InverseBoolConverter}}">
+
+                                <Label Text="Sort:" 
+                                       VerticalOptions="Center"
+                                       FontSize="11"
+                                       TextColor="#cccccc" />
+
+                                <!-- Rainbow/Hue Sort Button -->
+                                <Button Text="🌈" 
+                                        ToolTipProperties.Text="Rainbow order"
+                                        WidthRequest="32"
+                                        HeightRequest="24"
+                                        FontSize="12"
+                                        CornerRadius="12"
+                                        Padding="0"
+                                        BackgroundColor="#4a4a6a"
+                                        TextColor="White"
+                                        Command="{Binding ChangeSortToHueCommand}" />
+
+                                <!-- Date Sort Button -->
+                                <Button Text="🕐" 
+                                        ToolTipProperties.Text="By date added"
+                                        WidthRequest="32"
+                                        HeightRequest="24"
+                                        FontSize="12"
+                                        CornerRadius="12"
+                                        Padding="0"
+                                        BackgroundColor="#4a4a6a"
+                                        TextColor="White"
+                                        Command="{Binding ChangeSortToDateCommand}" />
+
+                                <!-- Brightness Sort Button -->
+                                <Button Text="☀️" 
+                                        ToolTipProperties.Text="Light to dark"
+                                        WidthRequest="32"
+                                        HeightRequest="24"
+                                        FontSize="12"
+                                        CornerRadius="12"
+                                        Padding="0"
+                                        BackgroundColor="#4a4a6a"
+                                        TextColor="White"
+                                        Command="{Binding ChangeSortToBrightnessCommand}" />
+
+                            </StackLayout>
+
                             <!-- Favorite Swatches Grid -->
                             <CollectionView ItemsSource="{Binding FavoriteSwatches}"
                                            SelectionMode="None">
@@ -305,7 +354,7 @@
                                       TextColor="#aaaaaa" />
                             </StackLayout>
 
-                            <!-- Grouped Collections - BACK TO WORKING VERSION -->
+                            <!-- Grouped Collections -->
                             <StackLayout BindableLayout.ItemsSource="{Binding GroupedFavoritePalettes}"
                                         IsVisible="{Binding HasNoFavoritePalettes, Converter={StaticResource InverseBoolConverter}}">
                                 <BindableLayout.ItemTemplate>
@@ -334,7 +383,7 @@
                                                 </Grid>
                                             </Border>
 
-                                            <!-- Palettes in this Collection using WORKING StackLayout approach -->
+                                            <!-- Palettes in this Collection  -->
                                             <StackLayout BindableLayout.ItemsSource="{Binding Palettes}">
                                                 <BindableLayout.ItemTemplate>
                                                     <DataTemplate x:DataType="local:FavoritePaletteItem">
@@ -380,7 +429,7 @@
                                                                        WidthRequest="32"
                                                                        HeightRequest="24" />
 
-                                                                <!-- Color Strip (Clickable) - BACK TO WORKING VERSION -->
+                                                                <!-- Color Strip (Clickable)-->
                                                                 <Border Grid.Row="1"
                                                                        Grid.ColumnSpan="2"
                                                                        StrokeThickness="1"
@@ -391,7 +440,7 @@
                                                                         <RoundRectangle CornerRadius="5" />
                                                                     </Border.StrokeShape>
 
-                                                                    <!-- WORKING VERSION: StackLayout with BindableLayout -->
+                                                                    <!-- StackLayout with BindableLayout -->
                                                                     <StackLayout Orientation="Horizontal" 
                                                                                 Spacing="0"
                                                                                 BindableLayout.ItemsSource="{Binding Colors}">

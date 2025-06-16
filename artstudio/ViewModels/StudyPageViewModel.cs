@@ -6,6 +6,7 @@ using System.Runtime.CompilerServices;
 using CommunityToolkit.Mvvm.Input;
 using artstudio.Models;
 using artstudio.Services;
+using Microsoft.Extensions.Logging;
 
 namespace artstudio.ViewModels
 {
@@ -27,8 +28,9 @@ namespace artstudio.ViewModels
 
         private readonly PromptGenerator _promptGenerator;
         private readonly Unsplash _unsplash;
-        private bool _disposed = false;
         private readonly PaletteModel _paletteModel;
+        private readonly ILogger<StudyPageViewModel> _logger;
+        private bool _disposed = false;
 
         public ObservableCollection<string> ModeOptions { get; } = new()
         {
@@ -60,11 +62,12 @@ namespace artstudio.ViewModels
 
         #region Constructor
 
-        public StudyPageViewModel(PromptGenerator promptGenerator, Unsplash unsplash, PaletteModel paletteModel)
+        public StudyPageViewModel(PromptGenerator promptGenerator, Unsplash unsplash, PaletteModel paletteModel, ILogger<StudyPageViewModel> logger)
         {
             _promptGenerator = promptGenerator;
             _unsplash = unsplash;
             _paletteModel = paletteModel;
+            _logger = logger;
 
             InitializeCommands();
             DebugPromptGenerator();
@@ -119,7 +122,7 @@ namespace artstudio.ViewModels
 
         private void ResetModeStates()
         {
-            Debug.WriteLine($"[StudyPage] Switching modes - clearing all states");
+            _logger.LogDebug("Switching modes - clearing all states");
 
             // Stop any running timer
             _timer?.Dispose();
@@ -398,7 +401,7 @@ namespace artstudio.ViewModels
                 CurrentPalette.Add(color);
             }
 
-            Debug.WriteLine($"Generated {CurrentPalette.Count} distinct colors using {randomHarmonyType} harmony");
+            _logger.LogDebug("Generated {ColorCount} distinct colors using {HarmonyType} harmony", CurrentPalette.Count, randomHarmonyType);
             OnPropertyChanged(nameof(ShowPalette));
         }
 
@@ -407,27 +410,27 @@ namespace artstudio.ViewModels
         {
             try
             {
-                Debug.WriteLine("[StudyPage] Debugging PromptGenerator...");
+                _logger.LogDebug("Debugging PromptGenerator...");
 
                 // Check available categories
                 var categories = _promptGenerator.GetAvailableCategories();
-                Debug.WriteLine($"[StudyPage] Available categories: {string.Join(", ", categories)}");
+                _logger.LogDebug("Available categories: {Categories}", string.Join(", ", categories));
 
                 // Check item counts
                 foreach (var category in categories)
                 {
                     var count = _promptGenerator.GetCategoryItemsCount(category);
-                    Debug.WriteLine($"[StudyPage] Category '{category}' has {count} items");
+                    _logger.LogDebug("Category '{Category}' has {Count} items", category, count);
                 }
 
                 // Test a simple generation
                 var (testPrompt, testComponents) = _promptGenerator.GenerateDefaultPrompt();
-                Debug.WriteLine($"[StudyPage] Test prompt: '{testPrompt}'");
-                Debug.WriteLine($"[StudyPage] Test components count: {testComponents.Count}");
+                _logger.LogDebug("Test prompt: '{TestPrompt}'", testPrompt);
+                _logger.LogDebug("Test components count: {ComponentCount}", testComponents.Count);
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[StudyPage] Error in DebugPromptGenerator: {ex.Message}");
+                _logger.LogError(ex, "Error in DebugPromptGenerator");
             }
         }
 
@@ -435,7 +438,7 @@ namespace artstudio.ViewModels
         {
             try
             {
-                Debug.WriteLine("[StudyPage] GenerateWords called");
+                _logger.LogDebug("GenerateWords called");
                 CurrentWords.Clear();
 
                 var includeNouns = RandomBool();
@@ -443,13 +446,13 @@ namespace artstudio.ViewModels
                 var includeStyles = RandomBool();
                 var includeThemes = RandomBool();
 
-                Debug.WriteLine($"[StudyPage] Include flags - Nouns: {includeNouns}, Settings: {includeSettings}, Styles: {includeStyles}, Themes: {includeThemes}");
+                _logger.LogDebug("Include flags - Nouns: {IncludeNouns}, Settings: {IncludeSettings}, Styles: {IncludeStyles}, Themes: {IncludeThemes}", includeNouns, includeSettings, includeStyles, includeThemes);
 
                 // Ensure at least one category is included
                 if (!includeNouns && !includeSettings && !includeStyles && !includeThemes)
                 {
                     includeNouns = true;
-                    Debug.WriteLine("[StudyPage] No categories selected, defaulting to nouns");
+                    _logger.LogDebug("No categories selected, defaulting to nouns");
                 }
 
                 var (prompt, components) = _promptGenerator.GeneratePrompt(
@@ -467,13 +470,13 @@ namespace artstudio.ViewModels
                     themeProbability: 0.7
                 );
 
-                Debug.WriteLine($"[StudyPage] Generated prompt: '{prompt}'");
-                Debug.WriteLine($"[StudyPage] Components returned: {components.Count}");
+                _logger.LogDebug("Generated prompt: '{GeneratedPrompt}'", prompt);
+                _logger.LogDebug("Components returned: {ComponentCount}", components.Count);
 
                 int wordCount = 0;
                 foreach (var categoryPair in components)
                 {
-                    Debug.WriteLine($"[StudyPage] Processing category: {categoryPair.Key} with {categoryPair.Value.Count} items");
+                    _logger.LogDebug("Processing category: {Category} with {ItemCount} items", categoryPair.Key, categoryPair.Value.Count);
 
                     foreach (var word in categoryPair.Value)
                     {
@@ -481,21 +484,20 @@ namespace artstudio.ViewModels
                         {
                             CurrentWords.Add(word);
                             wordCount++;
-                            Debug.WriteLine($"[StudyPage] Added word: '{word}'");
+                            _logger.LogDebug("Added word: '{Word}'", word);
                         }
                     }
                 }
 
-                Debug.WriteLine($"[StudyPage] Total words added: {wordCount}");
-                Debug.WriteLine($"[StudyPage] CurrentWords.Count: {CurrentWords.Count}");
+                _logger.LogDebug("Total words added: {WordCount}", wordCount);
+                _logger.LogDebug("CurrentWords.Count: {CurrentWordsCount}", CurrentWords.Count);
 
                 // Notify UI of changes
                 OnPropertyChanged(nameof(CurrentWords));
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"[StudyPage] Error in GenerateWords: {ex.Message}");
-                Debug.WriteLine($"[StudyPage] Stack trace: {ex.StackTrace}");
+                _logger.LogError(ex, "Error in GenerateWords");
             }
         }
 
@@ -515,27 +517,27 @@ namespace artstudio.ViewModels
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Debug.WriteLine($"Invalid image count parameter: {ex.Message}");
+                _logger.LogWarning(ex, "Invalid image count parameter");
             }
             catch (UnauthorizedAccessException ex)
             {
-                Debug.WriteLine($"API key issue: {ex.Message}");
+                _logger.LogError(ex, "API key issue");
             }
             catch (TimeoutException ex)
             {
-                Debug.WriteLine($"Request timeout: {ex.Message}");
+                _logger.LogWarning(ex, "Request timeout");
             }
             catch (HttpRequestException ex)
             {
-                Debug.WriteLine($"Network error: {ex.Message}");
+                _logger.LogWarning(ex, "Network error");
             }
             catch (InvalidOperationException ex)
             {
-                Debug.WriteLine($"Service error: {ex.Message}");
+                _logger.LogError(ex, "Service error");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unexpected error fetching images: {ex.Message}");
+                _logger.LogError(ex, "Unexpected error fetching images");
             }
         }
 

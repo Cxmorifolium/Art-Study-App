@@ -1,21 +1,22 @@
 ﻿using artstudio.Models;
 using artstudio.Services;
 using CommunityToolkit.Maui.Alerts;
+using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
-using System.Diagnostics;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 
 namespace artstudio.ViewModels
 {
-    public class ImagePromptViewModel : INotifyPropertyChanged, IDisposable
+    public partial class ImagePromptViewModel : INotifyPropertyChanged, IDisposable
     {
         private readonly Unsplash _unsplashService;
         private const int DefaultImageCount = 3;
         private const int AdditionalImages = 1;
         private bool _isLoading;
         private bool _disposed = false;
+        private readonly ILogger<ImagePromptViewModel> _logger;
 
         private readonly Stack<(ImageItem item, int index)> _undoStack = new();
 
@@ -48,8 +49,9 @@ namespace artstudio.ViewModels
 
         #endregion
 
-        public ImagePromptViewModel()
+        public ImagePromptViewModel(ILogger<ImagePromptViewModel> logger)
         {
+            _logger = logger;
             _unsplashService = new Unsplash();
 
             LoadInitialImagesCommand = new Command(ExecuteLoadInitialImages, () => !IsLoading);
@@ -104,32 +106,33 @@ namespace artstudio.ViewModels
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Debug.WriteLine($"Invalid image count parameter: {ex.Message}");
+                _logger.LogError(ex, "Invalid image count parameter.");
                 await ShowErrorMessageAsync("Invalid image count. Please try again.");
             }
             catch (UnauthorizedAccessException ex)
             {
-                Debug.WriteLine($"API key issue: {ex.Message}");
+                _logger.LogError(ex, "API key issue - unable to access Unsplash service.");
                 await ShowErrorMessageAsync("Unable to access image service. Please check your connection and try again.");
             }
             catch (TimeoutException ex)
             {
-                Debug.WriteLine($"Request timeout: {ex.Message}");
+                _logger.LogWarning(ex, "Request timeout when fetching images.");
                 await ShowErrorMessageAsync("Request timed out. Please check your connection and try again.");
             }
             catch (HttpRequestException ex)
             {
-                Debug.WriteLine($"Network error: {ex.Message}");
+                _logger.LogError(ex, "Network error.");
                 await ShowErrorMessageAsync("Network error. Please check your connection and try again.");
             }
             catch (InvalidOperationException ex)
             {
-                Debug.WriteLine($"Service error: {ex.Message}");
+                _logger.LogError(ex, "Service error.");
                 await ShowErrorMessageAsync("Service temporarily unavailable. Please try again later.");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unexpected error fetching images: {ex.Message}");
+                _logger.LogError(ex, "Unexpected error fetching images.");
+
                 await ShowErrorMessageAsync("An unexpected error occurred. Please try again.");
             }
             finally
@@ -142,7 +145,7 @@ namespace artstudio.ViewModels
         {
             if (IsLoading)
             {
-                Debug.WriteLine("Skipped AddImagesAsync because IsLoading is true.");
+                _logger.LogDebug("Skipped AddImagesAsync because IsLoading is true.");
                 return;
             }
 
@@ -158,32 +161,32 @@ namespace artstudio.ViewModels
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Debug.WriteLine($"Invalid image count parameter: {ex.Message}");
+                _logger.LogError(ex, "Invalid image count parameter");
                 await ShowErrorMessageAsync("Invalid image count. Please try again.");
             }
             catch (UnauthorizedAccessException ex)
             {
-                Debug.WriteLine($"API key issue: {ex.Message}");
+                _logger.LogError(ex, "API key issue.");
                 await ShowErrorMessageAsync("Unable to access image service. Please check your connection and try again.");
             }
             catch (TimeoutException ex)
             {
-                Debug.WriteLine($"Request timeout: {ex.Message}");
+                _logger.LogError(ex, "Request timeout.");
                 await ShowErrorMessageAsync("Request timed out. Please check your connection and try again.");
             }
             catch (HttpRequestException ex)
             {
-                Debug.WriteLine($"Network error: {ex.Message}");
+                _logger.LogError(ex, "Network error.");
                 await ShowErrorMessageAsync("Network error. Please check your connection and try again.");
             }
             catch (InvalidOperationException ex)
             {
-                Debug.WriteLine($"Service error: {ex.Message}");
+                _logger.LogError(ex, "Service error.");
                 await ShowErrorMessageAsync("Service temporarily unavailable. Please try again later.");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unexpected error adding images: {ex.Message}");
+                _logger.LogError(ex, "Unexpected error adding images.");
                 await ShowErrorMessageAsync("An unexpected error occurred. Please try again.");
             }
             finally
@@ -220,32 +223,32 @@ namespace artstudio.ViewModels
             }
             catch (ArgumentOutOfRangeException ex)
             {
-                Debug.WriteLine($"Invalid image count parameter: {ex.Message}");
+                _logger.LogWarning(ex, "Invalid image count parameter.");
                 await ShowErrorMessageAsync("Invalid image count. Please try again.");
             }
             catch (UnauthorizedAccessException ex)
             {
-                Debug.WriteLine($"API key issue: {ex.Message}");
+                _logger.LogError(ex, "API key issue.");
                 await ShowErrorMessageAsync("Unable to access image service. Please check your connection and try again.");
             }
             catch (TimeoutException ex)
             {
-                Debug.WriteLine($"Request timeout: {ex.Message}");
+                _logger.LogWarning(ex, "Request timeout.");
                 await ShowErrorMessageAsync("Request timed out. Please check your connection and try again.");
             }
             catch (HttpRequestException ex)
             {
-                Debug.WriteLine($"Network error: {ex.Message}");
+                _logger.LogWarning(ex, "Network error.");
                 await ShowErrorMessageAsync("Network error. Please check your connection and try again.");
             }
             catch (InvalidOperationException ex)
             {
-                Debug.WriteLine($"Service error: {ex.Message}");
+                _logger.LogError(ex, "Service error.");
                 await ShowErrorMessageAsync("Service temporarily unavailable. Please try again later.");
             }
             catch (Exception ex)
             {
-                Debug.WriteLine($"Unexpected error regenerating images: {ex.Message}");
+                _logger.LogError(ex, "Unexpected error adding images.");
                 await ShowErrorMessageAsync("An unexpected error occurred. Please try again.");
             }
             finally
@@ -314,10 +317,9 @@ namespace artstudio.ViewModels
                 var toast = Toast.Make(message, CommunityToolkit.Maui.Core.ToastDuration.Long);
                 await toast.Show();
             }
-            catch
+            catch (Exception ex)
             {
-                // Fallback if toast fails
-                Debug.WriteLine($"Error message: {message}");
+                _logger.LogError(ex, "Failed to display toast message");
             }
         }
 

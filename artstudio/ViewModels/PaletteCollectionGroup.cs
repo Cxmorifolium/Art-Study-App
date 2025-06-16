@@ -77,8 +77,8 @@ namespace artstudio.ViewModels
     public class FavoriteSwatchItem
     {
         public string HexColor { get; set; } = string.Empty;
-        public string? CollectionName { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string FormattedDate => CreatedAt.ToString("MMM dd, HH:mm");
     }
 
     public class FavoritePaletteItem
