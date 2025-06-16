@@ -15,10 +15,6 @@
         </ResourceDictionary>
     </ContentPage.Resources>
 
-    <ContentPage.BindingContext>
-        <viewmodels:ImagePromptViewModel />
-    </ContentPage.BindingContext>
-
     <Grid Padding="20">
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto" />
@@ -47,7 +43,7 @@
                                     VerticalItemSpacing="10" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate>
+                    <DataTemplate x:DataType="viewmodels:ImageItemViewModel">
                         <Border Margin="5" 
                                Stroke="{Binding IsLocked, Converter={StaticResource BoolToLockColorConverter}}"
                                StrokeShape="RoundRectangle"
@@ -55,7 +51,7 @@
                                BackgroundColor="Transparent"
                                HeightRequest="300">
                             <Grid>
-                                <Image Source="{Binding UnsplashImage.urls.Regular}" 
+                                <Image Source="{Binding ImageSource}" 
                                       Aspect="AspectFill" />
 
                                 <Grid BackgroundColor="#77000000" 
@@ -69,7 +65,7 @@
 
                                         <StackLayout Grid.Column="0">
                                             <!-- Make image title/description clickable to open Unsplash page -->
-                                            <Button Text="{Binding UnsplashImage.Description}" 
+                                            <Button Text="{Binding Description}" 
                                                    Command="{Binding OpenImagePageCommand}"
                                                    BackgroundColor="Transparent"
                                                    TextColor="White"
@@ -82,7 +78,7 @@
                                                    LineBreakMode="TailTruncation"/>
 
                                             <!-- Fallback for when no image URL is available -->
-                                            <Label Text="{Binding UnsplashImage.Description}" 
+                                            <Label Text="{Binding Description}" 
                                                   TextColor="White"
                                                   FontAttributes="Bold"
                                                   LineBreakMode="TailTruncation"
@@ -110,14 +106,14 @@
                                         </StackLayout>
 
                                         <ImageButton Grid.Column="1" 
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ImagePromptViewModel}}, Path=ToggleLockCommand}"
+                                                    Command="{Binding ToggleLockCommand}"
                                                     CommandParameter="{Binding}"
                                                     Source="{Binding IsLocked, Converter={StaticResource BoolToLockIconConverter}}" 
                                                     WidthRequest="24" 
                                                     HeightRequest="24"
                                                     Background="Transparent" />
                                         <ImageButton Grid.Column="2"
-                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type viewmodels:ImagePromptViewModel}}, Path=DeleteImageCommand}"
+                                                    Command="{Binding DeleteCommand}"
                                                     CommandParameter="{Binding}"
                                                     Source="delete.png"
                                                     WidthRequest="24"

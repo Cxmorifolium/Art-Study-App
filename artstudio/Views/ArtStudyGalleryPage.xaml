@@ -1,0 +1,509 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="artstudio.Views.GalleryPage"
+             Title="Art Study Gallery"
+             BackgroundColor="{DynamicResource PageBackground}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="📷 Upload"
+                     Command="{Binding UploadImageCommand}"
+                     Order="Primary" />
+    </ContentPage.ToolbarItems>
+
+    <!-- Main Grid Container for all content and overlays -->
+    <Grid>
+
+        <!-- Main Content Layer -->
+        <Grid RowDefinitions="Auto, Auto, *">
+
+            <!-- Search and Sort Bar -->
+            <Grid Grid.Row="0" 
+                  ColumnDefinitions="*, Auto" 
+                  Padding="16,8" 
+                  BackgroundColor="{DynamicResource SurfaceVariant}">
+
+                <SearchBar Grid.Column="0"
+                           Placeholder="🔍 Search tags, titles, descriptions..."
+                           Text="{Binding SearchQuery}"
+                           BackgroundColor="{DynamicResource Surface}"
+                           HorizontalOptions="Fill" />
+
+                <Picker Grid.Column="1" 
+                        ItemsSource="{Binding SortOptions}"
+                        SelectedItem="{Binding SortOption}"
+                        Title="Sort"
+                        MinimumWidthRequest="100"
+                        Margin="8,0,0,0" />
+            </Grid>
+
+            <!-- Stats Bar -->
+            <Border Grid.Row="1"
+                    BackgroundColor="{DynamicResource Surface}"
+                    Padding="16,8">
+                <Label Text="{Binding StudyStatsDisplay}"
+                       FontSize="14"
+                       TextColor="{DynamicResource OnSurfaceVariant}"
+                       HorizontalOptions="Center" />
+            </Border>
+
+            <!-- Scrolling Gallery Grid -->
+            <ScrollView Grid.Row="2" Padding="8">
+                <StackLayout>
+
+                    <!-- Gallery Grid -->
+                    <CollectionView ItemsSource="{Binding FilteredImages}"
+                                    BackgroundColor="Transparent"
+                                    SelectionMode="None">
+                        <CollectionView.ItemsLayout>
+                            <GridItemsLayout Orientation="Vertical" 
+                                             Span="4" 
+                                             HorizontalItemSpacing="8" 
+                                             VerticalItemSpacing="8" />
+                        </CollectionView.ItemsLayout>
+
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="{DynamicResource Surface}"
+                                        StrokeShape="RoundRectangle 12"
+                                        Padding="0">
+                                    <Border.Shadow>
+                                        <Shadow Brush="Black" Opacity="0.3" Radius="4" Offset="2,2" />
+                                    </Border.Shadow>
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewImageCommand}"
+                                                              CommandParameter="{Binding}" />
+                                    </Border.GestureRecognizers>
+
+                                    <Grid>
+                                        <!-- Image -->
+                                        <Image Source="{Binding FileUrl}"
+                                               Aspect="AspectFill"
+                                               HeightRequest="150"
+                                               WidthRequest="150" />
+
+                                        <!-- Overlay for favorite heart -->
+                                        <Label Text="❤️"
+                                               FontSize="18"
+                                               TextColor="Red"
+                                               HorizontalOptions="End"
+                                               VerticalOptions="Start"
+                                               Margin="8"
+                                               IsVisible="{Binding IsFavorite}" />
+
+                                        <!-- Bottom overlay with title -->
+                                        <Border BackgroundColor="#80000000"
+                                                Padding="8,4"
+                                                VerticalOptions="End"
+                                                HorizontalOptions="Fill">
+                                            <StackLayout Spacing="2">
+                                                <Label Text="{Binding DisplayTitle}"
+                                                       FontSize="12"
+                                                       FontAttributes="Bold"
+                                                       TextColor="White"
+                                                       LineBreakMode="TailTruncation" />
+                                                <Label Text="{Binding TimeAgo}"
+                                                       FontSize="10"
+                                                       TextColor="#CCFFFFFF" />
+                                            </StackLayout>
+                                        </Border>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                    <!-- Empty State -->
+                    <StackLayout IsVisible="{Binding IsEmptyState}"
+                                 VerticalOptions="Center"
+                                 HorizontalOptions="Center"
+                                 Spacing="16"
+                                 Margin="0,100">
+                        <Label Text="📷"
+                               FontSize="48"
+                               HorizontalOptions="Center"
+                               TextColor="{DynamicResource OnSurfaceVariant}" />
+                        <Label Text="No art studies yet"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalOptions="Center"
+                               TextColor="{DynamicResource OnSurface}" />
+                        <Label Text="Upload your first artwork to get started!"
+                               FontSize="14"
+                               HorizontalOptions="Center"
+                               TextColor="{DynamicResource OnSurfaceVariant}" />
+                        <Button Text="📷 Upload First Image"
+                                Command="{Binding UploadImageCommand}"
+                                BackgroundColor="{DynamicResource Primary}"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Padding="16,8"
+                                HorizontalOptions="Center" />
+                    </StackLayout>
+
+                </StackLayout>
+            </ScrollView>
+
+        </Grid>
+
+        <!-- Image Popup Overlay -->
+        <Border IsVisible="{Binding IsImagePopupVisible}"
+                BackgroundColor="#DD000000"
+                Padding="0">
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding ClosePopupCommand}" />
+            </Border.GestureRecognizers>
+
+            <Grid>
+                <!-- Close Button -->
+                <Button Text="✖️"
+                        Command="{Binding ClosePopupCommand}"
+                        BackgroundColor="Transparent"
+                        TextColor="White"
+                        FontSize="18"
+                        HorizontalOptions="End"
+                        VerticalOptions="Start"
+                        Margin="16"
+                        WidthRequest="40"
+                        HeightRequest="40" />
+
+                <!-- Main Content -->
+                <Grid Margin="40" 
+                      BackgroundColor="{DynamicResource Surface}"
+                      RowDefinitions="*, Auto"
+                      ColumnDefinitions="2*, 1*">
+
+                    <!-- Left Side - Image -->
+                    <Border Grid.Row="0" Grid.Column="0"
+                            BackgroundColor="{DynamicResource SurfaceVariant}"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="0"
+                            Margin="0,0,8,0">
+                        <Border.Shadow>
+                            <Shadow Brush="Black" Opacity="0.2" Radius="4" Offset="2,2" />
+                        </Border.Shadow>
+                        <Grid>
+                            <Image Source="{Binding SelectedImage.FileUrl}"
+                                   Aspect="AspectFit"
+                                   MinimumHeightRequest="400" />
+
+                            <!-- Details Toggle Button -->
+                            <Button Text="{Binding DetailsToggleText}"
+                                    Command="{Binding ToggleDetailsCommand}"
+                                    BackgroundColor="{DynamicResource Primary}"
+                                    TextColor="White"
+                                    CornerRadius="8"
+                                    Padding="12,6"
+                                    FontSize="12"
+                                    HorizontalOptions="Center"
+                                    VerticalOptions="End"
+                                    Margin="16" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Right Side - Details -->
+                    <ScrollView Grid.Row="0" Grid.Column="1" Margin="8,0,0,0">
+                        <StackLayout Spacing="16">
+
+                            <!-- Title -->
+                            <StackLayout>
+                                <Label Text="Title"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <Label Text="{Binding SelectedImage.DisplayTitle}"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurface}"
+                                       IsVisible="{Binding IsNotEditingDetails}" />
+                                <Entry Text="{Binding EditableTitle}"
+                                       IsVisible="{Binding IsEditingDetails}"
+                                       BackgroundColor="{DynamicResource SurfaceVariant}" />
+                            </StackLayout>
+
+                            <!-- Description -->
+                            <StackLayout>
+                                <Label Text="Description"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <Label Text="{Binding SelectedImage.Description}"
+                                       FontSize="14"
+                                       TextColor="{DynamicResource OnSurface}"
+                                       IsVisible="{Binding IsNotEditingDetails}" />
+                                <Editor Text="{Binding EditableDescription}"
+                                        IsVisible="{Binding IsEditingDetails}"
+                                        BackgroundColor="{DynamicResource SurfaceVariant}"
+                                        AutoSize="TextChanges"
+                                        MinimumHeightRequest="60" />
+                            </StackLayout>
+
+                            <!-- Tags -->
+                            <StackLayout>
+                                <Label Text="Tags"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <Label Text="{Binding SelectedImage.TagsDisplay}"
+                                       FontSize="14"
+                                       TextColor="{DynamicResource OnSurface}"
+                                       IsVisible="{Binding IsNotEditingDetails}" />
+                                <Entry Text="{Binding EditableTags}"
+                                       Placeholder="portrait, study, warm colors..."
+                                       IsVisible="{Binding IsEditingDetails}"
+                                       BackgroundColor="{DynamicResource SurfaceVariant}" />
+                            </StackLayout>
+
+                            <!-- Favorite Toggle -->
+                            <StackLayout Orientation="Horizontal" Spacing="8">
+                                <Switch IsToggled="{Binding EditableIsFavorite}"
+                                        IsVisible="{Binding IsEditingDetails}" />
+                                <Label Text="{Binding FavoriteStatusText}"
+                                       FontSize="14"
+                                       VerticalOptions="Center"
+                                       IsVisible="{Binding IsNotEditingDetails}" />
+                                <Label Text="❤️ Favorite"
+                                       FontSize="14"
+                                       VerticalOptions="Center"
+                                       IsVisible="{Binding IsEditingDetails}" />
+                            </StackLayout>
+
+                            <!-- References Section -->
+                            <StackLayout IsVisible="{Binding IsDetailsExpanded}">
+                                <Label Text="References"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <Label Text="{Binding ReferencesDisplay}"
+                                       FontSize="14"
+                                       TextColor="{DynamicResource OnSurface}" />
+
+                                <!-- Current References -->
+                                <CollectionView ItemsSource="{Binding CurrentReferences}"
+                                                BackgroundColor="Transparent"
+                                                IsVisible="{Binding HasReferences}">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Grid ColumnDefinitions="*, Auto" Margin="0,4">
+                                                <StackLayout Grid.Column="0">
+                                                    <Label Text="{Binding ReferenceTypeDisplay}"
+                                                           FontSize="12"
+                                                           TextColor="{DynamicResource OnSurfaceVariant}" />
+                                                    <Label Text="{Binding ReferenceDescription}"
+                                                           FontSize="14"
+                                                           TextColor="{DynamicResource OnSurface}" />
+                                                </StackLayout>
+                                                <Button Grid.Column="1"
+                                                        Text="🗑️"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.RemoveReferenceCommand}"
+                                                        CommandParameter="{Binding}"
+                                                        BackgroundColor="Transparent"
+                                                        TextColor="{DynamicResource Error}"
+                                                        FontSize="14"
+                                                        WidthRequest="30"
+                                                        HeightRequest="30" />
+                                            </Grid>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+
+                                <Button Text="🔗 Add Reference"
+                                        Command="{Binding SelectReferencesCommand}"
+                                        BackgroundColor="{DynamicResource SurfaceVariant}"
+                                        TextColor="{DynamicResource OnSurface}"
+                                        CornerRadius="6"
+                                        FontSize="12"
+                                        Padding="8,4"
+                                        Margin="0,8,0,0" />
+                            </StackLayout>
+
+                            <!-- File Info -->
+                            <StackLayout IsVisible="{Binding IsDetailsExpanded}">
+                                <Label Text="File Info"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <Label Text="{Binding SelectedImage.FileInfoDisplay}"
+                                       FontSize="12"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <Label Text="{Binding SelectedImage.FormattedDate}"
+                                       FontSize="12"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                            </StackLayout>
+
+                            <!-- Action Buttons -->
+                            <StackLayout Spacing="8" Margin="0,16,0,0">
+                                <Button Text="✏️ Edit Details"
+                                        Command="{Binding EditDetailsCommand}"
+                                        BackgroundColor="{DynamicResource Primary}"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        IsVisible="{Binding IsNotEditingDetails}" />
+
+                                <!-- Edit Mode Buttons -->
+                                <Grid ColumnDefinitions="*, *" 
+                                      ColumnSpacing="8"
+                                      IsVisible="{Binding IsEditingDetails}">
+                                    <Button Grid.Column="0"
+                                            Text="💾 Save"
+                                            Command="{Binding SaveDetailsCommand}"
+                                            BackgroundColor="{DynamicResource Primary}"
+                                            TextColor="White"
+                                            CornerRadius="8" />
+                                    <Button Grid.Column="1"
+                                            Text="❌ Cancel"
+                                            Command="{Binding CancelEditCommand}"
+                                            BackgroundColor="{DynamicResource SurfaceVariant}"
+                                            TextColor="{DynamicResource OnSurface}"
+                                            CornerRadius="8" />
+                                </Grid>
+
+                                <Button Text="🗑️ Delete"
+                                        Command="{Binding DeleteImageCommand}"
+                                        BackgroundColor="{DynamicResource Error}"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Margin="0,8,0,0" />
+                            </StackLayout>
+
+                        </StackLayout>
+                    </ScrollView>
+                </Grid>
+            </Grid>
+        </Border>
+
+        <!-- Reference Selection Popup -->
+        <Border IsVisible="{Binding IsSelectingReferences}"
+                BackgroundColor="#DD000000"
+                Padding="20">
+
+            <Border BackgroundColor="{DynamicResource Surface}"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20"
+                    MaximumWidthRequest="600"
+                    MaximumHeightRequest="500"
+                    HorizontalOptions="Center"
+                    VerticalOptions="Center">
+
+                <Grid RowDefinitions="Auto, *, Auto">
+                    <!-- Header -->
+                    <Label Grid.Row="0"
+                           Text="Add References"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           HorizontalOptions="Center"
+                           Margin="0,0,0,16" />
+
+                    <!-- Content -->
+                    <ScrollView Grid.Row="1">
+                        <StackLayout Spacing="16">
+
+                            <!-- Palettes -->
+                            <StackLayout>
+                                <Label Text="🎨 Favorite Palettes"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <CollectionView ItemsSource="{Binding AvailablePalettes}"
+                                                BackgroundColor="Transparent"
+                                                MaximumHeightRequest="120">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BackgroundColor="{DynamicResource SurfaceVariant}"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    Padding="12,8"
+                                                    Margin="0,2">
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddReferenceCommand}"
+                                                                          CommandParameter="{Binding}" />
+                                                </Border.GestureRecognizers>
+                                                <Label Text="{Binding DisplayTitle}"
+                                                       FontSize="14"
+                                                       TextColor="{DynamicResource OnSurface}" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+
+                            <!-- Word Collections -->
+                            <StackLayout>
+                                <Label Text="📝 Favorite Word Prompts"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <CollectionView ItemsSource="{Binding AvailableWordCollections}"
+                                                BackgroundColor="Transparent"
+                                                MaximumHeightRequest="120">
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BackgroundColor="{DynamicResource SurfaceVariant}"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    Padding="12,8"
+                                                    Margin="0,2">
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddReferenceCommand}"
+                                                                          CommandParameter="{Binding}" />
+                                                </Border.GestureRecognizers>
+                                                <Label Text="{Binding DisplayTitle}"
+                                                       FontSize="14"
+                                                       TextColor="{DynamicResource OnSurface}" />
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+
+                            <!-- Swatches -->
+                            <StackLayout>
+                                <Label Text="🎨 Favorite Swatches"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{DynamicResource OnSurfaceVariant}" />
+                                <CollectionView ItemsSource="{Binding AvailableSwatches}"
+                                                BackgroundColor="Transparent"
+                                                MaximumHeightRequest="120">
+                                    <CollectionView.ItemsLayout>
+                                        <GridItemsLayout Orientation="Vertical" 
+                                                         Span="6" 
+                                                         HorizontalItemSpacing="4" 
+                                                         VerticalItemSpacing="4" />
+                                    </CollectionView.ItemsLayout>
+                                    <CollectionView.ItemTemplate>
+                                        <DataTemplate>
+                                            <Border BackgroundColor="{Binding HexColor}"
+                                                    StrokeShape="RoundRectangle 6"
+                                                    Padding="0"
+                                                    WidthRequest="30"
+                                                    HeightRequest="30">
+                                                <Border.Shadow>
+                                                    <Shadow Brush="Black" Opacity="0.3" Radius="2" Offset="1,1" />
+                                                </Border.Shadow>
+                                                <Border.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.AddReferenceCommand}"
+                                                                          CommandParameter="{Binding}" />
+                                                </Border.GestureRecognizers>
+                                            </Border>
+                                        </DataTemplate>
+                                    </CollectionView.ItemTemplate>
+                                </CollectionView>
+                            </StackLayout>
+
+                        </StackLayout>
+                    </ScrollView>
+
+                    <!-- Footer -->
+                    <Button Grid.Row="2"
+                            Text="Done"
+                            Command="{Binding ClosePopupCommand}"
+                            BackgroundColor="{DynamicResource Primary}"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Margin="0,16,0,0" />
+                </Grid>
+            </Border>
+        </Border>
+
+    </Grid>
+
+</ContentPage>

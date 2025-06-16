@@ -2,7 +2,7 @@
 using artstudio.Data.Models;
 using System.Diagnostics;
 
-namespace artstudio.Data
+namespace artstudio.Service
 {
     public partial class DatabaseService : IDisposable
     {
@@ -74,7 +74,11 @@ namespace artstudio.Data
             await _database.CreateTableAsync<PaletteColor>();
             await _database.CreateTableAsync<FavoriteSwatch>();
 
-            DebugLog("Created all tables: WordCollection, Word, PaletteCollection, PaletteColor, FavoriteSwatch");
+            // NEW 6/18/2025
+            //await _database.CreateTableAsync<UserUploadedImage>();
+            //await _database.CreateTableAsync<ImageReference>();
+
+            DebugLog("Created all tables: WordCollection, Word, PaletteCollection, PaletteColor, FavoriteSwatch, and Gallery");
         }
 
         private async Task MigrateDatabaseAsync(int fromVersion)
@@ -175,6 +179,22 @@ namespace artstudio.Data
                     // Table might already exist, continue
                 }
             }
+
+            //if (fromVersion < 5)
+            //{
+            //    // Migration to version 5: Add gallery tables
+            //    try
+            //    {
+            //        await _database.CreateTableAsync<UserUploadedImage>();
+            //        await _database.CreateTableAsync<ImageReference>();
+            //        DebugLog("Added gallery tables: UserUploadedImage, ImageReference");
+            //    }
+            //    catch (Exception ex)
+            //    {
+            //        DebugLog($"Error creating gallery tables: {ex.Message}");
+            //        // Tables might already exist, continue
+            //    }
+            //}
 
             // Add future migrations here
         }
@@ -333,7 +353,7 @@ namespace artstudio.Data
 
         #endregion
 
-        #region Palette Collections (New Functionality)
+        #region Palette Collections
 
         public async Task<List<PaletteCollection>> GetFavoritePalettesAsync()
         {
@@ -385,7 +405,7 @@ namespace artstudio.Data
 
         #endregion
 
-        #region Favorite Swatches (New Functionality)
+        #region Favorite Swatches
 
         public async Task<List<FavoriteSwatch>> GetFavoriteSwatchesAsync(string? collection = null)
         {
@@ -454,6 +474,134 @@ namespace artstudio.Data
         }
 
         #endregion
+
+        //#region Gallery Methods
+
+        //public async Task<List<UserUploadedImage>> GetUserUploadedImagesAsync()
+        //{
+        //    try
+        //    {
+        //        var db = await GetDatabaseAsync();
+        //        var images = await db.QueryAsync<UserUploadedImage>(@"
+        //    SELECT * FROM UserUploadedImage 
+        //    ORDER BY CreatedAt DESC");
+
+        //        DebugLog($"Retrieved {images.Count} user uploaded images");
+        //        return images;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DebugLog($"Error getting user images: {ex.Message}");
+        //        return [];
+        //    }
+        //}
+
+        //public async Task<int> SaveUserUploadedImageAsync(UserUploadedImage image)
+        //{
+        //    try
+        //    {
+        //        var db = await GetDatabaseAsync();
+        //        await db.InsertAsync(image);
+
+        //        DebugLog($"Saved user uploaded image: {image.Title}");
+        //        return image.Id;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DebugLog($"Error saving user image: {ex.Message}");
+        //        throw;
+        //    }
+        //}
+
+        //public async Task UpdateUserUploadedImageAsync(UserUploadedImage image)
+        //{
+        //    try
+        //    {
+        //        var db = await GetDatabaseAsync();
+        //        image.UpdatedAt = DateTime.Now;
+        //        await db.UpdateAsync(image);
+
+        //        DebugLog($"Updated user uploaded image: {image.Id}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DebugLog($"Error updating user image: {ex.Message}");
+        //        throw;
+        //    }
+        //}
+
+        //public async Task DeleteUserUploadedImageAsync(int imageId)
+        //{
+        //    try
+        //    {
+        //        var db = await GetDatabaseAsync();
+
+        //        // Delete any references first
+        //        await db.ExecuteAsync("DELETE FROM ImageReference WHERE UserUploadedImageId = ?", imageId);
+
+        //        // Delete the image
+        //        await db.DeleteAsync<UserUploadedImage>(imageId);
+
+        //        DebugLog($"Deleted user uploaded image {imageId}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DebugLog($"Error deleting user image {imageId}: {ex.Message}");
+        //        throw;
+        //    }
+        //}
+
+        //public async Task<List<ImageReference>> GetImageReferencesAsync(int imageId)
+        //{
+        //    try
+        //    {
+        //        var db = await GetDatabaseAsync();
+        //        var references = await db.QueryAsync<ImageReference>(@"
+        //    SELECT * FROM ImageReference 
+        //    WHERE UserUploadedImageId = ?
+        //    ORDER BY CreatedAt DESC", imageId);
+
+        //        DebugLog($"Retrieved {references.Count} references for image {imageId}");
+        //        return references;
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DebugLog($"Error getting image references: {ex.Message}");
+        //        return [];
+        //    }
+        //}
+
+        //public async Task SaveImageReferenceAsync(ImageReference reference)
+        //{
+        //    try
+        //    {
+        //        var db = await GetDatabaseAsync();
+        //        await db.InsertAsync(reference);
+        //        DebugLog($"Saved image reference: {reference.ReferenceType} {reference.ReferenceId}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DebugLog($"Error saving image reference: {ex.Message}");
+        //        throw;
+        //    }
+        //}
+
+        //public async Task DeleteImageReferenceAsync(int referenceId)
+        //{
+        //    try
+        //    {
+        //        var db = await GetDatabaseAsync();
+        //        await db.DeleteAsync<ImageReference>(referenceId);
+        //        DebugLog($"Deleted image reference {referenceId}");
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DebugLog($"Error deleting image reference: {ex.Message}");
+        //        throw;
+        //    }
+        //}
+
+        //#endregion
 
         #region Common Database Methods
 

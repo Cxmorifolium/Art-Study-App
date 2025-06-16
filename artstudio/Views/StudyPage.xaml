@@ -110,7 +110,7 @@
                            TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
                     <CollectionView ItemsSource="{Binding CurrentImages}" ItemsLayout="HorizontalList" HeightRequest="380">
                         <CollectionView.ItemTemplate>
-                            <DataTemplate x:DataType="models:ImageItem">
+                            <DataTemplate x:DataType="vm:ImageItemViewModel">
                                 <Border Padding="5" Margin="5">
                                     <Border.StrokeShape>
                                         <RoundRectangle CornerRadius="8" />
@@ -193,7 +193,7 @@
                         TextColor="White"
                         Command="{Binding ResetCommand}"
                         Margin="5" />
-                
+
                 <!-- Undo Button - Only visible in Quick Sketch mode -->
                 <Button Grid.Column="2" 
                         Text="Undo" 
@@ -211,7 +211,7 @@
                         Command="{Binding RegenerateCommand}"
                         IsVisible="{Binding IsSessionMode}"
                         Margin="5" />
-             </Grid>
+            </Grid>
 
         </Grid>
 

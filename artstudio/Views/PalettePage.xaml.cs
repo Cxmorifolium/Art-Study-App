@@ -34,9 +34,6 @@ public partial class PalettePage : ContentPage
 
             switch (action)
             {
-                case "Load Color":
-                    ViewModel?.LoadSwatchColorCommand?.Execute(swatchItem.HexColor);
-                    break;
                 case "Copy Hex Code":
                     await Clipboard.SetTextAsync(swatchItem.HexColor);
                     await DisplayAlert("Copied", $"Copied {swatchItem.HexColor} to clipboard", "OK");
@@ -129,39 +126,50 @@ public partial class PalettePage : ContentPage
         _ = HandlePaletteDoubleTappedAsync(sender, e);
     }
 
-    private async void OnPaletteLoadClicked(object sender, TappedEventArgs e)
+    private void OnPaletteLoadClicked(object sender, TappedEventArgs e)
     {
-        Debug.WriteLine("=== OnPaletteLoadClickedAsync fired ===");
-
-        if (sender is Border border && border.BindingContext is FavoritePaletteItem paletteItem)
+        try
         {
-            Debug.WriteLine($"Found palette item: {paletteItem.Title}");
-
-            var viewModel = BindingContext as PaletteViewModel;
-            if (viewModel != null)
+            System.Diagnostics.Debug.WriteLine("=== OnPaletteLoadClicked fired ===");
+            if (sender is Border border && border.BindingContext is FavoritePaletteItem paletteItem)
             {
-                Debug.WriteLine("ViewModel found, executing command");
-
-                // Simulate async behavior to resolve CS1998
-                await Task.Run(() => viewModel.LoadFavoritePaletteCommand.Execute(paletteItem));
+                System.Diagnostics.Debug.WriteLine($"Found palette item: {paletteItem.Title}");
+                var viewModel = BindingContext as PaletteViewModel;
+                if (viewModel != null)
+                {
+                    System.Diagnostics.Debug.WriteLine("ViewModel found, executing command");
+                    // Remove unnecessary Task.Run - the command handles async internally
+                    viewModel.LoadFavoritePaletteCommand.Execute(paletteItem);
+                }
+                else
+                {
+                    System.Diagnostics.Debug.WriteLine("ViewModel is null!");
+                }
             }
             else
             {
-                Debug.WriteLine("ViewModel is null!");
+                System.Diagnostics.Debug.WriteLine("Border or BindingContext is null!");
             }
         }
-        else
+        catch (Exception ex)
         {
-            Debug.WriteLine("Border or BindingContext is null!");
+            System.Diagnostics.Debug.WriteLine($"Error in OnPaletteLoadClicked: {ex.Message}");
         }
     }
 
-    private async void OnPaletteOptionsClicked(object sender, EventArgs e)
+    private void OnPaletteOptionsClicked(object sender, EventArgs e)
     {
         var button = sender as Button;
         var paletteItem = button?.BindingContext as FavoritePaletteItem;
-
         if (paletteItem != null)
+        {
+            _ = HandlePaletteOptionsAsync(paletteItem);
+        }
+    }
+
+    private async Task HandlePaletteOptionsAsync(FavoritePaletteItem paletteItem)
+    {
+        try
         {
             var action = await DisplayActionSheet(
                 $"Palette: {paletteItem.Title}",
@@ -186,6 +194,12 @@ public partial class PalettePage : ContentPage
                     ViewModel?.RemoveFavoritePaletteCommand?.Execute(paletteItem);
                     break;
             }
+        }
+        catch (Exception ex)
+        {
+            // Log the exception or handle it appropriately
+            System.Diagnostics.Debug.WriteLine($"Error in palette options: {ex.Message}");
+            // Optionally show user-friendly error message
         }
     }
 

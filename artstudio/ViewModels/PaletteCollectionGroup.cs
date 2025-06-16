@@ -14,7 +14,7 @@ namespace artstudio.ViewModels
         public SwatchCollectionGroup(string collectionName, IEnumerable<FavoriteSwatch> swatches)
         {
             CollectionName = collectionName;
-            Swatches = new ObservableCollection<FavoriteSwatch>(swatches); 
+            Swatches = new ObservableCollection<FavoriteSwatch>(swatches);
             //NOTE!!!: MSG IDE0306 says it can be simplified, but keep it explicit for collection visibility
         }
     }
@@ -77,8 +77,8 @@ namespace artstudio.ViewModels
     public class FavoriteSwatchItem
     {
         public string HexColor { get; set; } = string.Empty;
-        public string? CollectionName { get; set; }
         public DateTime CreatedAt { get; set; }
+        public string FormattedDate => CreatedAt.ToString("MMM dd, HH:mm");
     }
 
     public class FavoritePaletteItem

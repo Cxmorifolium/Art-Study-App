@@ -60,13 +60,18 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Remove="Data\Models\ImageReference.cs" />
+	  <Compile Remove="Data\Models\UserUploadedImage.cs" />
+	  <Compile Remove="ViewModels\ArtStudyGalleryViewModel.cs" />
 	  <Compile Remove="ViewModels\FavoritePalettesViewModel.cs" />
 	  <Compile Remove="ViewModels\FavoritePromptsViewModel.cs" />
+	  <Compile Remove="Views\ArtStudyGalleryPage.xaml.cs" />
 	  <Compile Remove="Views\FavoritePalettesPage.xaml.cs" />
 	  <Compile Remove="Views\FavoritePromptsPage.xaml.cs" />
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Remove="Views\ArtStudyGalleryPage.xaml" />
 	  <MauiXaml Remove="Views\FavoritePalettesPage.xaml" />
 	  <MauiXaml Remove="Views\FavoritePromptsPage.xaml" />
 	</ItemGroup>
@@ -163,6 +168,10 @@
 		<PackageReference Include="Microsoft.Extensions.Logging.Debug" Version="9.0.5" />
 		<PackageReference Include="Microsoft.Maui.Graphics.Skia" Version="9.0.70" />
 		<PackageReference Include="Microsoft.VisualStudio.Utilities" Version="17.14.40264" />
+		<PackageReference Include="Serilog.Extensions.Hosting" Version="9.0.0" />
+		<PackageReference Include="Serilog.Sinks.Console" Version="6.0.0" />
+		<PackageReference Include="Serilog.Sinks.Debug" Version="3.0.0" />
+		<PackageReference Include="Serilog.Sinks.File" Version="7.0.0" />
 		<PackageReference Include="SkiaSharp" Version="3.119.0" />
 		<PackageReference Include="sqlite-net" Version="1.6.292" />
 		<PackageReference Include="sqlite-net-pcl" Version="1.9.172" />
@@ -178,9 +187,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <MauiXaml Update="Views\GalleryPage.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\ImagePromptPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

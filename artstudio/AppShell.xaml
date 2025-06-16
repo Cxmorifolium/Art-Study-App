@@ -17,7 +17,7 @@
 
     <ShellContent
         Title="Home"
-        ContentTemplate="{DataTemplate view:GalleryPage}"
+        ContentTemplate="{DataTemplate view:UnderConstruction}"
         Route="MainPage"
         IsVisible="True" />
 

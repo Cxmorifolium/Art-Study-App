@@ -1,13 +1,16 @@
-﻿using System.ComponentModel;
+﻿using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.Logging;
+using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using artstudio.Models;
 using System.Windows.Input;
-using System.Diagnostics;
+using artstudio.Models;
 
-namespace artstudio.Models
+namespace artstudio.ViewModels
 {
-    public partial class ImageItem : INotifyPropertyChanged
+    public partial class ImageItemViewModel : INotifyPropertyChanged
     {
+        private readonly ILogger<ImageItemViewModel>? _logger;
+        private readonly ImagePromptViewModel? _parentViewModel;
         private bool _isLocked;
         private bool _isDeleted;
 
@@ -52,7 +55,6 @@ namespace artstudio.Models
             }
         }
 
-
         // Add properties for attribution and URL handling
         public string AttributionText => $"By {UnsplashImage.user?.Name ?? "Unknown"}";
         public string UserProfileUrl => UnsplashImage.user?.PortfolioUrl ?? string.Empty;
@@ -67,12 +69,35 @@ namespace artstudio.Models
         // Commands
         public ICommand OpenUserProfileCommand { get; }
         public ICommand OpenImagePageCommand { get; }
+        public ICommand ToggleLockCommand { get; }
+        public ICommand DeleteCommand { get; }
 
-        public ImageItem(UnsplashImage unsplashImage)
+        public ImageItemViewModel(UnsplashImage unsplashImage, ImagePromptViewModel? parentViewModel = null, ILogger<ImageItemViewModel>? logger = null)
         {
-            UnsplashImage = unsplashImage;
-            OpenUserProfileCommand = new Command(() => _ = OpenUserProfileAsync());
-            OpenImagePageCommand = new Command(() => _ = OpenImagePageAsync());
+            UnsplashImage = unsplashImage ?? throw new ArgumentNullException(nameof(unsplashImage));
+            _parentViewModel = parentViewModel;
+            _logger = logger;
+
+            OpenUserProfileCommand = new AsyncRelayCommand(OpenUserProfileAsync);
+            OpenImagePageCommand = new AsyncRelayCommand(OpenImagePageAsync);
+            ToggleLockCommand = new RelayCommand(ToggleLock);
+            DeleteCommand = new AsyncRelayCommand(DeleteAsync);
+        }
+
+        private void ToggleLock()
+        {
+            if (_parentViewModel?.ToggleLockCommand.CanExecute(this) == true)
+            {
+                _parentViewModel.ToggleLockCommand.Execute(this);
+            }
+        }
+
+        private async Task DeleteAsync()
+        {
+            if (_parentViewModel?.DeleteImageCommand.CanExecute(this) == true)
+            {
+                await _parentViewModel.DeleteImageCommand.ExecuteAsync(this);
+            }
         }
 
         private async Task OpenUserProfileAsync()
@@ -81,11 +106,15 @@ namespace artstudio.Models
             {
                 try
                 {
-                    await Launcher.OpenAsync(new Uri(UserProfileUrl));
+                    var success = await Launcher.OpenAsync(new Uri(UserProfileUrl));
+                    if (!success)
+                    {
+                        _logger?.LogWarning("Failed to open user profile URL: {UserProfileUrl}", UserProfileUrl);
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    Debug.WriteLine($"Failed to open URL: {UserProfileUrl}");
+                    _logger?.LogError(ex, "Exception opening user profile URL: {UserProfileUrl}", UserProfileUrl);
                 }
             }
         }
@@ -96,12 +125,15 @@ namespace artstudio.Models
             {
                 try
                 {
-                    // Replace WebAuthenticator.OpenAsync with Launcher.OpenAsync
-                    await Launcher.OpenAsync(new Uri(ImagePageUrl));
+                    var success = await Launcher.OpenAsync(new Uri(ImagePageUrl));
+                    if (!success)
+                    {
+                        _logger?.LogWarning("Failed to open image page URL: {ImagePageUrl}", ImagePageUrl);
+                    }
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    Debug.WriteLine($"Failed to open image page: {ImagePageUrl}");
+                    _logger?.LogError(ex, "Exception opening image page URL: {ImagePageUrl}", ImagePageUrl);
                 }
             }
         }
@@ -111,30 +143,6 @@ namespace artstudio.Models
         protected virtual void OnPropertyChanged([CallerMemberName] string? propertyName = null)
         {
             PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-        }
-    }
-
-    public class UnsplashImage
-    {
-        public string? Id { get; set; }
-        public string? Description { get; set; }
-        public Urls? urls { get; set; }
-        public User? user { get; set; }
-
-        public class Urls
-        {
-            public string? Raw { get; set; }
-            public string? Full { get; set; }
-            public string? Regular { get; set; }
-            public string? Small { get; set; }
-            public string? Thumb { get; set; }
-        }
-
-        public class User
-        {
-            public string? Name { get; set; }
-            // Changed from Portfolio_Url to follow C# naming conventions
-            public string? PortfolioUrl { get; set; }
         }
     }
 }

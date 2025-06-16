@@ -40,40 +40,72 @@
                     <GridItemsLayout Span="5" Orientation="Vertical"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="models:Swatch">
+                    <DataTemplate x:DataType="local:SwatchViewModel">
                         <Grid>
+                            <!-- Main Color Area - No gesture recognizer here to avoid conflicts -->
                             <BoxView BackgroundColor="{Binding Color}"  
-                                    HeightRequest="550"  
-                                    VerticalOptions="Fill"  
-                                    HorizontalOptions="Fill">
+                                     HeightRequest="550"  
+                                     VerticalOptions="Fill"  
+                                     HorizontalOptions="Fill" />
+
+                            <!-- Tap area for activation - separate from buttons -->
+                            <BoxView BackgroundColor="Transparent"
+                                     HeightRequest="400"
+                                     VerticalOptions="Start"
+                                     HorizontalOptions="Fill">
                                 <BoxView.GestureRecognizers>
                                     <TapGestureRecognizer Command="{Binding ToggleActivateCommand}" />
                                 </BoxView.GestureRecognizers>
                             </BoxView>
-                            <VerticalStackLayout VerticalOptions="End" HorizontalOptions="Center">
+
+                            <!-- Button Container -->
+                            <VerticalStackLayout VerticalOptions="End" 
+                                   HorizontalOptions="Center"
+                                   Spacing="8"
+                                   Margin="0,0,0,10">
+
+                                <!-- Favorite Button -->
                                 <Button ImageSource="{Binding FavoriteColor}"  
-                                       BackgroundColor="Transparent"  
-                                       Command="{Binding ToggleFavoriteColorCommand}"
-                                       IsVisible="{Binding ButtonVisible}"  
-                                       MaximumHeightRequest="120"  
-                                       HorizontalOptions="Center" />
+                                        BackgroundColor="Transparent"  
+                                        Command="{Binding ToggleFavoriteColorCommand}"
+                                        IsVisible="{Binding ButtonVisible}"  
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Padding="0"
+                                        HorizontalOptions="Center" />
+
+                                <!-- Lock Button -->
                                 <Button ImageSource="{Binding LockImage}"  
-                                       BackgroundColor="Transparent"  
-                                       Command="{Binding ToggleLockCommand}"  
-                                       MaximumHeightRequest="120"  
-                                       IsVisible="{Binding ButtonVisible}"  
-                                       HorizontalOptions="Center" />
+                                        BackgroundColor="Transparent"  
+                                        Command="{Binding ToggleLockCommand}"  
+                                        IsVisible="{Binding ButtonVisible}"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Padding="0"
+                                        HorizontalOptions="Center" />
+
+                                <!-- Delete/Undo Button -->
                                 <Button ImageSource="{Binding DeleteImage}"  
-                                       BackgroundColor="Transparent"  
-                                       IsVisible="{Binding DeleteButtonVisible}"  
-                                       Command="{Binding ToggleDeleteCommand}"  
-                                       MaximumHeightRequest="120"  
-                                       HorizontalOptions="Center" />
+                                        BackgroundColor="Transparent"  
+                                        IsVisible="{Binding DeleteButtonVisible}"  
+                                        Command="{Binding ToggleDeleteCommand}"
+                                        WidthRequest="40"
+                                        HeightRequest="40"
+                                        Padding="0"
+                                        HorizontalOptions="Center" />
+
+                                <!-- Hex Code Label -->
                                 <Label Text="{Binding HexCode}"  
-                                      FontSize="12"  
-                                      HorizontalOptions="Center"  
-                                      TextColor="Black"  
-                                      IsVisible="{Binding ButtonVisible}" />
+                                       FontSize="12"  
+                                       HorizontalOptions="Center"  
+                                       TextColor="White"
+                                       FontAttributes="Bold"
+                                       IsVisible="{Binding ButtonVisible}"
+                                       Margin="0,4,0,0">
+                                    <Label.Shadow>
+                                        <Shadow Brush="Black" Offset="1,1" Radius="2" Opacity="0.8" />
+                                    </Label.Shadow>
+                                </Label>
                             </VerticalStackLayout>
                         </Grid>
                     </DataTemplate>
@@ -216,6 +248,55 @@
                                       TextColor="#aaaaaa" />
                             </StackLayout>
 
+                            <StackLayout Orientation="Horizontal" 
+                                         Spacing="6" 
+                                         Margin="12,8,12,4"
+                                         HorizontalOptions="Center"
+                                         IsVisible="{Binding HasNoFavoriteSwatches, Converter={StaticResource InverseBoolConverter}}">
+
+                                <Label Text="Sort:" 
+                                       VerticalOptions="Center"
+                                       FontSize="11"
+                                       TextColor="#cccccc" />
+
+                                <!-- Rainbow/Hue Sort Button -->
+                                <Button Text="🌈" 
+                                        ToolTipProperties.Text="Rainbow order"
+                                        WidthRequest="32"
+                                        HeightRequest="24"
+                                        FontSize="12"
+                                        CornerRadius="12"
+                                        Padding="0"
+                                        BackgroundColor="#4a4a6a"
+                                        TextColor="White"
+                                        Command="{Binding ChangeSortToHueCommand}" />
+
+                                <!-- Date Sort Button -->
+                                <Button Text="🕐" 
+                                        ToolTipProperties.Text="By date added"
+                                        WidthRequest="32"
+                                        HeightRequest="24"
+                                        FontSize="12"
+                                        CornerRadius="12"
+                                        Padding="0"
+                                        BackgroundColor="#4a4a6a"
+                                        TextColor="White"
+                                        Command="{Binding ChangeSortToDateCommand}" />
+
+                                <!-- Brightness Sort Button -->
+                                <Button Text="☀️" 
+                                        ToolTipProperties.Text="Light to dark"
+                                        WidthRequest="32"
+                                        HeightRequest="24"
+                                        FontSize="12"
+                                        CornerRadius="12"
+                                        Padding="0"
+                                        BackgroundColor="#4a4a6a"
+                                        TextColor="White"
+                                        Command="{Binding ChangeSortToBrightnessCommand}" />
+
+                            </StackLayout>
+
                             <!-- Favorite Swatches Grid -->
                             <CollectionView ItemsSource="{Binding FavoriteSwatches}"
                                            SelectionMode="None">
@@ -305,7 +386,7 @@
                                       TextColor="#aaaaaa" />
                             </StackLayout>
 
-                            <!-- Grouped Collections - BACK TO WORKING VERSION -->
+                            <!-- Grouped Collections -->
                             <StackLayout BindableLayout.ItemsSource="{Binding GroupedFavoritePalettes}"
                                         IsVisible="{Binding HasNoFavoritePalettes, Converter={StaticResource InverseBoolConverter}}">
                                 <BindableLayout.ItemTemplate>
@@ -334,7 +415,7 @@
                                                 </Grid>
                                             </Border>
 
-                                            <!-- Palettes in this Collection using WORKING StackLayout approach -->
+                                            <!-- Palettes in this Collection  -->
                                             <StackLayout BindableLayout.ItemsSource="{Binding Palettes}">
                                                 <BindableLayout.ItemTemplate>
                                                     <DataTemplate x:DataType="local:FavoritePaletteItem">
@@ -380,7 +461,7 @@
                                                                        WidthRequest="32"
                                                                        HeightRequest="24" />
 
-                                                                <!-- Color Strip (Clickable) - BACK TO WORKING VERSION -->
+                                                                <!-- Color Strip (Clickable)-->
                                                                 <Border Grid.Row="1"
                                                                        Grid.ColumnSpan="2"
                                                                        StrokeThickness="1"
@@ -391,7 +472,7 @@
                                                                         <RoundRectangle CornerRadius="5" />
                                                                     </Border.StrokeShape>
 
-                                                                    <!-- WORKING VERSION: StackLayout with BindableLayout -->
+                                                                    <!-- StackLayout with BindableLayout -->
                                                                     <StackLayout Orientation="Horizontal" 
                                                                                 Spacing="0"
                                                                                 BindableLayout.ItemsSource="{Binding Colors}">
