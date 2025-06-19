@@ -20,7 +20,6 @@ namespace artstudio.ViewModels
         private readonly WordPromptService _wordPromptService;
         private readonly DatabaseService _databaseService;
         private readonly IToastService _toastService;
-        private readonly ILogger<PromptGeneratorViewModel> _logger;
         private string _generatedPrompt = string.Empty;
         private int _nounCount = 1;
         private int _settingCount = 1;
@@ -34,7 +33,7 @@ namespace artstudio.ViewModels
         private bool _isFavoritesVisible = false;
         private bool _isLoadingFavorites = false;
 
-        public PromptGeneratorViewModel(WordPromptService wordPromptService, DatabaseService databaseService, IToastService toastService, ILogger<PromptGeneratorViewModel> logger)
+        public PromptGeneratorViewModel(WordPromptService wordPromptService, DatabaseService databaseService, IToastService toastService)
         {
             _logger = logger;
             _logger.LogDebug("PromptGeneratorViewModel Constructor Started!");
@@ -209,7 +208,13 @@ namespace artstudio.ViewModels
                     FavoriteGroups.Add(group);
                 }
 
-                _logger.LogDebug("Loaded {FavoriteCount} favorite prompts in {GroupCount} groups with words populated", favorites.Count, grouped.Count);
+                DebugLog($"Loaded {favorites.Count} favorite prompts in {grouped.Count} groups with words populated");
+
+                // Log some details about what was loaded
+                foreach (var favorite in favorites)
+                {
+                    DebugLog($"Favorite '{favorite.Title}': {favorite.WordsList?.Count ?? 0} words");
+                }
             }
             catch (Exception ex)
             {
@@ -749,17 +754,36 @@ namespace artstudio.ViewModels
                 await _toastService.ShowToastAsync("Error loading collection");
             }
         }
+
+
+        // Simple debug logging method
+        private static void DebugLog(string message)
+        {
+            var timestamp = DateTime.Now.ToString("HH:mm:ss.fff");
+            var logMessage = $"[VM {timestamp}] {message}";
+
+            // Output to multiple channels to ensure visibility
+            Debug.WriteLine(logMessage);
+            System.Console.WriteLine(logMessage);
+
+            // Also try to write to a log file
+            try
+            {
+                var logPath = Path.Combine(FileSystem.AppDataDirectory, "viewmodel_log.txt");
+                File.AppendAllText(logPath, logMessage + Environment.NewLine);
+            }
+            catch
+            {
+                // Ignore file write errors
+            }
+        }
     }
 
     // Helper classes for grouping
-    public partial class PromptCollectionGroup : ObservableCollection<WordCollection>
+    public partial class PromptCollectionGroup(string collectionName, IEnumerable<WordCollection> prompts)
+        : ObservableCollection<WordCollection>(prompts)
     {
-        public string CollectionName { get; }
-
-        public PromptCollectionGroup(string collectionName, IEnumerable<WordCollection> prompts)
-            : base(prompts)
-        {
-            CollectionName = collectionName;
-        }
+        public string CollectionName { get; } = collectionName;
+        public ObservableCollection<WordCollection> Prompts { get; } = [];
     }
 }

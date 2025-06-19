@@ -189,7 +189,7 @@ namespace artstudio.Services
                 var database = await _databaseService.GetDatabaseAsync();
                 await database.InsertAsync(swatch);
 
-                _logger.LogDebug("Saved swatch to favorites: {swatch.HexColor}", swatch.HexColor);
+                Debug.WriteLine($"Saved swatch to favorites: {swatch.HexColor} in collection '{swatch.Collection}'");
                 return swatch;
             }
             catch (Exception ex)
@@ -209,7 +209,8 @@ namespace artstudio.Services
                 var swatches = await db.QueryAsync<FavoriteSwatch>(
                     "SELECT * FROM FavoriteSwatch WHERE IsFavorite = 1 ORDER BY CreatedAt DESC");
 
-                _logger.LogDebug("Retrieved {CountSwatches} favorite swatches", swatches.Count);
+                Debug.WriteLine($"Retrieved {swatches.Count} favorite swatches" +
+                    (collection != null ? $" from collection '{collection}'" : ""));
                 return swatches;
             }
             catch (Exception ex)
@@ -219,24 +220,27 @@ namespace artstudio.Services
             }
         }
 
-        public async Task RemoveSwatchFromFavoritesAsync(int swatchId)
+        public async Task<List<string>> GetSwatchCollectionNamesAsync()
         {
             try
             {
                 var db = await _databaseService.GetDatabaseAsync();
-                await db.DeleteAsync<FavoriteSwatch>(swatchId);
 
-                _logger.LogDebug("Removed swatch {SwatchId} from favorites", swatchId);
+                var collections = await db.QueryAsync<FavoriteSwatch>(
+                        "SELECT DISTINCT Collection FROM FavoriteSwatch WHERE IsFavorite = 1 ORDER BY Collection");
+                var collectionNames = collections.Select(c => c.Collection ?? string.Empty).ToList();
+
+                Debug.WriteLine($"Found {collections.Count} swatch collections");
+                return collectionNames;
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error removing swatch from favorites");
-                throw;
+                Debug.WriteLine($"Error getting swatch collection names: {ex.Message}");
+                return new List<string>();
             }
         }
 
-        // 🎯 NEW: Direct removal by hex color (more efficient for UI operations)
-        public async Task RemoveSwatchFromFavoritesAsync(string hexColor)
+        public async Task RemoveSwatchFromFavoritesAsync(int swatchId)
         {
             try
             {
@@ -275,8 +279,7 @@ namespace artstudio.Services
                     SwatchSortMethod.DateOldest => swatches.OrderBy(s => s.CreatedAt).ToList(),
                     SwatchSortMethod.ColorName => swatches.OrderBy(s => s.DisplayName).ToList(),
                     SwatchSortMethod.HexValue => swatches.OrderBy(s => s.HexColor).ToList(),
-                    SwatchSortMethod.HueGradient => SortSwatchesByHue(swatches).ToList(), // Rainbow!
-                    SwatchSortMethod.Brightness => SortSwatchesByBrightness(swatches).ToList(),
+                    SwatchSortMethod.Collection => swatches.OrderBy(s => s.Collection).ThenByDescending(s => s.CreatedAt).ToList(),
                     _ => swatches
                 };
             }
@@ -289,11 +292,6 @@ namespace artstudio.Services
 
         public async Task<bool> IsSwatchFavoriteAsync(Color color)
         {
-            return await IsSwatchAlreadyFavoritedAsync(color.ToHex());
-        }
-
-        public async Task<bool> IsSwatchAlreadyFavoritedAsync(string hexColor)
-        {
             try
             {
                 var db = await _databaseService.GetDatabaseAsync();
@@ -305,39 +303,7 @@ namespace artstudio.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error checking if swatch is favorited:");
-                return false;
-            }
-        }
-
-        public async Task<bool> AddSwatchToFavoritesAsync(string hexColor)
-        {
-            try
-            {
-                // Check if this color is already favorited
-                if (await IsSwatchAlreadyFavoritedAsync(hexColor))
-                {
-                    _logger.LogDebug("Swatch {HexColor} is already in favorites - skipping duplicate", hexColor);
-                    return false; // Return false to indicate it wasn't added (already exists)
-                }
-
-                var favoriteSwatch = new FavoriteSwatch
-                {
-                    HexColor = hexColor.ToUpper(), // Normalize to uppercase
-                    Collection = null, // No collections needed!
-                    CreatedAt = DateTime.Now,
-                    IsFavorite = true
-                };
-
-                var db = await _databaseService.GetDatabaseAsync();
-                await db.InsertAsync(favoriteSwatch);
-                _logger.LogDebug("Added new swatch {HexColor} to favorites", hexColor);
-
-                return true; // Successfully added new swatch
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex,$"Error adding swatch to favorites:");
+                System.Diagnostics.Debug.WriteLine($"Error checking if swatch is favorite: {ex.Message}");
                 return false;
             }
         }
@@ -408,6 +374,7 @@ namespace artstudio.Services
             return hue;
         }
 
+
         #endregion
     }
 
@@ -417,7 +384,7 @@ namespace artstudio.Services
         DateOldest,
         ColorName,
         HexValue,
-        HueGradient,
-        Brightness
+        Collection
     }
+
 }

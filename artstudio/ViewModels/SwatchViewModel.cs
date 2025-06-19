@@ -210,7 +210,7 @@ namespace artstudio.ViewModels
         {
             try
             {
-                _model.ToggleLock();
+            _model.ToggleLock();
 
                 OnPropertyChanged(nameof(IsLocked));
                 OnPropertyChanged(nameof(LockImage));
@@ -227,12 +227,12 @@ namespace artstudio.ViewModels
         {
             try
             {
-                _model.Delete();
+            _model.Delete();
 
                 // CRITICAL: Update ALL affected properties manually
-                IsDeleted = _model.IsDeleted;
-                IsActive = _model.IsActive; 
-                OnPropertyChanged(nameof(Color));
+            IsDeleted = _model.IsDeleted;
+            IsActive = _model.IsActive;
+            OnPropertyChanged(nameof(Color));
 
                 // Make sure ButtonVisible gets updated
                 OnPropertyChanged(nameof(ButtonVisible));
@@ -256,7 +256,7 @@ namespace artstudio.ViewModels
             if (!wasActive && IsActive)
             {
                 _ = CheckFavoriteStatusOnActivationAsync();
-            }
+        }
 
             _logger.LogInformation("Swatch activated/deactivated. IsActive: {IsActive}", IsActive);
         }
