@@ -180,10 +180,14 @@ namespace artstudio.ViewModels
                 new SwatchModel(Colors.MediumOrchid)
             };
 
-            // Inject services into each swatch
-            foreach (var swatch in Swatches)
+            Swatches = new ObservableCollection<SwatchViewModel>();
+            SwatchViewModel.FavoriteChanged += OnSwatchFavoriteChanged;
+
+            foreach (var model in swatchModels)
             {
-                swatch.SetServices(_paletteService, _toastService);
+                var swatchLogger = loggerFactory.CreateLogger<SwatchViewModel>();
+                var swatchViewModel = new SwatchViewModel(model, _paletteService, _toastService, swatchLogger);
+                Swatches.Add(swatchViewModel);
             }
 
             // Initialize favorites collections
@@ -215,6 +219,11 @@ namespace artstudio.ViewModels
             RemoveFavoriteSwatchCommand = new AsyncRelayCommand<FavoriteSwatchItem>(RemoveFavoriteSwatchAsync);
             RemoveFavoritePaletteCommand = new AsyncRelayCommand<FavoritePaletteItem>(RemoveFavoritePaletteAsync);
 
+            // Swatch sorting commands - Use the correct enum
+            ChangeSortToHueCommand = new Command(() => _ = ChangeSortMethodAsync(SwatchSortMethod.HueGradient));
+            ChangeSortToDateCommand = new Command(() => _ = ChangeSortMethodAsync(SwatchSortMethod.DateNewest));
+            ChangeSortToBrightnessCommand = new Command(() => _ = ChangeSortMethodAsync(SwatchSortMethod.Brightness));
+
             // Prevent null event handlers
             PropertyChanged += (sender, args) => { };
 
@@ -231,14 +240,7 @@ namespace artstudio.ViewModels
 
         private void OnSwatchPropertyChanged(object? sender, PropertyChangedEventArgs e)
         {
-            if (e.PropertyName == nameof(Swatch.Color) || e.PropertyName == nameof(Swatch.IsFavoriteColor))
-            {
-                // Trigger refresh of favorites panel if it's open
-                if (IsFavoritesPanelOpen)
-                {
-                    _ = LoadFavoritesDataAsync();
-                }
-            }
+            _logger.LogDebug("Swatch property changed: {PropertyName}", e.PropertyName);
         }
 
         #endregion
@@ -546,6 +548,7 @@ namespace artstudio.ViewModels
 
                         await _toastService.ShowToastAsync($"Saved to '{cleanName}' collection ⭐");
                         _logger.LogInformation("Palette saved to collection: {CollectionName} with title: {Title}", cleanName, title);
+
                     }
                 }
             }
@@ -638,6 +641,9 @@ namespace artstudio.ViewModels
 
                 OnPropertyChanged(nameof(HasNoFavoriteSwatches));
                 OnPropertyChanged(nameof(HasNoFavoritePalettes));
+
+                _logger.LogInformation("Loaded and sorted {SwatchCount} favorite swatches using {SortMethod}",
+                    FavoriteSwatches.Count, DefaultSwatchSort);
             }
             catch (Exception ex)
             {
@@ -729,8 +735,8 @@ namespace artstudio.ViewModels
                     {
                         var color = Color.FromArgb(palette.Colors[i]);
                         Swatches[i].Color = color;
-                        Swatches[i].OnPropertyChanged(nameof(Swatch.Color));
-                        System.Diagnostics.Debug.WriteLine($"Applied color {palette.Colors[i]} to swatch {i}");
+                        Swatches[i].OnPropertyChanged(nameof(SwatchViewModel.Color));
+                        _logger.LogDebug("Applied color {Color} to swatch {Index}", palette.Colors[i], i);
                     }
                 }
 
@@ -750,16 +756,7 @@ namespace artstudio.ViewModels
         {
             try
             {
-                // Add debug output to confirm method is being called
-                System.Diagnostics.Debug.WriteLine($"=== RemoveFavoriteSwatchAsync called for {swatchItem?.HexColor} ===");
-
-                if (swatchItem == null)
-                {
-                    System.Diagnostics.Debug.WriteLine("SwatchItem is null!");
-                    return;
-                }
-
-                System.Diagnostics.Debug.WriteLine($"Attempting to remove swatch: {swatchItem.HexColor}");
+                if (swatchItem == null) return;
 
                 // Remove from database first
                 var favoriteSwatches = await _paletteService.GetFavoriteSwatchesAsync();
@@ -767,28 +764,21 @@ namespace artstudio.ViewModels
 
                 if (dbSwatch != null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Found swatch in database with ID: {dbSwatch.Id}");
-
                     await _paletteService.RemoveSwatchFromFavoritesAsync(dbSwatch.Id);
-                    System.Diagnostics.Debug.WriteLine("Database removal completed");
 
-                    // Remove from UI immediately for instant feedback
-                    var itemToRemove = FavoriteSwatches.FirstOrDefault(s => s.HexColor == swatchItem.HexColor);
-                    if (itemToRemove != null)
+                    // ✅ Direct UI manipulation - no LoadFavoritesDataAsync() call!
+                    FavoriteSwatches.Remove(swatchItem);
+
+                    // ✅ Update main palette swatch immediately
+                    var matchingSwatch = Swatches.FirstOrDefault(s =>
+                        s.Color.ToHex().Equals(swatchItem.HexColor, StringComparison.OrdinalIgnoreCase));
+
+                    if (matchingSwatch != null)
                     {
-                        FavoriteSwatches.Remove(itemToRemove);
-                        System.Diagnostics.Debug.WriteLine($"Removed from FavoriteSwatches collection. Count is now: {FavoriteSwatches.Count}");
-                    }
-                    else
-                    {
-                        System.Diagnostics.Debug.WriteLine("Item not found in FavoriteSwatches collection!");
+                        matchingSwatch.IsFavoriteColor = false;
                     }
 
-                    // Force refresh of UI properties
-                    OnPropertyChanged(nameof(FavoriteSwatches));
                     OnPropertyChanged(nameof(HasNoFavoriteSwatches));
-
-                    // Show success message
                     await _toastService.ShowToastAsync("Color removed from favorites ✓");
 
                     _logger.LogInformation("Successfully removed swatch {HexColor}", swatchItem.HexColor);
@@ -874,10 +864,9 @@ namespace artstudio.ViewModels
             {
                 if (isFavorited)
                 {
-                    // Add to favorites panel immediately
+                    // ✅ Add to favorites panel immediately
                     var existingItem = FavoriteSwatches.FirstOrDefault(f =>
                         f.HexColor.Equals(hexColor, StringComparison.OrdinalIgnoreCase));
-
 
                     if (existingItem == null)
                     {
@@ -893,7 +882,7 @@ namespace artstudio.ViewModels
                 }
                 else
                 {
-                    // Remove from favorites panel immediately
+                    // ✅ Remove from favorites panel immediately
                     var itemToRemove = FavoriteSwatches.FirstOrDefault(f =>
                         f.HexColor.Equals(hexColor, StringComparison.OrdinalIgnoreCase));
 
@@ -912,9 +901,9 @@ namespace artstudio.ViewModels
         }
 
         public void Dispose()
-{
-    SwatchViewModel.FavoriteChanged -= OnSwatchFavoriteChanged;
-}
+        {
+            SwatchViewModel.FavoriteChanged -= OnSwatchFavoriteChanged;
+        }
         #endregion
 
         #region Swatch Sorting Methods
@@ -924,28 +913,13 @@ namespace artstudio.ViewModels
             if (DefaultSwatchSort != newSort)
             {
                 DefaultSwatchSort = newSort;
+
                 if (IsFavoritesPanelOpen)
                 {
                     await LoadFavoritesDataAsync();
                 }
 
                 _logger.LogInformation("Changed swatch sorting to: {SortMethod}", newSort);
-            }
-        }
-
-        #endregion
-
-        #region Swatch Sorting Methods
-
-        // SIMPLIFIED - Use the service's sorting method instead of duplicating logic
-        private async Task ChangeSortMethodAsync(SwatchSortMethod newSort)
-        {
-            if (DefaultSwatchSort != newSort)
-            {
-                DefaultSwatchSort = newSort;
-                await LoadFavoritesDataAsync(); // Just reload with new sort method
-
-                System.Diagnostics.Debug.WriteLine($"Changed swatch sorting to: {newSort}");
             }
         }
 

@@ -29,11 +29,13 @@ namespace artstudio.ViewModels
         private string _statusMessage = "Initializing...";
         private Dictionary<string, List<string>> _lastGeneratedComponents = [];
 
+        private readonly ILogger<PromptGeneratorViewModel> _logger;
+
         // Favorites flyout properties
         private bool _isFavoritesVisible = false;
         private bool _isLoadingFavorites = false;
 
-        public PromptGeneratorViewModel(WordPromptService wordPromptService, DatabaseService databaseService, IToastService toastService)
+        public PromptGeneratorViewModel(WordPromptService wordPromptService, DatabaseService databaseService, IToastService toastService, ILogger<PromptGeneratorViewModel> logger)
         {
             _logger = logger;
             _logger.LogDebug("PromptGeneratorViewModel Constructor Started!");
@@ -770,7 +772,7 @@ namespace artstudio.ViewModels
             try
             {
                 var logPath = Path.Combine(FileSystem.AppDataDirectory, "viewmodel_log.txt");
-                File.AppendAllText(logPath, logMessage + Environment.NewLine);
+                System.IO.File.AppendAllText(logPath, logMessage + Environment.NewLine);
             }
             catch
             {

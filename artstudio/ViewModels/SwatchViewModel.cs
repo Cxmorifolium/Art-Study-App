@@ -210,10 +210,11 @@ namespace artstudio.ViewModels
         {
             try
             {
-            _model.ToggleLock();
+                _model.ToggleLock();
 
                 OnPropertyChanged(nameof(IsLocked));
                 OnPropertyChanged(nameof(LockImage));
+                _logger.LogInformation("Lock toggled. IsLocked: {IsLocked}", _model.IsLocked);
 
 
             }
@@ -227,12 +228,12 @@ namespace artstudio.ViewModels
         {
             try
             {
-            _model.Delete();
+                _model.Delete();
 
                 // CRITICAL: Update ALL affected properties manually
-            IsDeleted = _model.IsDeleted;
-            IsActive = _model.IsActive;
-            OnPropertyChanged(nameof(Color));
+                IsDeleted = _model.IsDeleted;
+                IsActive = _model.IsActive;
+                OnPropertyChanged(nameof(Color));
 
                 // Make sure ButtonVisible gets updated
                 OnPropertyChanged(nameof(ButtonVisible));
@@ -256,24 +257,43 @@ namespace artstudio.ViewModels
             if (!wasActive && IsActive)
             {
                 _ = CheckFavoriteStatusOnActivationAsync();
-        }
+            }
 
             _logger.LogInformation("Swatch activated/deactivated. IsActive: {IsActive}", IsActive);
+        }
+
+        private static readonly Dictionary<string, bool> _favoriteCache = new();
+
+        public static void ClearFavoriteCache(string hexColor)
+        {
+            _favoriteCache.Remove(hexColor);
         }
 
         private async Task CheckFavoriteStatusOnActivationAsync()
         {
             try
             {
+                var hexColor = Color.ToHex();
+
+                // Check cache first
+                if (_favoriteCache.TryGetValue(hexColor, out bool cachedResult))
+                {
+                    IsFavoriteColor = cachedResult;
+                    _logger.LogDebug("Used cached favorite status: {HexColor} = {IsFavorite}", hexColor, cachedResult);
+                    return;
+                }
+
+                // Hit database if not cached
                 bool isFavorite = await _paletteService.IsSwatchFavoriteAsync(Color);
                 IsFavoriteColor = isFavorite;
-                _logger.LogDebug("Checked favorite status on activation: {HexColor} = {IsFavorite}",
-                    Color.ToHex(), isFavorite);
+                _favoriteCache[hexColor] = isFavorite; // Cache the result
+
+                _logger.LogDebug("Checked favorite status: {HexColor} = {IsFavorite}", hexColor, isFavorite);
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error checking favorite status on activation");
-                IsFavoriteColor = false; // Default to unfavorited on error
+                IsFavoriteColor = false;
             }
         }
 
