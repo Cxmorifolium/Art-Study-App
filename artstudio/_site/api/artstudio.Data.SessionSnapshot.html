@@ -1,0 +1,884 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class SessionSnapshot | artstudio-study-app </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class SessionSnapshot | artstudio-study-app ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Cxmorifolium/Art-Study-App/new/main/apiSpec/new?filename=artstudio_Data_SessionSnapshot.md&amp;value=---%0Auid%3A%20artstudio.Data.SessionSnapshot%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="artstudio-study-app">
+            artstudio-study-app
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="artstudio.Data.SessionSnapshot">
+
+
+
+  <h1 id="artstudio_Data_SessionSnapshot" data-uid="artstudio.Data.SessionSnapshot" class="text-break">
+Class SessionSnapshot  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L10"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="artstudio.html">artstudio</a>.<a class="xref" href="artstudio.Data.html">Data</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>artstudio.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Table(&quot;SessionSnapshot&quot;)]
+public class SessionSnapshot : INotifyPropertyChanged</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">SessionSnapshot</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="artstudio_Data_SessionSnapshot_CreatedAt_" data-uid="artstudio.Data.SessionSnapshot.CreatedAt*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_CreatedAt" data-uid="artstudio.Data.SessionSnapshot.CreatedAt">
+  CreatedAt
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L53"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DateTime CreatedAt { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.datetime">DateTime</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_DisplayTitle_" data-uid="artstudio.Data.SessionSnapshot.DisplayTitle*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_DisplayTitle" data-uid="artstudio.Data.SessionSnapshot.DisplayTitle">
+  DisplayTitle
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L72"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string DisplayTitle { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_FormattedDate_" data-uid="artstudio.Data.SessionSnapshot.FormattedDate*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_FormattedDate" data-uid="artstudio.Data.SessionSnapshot.FormattedDate">
+  FormattedDate
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L73"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string FormattedDate { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_HasContent_" data-uid="artstudio.Data.SessionSnapshot.HasContent*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_HasContent" data-uid="artstudio.Data.SessionSnapshot.HasContent">
+  HasContent
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L137"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Ignore]
+public bool HasContent { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_HasImages_" data-uid="artstudio.Data.SessionSnapshot.HasImages*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_HasImages" data-uid="artstudio.Data.SessionSnapshot.HasImages">
+  HasImages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L134"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Ignore]
+public bool HasImages { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_HasPalette_" data-uid="artstudio.Data.SessionSnapshot.HasPalette*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_HasPalette" data-uid="artstudio.Data.SessionSnapshot.HasPalette">
+  HasPalette
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L131"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Ignore]
+public bool HasPalette { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_HasWords_" data-uid="artstudio.Data.SessionSnapshot.HasWords*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_HasWords" data-uid="artstudio.Data.SessionSnapshot.HasWords">
+  HasWords
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L128"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Ignore]
+public bool HasWords { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_Id_" data-uid="artstudio.Data.SessionSnapshot.Id*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_Id" data-uid="artstudio.Data.SessionSnapshot.Id">
+  Id
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L22"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[PrimaryKey]
+[AutoIncrement]
+public int Id { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_ImagesList_" data-uid="artstudio.Data.SessionSnapshot.ImagesList*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_ImagesList" data-uid="artstudio.Data.SessionSnapshot.ImagesList">
+  ImagesList
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L110"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Ignore]
+public List&lt;UnsplashImage&gt; ImagesList { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Models.UnsplashImage.html">UnsplashImage</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_PaletteList_" data-uid="artstudio.Data.SessionSnapshot.PaletteList*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_PaletteList" data-uid="artstudio.Data.SessionSnapshot.PaletteList">
+  PaletteList
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Ignore]
+public List&lt;string&gt; PaletteList { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_SavedImages_" data-uid="artstudio.Data.SessionSnapshot.SavedImages*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_SavedImages" data-uid="artstudio.Data.SessionSnapshot.SavedImages">
+  SavedImages
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L47"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? SavedImages { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_SavedPalette_" data-uid="artstudio.Data.SessionSnapshot.SavedPalette*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_SavedPalette" data-uid="artstudio.Data.SessionSnapshot.SavedPalette">
+  SavedPalette
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L41"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? SavedPalette { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_SavedWords_" data-uid="artstudio.Data.SessionSnapshot.SavedWords*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_SavedWords" data-uid="artstudio.Data.SessionSnapshot.SavedWords">
+  SavedWords
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L35"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? SavedWords { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_SessionDuration_" data-uid="artstudio.Data.SessionSnapshot.SessionDuration*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_SessionDuration" data-uid="artstudio.Data.SessionSnapshot.SessionDuration">
+  SessionDuration
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L65"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? SessionDuration { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_SessionMode_" data-uid="artstudio.Data.SessionSnapshot.SessionMode*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_SessionMode" data-uid="artstudio.Data.SessionSnapshot.SessionMode">
+  SessionMode
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L59"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? SessionMode { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_Title_" data-uid="artstudio.Data.SessionSnapshot.Title*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_Title" data-uid="artstudio.Data.SessionSnapshot.Title">
+  Title
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string? Title { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_WordsList_" data-uid="artstudio.Data.SessionSnapshot.WordsList*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_WordsList" data-uid="artstudio.Data.SessionSnapshot.WordsList">
+  WordsList
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L76"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">[Ignore]
+public List&lt;string&gt; WordsList { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="artstudio_Data_SessionSnapshot_FromCurrentSession_" data-uid="artstudio.Data.SessionSnapshot.FromCurrentSession*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_FromCurrentSession_System_Collections_Generic_List_System_String__System_Collections_Generic_List_Microsoft_Maui_Graphics_Color__System_Collections_Generic_List_artstudio_Models_UnsplashImage__System_String_System_String_System_String_" data-uid="artstudio.Data.SessionSnapshot.FromCurrentSession(System.Collections.Generic.List{System.String},System.Collections.Generic.List{Microsoft.Maui.Graphics.Color},System.Collections.Generic.List{artstudio.Models.UnsplashImage},System.String,System.String,System.String)">
+  FromCurrentSession(List&lt;string&gt;, List&lt;Color&gt;, List&lt;UnsplashImage&gt;, string, string, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public static SessionSnapshot FromCurrentSession(List&lt;string&gt; words, List&lt;Color&gt; palette, List&lt;UnsplashImage&gt; images, string sessionMode, string sessionDuration, string? customTitle = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>words</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>palette</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color">Color</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>images</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Models.UnsplashImage.html">UnsplashImage</a>&gt;</dt>
+    <dd></dd>
+    <dt><code>sessionMode</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>sessionDuration</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+    <dt><code>customTitle</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="artstudio.Data.SessionSnapshot.html">SessionSnapshot</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_OnPropertyChanged_" data-uid="artstudio.Data.SessionSnapshot.OnPropertyChanged*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_OnPropertyChanged_System_String_" data-uid="artstudio.Data.SessionSnapshot.OnPropertyChanged(System.String)">
+  OnPropertyChanged(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L170"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnPropertyChanged(string? propertyName = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Data_SessionSnapshot_SetProperty_" data-uid="artstudio.Data.SessionSnapshot.SetProperty*"></a>
+
+  <h3 id="artstudio_Data_SessionSnapshot_SetProperty__1___0____0_System_String_" data-uid="artstudio.Data.SessionSnapshot.SetProperty``1(``0@,``0,System.String)">
+  SetProperty&lt;T&gt;(ref T, T, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L185"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool SetProperty&lt;T&gt;(ref T field, T value, string? propertyName = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>field</code> <span class="xref">T</span></dt>
+    <dd></dd>
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd></dd>
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="artstudio_Data_SessionSnapshot_PropertyChanged" data-uid="artstudio.Data.SessionSnapshot.PropertyChanged">
+  PropertyChanged
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L168"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Occurs when a property value changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event PropertyChangedEventHandler? PropertyChanged</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler">PropertyChangedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Data/SessionSnapshot.cs/#L10" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

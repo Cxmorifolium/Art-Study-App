@@ -8,10 +8,10 @@ namespace artstudio
             InitializeComponent();
 
             // Register routes for navigation and just in case
-            Routing.RegisterRoute("prompt", typeof(Views.PromptGeneratorPage));
-            Routing.RegisterRoute("study", typeof(Views.StudyPage));
-            Routing.RegisterRoute("palette", typeof(Views.PalettePage));
-            Routing.RegisterRoute("Images", typeof(Views.ImagePromptPage));
+
+            Routing.RegisterRoute("GalleryDetail", typeof(Views.GalleryDetailPage));
+            Routing.RegisterRoute("GalleryCreation", typeof(Views.GalleryCreationPage));
+            Routing.RegisterRoute("StudyMode", typeof(Views.StudyPage));
 
         }
 

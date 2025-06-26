@@ -1,0 +1,900 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:data="clr-namespace:artstudio.Data"
+             xmlns:converters="clr-namespace:artstudio.Converters"
+             x:Class="artstudio.Views.GalleryCreationPage"
+             Title="Add to Gallery"
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A202C}">
+
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="Clear" 
+                     Command="{Binding ClearCommand}" />
+
+        <!-- Load Session Button -->
+        <ToolbarItem Text="Load Session" 
+                 Command="{Binding ToggleSessionsFlyoutCommand}" />
+        
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <ScrollView>
+            <StackLayout Padding="16" Spacing="20" Margin="80,0">
+
+                <!-- Artwork Photo Section -->
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"
+                    Shadow="0,2,10,0,Black,0.1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20">
+
+                    <StackLayout Spacing="16">
+                        <Label Text="📸 Your Artwork"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                        <!-- Image Display/Placeholder -->
+                        <Border StrokeShape="RoundRectangle 12"
+                            MinimumHeightRequest="150"
+                            MaximumHeightRequest="400"
+                            BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#374151}"
+                            Padding="0">
+
+                            <Grid>
+                                <!-- Placeholder when no image -->
+                                <StackLayout IsVisible="{Binding HasArtworkImage, Converter={StaticResource InvertedBoolConverter}}"
+                                         VerticalOptions="Center"
+                                         HorizontalOptions="Center"
+                                         Spacing="12">
+                                    <Label Text="📷"
+                                       FontSize="48"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                                    <Label Text="Add a photo of your artwork"
+                                       FontSize="16"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                                </StackLayout>
+
+                                <!-- Selected Image -->
+                                <Image Source="{Binding ArtworkImageSource}"
+                                       Aspect="AspectFit"
+                                       IsVisible="{Binding HasArtworkImage}" 
+                                       BackgroundColor="#80000000">
+                                </Image>
+                            </Grid>
+                        </Border>
+
+                        <!-- Image Action Buttons -->
+                        <StackLayout Orientation="Horizontal" 
+                                 Spacing="12"
+                                 HorizontalOptions="Center">
+
+                            <Button Text="🖼️ Choose Photo"
+                                Command="{Binding PickImageCommand}"
+                                BackgroundColor="#2196F3"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Padding="16,12"
+                                FontSize="14" />
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+
+                <!-- Details Section - Split Layout -->
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"
+                    Shadow="0,2,10,0,Black,0.1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20">
+
+                    <StackLayout Spacing="20">
+                        <Label Text="📝 Details"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                        <!-- Split Grid: Manual Entry (Left) and Generated Content (Right) -->
+                        <Grid ColumnDefinitions="1*,20,1*" RowDefinitions="Auto">
+
+                            <!-- Left Column: Manual Entry -->
+                            <StackLayout Grid.Column="0" Spacing="16">
+
+                                <!-- Title -->
+                                <StackLayout Spacing="8">
+                                    <Label Text="Title (optional)"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}" />
+                                    <Entry Text="{Binding Title}"
+                                       Placeholder="Give your artwork a title..."
+                                       BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                                       TextColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}"
+                                       PlaceholderColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                                </StackLayout>
+
+                                <!-- Notes -->
+                                <StackLayout Spacing="8">
+                                    <Label Text="Notes"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}" />
+                                    <Editor Text="{Binding Notes}"
+                                        Placeholder="What did you learn? What techniques did you practice?"
+                                        HeightRequest="120"
+                                        BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                                        TextColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}"
+                                        PlaceholderColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                                </StackLayout>
+
+                                <!-- Custom Tags -->
+                                <StackLayout Spacing="8">
+                                    <Label Text="Custom Tags"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}" />
+                                    <Entry Text="{Binding CustomTagsText}"
+                                       Placeholder="portrait, digital, practice..."
+                                       BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                                       TextColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}"
+                                       PlaceholderColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                                    <Label Text="Separate tags with commas"
+                                       FontSize="12"
+                                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                                </StackLayout>
+                            </StackLayout>
+
+                            <!-- Column Separator -->
+                            <BoxView Grid.Column="1" 
+                                 BackgroundColor="{AppThemeBinding Light=#E5E7EB, Dark=#4B5563}"
+                                 WidthRequest="1"
+                                 VerticalOptions="Fill" />
+
+                            <!-- Right Column: Generated Content Selection -->
+                            <StackLayout Grid.Column="2" Spacing="16">
+                                <StackLayout Spacing="4">
+                                    <Label Text="Generated Content"
+                                           FontSize="14"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}" />
+                                    <Label Text="💡 Tap items to deselect any you didn't use"
+                                           FontSize="11"
+                                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"/>
+                                </StackLayout>
+                                
+                                <!-- Generated Words Section -->
+                                <StackLayout Spacing="8">
+                                    <Label Text="Words"
+                                               FontSize="12"
+                                               FontAttributes="Bold"
+                                               TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+
+                                    <Button Text="Browse Words"
+                                                    Command="{Binding ToggleWordsFlyoutCommand}"
+                                                    BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#374151}"
+                                                    TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                                                    BorderColor="{AppThemeBinding Light=#D1D5DB, Dark=#6B7280}"
+                                                    BorderWidth="1"
+                                                    CornerRadius="8"
+                                                    Padding="12,8"
+                                                    FontSize="12" />
+
+                                    <!-- Current Session Words - Simple and Clean -->
+                                    <CollectionView ItemsSource="{Binding SelectableWords}"
+                                                    BackgroundColor="Transparent"
+                                                    IsVisible="{Binding SelectableWords.Count, Converter={StaticResource IntToBoolConverter}}">
+                                        <CollectionView.ItemsLayout>
+                                            <GridItemsLayout Orientation="Vertical" 
+                                                             Span="4" 
+                                                             HorizontalItemSpacing="4" 
+                                                             VerticalItemSpacing="4" />
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BackgroundColor="{Binding IsSelected, Converter={StaticResource BoolToSelectionColorConverter}}"
+                                                        StrokeShape="RoundRectangle 12"
+                                                        Padding="0"
+                                                        HorizontalOptions="Center">
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding ToggleSelectionCommand}" />
+                                                    </Border.GestureRecognizers>
+                                                    <Label Text="{Binding Word}"
+                                                           TextColor="{Binding IsSelected, Converter={StaticResource BoolToSelectionTextColorConverter}}"
+                                                           FontSize="12"
+                                                           HorizontalTextAlignment="Center"
+                                                           VerticalTextAlignment="Center" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </StackLayout>
+
+                                <!-- Generated Palette Section -->
+                                <StackLayout Spacing="8">
+                                    <Label Text="Palette"
+                                       FontSize="12"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+
+                                    <Button Text="🎨 Browse Palettes"
+                                        Command="{Binding TogglePaletteFlyoutCommand}"
+                                        BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#374151}"
+                                        TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                                        BorderColor="{AppThemeBinding Light=#D1D5DB, Dark=#6B7280}"
+                                        BorderWidth="1"
+                                        CornerRadius="8"
+                                        Padding="12,8"
+                                        FontSize="12" />
+
+                                    <!-- Current Session Palette -->
+                                    <CollectionView ItemsSource="{Binding SelectablePalette}"
+                                                BackgroundColor="Transparent"
+                                                MaximumHeightRequest="40"
+                                                IsVisible="{Binding SelectablePalette.Count, Converter={StaticResource IntToBoolConverter}}">
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="4" />
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BackgroundColor="{Binding HexValue}"
+                                                    StrokeShape="RoundRectangle 4"
+                                                    HeightRequest="24"
+                                                    WidthRequest="24"
+                                                    Stroke="{Binding IsSelected, Converter={StaticResource BoolToSelectionBorderColorConverter}}"
+                                                    StrokeThickness="2">
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding ToggleSelectionCommand}" />
+                                                    </Border.GestureRecognizers>
+                                                    <Label Text="✓"
+                                                       TextColor="White"
+                                                       FontSize="10"
+                                                       HorizontalTextAlignment="Center"
+                                                       VerticalTextAlignment="Center"
+                                                       IsVisible="{Binding IsSelected}"
+                                                       BackgroundColor="#80000000" />
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </StackLayout>
+
+                                <!-- Reference Images Section -->
+                                <StackLayout Spacing="8">
+                                    <Label Text="Images"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+
+                                    <Button Text="Browse Images"
+                                            Command="{Binding ToggleImagesFlyoutCommand}"
+                                            BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#374151}"
+                                            TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                                            BorderColor="{AppThemeBinding Light=#D1D5DB, Dark=#6B7280}"
+                                            BorderWidth="1"
+                                            CornerRadius="8"
+                                            Padding="12,8"
+                                            FontSize="12" />
+
+                                    <!-- Current Session Images Display -->
+                                    <CollectionView ItemsSource="{Binding SelectableImages}"
+                                                    BackgroundColor="Transparent"
+                                                    MaximumHeightRequest="80"
+                                                    IsVisible="{Binding SelectableImages.Count, Converter={StaticResource IntToBoolConverter}}">
+                                        <CollectionView.ItemsLayout>
+                                            <LinearItemsLayout Orientation="Horizontal" ItemSpacing="4" />
+                                        </CollectionView.ItemsLayout>
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border StrokeShape="RoundRectangle 6"
+                                                        HeightRequest="60"
+                                                        WidthRequest="60"
+                                                        Stroke="{Binding IsSelected, Converter={StaticResource BoolToSelectionBorderColorConverter}}"
+                                                        StrokeThickness="2">
+
+                                                    <Grid>
+                                                        <!-- Image -->
+                                                        <Image Source="{Binding ThumbUrl}"
+                                                               Aspect="AspectFill"
+                                                               BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#374151}" />
+
+                                                        <!-- Selection Overlay -->
+                                                        <Border BackgroundColor="#80000000"
+                                                                IsVisible="{Binding IsSelected}">
+                                                            <Label Text="✓"
+                                                                   TextColor="White"
+                                                                   FontSize="20"
+                                                                   FontAttributes="Bold"
+                                                                   HorizontalTextAlignment="Center"
+                                                                   VerticalTextAlignment="Center" />
+                                                        </Border>
+
+                                                        <!-- Tap Gesture -->
+                                                        <Grid.GestureRecognizers>
+                                                            <TapGestureRecognizer Command="{Binding ToggleSelectionCommand}" />
+                                                        </Grid.GestureRecognizers>
+                                                    </Grid>
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </StackLayout>
+
+                            </StackLayout>
+                        </Grid>
+                    </StackLayout>
+                </Border>
+
+                <!-- Save Section -->
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"
+                    Shadow="0,2,10,0,Black,0.1"
+                    StrokeShape="RoundRectangle 16"
+                    Padding="20">
+
+                    <StackLayout Spacing="16">
+                        <!-- Save Button -->
+                        <Button Text="💾 Save to Gallery"
+                            Command="{Binding SaveCommand}"
+                            BackgroundColor="#4CAF50"
+                            TextColor="White"
+                            CornerRadius="12"
+                            Padding="0,16"
+                            FontSize="18"
+                            FontAttributes="Bold"
+                            IsEnabled="{Binding CanSave}" />
+
+                        <!-- Validation Message -->
+                        <Label Text="Please add an artwork photo to save"
+                           FontSize="14"
+                           TextColor="#F44336"
+                           HorizontalTextAlignment="Center"
+                           IsVisible="{Binding HasArtworkImage, Converter={StaticResource InvertedBoolConverter}}" />
+                    </StackLayout>
+                </Border>
+
+                <!-- Bottom Spacing -->
+                <BoxView HeightRequest="40" BackgroundColor="Transparent" />
+
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Words Flyout Panel -->
+        <Border IsVisible="{Binding IsWordsFlyoutVisible}"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"
+                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#4B5563}"
+                StrokeThickness="1"
+                HorizontalOptions="End"
+                VerticalOptions="Fill"
+                WidthRequest="300"
+                Padding="16">
+
+            <StackLayout Spacing="16">
+                <!-- Header -->
+                <StackLayout Orientation="Horizontal" Spacing="12">
+                    <Label Text="📝 Favorite Words"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Start"
+                           TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                    <Button Text="✕"
+                            Command="{Binding CloseWordsFlyoutCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                            FontSize="16"
+                            Padding="8"
+                            HorizontalOptions="End" />
+                </StackLayout>
+
+                <!-- Loading State -->
+                <StackLayout IsVisible="{Binding IsLoadingWords}"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Spacing="12">
+                    <ActivityIndicator IsRunning="True"
+                                   Color="{AppThemeBinding Light=#4CAF50, Dark=#66BB6A}" />
+                    <Label Text="Loading favorite words..."
+                       FontSize="14"
+                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                       HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <!-- Empty State -->
+                <StackLayout IsVisible="{Binding HasNoFavoriteWords}"
+                         VerticalOptions="Center"
+                         Spacing="12">
+                    <Label Text="📝"
+                       FontSize="48"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                    <Label Text="No favorite words yet"
+                       FontSize="16"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                    <Label Text="Generate some prompts and save your favorites!"
+                       FontSize="12"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                </StackLayout>
+
+                <!-- Favorite Words List -->
+                <ScrollView IsVisible="{Binding HasNoFavoriteWords, Converter={StaticResource InvertedBoolConverter}}">
+                    <CollectionView ItemsSource="{Binding FavoriteWordsGroups}"
+                                BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Spacing="8" Margin="0,8">
+                                    <!-- Collection Header -->
+                                    <Label Text="{Binding CollectionName}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                                       Margin="0,8,0,4" />
+
+                                    <!-- Collection Items -->
+                                    <CollectionView ItemsSource="{Binding .}"
+                                                BackgroundColor="Transparent">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    Padding="12"
+                                                    Margin="0,2">
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.LoadWordsFromFavoriteCommand}"
+                                                                          CommandParameter="{Binding .}" />
+                                                    </Border.GestureRecognizers>
+
+                                                    <StackLayout Spacing="4">
+                                                        <Label Text="{Binding DisplayTitle}"
+                                                           FontSize="12"
+                                                           FontAttributes="Bold"
+                                                           TextColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}"
+                                                           LineBreakMode="TailTruncation" />
+
+                                                        <Label Text="{Binding WordCountText}"
+                                                           FontSize="10"
+                                                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+
+                                                        <Label Text="{Binding FormattedDate}"
+                                                           FontSize="10"
+                                                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                                                    </StackLayout>
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+            </StackLayout>
+        </Border>
+
+        <!-- Palette Flyout Panel -->
+        <Border IsVisible="{Binding IsPaletteFlyoutVisible}"
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"
+                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#4B5563}"
+                StrokeThickness="1"
+                HorizontalOptions="End"
+                VerticalOptions="Fill"
+                WidthRequest="300"
+                Padding="16">
+
+            <StackLayout Spacing="16">
+                <!-- Header -->
+                <StackLayout Orientation="Horizontal" Spacing="12">
+                    <Label Text="🎨 Favorite Palettes"
+                           FontSize="18"
+                           FontAttributes="Bold"
+                           VerticalTextAlignment="Center"
+                           HorizontalOptions="Start"
+                           TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                    <Button Text="✕"
+                            Command="{Binding ClosePaletteFlyoutCommand}"
+                            BackgroundColor="Transparent"
+                            TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                            FontSize="16"
+                            Padding="8"
+                            HorizontalOptions="End" />
+                </StackLayout>
+
+                <!-- Loading State -->
+                <StackLayout IsVisible="{Binding IsLoadingPalettes}"
+                         VerticalOptions="Center"
+                         HorizontalOptions="Center"
+                         Spacing="12">
+                    <ActivityIndicator IsRunning="True"
+                                   Color="{AppThemeBinding Light=#4CAF50, Dark=#66BB6A}" />
+                    <Label Text="Loading favorite palettes..."
+                       FontSize="14"
+                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                       HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <!-- Empty State -->
+                <StackLayout IsVisible="{Binding HasNoFavoritePalettes}"
+                         VerticalOptions="Center"
+                         Spacing="12">
+                    <Label Text="🎨"
+                       FontSize="48"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                    <Label Text="No favorite palettes yet"
+                       FontSize="16"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                    <Label Text="Generate some palettes and save your favorites!"
+                       FontSize="12"
+                       HorizontalTextAlignment="Center"
+                       TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                </StackLayout>
+
+                <!-- Favorite Palettes List -->
+                <ScrollView IsVisible="{Binding HasNoFavoritePalettes, Converter={StaticResource InvertedBoolConverter}}">
+                    <CollectionView ItemsSource="{Binding FavoritePalettesGroups}"
+                                BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <StackLayout Spacing="8" Margin="0,8">
+                                    <!-- Collection Header -->
+                                    <Label Text="{Binding CollectionName}"
+                                       FontSize="14"
+                                       FontAttributes="Bold"
+                                       TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                                       Margin="0,8,0,4" />
+
+                                    <!-- Collection Items -->
+                                    <CollectionView ItemsSource="{Binding Palettes}"
+                                                BackgroundColor="Transparent">
+                                        <CollectionView.ItemTemplate>
+                                            <DataTemplate>
+                                                <Border BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                                                    StrokeShape="RoundRectangle 8"
+                                                    Padding="12"
+                                                    Margin="0,2">
+                                                    <Border.GestureRecognizers>
+                                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.LoadPaletteFromFavoriteCommand}"
+                                                                          CommandParameter="{Binding .}" />
+                                                    </Border.GestureRecognizers>
+
+                                                    <StackLayout Spacing="8">
+                                                        <Label Text="{Binding DisplayTitle}"
+                                                           FontSize="12"
+                                                           FontAttributes="Bold"
+                                                           TextColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}"
+                                                           LineBreakMode="TailTruncation" />
+
+                                                        <!-- Color Preview -->
+                                                        <CollectionView ItemsSource="{Binding Colors}"
+                                                                    BackgroundColor="Transparent"
+                                                                    HeightRequest="24">
+                                                            <CollectionView.ItemsLayout>
+                                                                <LinearItemsLayout Orientation="Horizontal" ItemSpacing="2" />
+                                                            </CollectionView.ItemsLayout>
+                                                            <CollectionView.ItemTemplate>
+                                                                <DataTemplate>
+                                                                    <Border BackgroundColor="{Binding .}"
+                                                                        StrokeShape="RoundRectangle 2"
+                                                                        HeightRequest="20"
+                                                                        WidthRequest="20" />
+                                                                </DataTemplate>
+                                                            </CollectionView.ItemTemplate>
+                                                        </CollectionView>
+
+                                                        <Label Text="{Binding CreatedAt, StringFormat='{0:MMM dd, HH:mm}'}"
+                                                           FontSize="10"
+                                                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                                                    </StackLayout>
+                                                </Border>
+                                            </DataTemplate>
+                                        </CollectionView.ItemTemplate>
+                                    </CollectionView>
+                                </StackLayout>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+            </StackLayout>
+        </Border>
+
+        <!-- Images Flyout Panel (Placeholder) -->
+        <Border IsVisible="{Binding IsImagesFlyoutVisible}"
+        BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"
+        Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#4B5563}"
+        StrokeThickness="1"
+        HorizontalOptions="End"
+        VerticalOptions="Fill"
+        WidthRequest="300"
+        Padding="16">
+
+            <StackLayout Spacing="16">
+                <!-- Header -->
+                <StackLayout Orientation="Horizontal" Spacing="12">
+                    <Label Text="🖼️ Favorite Images"
+                   FontSize="18"
+                   FontAttributes="Bold"
+                   VerticalTextAlignment="Center"
+                   HorizontalOptions="Start"
+                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                    <Button Text="✕"
+                    Command="{Binding CloseImagesFlyoutCommand}"
+                    BackgroundColor="Transparent"
+                    TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                    FontSize="16"
+                    Padding="8"
+                    HorizontalOptions="End" />
+                </StackLayout>
+
+                <!-- Loading State -->
+                <StackLayout IsVisible="{Binding IsLoadingImages}"
+                     VerticalOptions="Center"
+                     HorizontalOptions="Center"
+                     Spacing="12">
+                    <ActivityIndicator IsRunning="True"
+                               Color="{AppThemeBinding Light=#4CAF50, Dark=#66BB6A}" />
+                    <Label Text="Loading favorite images..."
+                   FontSize="14"
+                   TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                   HorizontalTextAlignment="Center" />
+                </StackLayout>
+
+                <!-- Empty State -->
+                <StackLayout IsVisible="{Binding HasNoFavoriteImages}"
+                     VerticalOptions="Center"
+                     Spacing="12">
+                    <Label Text="🖼️"
+                   FontSize="48"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                    <Label Text="No favorite images yet"
+                   FontSize="16"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                    <Label Text="Save images from the Image Prompt page to build your collection!"
+                   FontSize="12"
+                   HorizontalTextAlignment="Center"
+                   TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                </StackLayout>
+
+                <!-- Favorite Images List -->
+                <ScrollView IsVisible="{Binding HasNoFavoriteImages, Converter={StaticResource InvertedBoolConverter}}">
+                    <CollectionView ItemsSource="{Binding FavoriteImages}"
+                            BackgroundColor="Transparent">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                                StrokeShape="RoundRectangle 8"
+                                Padding="12"
+                                Margin="0,2">
+                                    <!-- Tap to load image into creation -->
+                                    <Border.GestureRecognizers>
+                                        <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.LoadImageFromFavoriteCommand}"
+                                                      CommandParameter="{Binding .}" />
+                                    </Border.GestureRecognizers>
+
+                                    <StackLayout Spacing="8">
+                                        <!-- Image Preview -->
+                                        <Border StrokeShape="RoundRectangle 6"
+                                        HeightRequest="80"
+                                        BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#4A5568}">
+                                            <Image Source="{Binding LocalImagePath}"
+                                           Aspect="AspectFill" />
+                                        </Border>
+
+                                        <!-- Image Info -->
+                                        <StackLayout Spacing="4">
+                                            <Label Text="{Binding DisplayTitle}"
+                                           FontSize="12"
+                                           FontAttributes="Bold"
+                                           TextColor="{AppThemeBinding Light=#1F2937, Dark=#F3F4F6}"
+                                           LineBreakMode="TailTruncation" />
+
+                                            <Label Text="{Binding UserName, StringFormat='by {0}'}"
+                                           FontSize="10"
+                                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+
+                                            <Label Text="{Binding CreatedAt, StringFormat='{0:MMM dd, HH:mm}'}"
+                                           FontSize="10"
+                                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                                        </StackLayout>
+                                    </StackLayout>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+                </ScrollView>
+            </StackLayout>
+        </Border>
+
+        <!-- Sessions Flyout -->
+        <Border IsVisible="{Binding IsSessionsFlyoutVisible}"
+                BackgroundColor="#80000000"
+                Grid.RowSpan="20"
+                Grid.ColumnSpan="20"
+                ZIndex="1000">
+
+            <Border.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseSessionsFlyoutCommand}" />
+            </Border.GestureRecognizers>
+
+            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"
+                    WidthRequest="400"
+                    HeightRequest="500"
+                    VerticalOptions="Center"
+                    HorizontalOptions="Center"
+                    Padding="0"
+                    Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#374151}"
+                    StrokeThickness="1">
+
+                <Border.Shadow>
+                    <Shadow Brush="Black" Offset="0,8" Radius="16" Opacity="0.2" />
+                </Border.Shadow>
+
+                <Grid RowDefinitions="Auto,*,Auto">
+                    <!-- Header -->
+                    <Border Grid.Row="0"
+                            BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#374151}"
+                            Padding="20,16">
+
+                        <Grid ColumnDefinitions="*,Auto">
+                            <Label Grid.Column="0"
+                                   Text="Load Saved Session"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                            <Button Grid.Column="1"
+                                    Text="✕"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    Padding="8"
+                                    Command="{Binding CloseSessionsFlyoutCommand}" />
+                        </Grid>
+                    </Border>
+
+                    <!-- Content -->
+                    <ScrollView Grid.Row="1" Padding="20">
+                        <StackLayout Spacing="12">
+
+                            <!-- Loading Indicator -->
+                            <StackLayout IsVisible="{Binding IsLoadingSessions}" 
+                                         HorizontalOptions="Center" 
+                                         Spacing="12"
+                                         Padding="20">
+                                <ActivityIndicator IsRunning="{Binding IsLoadingSessions}"
+                                           Color="#6366F1"
+                                           Scale="1.2" />
+                                <Label Text="Loading saved sessions..."
+                                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                                       FontSize="14"
+                                       HorizontalTextAlignment="Center" />
+                            </StackLayout>
+
+                            <!-- No Sessions Message -->
+                            <StackLayout IsVisible="{Binding HasNoSavedSessions}"
+                                         HorizontalOptions="Center"
+                                         Spacing="12"
+                                         Padding="20">
+                                <Label Text="📭"
+                                       FontSize="48"
+                                       HorizontalTextAlignment="Center" />
+                                <Label Text="No saved sessions yet"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                                <Label Text="Create and save sessions in Study Mode to load them here!"
+                                       FontSize="12"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                            </StackLayout>
+
+                            <!-- Sessions List -->
+                            <CollectionView ItemsSource="{Binding SavedSessions}"
+                                            BackgroundColor="Transparent"
+                                            IsVisible="{Binding HasNoSavedSessions, Converter={StaticResource InverseBoolConverter}}">
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#374151}"
+                                                Padding="16"
+                                                Margin="0,4"
+                                                Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#4A5568}"
+                                                StrokeThickness="1">
+
+                                            <Grid ColumnDefinitions="*,Auto,Auto" RowDefinitions="Auto,Auto,Auto">
+
+                                                <!-- Title -->
+                                                <Label Grid.Column="0" Grid.Row="0"
+                                                       Text="{Binding DisplayTitle}"
+                                                       FontSize="16"
+                                                       FontAttributes="Bold"
+                                                       TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}"
+                                                       LineBreakMode="TailTruncation" />
+
+                                                <!-- Date and Duration -->
+                                                <Label Grid.Column="0" Grid.Row="1"
+                                                       FontSize="12"
+                                                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                                                       Margin="0,4,0,0">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding FormattedDate}" />
+                                                            <Span Text=" • " />
+                                                            <Span Text="{Binding SessionMode}" />
+                                                            <Span Text=" • " />
+                                                            <Span Text="{Binding SessionDuration}" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <!-- Content Summary -->
+                                                <Label Grid.Column="0" Grid.Row="2"
+                                                       FontSize="11"
+                                                       TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}"
+                                                       Margin="0,4,0,0">
+                                                    <Label.FormattedText>
+                                                        <FormattedString>
+                                                            <Span Text="{Binding WordsList.Count}" />
+                                                            <Span Text=" words • " />
+                                                            <Span Text="{Binding PaletteList.Count}" />
+                                                            <Span Text=" colors • " />
+                                                            <Span Text="{Binding ImagesList.Count}" />
+                                                            <Span Text=" images" />
+                                                        </FormattedString>
+                                                    </Label.FormattedText>
+                                                </Label>
+
+                                                <!-- Load Button -->
+                                                <Button Grid.Column="1" Grid.RowSpan="3"
+                                                        Text="Load"
+                                                        BackgroundColor="#10B981"
+                                                        TextColor="White"
+                                                        FontSize="14"
+                                                        CornerRadius="8"
+                                                        Padding="16,8"
+                                                        Margin="8,0,4,0"
+                                                        VerticalOptions="Center"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.LoadSessionCommand}"
+                                                        CommandParameter="{Binding}" />
+
+                                                <!-- Delete Button -->
+                                                <Button Grid.Column="2" Grid.RowSpan="3"
+                                                        Text="Delete"
+                                                        BackgroundColor="#EF4444"
+                                                        TextColor="White"
+                                                        FontSize="14"
+                                                        CornerRadius="8"
+                                                        Padding="12,8"
+                                                        VerticalOptions="Center"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteSessionCommand}"
+                                                        CommandParameter="{Binding}" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </ScrollView>
+
+                    <!-- Footer -->
+                    <Border Grid.Row="2"
+                            BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#374151}"
+                            Padding="20,12">
+
+                        <Label Text="💡 Tip: Sessions are auto-saved when you create content in Study Mode"
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                               HorizontalTextAlignment="Center" />
+                    </Border>
+                </Grid>
+            </Border>
+        </Border>
+    </Grid>
+</ContentPage>

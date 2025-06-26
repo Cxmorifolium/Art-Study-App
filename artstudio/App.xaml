@@ -16,6 +16,12 @@
             <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converters:BoolToLockColorConverter x:Key="BoolToLockColorConverter" />
             <converters:BoolToLockIconConverter x:Key="BoolToLockIconConverter" />
+            <converters:InvertedBoolConverter x:Key="InvertedBoolConverter" />
+            <converters:IntToBoolConverter x:Key="IntToBoolConverter" />
+            <converters:BoolToSelectionColorConverter x:Key="BoolToSelectionColorConverter" />
+            <converters:BoolToSelectionTextColorConverter x:Key="BoolToSelectionTextColorConverter" />
+            <converters:BoolToSelectionBorderColorConverter x:Key="BoolToSelectionBorderColorConverter" />
+            <converters:BoolToHeartIconConverter x:Key="BoolToHeartIconConverter" />
         </ResourceDictionary>
     </Application.Resources>
 </Application>

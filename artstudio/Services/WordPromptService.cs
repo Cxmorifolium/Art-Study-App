@@ -1,5 +1,4 @@
-﻿using artstudio.Data.Models;
-using artstudio.Service;
+﻿using artstudio.Data;
 using System.Diagnostics;
 
 namespace artstudio.Services

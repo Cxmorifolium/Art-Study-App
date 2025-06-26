@@ -16,10 +16,11 @@
     </Shell.ToolbarItems>
 
     <ShellContent
-        Title="Home"
-        ContentTemplate="{DataTemplate view:UnderConstruction}"
-        Route="MainPage"
+        Title="Gallery"
+        ContentTemplate="{DataTemplate view:GalleryPage}"
+        Route="Gallery"
         IsVisible="True" />
+    
 
     <!-- Flyout navigation items -->
     <FlyoutItem Title="Palette">

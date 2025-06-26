@@ -1,0 +1,2440 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Data.UserUploadedImage
+  commentId: T:artstudio.Data.UserUploadedImage
+  id: UserUploadedImage
+  parent: artstudio.Data
+  children:
+  - artstudio.Data.UserUploadedImage.AddColors(System.Collections.Generic.List{System.String})
+  - artstudio.Data.UserUploadedImage.AddCustomTags(System.Collections.Generic.List{System.String})
+  - artstudio.Data.UserUploadedImage.AddImages(System.Collections.Generic.List{artstudio.Models.UnsplashImage})
+  - artstudio.Data.UserUploadedImage.AddWords(System.Collections.Generic.List{System.String})
+  - artstudio.Data.UserUploadedImage.ArtworkImagePath
+  - artstudio.Data.UserUploadedImage.CreatedAt
+  - artstudio.Data.UserUploadedImage.CustomTags
+  - artstudio.Data.UserUploadedImage.CustomTagsList
+  - artstudio.Data.UserUploadedImage.DisplayTitle
+  - artstudio.Data.UserUploadedImage.FormattedDate
+  - artstudio.Data.UserUploadedImage.GeneratedImages
+  - artstudio.Data.UserUploadedImage.GeneratedPalette
+  - artstudio.Data.UserUploadedImage.GeneratedWords
+  - artstudio.Data.UserUploadedImage.HasCustomTags
+  - artstudio.Data.UserUploadedImage.HasImages
+  - artstudio.Data.UserUploadedImage.HasPalette
+  - artstudio.Data.UserUploadedImage.HasSessionDuration
+  - artstudio.Data.UserUploadedImage.HasWords
+  - artstudio.Data.UserUploadedImage.Id
+  - artstudio.Data.UserUploadedImage.ImagesList
+  - artstudio.Data.UserUploadedImage.Notes
+  - artstudio.Data.UserUploadedImage.OnPropertyChanged(System.String)
+  - artstudio.Data.UserUploadedImage.PaletteList
+  - artstudio.Data.UserUploadedImage.PropertyChanged
+  - artstudio.Data.UserUploadedImage.RemoveColor(System.String)
+  - artstudio.Data.UserUploadedImage.RemoveCustomTag(System.String)
+  - artstudio.Data.UserUploadedImage.RemoveImage(System.String)
+  - artstudio.Data.UserUploadedImage.RemoveWord(System.String)
+  - artstudio.Data.UserUploadedImage.SessionDuration
+  - artstudio.Data.UserUploadedImage.SetProperty``1(``0@,``0,System.String)
+  - artstudio.Data.UserUploadedImage.ShortDate
+  - artstudio.Data.UserUploadedImage.Title
+  - artstudio.Data.UserUploadedImage.UpdateCustomTagsList(System.Collections.Generic.List{System.String})
+  - artstudio.Data.UserUploadedImage.UpdateImagesList(System.Collections.Generic.List{artstudio.Models.UnsplashImage})
+  - artstudio.Data.UserUploadedImage.UpdatePaletteList(System.Collections.Generic.List{System.String})
+  - artstudio.Data.UserUploadedImage.UpdateWordsList(System.Collections.Generic.List{System.String})
+  - artstudio.Data.UserUploadedImage.WordsList
+  langs:
+  - csharp
+  - vb
+  name: UserUploadedImage
+  nameWithType: UserUploadedImage
+  fullName: artstudio.Data.UserUploadedImage
+  type: Class
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UserUploadedImage
+    path: Data/UserUploadedImage.cs
+    startLine: 10
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [Table("UserUploadedImage")]
+
+      public class UserUploadedImage : INotifyPropertyChanged
+    content.vb: >-
+      <Table("UserUploadedImage")>
+
+      Public Class UserUploadedImage Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  extensionMethods:
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasImages
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasNotes
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasPalette
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasWords
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.ImageCount
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags
+  - artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.WordCount
+  attributes:
+  - type: SQLite.TableAttribute
+    ctor: SQLite.TableAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: UserUploadedImage
+- uid: artstudio.Data.UserUploadedImage.Id
+  commentId: P:artstudio.Data.UserUploadedImage.Id
+  id: Id
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: UserUploadedImage.Id
+  fullName: artstudio.Data.UserUploadedImage.Id
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Id
+    path: Data/UserUploadedImage.cs
+    startLine: 24
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [PrimaryKey]
+
+      [AutoIncrement]
+
+      public int Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <PrimaryKey>
+
+      <AutoIncrement>
+
+      Public Property Id As Integer
+  overload: artstudio.Data.UserUploadedImage.Id*
+  attributes:
+  - type: SQLite.PrimaryKeyAttribute
+    ctor: SQLite.PrimaryKeyAttribute.#ctor
+    arguments: []
+  - type: SQLite.AutoIncrementAttribute
+    ctor: SQLite.AutoIncrementAttribute.#ctor
+    arguments: []
+- uid: artstudio.Data.UserUploadedImage.Title
+  commentId: P:artstudio.Data.UserUploadedImage.Title
+  id: Title
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: UserUploadedImage.Title
+  fullName: artstudio.Data.UserUploadedImage.Title
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Title
+    path: Data/UserUploadedImage.cs
+    startLine: 31
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: artstudio.Data.UserUploadedImage.Title*
+- uid: artstudio.Data.UserUploadedImage.ArtworkImagePath
+  commentId: P:artstudio.Data.UserUploadedImage.ArtworkImagePath
+  id: ArtworkImagePath
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: ArtworkImagePath
+  nameWithType: UserUploadedImage.ArtworkImagePath
+  fullName: artstudio.Data.UserUploadedImage.ArtworkImagePath
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ArtworkImagePath
+    path: Data/UserUploadedImage.cs
+    startLine: 37
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [NotNull]
+
+      public string ArtworkImagePath { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <NotNull>
+
+      Public Property ArtworkImagePath As String
+  overload: artstudio.Data.UserUploadedImage.ArtworkImagePath*
+  attributes:
+  - type: SQLite.NotNullAttribute
+    ctor: SQLite.NotNullAttribute.#ctor
+    arguments: []
+- uid: artstudio.Data.UserUploadedImage.Notes
+  commentId: P:artstudio.Data.UserUploadedImage.Notes
+  id: Notes
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: Notes
+  nameWithType: UserUploadedImage.Notes
+  fullName: artstudio.Data.UserUploadedImage.Notes
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Notes
+    path: Data/UserUploadedImage.cs
+    startLine: 44
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? Notes { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Notes As String
+  overload: artstudio.Data.UserUploadedImage.Notes*
+- uid: artstudio.Data.UserUploadedImage.CustomTags
+  commentId: P:artstudio.Data.UserUploadedImage.CustomTags
+  id: CustomTags
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: CustomTags
+  nameWithType: UserUploadedImage.CustomTags
+  fullName: artstudio.Data.UserUploadedImage.CustomTags
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CustomTags
+    path: Data/UserUploadedImage.cs
+    startLine: 50
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? CustomTags { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CustomTags As String
+  overload: artstudio.Data.UserUploadedImage.CustomTags*
+- uid: artstudio.Data.UserUploadedImage.SessionDuration
+  commentId: P:artstudio.Data.UserUploadedImage.SessionDuration
+  id: SessionDuration
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: SessionDuration
+  nameWithType: UserUploadedImage.SessionDuration
+  fullName: artstudio.Data.UserUploadedImage.SessionDuration
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SessionDuration
+    path: Data/UserUploadedImage.cs
+    startLine: 56
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? SessionDuration { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SessionDuration As String
+  overload: artstudio.Data.UserUploadedImage.SessionDuration*
+- uid: artstudio.Data.UserUploadedImage.GeneratedWords
+  commentId: P:artstudio.Data.UserUploadedImage.GeneratedWords
+  id: GeneratedWords
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: GeneratedWords
+  nameWithType: UserUploadedImage.GeneratedWords
+  fullName: artstudio.Data.UserUploadedImage.GeneratedWords
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GeneratedWords
+    path: Data/UserUploadedImage.cs
+    startLine: 62
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? GeneratedWords { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property GeneratedWords As String
+  overload: artstudio.Data.UserUploadedImage.GeneratedWords*
+- uid: artstudio.Data.UserUploadedImage.GeneratedPalette
+  commentId: P:artstudio.Data.UserUploadedImage.GeneratedPalette
+  id: GeneratedPalette
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: GeneratedPalette
+  nameWithType: UserUploadedImage.GeneratedPalette
+  fullName: artstudio.Data.UserUploadedImage.GeneratedPalette
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GeneratedPalette
+    path: Data/UserUploadedImage.cs
+    startLine: 68
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? GeneratedPalette { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property GeneratedPalette As String
+  overload: artstudio.Data.UserUploadedImage.GeneratedPalette*
+- uid: artstudio.Data.UserUploadedImage.GeneratedImages
+  commentId: P:artstudio.Data.UserUploadedImage.GeneratedImages
+  id: GeneratedImages
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: GeneratedImages
+  nameWithType: UserUploadedImage.GeneratedImages
+  fullName: artstudio.Data.UserUploadedImage.GeneratedImages
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GeneratedImages
+    path: Data/UserUploadedImage.cs
+    startLine: 74
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? GeneratedImages { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property GeneratedImages As String
+  overload: artstudio.Data.UserUploadedImage.GeneratedImages*
+- uid: artstudio.Data.UserUploadedImage.CreatedAt
+  commentId: P:artstudio.Data.UserUploadedImage.CreatedAt
+  id: CreatedAt
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: UserUploadedImage.CreatedAt
+  fullName: artstudio.Data.UserUploadedImage.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CreatedAt
+    path: Data/UserUploadedImage.cs
+    startLine: 80
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property CreatedAt As Date
+  overload: artstudio.Data.UserUploadedImage.CreatedAt*
+- uid: artstudio.Data.UserUploadedImage.DisplayTitle
+  commentId: P:artstudio.Data.UserUploadedImage.DisplayTitle
+  id: DisplayTitle
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: DisplayTitle
+  nameWithType: UserUploadedImage.DisplayTitle
+  fullName: artstudio.Data.UserUploadedImage.DisplayTitle
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DisplayTitle
+    path: Data/UserUploadedImage.cs
+    startLine: 87
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string DisplayTitle { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DisplayTitle As String
+  overload: artstudio.Data.UserUploadedImage.DisplayTitle*
+- uid: artstudio.Data.UserUploadedImage.FormattedDate
+  commentId: P:artstudio.Data.UserUploadedImage.FormattedDate
+  id: FormattedDate
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: FormattedDate
+  nameWithType: UserUploadedImage.FormattedDate
+  fullName: artstudio.Data.UserUploadedImage.FormattedDate
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FormattedDate
+    path: Data/UserUploadedImage.cs
+    startLine: 88
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string FormattedDate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FormattedDate As String
+  overload: artstudio.Data.UserUploadedImage.FormattedDate*
+- uid: artstudio.Data.UserUploadedImage.ShortDate
+  commentId: P:artstudio.Data.UserUploadedImage.ShortDate
+  id: ShortDate
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: ShortDate
+  nameWithType: UserUploadedImage.ShortDate
+  fullName: artstudio.Data.UserUploadedImage.ShortDate
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ShortDate
+    path: Data/UserUploadedImage.cs
+    startLine: 89
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string ShortDate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ShortDate As String
+  overload: artstudio.Data.UserUploadedImage.ShortDate*
+- uid: artstudio.Data.UserUploadedImage.WordsList
+  commentId: P:artstudio.Data.UserUploadedImage.WordsList
+  id: WordsList
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: WordsList
+  nameWithType: UserUploadedImage.WordsList
+  fullName: artstudio.Data.UserUploadedImage.WordsList
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: WordsList
+    path: Data/UserUploadedImage.cs
+    startLine: 92
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public List<string> WordsList { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public ReadOnly Property WordsList As List(Of String)
+  overload: artstudio.Data.UserUploadedImage.WordsList*
+- uid: artstudio.Data.UserUploadedImage.PaletteList
+  commentId: P:artstudio.Data.UserUploadedImage.PaletteList
+  id: PaletteList
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: PaletteList
+  nameWithType: UserUploadedImage.PaletteList
+  fullName: artstudio.Data.UserUploadedImage.PaletteList
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PaletteList
+    path: Data/UserUploadedImage.cs
+    startLine: 108
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public List<string> PaletteList { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public ReadOnly Property PaletteList As List(Of String)
+  overload: artstudio.Data.UserUploadedImage.PaletteList*
+- uid: artstudio.Data.UserUploadedImage.ImagesList
+  commentId: P:artstudio.Data.UserUploadedImage.ImagesList
+  id: ImagesList
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: ImagesList
+  nameWithType: UserUploadedImage.ImagesList
+  fullName: artstudio.Data.UserUploadedImage.ImagesList
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ImagesList
+    path: Data/UserUploadedImage.cs
+    startLine: 124
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public List<UnsplashImage> ImagesList { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{artstudio.Models.UnsplashImage}
+    content.vb: Public ReadOnly Property ImagesList As List(Of UnsplashImage)
+  overload: artstudio.Data.UserUploadedImage.ImagesList*
+- uid: artstudio.Data.UserUploadedImage.CustomTagsList
+  commentId: P:artstudio.Data.UserUploadedImage.CustomTagsList
+  id: CustomTagsList
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: CustomTagsList
+  nameWithType: UserUploadedImage.CustomTagsList
+  fullName: artstudio.Data.UserUploadedImage.CustomTagsList
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CustomTagsList
+    path: Data/UserUploadedImage.cs
+    startLine: 140
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public List<string> CustomTagsList { get; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public ReadOnly Property CustomTagsList As List(Of String)
+  overload: artstudio.Data.UserUploadedImage.CustomTagsList*
+- uid: artstudio.Data.UserUploadedImage.HasWords
+  commentId: M:artstudio.Data.UserUploadedImage.HasWords
+  id: HasWords
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: HasWords()
+  nameWithType: UserUploadedImage.HasWords()
+  fullName: artstudio.Data.UserUploadedImage.HasWords()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasWords
+    path: Data/UserUploadedImage.cs
+    startLine: 157
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public bool HasWords()
+    return:
+      type: System.Boolean
+    content.vb: Public Function HasWords() As Boolean
+  overload: artstudio.Data.UserUploadedImage.HasWords*
+- uid: artstudio.Data.UserUploadedImage.HasPalette
+  commentId: M:artstudio.Data.UserUploadedImage.HasPalette
+  id: HasPalette
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: HasPalette()
+  nameWithType: UserUploadedImage.HasPalette()
+  fullName: artstudio.Data.UserUploadedImage.HasPalette()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasPalette
+    path: Data/UserUploadedImage.cs
+    startLine: 159
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public bool HasPalette()
+    return:
+      type: System.Boolean
+    content.vb: Public Function HasPalette() As Boolean
+  overload: artstudio.Data.UserUploadedImage.HasPalette*
+- uid: artstudio.Data.UserUploadedImage.HasImages
+  commentId: M:artstudio.Data.UserUploadedImage.HasImages
+  id: HasImages
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: HasImages()
+  nameWithType: UserUploadedImage.HasImages()
+  fullName: artstudio.Data.UserUploadedImage.HasImages()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasImages
+    path: Data/UserUploadedImage.cs
+    startLine: 161
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public bool HasImages()
+    return:
+      type: System.Boolean
+    content.vb: Public Function HasImages() As Boolean
+  overload: artstudio.Data.UserUploadedImage.HasImages*
+- uid: artstudio.Data.UserUploadedImage.HasCustomTags
+  commentId: M:artstudio.Data.UserUploadedImage.HasCustomTags
+  id: HasCustomTags
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: HasCustomTags()
+  nameWithType: UserUploadedImage.HasCustomTags()
+  fullName: artstudio.Data.UserUploadedImage.HasCustomTags()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasCustomTags
+    path: Data/UserUploadedImage.cs
+    startLine: 163
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public bool HasCustomTags()
+    return:
+      type: System.Boolean
+    content.vb: Public Function HasCustomTags() As Boolean
+  overload: artstudio.Data.UserUploadedImage.HasCustomTags*
+- uid: artstudio.Data.UserUploadedImage.HasSessionDuration
+  commentId: P:artstudio.Data.UserUploadedImage.HasSessionDuration
+  id: HasSessionDuration
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: HasSessionDuration
+  nameWithType: UserUploadedImage.HasSessionDuration
+  fullName: artstudio.Data.UserUploadedImage.HasSessionDuration
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasSessionDuration
+    path: Data/UserUploadedImage.cs
+    startLine: 165
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public bool HasSessionDuration { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasSessionDuration As Boolean
+  overload: artstudio.Data.UserUploadedImage.HasSessionDuration*
+- uid: artstudio.Data.UserUploadedImage.UpdateWordsList(System.Collections.Generic.List{System.String})
+  commentId: M:artstudio.Data.UserUploadedImage.UpdateWordsList(System.Collections.Generic.List{System.String})
+  id: UpdateWordsList(System.Collections.Generic.List{System.String})
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: UpdateWordsList(List<string>)
+  nameWithType: UserUploadedImage.UpdateWordsList(List<string>)
+  fullName: artstudio.Data.UserUploadedImage.UpdateWordsList(System.Collections.Generic.List<string>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UpdateWordsList
+    path: Data/UserUploadedImage.cs
+    startLine: 168
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void UpdateWordsList(List<string> words)
+    parameters:
+    - id: words
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Sub UpdateWordsList(words As List(Of String))
+  overload: artstudio.Data.UserUploadedImage.UpdateWordsList*
+  nameWithType.vb: UserUploadedImage.UpdateWordsList(List(Of String))
+  fullName.vb: artstudio.Data.UserUploadedImage.UpdateWordsList(System.Collections.Generic.List(Of String))
+  name.vb: UpdateWordsList(List(Of String))
+- uid: artstudio.Data.UserUploadedImage.UpdatePaletteList(System.Collections.Generic.List{System.String})
+  commentId: M:artstudio.Data.UserUploadedImage.UpdatePaletteList(System.Collections.Generic.List{System.String})
+  id: UpdatePaletteList(System.Collections.Generic.List{System.String})
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: UpdatePaletteList(List<string>)
+  nameWithType: UserUploadedImage.UpdatePaletteList(List<string>)
+  fullName: artstudio.Data.UserUploadedImage.UpdatePaletteList(System.Collections.Generic.List<string>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UpdatePaletteList
+    path: Data/UserUploadedImage.cs
+    startLine: 176
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void UpdatePaletteList(List<string> palette)
+    parameters:
+    - id: palette
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Sub UpdatePaletteList(palette As List(Of String))
+  overload: artstudio.Data.UserUploadedImage.UpdatePaletteList*
+  nameWithType.vb: UserUploadedImage.UpdatePaletteList(List(Of String))
+  fullName.vb: artstudio.Data.UserUploadedImage.UpdatePaletteList(System.Collections.Generic.List(Of String))
+  name.vb: UpdatePaletteList(List(Of String))
+- uid: artstudio.Data.UserUploadedImage.UpdateImagesList(System.Collections.Generic.List{artstudio.Models.UnsplashImage})
+  commentId: M:artstudio.Data.UserUploadedImage.UpdateImagesList(System.Collections.Generic.List{artstudio.Models.UnsplashImage})
+  id: UpdateImagesList(System.Collections.Generic.List{artstudio.Models.UnsplashImage})
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: UpdateImagesList(List<UnsplashImage>)
+  nameWithType: UserUploadedImage.UpdateImagesList(List<UnsplashImage>)
+  fullName: artstudio.Data.UserUploadedImage.UpdateImagesList(System.Collections.Generic.List<artstudio.Models.UnsplashImage>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UpdateImagesList
+    path: Data/UserUploadedImage.cs
+    startLine: 184
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void UpdateImagesList(List<UnsplashImage> images)
+    parameters:
+    - id: images
+      type: System.Collections.Generic.List{artstudio.Models.UnsplashImage}
+    content.vb: Public Sub UpdateImagesList(images As List(Of UnsplashImage))
+  overload: artstudio.Data.UserUploadedImage.UpdateImagesList*
+  nameWithType.vb: UserUploadedImage.UpdateImagesList(List(Of UnsplashImage))
+  fullName.vb: artstudio.Data.UserUploadedImage.UpdateImagesList(System.Collections.Generic.List(Of artstudio.Models.UnsplashImage))
+  name.vb: UpdateImagesList(List(Of UnsplashImage))
+- uid: artstudio.Data.UserUploadedImage.UpdateCustomTagsList(System.Collections.Generic.List{System.String})
+  commentId: M:artstudio.Data.UserUploadedImage.UpdateCustomTagsList(System.Collections.Generic.List{System.String})
+  id: UpdateCustomTagsList(System.Collections.Generic.List{System.String})
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: UpdateCustomTagsList(List<string>)
+  nameWithType: UserUploadedImage.UpdateCustomTagsList(List<string>)
+  fullName: artstudio.Data.UserUploadedImage.UpdateCustomTagsList(System.Collections.Generic.List<string>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UpdateCustomTagsList
+    path: Data/UserUploadedImage.cs
+    startLine: 192
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void UpdateCustomTagsList(List<string> tags)
+    parameters:
+    - id: tags
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Sub UpdateCustomTagsList(tags As List(Of String))
+  overload: artstudio.Data.UserUploadedImage.UpdateCustomTagsList*
+  nameWithType.vb: UserUploadedImage.UpdateCustomTagsList(List(Of String))
+  fullName.vb: artstudio.Data.UserUploadedImage.UpdateCustomTagsList(System.Collections.Generic.List(Of String))
+  name.vb: UpdateCustomTagsList(List(Of String))
+- uid: artstudio.Data.UserUploadedImage.AddWords(System.Collections.Generic.List{System.String})
+  commentId: M:artstudio.Data.UserUploadedImage.AddWords(System.Collections.Generic.List{System.String})
+  id: AddWords(System.Collections.Generic.List{System.String})
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: AddWords(List<string>)
+  nameWithType: UserUploadedImage.AddWords(List<string>)
+  fullName: artstudio.Data.UserUploadedImage.AddWords(System.Collections.Generic.List<string>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: AddWords
+    path: Data/UserUploadedImage.cs
+    startLine: 201
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void AddWords(List<string> newWords)
+    parameters:
+    - id: newWords
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Sub AddWords(newWords As List(Of String))
+  overload: artstudio.Data.UserUploadedImage.AddWords*
+  nameWithType.vb: UserUploadedImage.AddWords(List(Of String))
+  fullName.vb: artstudio.Data.UserUploadedImage.AddWords(System.Collections.Generic.List(Of String))
+  name.vb: AddWords(List(Of String))
+- uid: artstudio.Data.UserUploadedImage.AddColors(System.Collections.Generic.List{System.String})
+  commentId: M:artstudio.Data.UserUploadedImage.AddColors(System.Collections.Generic.List{System.String})
+  id: AddColors(System.Collections.Generic.List{System.String})
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: AddColors(List<string>)
+  nameWithType: UserUploadedImage.AddColors(List<string>)
+  fullName: artstudio.Data.UserUploadedImage.AddColors(System.Collections.Generic.List<string>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: AddColors
+    path: Data/UserUploadedImage.cs
+    startLine: 208
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void AddColors(List<string> newColors)
+    parameters:
+    - id: newColors
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Sub AddColors(newColors As List(Of String))
+  overload: artstudio.Data.UserUploadedImage.AddColors*
+  nameWithType.vb: UserUploadedImage.AddColors(List(Of String))
+  fullName.vb: artstudio.Data.UserUploadedImage.AddColors(System.Collections.Generic.List(Of String))
+  name.vb: AddColors(List(Of String))
+- uid: artstudio.Data.UserUploadedImage.AddImages(System.Collections.Generic.List{artstudio.Models.UnsplashImage})
+  commentId: M:artstudio.Data.UserUploadedImage.AddImages(System.Collections.Generic.List{artstudio.Models.UnsplashImage})
+  id: AddImages(System.Collections.Generic.List{artstudio.Models.UnsplashImage})
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: AddImages(List<UnsplashImage>)
+  nameWithType: UserUploadedImage.AddImages(List<UnsplashImage>)
+  fullName: artstudio.Data.UserUploadedImage.AddImages(System.Collections.Generic.List<artstudio.Models.UnsplashImage>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: AddImages
+    path: Data/UserUploadedImage.cs
+    startLine: 215
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void AddImages(List<UnsplashImage> newImages)
+    parameters:
+    - id: newImages
+      type: System.Collections.Generic.List{artstudio.Models.UnsplashImage}
+    content.vb: Public Sub AddImages(newImages As List(Of UnsplashImage))
+  overload: artstudio.Data.UserUploadedImage.AddImages*
+  nameWithType.vb: UserUploadedImage.AddImages(List(Of UnsplashImage))
+  fullName.vb: artstudio.Data.UserUploadedImage.AddImages(System.Collections.Generic.List(Of artstudio.Models.UnsplashImage))
+  name.vb: AddImages(List(Of UnsplashImage))
+- uid: artstudio.Data.UserUploadedImage.AddCustomTags(System.Collections.Generic.List{System.String})
+  commentId: M:artstudio.Data.UserUploadedImage.AddCustomTags(System.Collections.Generic.List{System.String})
+  id: AddCustomTags(System.Collections.Generic.List{System.String})
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: AddCustomTags(List<string>)
+  nameWithType: UserUploadedImage.AddCustomTags(List<string>)
+  fullName: artstudio.Data.UserUploadedImage.AddCustomTags(System.Collections.Generic.List<string>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: AddCustomTags
+    path: Data/UserUploadedImage.cs
+    startLine: 223
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void AddCustomTags(List<string> newTags)
+    parameters:
+    - id: newTags
+      type: System.Collections.Generic.List{System.String}
+    content.vb: Public Sub AddCustomTags(newTags As List(Of String))
+  overload: artstudio.Data.UserUploadedImage.AddCustomTags*
+  nameWithType.vb: UserUploadedImage.AddCustomTags(List(Of String))
+  fullName.vb: artstudio.Data.UserUploadedImage.AddCustomTags(System.Collections.Generic.List(Of String))
+  name.vb: AddCustomTags(List(Of String))
+- uid: artstudio.Data.UserUploadedImage.RemoveWord(System.String)
+  commentId: M:artstudio.Data.UserUploadedImage.RemoveWord(System.String)
+  id: RemoveWord(System.String)
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: RemoveWord(string)
+  nameWithType: UserUploadedImage.RemoveWord(string)
+  fullName: artstudio.Data.UserUploadedImage.RemoveWord(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RemoveWord
+    path: Data/UserUploadedImage.cs
+    startLine: 231
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void RemoveWord(string word)
+    parameters:
+    - id: word
+      type: System.String
+    content.vb: Public Sub RemoveWord(word As String)
+  overload: artstudio.Data.UserUploadedImage.RemoveWord*
+  nameWithType.vb: UserUploadedImage.RemoveWord(String)
+  fullName.vb: artstudio.Data.UserUploadedImage.RemoveWord(String)
+  name.vb: RemoveWord(String)
+- uid: artstudio.Data.UserUploadedImage.RemoveColor(System.String)
+  commentId: M:artstudio.Data.UserUploadedImage.RemoveColor(System.String)
+  id: RemoveColor(System.String)
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: RemoveColor(string)
+  nameWithType: UserUploadedImage.RemoveColor(string)
+  fullName: artstudio.Data.UserUploadedImage.RemoveColor(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RemoveColor
+    path: Data/UserUploadedImage.cs
+    startLine: 238
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void RemoveColor(string color)
+    parameters:
+    - id: color
+      type: System.String
+    content.vb: Public Sub RemoveColor(color As String)
+  overload: artstudio.Data.UserUploadedImage.RemoveColor*
+  nameWithType.vb: UserUploadedImage.RemoveColor(String)
+  fullName.vb: artstudio.Data.UserUploadedImage.RemoveColor(String)
+  name.vb: RemoveColor(String)
+- uid: artstudio.Data.UserUploadedImage.RemoveImage(System.String)
+  commentId: M:artstudio.Data.UserUploadedImage.RemoveImage(System.String)
+  id: RemoveImage(System.String)
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: RemoveImage(string)
+  nameWithType: UserUploadedImage.RemoveImage(string)
+  fullName: artstudio.Data.UserUploadedImage.RemoveImage(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RemoveImage
+    path: Data/UserUploadedImage.cs
+    startLine: 245
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void RemoveImage(string imageId)
+    parameters:
+    - id: imageId
+      type: System.String
+    content.vb: Public Sub RemoveImage(imageId As String)
+  overload: artstudio.Data.UserUploadedImage.RemoveImage*
+  nameWithType.vb: UserUploadedImage.RemoveImage(String)
+  fullName.vb: artstudio.Data.UserUploadedImage.RemoveImage(String)
+  name.vb: RemoveImage(String)
+- uid: artstudio.Data.UserUploadedImage.RemoveCustomTag(System.String)
+  commentId: M:artstudio.Data.UserUploadedImage.RemoveCustomTag(System.String)
+  id: RemoveCustomTag(System.String)
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: RemoveCustomTag(string)
+  nameWithType: UserUploadedImage.RemoveCustomTag(string)
+  fullName: artstudio.Data.UserUploadedImage.RemoveCustomTag(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RemoveCustomTag
+    path: Data/UserUploadedImage.cs
+    startLine: 252
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public void RemoveCustomTag(string tag)
+    parameters:
+    - id: tag
+      type: System.String
+    content.vb: Public Sub RemoveCustomTag(tag As String)
+  overload: artstudio.Data.UserUploadedImage.RemoveCustomTag*
+  nameWithType.vb: UserUploadedImage.RemoveCustomTag(String)
+  fullName.vb: artstudio.Data.UserUploadedImage.RemoveCustomTag(String)
+  name.vb: RemoveCustomTag(String)
+- uid: artstudio.Data.UserUploadedImage.PropertyChanged
+  commentId: E:artstudio.Data.UserUploadedImage.PropertyChanged
+  id: PropertyChanged
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: UserUploadedImage.PropertyChanged
+  fullName: artstudio.Data.UserUploadedImage.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PropertyChanged
+    path: Data/UserUploadedImage.cs
+    startLine: 260
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  summary: Occurs when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: artstudio.Data.UserUploadedImage.OnPropertyChanged(System.String)
+  commentId: M:artstudio.Data.UserUploadedImage.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string?)
+  nameWithType: UserUploadedImage.OnPropertyChanged(string?)
+  fullName: artstudio.Data.UserUploadedImage.OnPropertyChanged(string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OnPropertyChanged
+    path: Data/UserUploadedImage.cs
+    startLine: 262
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: protected virtual void OnPropertyChanged(string? propertyName = null)
+    parameters:
+    - id: propertyName
+      type: System.String
+    content.vb: Protected Overridable Sub OnPropertyChanged(propertyName As String = Nothing)
+  overload: artstudio.Data.UserUploadedImage.OnPropertyChanged*
+  nameWithType.vb: UserUploadedImage.OnPropertyChanged(String)
+  fullName.vb: artstudio.Data.UserUploadedImage.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+- uid: artstudio.Data.UserUploadedImage.SetProperty``1(``0@,``0,System.String)
+  commentId: M:artstudio.Data.UserUploadedImage.SetProperty``1(``0@,``0,System.String)
+  id: SetProperty``1(``0@,``0,System.String)
+  parent: artstudio.Data.UserUploadedImage
+  langs:
+  - csharp
+  - vb
+  name: SetProperty<T>(ref T, T, string?)
+  nameWithType: UserUploadedImage.SetProperty<T>(ref T, T, string?)
+  fullName: artstudio.Data.UserUploadedImage.SetProperty<T>(ref T, T, string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/UserUploadedImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SetProperty
+    path: Data/UserUploadedImage.cs
+    startLine: 277
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: protected bool SetProperty<T>(ref T field, T value, string? propertyName = null)
+    parameters:
+    - id: field
+      type: '{T}'
+    - id: value
+      type: '{T}'
+    - id: propertyName
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Protected Function SetProperty(Of T)(field As T, value As T, propertyName As String = Nothing) As Boolean
+  overload: artstudio.Data.UserUploadedImage.SetProperty*
+  nameWithType.vb: UserUploadedImage.SetProperty(Of T)(T, T, String)
+  fullName.vb: artstudio.Data.UserUploadedImage.SetProperty(Of T)(T, T, String)
+  name.vb: SetProperty(Of T)(T, T, String)
+references:
+- uid: artstudio.Data
+  commentId: N:artstudio.Data
+  href: artstudio.html
+  name: artstudio.Data
+  nameWithType: artstudio.Data
+  fullName: artstudio.Data
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasCustomTags_artstudio_Data_UserUploadedImage_
+  name: HasCustomTags(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasCustomTags(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+    name: HasCustomTags
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasCustomTags_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+    name: HasCustomTags
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasCustomTags_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasImages
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasImages_artstudio_Data_UserUploadedImage_
+  name: HasImages(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasImages(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+    name: HasImages
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasImages_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+    name: HasImages
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasImages_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasNotes
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasNotes_artstudio_Data_UserUploadedImage_
+  name: HasNotes(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasNotes(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+    name: HasNotes
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasNotes_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+    name: HasNotes
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasNotes_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasPalette
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasPalette_artstudio_Data_UserUploadedImage_
+  name: HasPalette(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasPalette(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+    name: HasPalette
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasPalette_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+    name: HasPalette
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasPalette_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasSessionDuration_artstudio_Data_UserUploadedImage_
+  name: HasSessionDuration(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasSessionDuration(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+    name: HasSessionDuration
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasSessionDuration_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+    name: HasSessionDuration
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasSessionDuration_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.HasWords
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasWords_artstudio_Data_UserUploadedImage_
+  name: HasWords(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasWords(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+    name: HasWords
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasWords_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+    name: HasWords
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasWords_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.ImageCount
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_ImageCount_artstudio_Data_UserUploadedImage_
+  name: ImageCount(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.ImageCount(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+    name: ImageCount
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_ImageCount_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+    name: ImageCount
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_ImageCount_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_PreviewTags_artstudio_Data_UserUploadedImage_
+  name: PreviewTags(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.PreviewTags(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+    name: PreviewTags
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_PreviewTags_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+    name: PreviewTags
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_PreviewTags_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.artstudio.ViewModels.UserUploadedImageExtensions.WordCount
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+  parent: artstudio.ViewModels.UserUploadedImageExtensions
+  definition: artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_WordCount_artstudio_Data_UserUploadedImage_
+  name: WordCount(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.WordCount(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+    name: WordCount
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_WordCount_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+    name: WordCount
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_WordCount_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasCustomTags_artstudio_Data_UserUploadedImage_
+  name: HasCustomTags(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasCustomTags(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+    name: HasCustomTags
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasCustomTags_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasCustomTags(artstudio.Data.UserUploadedImage)
+    name: HasCustomTags
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasCustomTags_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels.UserUploadedImageExtensions
+  commentId: T:artstudio.ViewModels.UserUploadedImageExtensions
+  parent: artstudio.ViewModels
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html
+  name: UserUploadedImageExtensions
+  nameWithType: UserUploadedImageExtensions
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasImages_artstudio_Data_UserUploadedImage_
+  name: HasImages(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasImages(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+    name: HasImages
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasImages_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasImages(artstudio.Data.UserUploadedImage)
+    name: HasImages
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasImages_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasNotes_artstudio_Data_UserUploadedImage_
+  name: HasNotes(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasNotes(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+    name: HasNotes
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasNotes_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasNotes(artstudio.Data.UserUploadedImage)
+    name: HasNotes
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasNotes_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasPalette_artstudio_Data_UserUploadedImage_
+  name: HasPalette(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasPalette(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+    name: HasPalette
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasPalette_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasPalette(artstudio.Data.UserUploadedImage)
+    name: HasPalette
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasPalette_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasSessionDuration_artstudio_Data_UserUploadedImage_
+  name: HasSessionDuration(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasSessionDuration(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+    name: HasSessionDuration
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasSessionDuration_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasSessionDuration(artstudio.Data.UserUploadedImage)
+    name: HasSessionDuration
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasSessionDuration_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasWords_artstudio_Data_UserUploadedImage_
+  name: HasWords(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.HasWords(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+    name: HasWords
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasWords_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.HasWords(artstudio.Data.UserUploadedImage)
+    name: HasWords
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_HasWords_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_ImageCount_artstudio_Data_UserUploadedImage_
+  name: ImageCount(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.ImageCount(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+    name: ImageCount
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_ImageCount_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.ImageCount(artstudio.Data.UserUploadedImage)
+    name: ImageCount
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_ImageCount_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_PreviewTags_artstudio_Data_UserUploadedImage_
+  name: PreviewTags(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.PreviewTags(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+    name: PreviewTags
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_PreviewTags_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.PreviewTags(artstudio.Data.UserUploadedImage)
+    name: PreviewTags
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_PreviewTags_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+  href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_WordCount_artstudio_Data_UserUploadedImage_
+  name: WordCount(UserUploadedImage)
+  nameWithType: UserUploadedImageExtensions.WordCount(UserUploadedImage)
+  fullName: artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+  spec.csharp:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+    name: WordCount
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_WordCount_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  spec.vb:
+  - uid: artstudio.ViewModels.UserUploadedImageExtensions.WordCount(artstudio.Data.UserUploadedImage)
+    name: WordCount
+    href: artstudio.ViewModels.UserUploadedImageExtensions.html#artstudio_ViewModels_UserUploadedImageExtensions_WordCount_artstudio_Data_UserUploadedImage_
+  - name: (
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.ViewModels
+  commentId: N:artstudio.ViewModels
+  href: artstudio.html
+  name: artstudio.ViewModels
+  nameWithType: artstudio.ViewModels
+  fullName: artstudio.ViewModels
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+- uid: artstudio.Data.UserUploadedImage.Id*
+  commentId: Overload:artstudio.Data.UserUploadedImage.Id
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_Id
+  name: Id
+  nameWithType: UserUploadedImage.Id
+  fullName: artstudio.Data.UserUploadedImage.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: artstudio.Data.UserUploadedImage.Title*
+  commentId: Overload:artstudio.Data.UserUploadedImage.Title
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_Title
+  name: Title
+  nameWithType: UserUploadedImage.Title
+  fullName: artstudio.Data.UserUploadedImage.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.Data.UserUploadedImage.ArtworkImagePath*
+  commentId: Overload:artstudio.Data.UserUploadedImage.ArtworkImagePath
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_ArtworkImagePath
+  name: ArtworkImagePath
+  nameWithType: UserUploadedImage.ArtworkImagePath
+  fullName: artstudio.Data.UserUploadedImage.ArtworkImagePath
+- uid: artstudio.Data.UserUploadedImage.Notes*
+  commentId: Overload:artstudio.Data.UserUploadedImage.Notes
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_Notes
+  name: Notes
+  nameWithType: UserUploadedImage.Notes
+  fullName: artstudio.Data.UserUploadedImage.Notes
+- uid: artstudio.Data.UserUploadedImage.CustomTags*
+  commentId: Overload:artstudio.Data.UserUploadedImage.CustomTags
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_CustomTags
+  name: CustomTags
+  nameWithType: UserUploadedImage.CustomTags
+  fullName: artstudio.Data.UserUploadedImage.CustomTags
+- uid: artstudio.Data.UserUploadedImage.SessionDuration*
+  commentId: Overload:artstudio.Data.UserUploadedImage.SessionDuration
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_SessionDuration
+  name: SessionDuration
+  nameWithType: UserUploadedImage.SessionDuration
+  fullName: artstudio.Data.UserUploadedImage.SessionDuration
+- uid: artstudio.Data.UserUploadedImage.GeneratedWords*
+  commentId: Overload:artstudio.Data.UserUploadedImage.GeneratedWords
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_GeneratedWords
+  name: GeneratedWords
+  nameWithType: UserUploadedImage.GeneratedWords
+  fullName: artstudio.Data.UserUploadedImage.GeneratedWords
+- uid: artstudio.Data.UserUploadedImage.GeneratedPalette*
+  commentId: Overload:artstudio.Data.UserUploadedImage.GeneratedPalette
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_GeneratedPalette
+  name: GeneratedPalette
+  nameWithType: UserUploadedImage.GeneratedPalette
+  fullName: artstudio.Data.UserUploadedImage.GeneratedPalette
+- uid: artstudio.Data.UserUploadedImage.GeneratedImages*
+  commentId: Overload:artstudio.Data.UserUploadedImage.GeneratedImages
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_GeneratedImages
+  name: GeneratedImages
+  nameWithType: UserUploadedImage.GeneratedImages
+  fullName: artstudio.Data.UserUploadedImage.GeneratedImages
+- uid: artstudio.Data.UserUploadedImage.CreatedAt*
+  commentId: Overload:artstudio.Data.UserUploadedImage.CreatedAt
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_CreatedAt
+  name: CreatedAt
+  nameWithType: UserUploadedImage.CreatedAt
+  fullName: artstudio.Data.UserUploadedImage.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: artstudio.Data.UserUploadedImage.DisplayTitle*
+  commentId: Overload:artstudio.Data.UserUploadedImage.DisplayTitle
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_DisplayTitle
+  name: DisplayTitle
+  nameWithType: UserUploadedImage.DisplayTitle
+  fullName: artstudio.Data.UserUploadedImage.DisplayTitle
+- uid: artstudio.Data.UserUploadedImage.FormattedDate*
+  commentId: Overload:artstudio.Data.UserUploadedImage.FormattedDate
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_FormattedDate
+  name: FormattedDate
+  nameWithType: UserUploadedImage.FormattedDate
+  fullName: artstudio.Data.UserUploadedImage.FormattedDate
+- uid: artstudio.Data.UserUploadedImage.ShortDate*
+  commentId: Overload:artstudio.Data.UserUploadedImage.ShortDate
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_ShortDate
+  name: ShortDate
+  nameWithType: UserUploadedImage.ShortDate
+  fullName: artstudio.Data.UserUploadedImage.ShortDate
+- uid: artstudio.Data.UserUploadedImage.WordsList*
+  commentId: Overload:artstudio.Data.UserUploadedImage.WordsList
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_WordsList
+  name: WordsList
+  nameWithType: UserUploadedImage.WordsList
+  fullName: artstudio.Data.UserUploadedImage.WordsList
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: artstudio.Data.UserUploadedImage.PaletteList*
+  commentId: Overload:artstudio.Data.UserUploadedImage.PaletteList
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_PaletteList
+  name: PaletteList
+  nameWithType: UserUploadedImage.PaletteList
+  fullName: artstudio.Data.UserUploadedImage.PaletteList
+- uid: artstudio.Data.UserUploadedImage.ImagesList*
+  commentId: Overload:artstudio.Data.UserUploadedImage.ImagesList
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_ImagesList
+  name: ImagesList
+  nameWithType: UserUploadedImage.ImagesList
+  fullName: artstudio.Data.UserUploadedImage.ImagesList
+- uid: System.Collections.Generic.List{artstudio.Models.UnsplashImage}
+  commentId: T:System.Collections.Generic.List{artstudio.Models.UnsplashImage}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<UnsplashImage>
+  nameWithType: List<UnsplashImage>
+  fullName: System.Collections.Generic.List<artstudio.Models.UnsplashImage>
+  nameWithType.vb: List(Of UnsplashImage)
+  fullName.vb: System.Collections.Generic.List(Of artstudio.Models.UnsplashImage)
+  name.vb: List(Of UnsplashImage)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: )
+- uid: artstudio.Data.UserUploadedImage.CustomTagsList*
+  commentId: Overload:artstudio.Data.UserUploadedImage.CustomTagsList
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_CustomTagsList
+  name: CustomTagsList
+  nameWithType: UserUploadedImage.CustomTagsList
+  fullName: artstudio.Data.UserUploadedImage.CustomTagsList
+- uid: artstudio.Data.UserUploadedImage.HasWords*
+  commentId: Overload:artstudio.Data.UserUploadedImage.HasWords
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_HasWords
+  name: HasWords
+  nameWithType: UserUploadedImage.HasWords
+  fullName: artstudio.Data.UserUploadedImage.HasWords
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: artstudio.Data.UserUploadedImage.HasPalette*
+  commentId: Overload:artstudio.Data.UserUploadedImage.HasPalette
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_HasPalette
+  name: HasPalette
+  nameWithType: UserUploadedImage.HasPalette
+  fullName: artstudio.Data.UserUploadedImage.HasPalette
+- uid: artstudio.Data.UserUploadedImage.HasImages*
+  commentId: Overload:artstudio.Data.UserUploadedImage.HasImages
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_HasImages
+  name: HasImages
+  nameWithType: UserUploadedImage.HasImages
+  fullName: artstudio.Data.UserUploadedImage.HasImages
+- uid: artstudio.Data.UserUploadedImage.HasCustomTags*
+  commentId: Overload:artstudio.Data.UserUploadedImage.HasCustomTags
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_HasCustomTags
+  name: HasCustomTags
+  nameWithType: UserUploadedImage.HasCustomTags
+  fullName: artstudio.Data.UserUploadedImage.HasCustomTags
+- uid: artstudio.Data.UserUploadedImage.HasSessionDuration*
+  commentId: Overload:artstudio.Data.UserUploadedImage.HasSessionDuration
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_HasSessionDuration
+  name: HasSessionDuration
+  nameWithType: UserUploadedImage.HasSessionDuration
+  fullName: artstudio.Data.UserUploadedImage.HasSessionDuration
+- uid: artstudio.Data.UserUploadedImage.UpdateWordsList*
+  commentId: Overload:artstudio.Data.UserUploadedImage.UpdateWordsList
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_UpdateWordsList_System_Collections_Generic_List_System_String__
+  name: UpdateWordsList
+  nameWithType: UserUploadedImage.UpdateWordsList
+  fullName: artstudio.Data.UserUploadedImage.UpdateWordsList
+- uid: artstudio.Data.UserUploadedImage.UpdatePaletteList*
+  commentId: Overload:artstudio.Data.UserUploadedImage.UpdatePaletteList
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_UpdatePaletteList_System_Collections_Generic_List_System_String__
+  name: UpdatePaletteList
+  nameWithType: UserUploadedImage.UpdatePaletteList
+  fullName: artstudio.Data.UserUploadedImage.UpdatePaletteList
+- uid: artstudio.Data.UserUploadedImage.UpdateImagesList*
+  commentId: Overload:artstudio.Data.UserUploadedImage.UpdateImagesList
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_UpdateImagesList_System_Collections_Generic_List_artstudio_Models_UnsplashImage__
+  name: UpdateImagesList
+  nameWithType: UserUploadedImage.UpdateImagesList
+  fullName: artstudio.Data.UserUploadedImage.UpdateImagesList
+- uid: artstudio.Data.UserUploadedImage.UpdateCustomTagsList*
+  commentId: Overload:artstudio.Data.UserUploadedImage.UpdateCustomTagsList
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_UpdateCustomTagsList_System_Collections_Generic_List_System_String__
+  name: UpdateCustomTagsList
+  nameWithType: UserUploadedImage.UpdateCustomTagsList
+  fullName: artstudio.Data.UserUploadedImage.UpdateCustomTagsList
+- uid: artstudio.Data.UserUploadedImage.AddWords*
+  commentId: Overload:artstudio.Data.UserUploadedImage.AddWords
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_AddWords_System_Collections_Generic_List_System_String__
+  name: AddWords
+  nameWithType: UserUploadedImage.AddWords
+  fullName: artstudio.Data.UserUploadedImage.AddWords
+- uid: artstudio.Data.UserUploadedImage.AddColors*
+  commentId: Overload:artstudio.Data.UserUploadedImage.AddColors
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_AddColors_System_Collections_Generic_List_System_String__
+  name: AddColors
+  nameWithType: UserUploadedImage.AddColors
+  fullName: artstudio.Data.UserUploadedImage.AddColors
+- uid: artstudio.Data.UserUploadedImage.AddImages*
+  commentId: Overload:artstudio.Data.UserUploadedImage.AddImages
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_AddImages_System_Collections_Generic_List_artstudio_Models_UnsplashImage__
+  name: AddImages
+  nameWithType: UserUploadedImage.AddImages
+  fullName: artstudio.Data.UserUploadedImage.AddImages
+- uid: artstudio.Data.UserUploadedImage.AddCustomTags*
+  commentId: Overload:artstudio.Data.UserUploadedImage.AddCustomTags
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_AddCustomTags_System_Collections_Generic_List_System_String__
+  name: AddCustomTags
+  nameWithType: UserUploadedImage.AddCustomTags
+  fullName: artstudio.Data.UserUploadedImage.AddCustomTags
+- uid: artstudio.Data.UserUploadedImage.RemoveWord*
+  commentId: Overload:artstudio.Data.UserUploadedImage.RemoveWord
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_RemoveWord_System_String_
+  name: RemoveWord
+  nameWithType: UserUploadedImage.RemoveWord
+  fullName: artstudio.Data.UserUploadedImage.RemoveWord
+- uid: artstudio.Data.UserUploadedImage.RemoveColor*
+  commentId: Overload:artstudio.Data.UserUploadedImage.RemoveColor
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_RemoveColor_System_String_
+  name: RemoveColor
+  nameWithType: UserUploadedImage.RemoveColor
+  fullName: artstudio.Data.UserUploadedImage.RemoveColor
+- uid: artstudio.Data.UserUploadedImage.RemoveImage*
+  commentId: Overload:artstudio.Data.UserUploadedImage.RemoveImage
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_RemoveImage_System_String_
+  name: RemoveImage
+  nameWithType: UserUploadedImage.RemoveImage
+  fullName: artstudio.Data.UserUploadedImage.RemoveImage
+- uid: artstudio.Data.UserUploadedImage.RemoveCustomTag*
+  commentId: Overload:artstudio.Data.UserUploadedImage.RemoveCustomTag
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_RemoveCustomTag_System_String_
+  name: RemoveCustomTag
+  nameWithType: UserUploadedImage.RemoveCustomTag
+  fullName: artstudio.Data.UserUploadedImage.RemoveCustomTag
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: artstudio.Data.UserUploadedImage.OnPropertyChanged*
+  commentId: Overload:artstudio.Data.UserUploadedImage.OnPropertyChanged
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: UserUploadedImage.OnPropertyChanged
+  fullName: artstudio.Data.UserUploadedImage.OnPropertyChanged
+- uid: artstudio.Data.UserUploadedImage.SetProperty*
+  commentId: Overload:artstudio.Data.UserUploadedImage.SetProperty
+  href: artstudio.Data.UserUploadedImage.html#artstudio_Data_UserUploadedImage_SetProperty__1___0____0_System_String_
+  name: SetProperty
+  nameWithType: UserUploadedImage.SetProperty
+  fullName: artstudio.Data.UserUploadedImage.SetProperty
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

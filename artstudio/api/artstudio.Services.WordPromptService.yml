@@ -1,0 +1,1040 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Services.WordPromptService
+  commentId: T:artstudio.Services.WordPromptService
+  id: WordPromptService
+  parent: artstudio.Services
+  children:
+  - artstudio.Services.WordPromptService.#ctor(artstudio.Services.DatabaseService)
+  - artstudio.Services.WordPromptService.GetFavoritesAsync
+  - artstudio.Services.WordPromptService.GetFavoritesWithWordsAsync
+  - artstudio.Services.WordPromptService.GetWordsByCategoryAsync(artstudio.Data.WordCollection)
+  - artstudio.Services.WordPromptService.GetWordsForCollectionAsync(System.Int32)
+  - artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.String,System.String)
+  - artstudio.Services.WordPromptService.ToggleFavoriteAsync(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: WordPromptService
+  nameWithType: WordPromptService
+  fullName: artstudio.Services.WordPromptService
+  type: Class
+  source:
+    remote:
+      path: artstudio/Services/WordPromptService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: WordPromptService
+    path: Services/WordPromptService.cs
+    startLine: 5
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public class WordPromptService
+    content.vb: Public Class WordPromptService
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.Services.WordPromptService.#ctor(artstudio.Services.DatabaseService)
+  commentId: M:artstudio.Services.WordPromptService.#ctor(artstudio.Services.DatabaseService)
+  id: '#ctor(artstudio.Services.DatabaseService)'
+  parent: artstudio.Services.WordPromptService
+  langs:
+  - csharp
+  - vb
+  name: WordPromptService(DatabaseService)
+  nameWithType: WordPromptService.WordPromptService(DatabaseService)
+  fullName: artstudio.Services.WordPromptService.WordPromptService(artstudio.Services.DatabaseService)
+  type: Constructor
+  source:
+    remote:
+      path: artstudio/Services/WordPromptService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: .ctor
+    path: Services/WordPromptService.cs
+    startLine: 9
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public WordPromptService(DatabaseService databaseService)
+    parameters:
+    - id: databaseService
+      type: artstudio.Services.DatabaseService
+    content.vb: Public Sub New(databaseService As DatabaseService)
+  overload: artstudio.Services.WordPromptService.#ctor*
+  nameWithType.vb: WordPromptService.New(DatabaseService)
+  fullName.vb: artstudio.Services.WordPromptService.New(artstudio.Services.DatabaseService)
+  name.vb: New(DatabaseService)
+- uid: artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.String,System.String)
+  commentId: M:artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.String,System.String)
+  id: SaveWordCollectionWithCategoriesAsync(System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}},System.String,System.String)
+  parent: artstudio.Services.WordPromptService
+  langs:
+  - csharp
+  - vb
+  name: SaveWordCollectionWithCategoriesAsync(Dictionary<string, List<string>>, string?, string?)
+  nameWithType: WordPromptService.SaveWordCollectionWithCategoriesAsync(Dictionary<string, List<string>>, string?, string?)
+  fullName: artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync(System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/WordPromptService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SaveWordCollectionWithCategoriesAsync
+    path: Services/WordPromptService.cs
+    startLine: 14
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<WordCollection> SaveWordCollectionWithCategoriesAsync(Dictionary<string, List<string>> categorizedWords, string? title = null, string? promptType = "generated")
+    parameters:
+    - id: categorizedWords
+      type: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}}
+    - id: title
+      type: System.String
+    - id: promptType
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{artstudio.Data.WordCollection}
+    content.vb: Public Function SaveWordCollectionWithCategoriesAsync(categorizedWords As Dictionary(Of String, List(Of String)), title As String = Nothing, promptType As String = "generated") As Task(Of WordCollection)
+  overload: artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync*
+  nameWithType.vb: WordPromptService.SaveWordCollectionWithCategoriesAsync(Dictionary(Of String, List(Of String)), String, String)
+  fullName.vb: artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync(System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.List(Of String)), String, String)
+  name.vb: SaveWordCollectionWithCategoriesAsync(Dictionary(Of String, List(Of String)), String, String)
+- uid: artstudio.Services.WordPromptService.GetFavoritesAsync
+  commentId: M:artstudio.Services.WordPromptService.GetFavoritesAsync
+  id: GetFavoritesAsync
+  parent: artstudio.Services.WordPromptService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoritesAsync()
+  nameWithType: WordPromptService.GetFavoritesAsync()
+  fullName: artstudio.Services.WordPromptService.GetFavoritesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/WordPromptService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoritesAsync
+    path: Services/WordPromptService.cs
+    startLine: 84
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<WordCollection>> GetFavoritesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.WordCollection}}
+    content.vb: Public Function GetFavoritesAsync() As Task(Of List(Of WordCollection))
+  overload: artstudio.Services.WordPromptService.GetFavoritesAsync*
+- uid: artstudio.Services.WordPromptService.GetFavoritesWithWordsAsync
+  commentId: M:artstudio.Services.WordPromptService.GetFavoritesWithWordsAsync
+  id: GetFavoritesWithWordsAsync
+  parent: artstudio.Services.WordPromptService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoritesWithWordsAsync()
+  nameWithType: WordPromptService.GetFavoritesWithWordsAsync()
+  fullName: artstudio.Services.WordPromptService.GetFavoritesWithWordsAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/WordPromptService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoritesWithWordsAsync
+    path: Services/WordPromptService.cs
+    startLine: 97
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<WordCollection>> GetFavoritesWithWordsAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.WordCollection}}
+    content.vb: Public Function GetFavoritesWithWordsAsync() As Task(Of List(Of WordCollection))
+  overload: artstudio.Services.WordPromptService.GetFavoritesWithWordsAsync*
+- uid: artstudio.Services.WordPromptService.GetWordsForCollectionAsync(System.Int32)
+  commentId: M:artstudio.Services.WordPromptService.GetWordsForCollectionAsync(System.Int32)
+  id: GetWordsForCollectionAsync(System.Int32)
+  parent: artstudio.Services.WordPromptService
+  langs:
+  - csharp
+  - vb
+  name: GetWordsForCollectionAsync(int)
+  nameWithType: WordPromptService.GetWordsForCollectionAsync(int)
+  fullName: artstudio.Services.WordPromptService.GetWordsForCollectionAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/WordPromptService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetWordsForCollectionAsync
+    path: Services/WordPromptService.cs
+    startLine: 140
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<Word>> GetWordsForCollectionAsync(int collectionId)
+    parameters:
+    - id: collectionId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.Word}}
+    content.vb: Public Function GetWordsForCollectionAsync(collectionId As Integer) As Task(Of List(Of Word))
+  overload: artstudio.Services.WordPromptService.GetWordsForCollectionAsync*
+  nameWithType.vb: WordPromptService.GetWordsForCollectionAsync(Integer)
+  fullName.vb: artstudio.Services.WordPromptService.GetWordsForCollectionAsync(Integer)
+  name.vb: GetWordsForCollectionAsync(Integer)
+- uid: artstudio.Services.WordPromptService.ToggleFavoriteAsync(System.Int32)
+  commentId: M:artstudio.Services.WordPromptService.ToggleFavoriteAsync(System.Int32)
+  id: ToggleFavoriteAsync(System.Int32)
+  parent: artstudio.Services.WordPromptService
+  langs:
+  - csharp
+  - vb
+  name: ToggleFavoriteAsync(int)
+  nameWithType: WordPromptService.ToggleFavoriteAsync(int)
+  fullName: artstudio.Services.WordPromptService.ToggleFavoriteAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/WordPromptService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleFavoriteAsync
+    path: Services/WordPromptService.cs
+    startLine: 161
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task ToggleFavoriteAsync(int collectionId)
+    parameters:
+    - id: collectionId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function ToggleFavoriteAsync(collectionId As Integer) As Task
+  overload: artstudio.Services.WordPromptService.ToggleFavoriteAsync*
+  nameWithType.vb: WordPromptService.ToggleFavoriteAsync(Integer)
+  fullName.vb: artstudio.Services.WordPromptService.ToggleFavoriteAsync(Integer)
+  name.vb: ToggleFavoriteAsync(Integer)
+- uid: artstudio.Services.WordPromptService.GetWordsByCategoryAsync(artstudio.Data.WordCollection)
+  commentId: M:artstudio.Services.WordPromptService.GetWordsByCategoryAsync(artstudio.Data.WordCollection)
+  id: GetWordsByCategoryAsync(artstudio.Data.WordCollection)
+  parent: artstudio.Services.WordPromptService
+  langs:
+  - csharp
+  - vb
+  name: GetWordsByCategoryAsync(WordCollection)
+  nameWithType: WordPromptService.GetWordsByCategoryAsync(WordCollection)
+  fullName: artstudio.Services.WordPromptService.GetWordsByCategoryAsync(artstudio.Data.WordCollection)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/WordPromptService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetWordsByCategoryAsync
+    path: Services/WordPromptService.cs
+    startLine: 186
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<Dictionary<string, List<string>>> GetWordsByCategoryAsync(WordCollection collection)
+    parameters:
+    - id: collection
+      type: artstudio.Data.WordCollection
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}}}
+    content.vb: Public Function GetWordsByCategoryAsync(collection As WordCollection) As Task(Of Dictionary(Of String, List(Of String)))
+  overload: artstudio.Services.WordPromptService.GetWordsByCategoryAsync*
+references:
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: artstudio.Services.WordPromptService.#ctor*
+  commentId: Overload:artstudio.Services.WordPromptService.#ctor
+  href: artstudio.Services.WordPromptService.html#artstudio_Services_WordPromptService__ctor_artstudio_Services_DatabaseService_
+  name: WordPromptService
+  nameWithType: WordPromptService.WordPromptService
+  fullName: artstudio.Services.WordPromptService.WordPromptService
+  nameWithType.vb: WordPromptService.New
+  fullName.vb: artstudio.Services.WordPromptService.New
+  name.vb: New
+- uid: artstudio.Services.DatabaseService
+  commentId: T:artstudio.Services.DatabaseService
+  parent: artstudio.Services
+  href: artstudio.Services.DatabaseService.html
+  name: DatabaseService
+  nameWithType: DatabaseService
+  fullName: artstudio.Services.DatabaseService
+- uid: artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync*
+  commentId: Overload:artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync
+  href: artstudio.Services.WordPromptService.html#artstudio_Services_WordPromptService_SaveWordCollectionWithCategoriesAsync_System_Collections_Generic_Dictionary_System_String_System_Collections_Generic_List_System_String___System_String_System_String_
+  name: SaveWordCollectionWithCategoriesAsync
+  nameWithType: WordPromptService.SaveWordCollectionWithCategoriesAsync
+  fullName: artstudio.Services.WordPromptService.SaveWordCollectionWithCategoriesAsync
+- uid: System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}}
+  commentId: T:System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.Dictionary`2
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<string, List<string>>
+  nameWithType: Dictionary<string, List<string>>
+  fullName: System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>
+  nameWithType.vb: Dictionary(Of String, List(Of String))
+  fullName.vb: System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.List(Of String))
+  name.vb: Dictionary(Of String, List(Of String))
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{artstudio.Data.WordCollection}
+  commentId: T:System.Threading.Tasks.Task{artstudio.Data.WordCollection}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<WordCollection>
+  nameWithType: Task<WordCollection>
+  fullName: System.Threading.Tasks.Task<artstudio.Data.WordCollection>
+  nameWithType.vb: Task(Of WordCollection)
+  fullName.vb: System.Threading.Tasks.Task(Of artstudio.Data.WordCollection)
+  name.vb: Task(Of WordCollection)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: artstudio.Data.WordCollection
+    name: WordCollection
+    href: artstudio.Data.WordCollection.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.WordCollection
+    name: WordCollection
+    href: artstudio.Data.WordCollection.html
+  - name: )
+- uid: System.Collections.Generic.Dictionary`2
+  commentId: T:System.Collections.Generic.Dictionary`2
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  name: Dictionary<TKey, TValue>
+  nameWithType: Dictionary<TKey, TValue>
+  fullName: System.Collections.Generic.Dictionary<TKey, TValue>
+  nameWithType.vb: Dictionary(Of TKey, TValue)
+  fullName.vb: System.Collections.Generic.Dictionary(Of TKey, TValue)
+  name.vb: Dictionary(Of TKey, TValue)
+  spec.csharp:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TKey
+  - name: ','
+  - name: " "
+  - name: TValue
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: artstudio.Services.WordPromptService.GetFavoritesAsync*
+  commentId: Overload:artstudio.Services.WordPromptService.GetFavoritesAsync
+  href: artstudio.Services.WordPromptService.html#artstudio_Services_WordPromptService_GetFavoritesAsync
+  name: GetFavoritesAsync
+  nameWithType: WordPromptService.GetFavoritesAsync
+  fullName: artstudio.Services.WordPromptService.GetFavoritesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.WordCollection}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.WordCollection}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<WordCollection>>
+  nameWithType: Task<List<WordCollection>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.WordCollection>>
+  nameWithType.vb: Task(Of List(Of WordCollection))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.WordCollection))
+  name.vb: Task(Of List(Of WordCollection))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.WordCollection
+    name: WordCollection
+    href: artstudio.Data.WordCollection.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.WordCollection
+    name: WordCollection
+    href: artstudio.Data.WordCollection.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.WordPromptService.GetFavoritesWithWordsAsync*
+  commentId: Overload:artstudio.Services.WordPromptService.GetFavoritesWithWordsAsync
+  href: artstudio.Services.WordPromptService.html#artstudio_Services_WordPromptService_GetFavoritesWithWordsAsync
+  name: GetFavoritesWithWordsAsync
+  nameWithType: WordPromptService.GetFavoritesWithWordsAsync
+  fullName: artstudio.Services.WordPromptService.GetFavoritesWithWordsAsync
+- uid: artstudio.Services.WordPromptService.GetWordsForCollectionAsync*
+  commentId: Overload:artstudio.Services.WordPromptService.GetWordsForCollectionAsync
+  href: artstudio.Services.WordPromptService.html#artstudio_Services_WordPromptService_GetWordsForCollectionAsync_System_Int32_
+  name: GetWordsForCollectionAsync
+  nameWithType: WordPromptService.GetWordsForCollectionAsync
+  fullName: artstudio.Services.WordPromptService.GetWordsForCollectionAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.Word}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.Word}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<Word>>
+  nameWithType: Task<List<Word>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.Word>>
+  nameWithType.vb: Task(Of List(Of Word))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.Word))
+  name.vb: Task(Of List(Of Word))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.Word
+    name: Word
+    href: artstudio.Data.Word.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.Word
+    name: Word
+    href: artstudio.Data.Word.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.WordPromptService.ToggleFavoriteAsync*
+  commentId: Overload:artstudio.Services.WordPromptService.ToggleFavoriteAsync
+  href: artstudio.Services.WordPromptService.html#artstudio_Services_WordPromptService_ToggleFavoriteAsync_System_Int32_
+  name: ToggleFavoriteAsync
+  nameWithType: WordPromptService.ToggleFavoriteAsync
+  fullName: artstudio.Services.WordPromptService.ToggleFavoriteAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: artstudio.Services.WordPromptService.GetWordsByCategoryAsync*
+  commentId: Overload:artstudio.Services.WordPromptService.GetWordsByCategoryAsync
+  href: artstudio.Services.WordPromptService.html#artstudio_Services_WordPromptService_GetWordsByCategoryAsync_artstudio_Data_WordCollection_
+  name: GetWordsByCategoryAsync
+  nameWithType: WordPromptService.GetWordsByCategoryAsync
+  fullName: artstudio.Services.WordPromptService.GetWordsByCategoryAsync
+- uid: artstudio.Data.WordCollection
+  commentId: T:artstudio.Data.WordCollection
+  parent: artstudio.Data
+  href: artstudio.Data.WordCollection.html
+  name: WordCollection
+  nameWithType: WordCollection
+  fullName: artstudio.Data.WordCollection
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.Dictionary{System.String,System.Collections.Generic.List{System.String}}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<Dictionary<string, List<string>>>
+  nameWithType: Task<Dictionary<string, List<string>>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.Dictionary<string, System.Collections.Generic.List<string>>>
+  nameWithType.vb: Task(Of Dictionary(Of String, List(Of String)))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.Dictionary(Of String, System.Collections.Generic.List(Of String)))
+  name.vb: Task(Of Dictionary(Of String, List(Of String)))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.Dictionary`2
+    name: Dictionary
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.dictionary-2
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: ','
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+  - name: )
+- uid: artstudio.Data
+  commentId: N:artstudio.Data
+  href: artstudio.html
+  name: artstudio.Data
+  nameWithType: artstudio.Data
+  fullName: artstudio.Data
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html

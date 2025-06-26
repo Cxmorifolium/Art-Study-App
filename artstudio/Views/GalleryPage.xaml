@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="artstudio.Views.GalleryPage"
+             Title="Gallery">
+
+    <ContentPage.ToolbarItems>
+        <!-- Search/Filter -->
+        <ToolbarItem Text="Filter" 
+                     IconImageSource="filter_icon.png"
+                     Command="{Binding ShowFilterCommand}" />
+
+        <!-- Add to Gallery -->
+        <ToolbarItem Text="Add" 
+                     IconImageSource="add_icon.png"
+                     Command="{Binding AddToGalleryCommand}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto" />
+            <RowDefinition Height="*" />
+        </Grid.RowDefinitions>
+
+        <!-- Search/Filter Bar -->
+        <Border Grid.Row="0" 
+                BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#2D3748}"
+                StrokeThickness="0"
+                Padding="16,12"
+                Margin="16,8">
+
+            <Border.StrokeShape>
+                <RoundRectangle CornerRadius="8" />
+            </Border.StrokeShape>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="Auto" />
+                </Grid.ColumnDefinitions>
+
+                <SearchBar Grid.Column="0"
+                           x:Name="TagSearchBar"
+                           Placeholder="Search tags, notes, or titles..."
+                           Text="{Binding SearchText}"
+                           SearchCommand="{Binding SearchCommand}"
+                           BackgroundColor="Transparent" />
+
+                <Button Grid.Column="1"
+                        Text="Clear"
+                        Command="{Binding ClearSearchCommand}"
+                        BackgroundColor="Transparent"
+                        TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                        FontSize="14"
+                        Padding="12,8"
+                        IsVisible="{Binding HasSearchText}" />
+            </Grid>
+        </Border>
+
+        <!-- Gallery Grid -->
+        <RefreshView Grid.Row="1" 
+                     IsRefreshing="{Binding IsRefreshing}"
+                     Command="{Binding RefreshCommand}">
+
+            <CollectionView ItemsSource="{Binding GalleryItems}"
+                            BackgroundColor="Transparent"
+                            SelectionMode="None">
+
+                <CollectionView.ItemsLayout>
+                    <GridItemsLayout Orientation="Vertical" 
+                                     Span="4" 
+                                     VerticalItemSpacing="16" 
+                                     HorizontalItemSpacing="16" />
+                </CollectionView.ItemsLayout>
+
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Grid>
+                            <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#1A202C}"
+                                    Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#374151}"
+                                    StrokeThickness="1"
+                                    Padding="0"
+                                    Margin="8">
+
+                                <Border.StrokeShape>
+                                    <RoundRectangle CornerRadius="12" />
+                                </Border.StrokeShape>
+
+                                <Border.Shadow>
+                                    <Shadow Brush="Black"
+                                            Offset="0,2"
+                                            Radius="8"
+                                            Opacity="0.1" />
+                                </Border.Shadow>
+
+                                <Border.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewDetailsCommand}"
+                                                          CommandParameter="{Binding}" />
+                                </Border.GestureRecognizers>
+
+                                <Grid>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition Height="200" />
+                                        <RowDefinition Height="Auto" />
+                                        <RowDefinition Height="Auto" />
+                                    </Grid.RowDefinitions>
+
+                                    <!-- Artwork Image -->
+                                    <Image Source="{Binding ArtworkImagePath}"
+                                           Aspect="AspectFill">
+                                        <Image.Clip>
+                                            <RoundRectangleGeometry CornerRadius="12" 
+                                                                    Rect="0,0,1000,1000" />
+                                        </Image.Clip>
+                                    </Image>
+
+                                    <!-- Overlay with Title and Date -->
+                                    <Border BackgroundColor="{AppThemeBinding Light=#80FFFFFF, Dark=#C0000000}"
+                                            VerticalOptions="End"
+                                            Margin="0">
+                                        <Border.StrokeShape>
+                                            <RoundRectangle CornerRadius="0,0,12,12" />
+                                        </Border.StrokeShape>
+
+                                        <StackLayout Padding="12,8">
+                                            <Label Text="{Binding DisplayTitle}"
+                                                   FontSize="16"
+                                                   FontAttributes="Bold"
+                                                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}"
+                                                   LineBreakMode="TailTruncation" />
+
+                                            <Label Text="{Binding FormattedDate}"
+                                                   FontSize="12"
+                                                   TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                                        </StackLayout>
+                                    </Border>
+                                </Grid>
+                            </Border>
+                        </Grid>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+
+                <!-- Empty State -->
+                <CollectionView.EmptyView>
+                    <StackLayout VerticalOptions="Center" 
+                                 HorizontalOptions="Center"
+                                 Spacing="16"
+                                 Padding="32">
+
+                        <Label Text="📸"
+                               FontSize="48"
+                               HorizontalTextAlignment="Center" />
+
+                        <Label Text="No gallery items yet"
+                               FontSize="18"
+                               FontAttributes="Bold"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+
+                        <Label Text="Create some art studies and add them to your gallery!"
+                               FontSize="14"
+                               HorizontalTextAlignment="Center"
+                               TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+
+                        <Button Text="Start a Study Session"
+                                Command="{Binding GoToStudyCommand}"
+                                BackgroundColor="#4CAF50"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Padding="24,12"
+                                Margin="0,16,0,0"
+                                HorizontalOptions="Center" />
+                        <!-- This line is key -->
+                    </StackLayout>
+                </CollectionView.EmptyView>
+
+            </CollectionView>
+        </RefreshView>
+
+        <!-- Loading Indicator -->
+        <ActivityIndicator Grid.Row="1"
+                           IsVisible="{Binding IsLoading}"
+                           IsRunning="{Binding IsLoading}"
+                           VerticalOptions="Center"
+                           HorizontalOptions="Center"
+                           Color="#4CAF50" />
+    </Grid>
+</ContentPage>

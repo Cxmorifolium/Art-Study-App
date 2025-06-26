@@ -1,0 +1,134 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Models
+  commentId: N:artstudio.Models
+  id: artstudio.Models
+  children:
+  - artstudio.Models.PaletteModel
+  - artstudio.Models.PaletteModel.ColorHarmonyType
+  - artstudio.Models.SwatchModel
+  - artstudio.Models.UnsplashImage
+  - artstudio.Models.UnsplashImage.Urls
+  - artstudio.Models.UnsplashImage.User
+  langs:
+  - csharp
+  - vb
+  name: artstudio.Models
+  nameWithType: artstudio.Models
+  fullName: artstudio.Models
+  type: Namespace
+  assemblies:
+  - artstudio
+references:
+- uid: artstudio.Models.PaletteModel
+  commentId: T:artstudio.Models.PaletteModel
+  parent: artstudio.Models
+  href: artstudio.Models.PaletteModel.html
+  name: PaletteModel
+  nameWithType: PaletteModel
+  fullName: artstudio.Models.PaletteModel
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType
+  commentId: T:artstudio.Models.PaletteModel.ColorHarmonyType
+  parent: artstudio.Models
+  href: artstudio.Models.PaletteModel.html
+  name: PaletteModel.ColorHarmonyType
+  nameWithType: PaletteModel.ColorHarmonyType
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType
+  spec.csharp:
+  - uid: artstudio.Models.PaletteModel
+    name: PaletteModel
+    href: artstudio.Models.PaletteModel.html
+  - name: .
+  - uid: artstudio.Models.PaletteModel.ColorHarmonyType
+    name: ColorHarmonyType
+    href: artstudio.Models.PaletteModel.ColorHarmonyType.html
+  spec.vb:
+  - uid: artstudio.Models.PaletteModel
+    name: PaletteModel
+    href: artstudio.Models.PaletteModel.html
+  - name: .
+  - uid: artstudio.Models.PaletteModel.ColorHarmonyType
+    name: ColorHarmonyType
+    href: artstudio.Models.PaletteModel.ColorHarmonyType.html
+- uid: artstudio.Models.SwatchModel
+  commentId: T:artstudio.Models.SwatchModel
+  parent: artstudio.Models
+  href: artstudio.Models.SwatchModel.html
+  name: SwatchModel
+  nameWithType: SwatchModel
+  fullName: artstudio.Models.SwatchModel
+- uid: artstudio.Models.UnsplashImage
+  commentId: T:artstudio.Models.UnsplashImage
+  parent: artstudio.Models
+  href: artstudio.Models.UnsplashImage.html
+  name: UnsplashImage
+  nameWithType: UnsplashImage
+  fullName: artstudio.Models.UnsplashImage
+- uid: artstudio.Models.UnsplashImage.Urls
+  commentId: T:artstudio.Models.UnsplashImage.Urls
+  parent: artstudio.Models
+  href: artstudio.Models.UnsplashImage.html
+  name: UnsplashImage.Urls
+  nameWithType: UnsplashImage.Urls
+  fullName: artstudio.Models.UnsplashImage.Urls
+  spec.csharp:
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: .
+  - uid: artstudio.Models.UnsplashImage.Urls
+    name: Urls
+    href: artstudio.Models.UnsplashImage.Urls.html
+  spec.vb:
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: .
+  - uid: artstudio.Models.UnsplashImage.Urls
+    name: Urls
+    href: artstudio.Models.UnsplashImage.Urls.html
+- uid: artstudio.Models.UnsplashImage.User
+  commentId: T:artstudio.Models.UnsplashImage.User
+  parent: artstudio.Models
+  href: artstudio.Models.UnsplashImage.html
+  name: UnsplashImage.User
+  nameWithType: UnsplashImage.User
+  fullName: artstudio.Models.UnsplashImage.User
+  spec.csharp:
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: .
+  - uid: artstudio.Models.UnsplashImage.User
+    name: User
+    href: artstudio.Models.UnsplashImage.User.html
+  spec.vb:
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: .
+  - uid: artstudio.Models.UnsplashImage.User
+    name: User
+    href: artstudio.Models.UnsplashImage.User.html
+- uid: artstudio.Models
+  commentId: N:artstudio.Models
+  href: artstudio.html
+  name: artstudio.Models
+  nameWithType: artstudio.Models
+  fullName: artstudio.Models
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html

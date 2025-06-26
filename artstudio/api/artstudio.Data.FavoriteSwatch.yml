@@ -1,0 +1,977 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Data.FavoriteSwatch
+  commentId: T:artstudio.Data.FavoriteSwatch
+  id: FavoriteSwatch
+  parent: artstudio.Data
+  children:
+  - artstudio.Data.FavoriteSwatch.Collection
+  - artstudio.Data.FavoriteSwatch.CollectionDisplay
+  - artstudio.Data.FavoriteSwatch.Color
+  - artstudio.Data.FavoriteSwatch.ColorName
+  - artstudio.Data.FavoriteSwatch.CreatedAt
+  - artstudio.Data.FavoriteSwatch.DisplayName
+  - artstudio.Data.FavoriteSwatch.FormattedDate
+  - artstudio.Data.FavoriteSwatch.HexColor
+  - artstudio.Data.FavoriteSwatch.Id
+  - artstudio.Data.FavoriteSwatch.IsFavorite
+  - artstudio.Data.FavoriteSwatch.OnPropertyChanged(System.String)
+  - artstudio.Data.FavoriteSwatch.PropertyChanged
+  - artstudio.Data.FavoriteSwatch.SetProperty``1(``0@,``0,System.String)
+  langs:
+  - csharp
+  - vb
+  name: FavoriteSwatch
+  nameWithType: FavoriteSwatch
+  fullName: artstudio.Data.FavoriteSwatch
+  type: Class
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FavoriteSwatch
+    path: Data/FavoriteSwatch.cs
+    startLine: 6
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [Table("FavoriteSwatch")]
+
+      public class FavoriteSwatch : INotifyPropertyChanged
+    content.vb: >-
+      <Table("FavoriteSwatch")>
+
+      Public Class FavoriteSwatch Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: SQLite.TableAttribute
+    ctor: SQLite.TableAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: FavoriteSwatch
+- uid: artstudio.Data.FavoriteSwatch.Id
+  commentId: P:artstudio.Data.FavoriteSwatch.Id
+  id: Id
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: FavoriteSwatch.Id
+  fullName: artstudio.Data.FavoriteSwatch.Id
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Id
+    path: Data/FavoriteSwatch.cs
+    startLine: 16
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [PrimaryKey]
+
+      [AutoIncrement]
+
+      public int Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <PrimaryKey>
+
+      <AutoIncrement>
+
+      Public Property Id As Integer
+  overload: artstudio.Data.FavoriteSwatch.Id*
+  attributes:
+  - type: SQLite.PrimaryKeyAttribute
+    ctor: SQLite.PrimaryKeyAttribute.#ctor
+    arguments: []
+  - type: SQLite.AutoIncrementAttribute
+    ctor: SQLite.AutoIncrementAttribute.#ctor
+    arguments: []
+- uid: artstudio.Data.FavoriteSwatch.HexColor
+  commentId: P:artstudio.Data.FavoriteSwatch.HexColor
+  id: HexColor
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: HexColor
+  nameWithType: FavoriteSwatch.HexColor
+  fullName: artstudio.Data.FavoriteSwatch.HexColor
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HexColor
+    path: Data/FavoriteSwatch.cs
+    startLine: 23
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [NotNull]
+
+      public string HexColor { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: >-
+      <NotNull>
+
+      Public Property HexColor As String
+  overload: artstudio.Data.FavoriteSwatch.HexColor*
+  attributes:
+  - type: SQLite.NotNullAttribute
+    ctor: SQLite.NotNullAttribute.#ctor
+    arguments: []
+- uid: artstudio.Data.FavoriteSwatch.ColorName
+  commentId: P:artstudio.Data.FavoriteSwatch.ColorName
+  id: ColorName
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: ColorName
+  nameWithType: FavoriteSwatch.ColorName
+  fullName: artstudio.Data.FavoriteSwatch.ColorName
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ColorName
+    path: Data/FavoriteSwatch.cs
+    startLine: 30
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? ColorName { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ColorName As String
+  overload: artstudio.Data.FavoriteSwatch.ColorName*
+- uid: artstudio.Data.FavoriteSwatch.CreatedAt
+  commentId: P:artstudio.Data.FavoriteSwatch.CreatedAt
+  id: CreatedAt
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: FavoriteSwatch.CreatedAt
+  fullName: artstudio.Data.FavoriteSwatch.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CreatedAt
+    path: Data/FavoriteSwatch.cs
+    startLine: 36
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property CreatedAt As Date
+  overload: artstudio.Data.FavoriteSwatch.CreatedAt*
+- uid: artstudio.Data.FavoriteSwatch.Collection
+  commentId: P:artstudio.Data.FavoriteSwatch.Collection
+  id: Collection
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: Collection
+  nameWithType: FavoriteSwatch.Collection
+  fullName: artstudio.Data.FavoriteSwatch.Collection
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Collection
+    path: Data/FavoriteSwatch.cs
+    startLine: 42
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? Collection { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Collection As String
+  overload: artstudio.Data.FavoriteSwatch.Collection*
+- uid: artstudio.Data.FavoriteSwatch.IsFavorite
+  commentId: P:artstudio.Data.FavoriteSwatch.IsFavorite
+  id: IsFavorite
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: IsFavorite
+  nameWithType: FavoriteSwatch.IsFavorite
+  fullName: artstudio.Data.FavoriteSwatch.IsFavorite
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsFavorite
+    path: Data/FavoriteSwatch.cs
+    startLine: 48
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public bool IsFavorite { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsFavorite As Boolean
+  overload: artstudio.Data.FavoriteSwatch.IsFavorite*
+- uid: artstudio.Data.FavoriteSwatch.Color
+  commentId: P:artstudio.Data.FavoriteSwatch.Color
+  id: Color
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: FavoriteSwatch.Color
+  fullName: artstudio.Data.FavoriteSwatch.Color
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Color
+    path: Data/FavoriteSwatch.cs
+    startLine: 55
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [Ignore]
+
+      public Color Color { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.Graphics.Color
+    content.vb: >-
+      <Ignore>
+
+      Public Property Color As Color
+  overload: artstudio.Data.FavoriteSwatch.Color*
+  attributes:
+  - type: SQLite.IgnoreAttribute
+    ctor: SQLite.IgnoreAttribute.#ctor
+    arguments: []
+- uid: artstudio.Data.FavoriteSwatch.DisplayName
+  commentId: P:artstudio.Data.FavoriteSwatch.DisplayName
+  id: DisplayName
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: DisplayName
+  nameWithType: FavoriteSwatch.DisplayName
+  fullName: artstudio.Data.FavoriteSwatch.DisplayName
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DisplayName
+    path: Data/FavoriteSwatch.cs
+    startLine: 62
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string DisplayName { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DisplayName As String
+  overload: artstudio.Data.FavoriteSwatch.DisplayName*
+- uid: artstudio.Data.FavoriteSwatch.FormattedDate
+  commentId: P:artstudio.Data.FavoriteSwatch.FormattedDate
+  id: FormattedDate
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: FormattedDate
+  nameWithType: FavoriteSwatch.FormattedDate
+  fullName: artstudio.Data.FavoriteSwatch.FormattedDate
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FormattedDate
+    path: Data/FavoriteSwatch.cs
+    startLine: 64
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string FormattedDate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FormattedDate As String
+  overload: artstudio.Data.FavoriteSwatch.FormattedDate*
+- uid: artstudio.Data.FavoriteSwatch.CollectionDisplay
+  commentId: P:artstudio.Data.FavoriteSwatch.CollectionDisplay
+  id: CollectionDisplay
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: CollectionDisplay
+  nameWithType: FavoriteSwatch.CollectionDisplay
+  fullName: artstudio.Data.FavoriteSwatch.CollectionDisplay
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CollectionDisplay
+    path: Data/FavoriteSwatch.cs
+    startLine: 66
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string CollectionDisplay { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property CollectionDisplay As String
+  overload: artstudio.Data.FavoriteSwatch.CollectionDisplay*
+- uid: artstudio.Data.FavoriteSwatch.PropertyChanged
+  commentId: E:artstudio.Data.FavoriteSwatch.PropertyChanged
+  id: PropertyChanged
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: FavoriteSwatch.PropertyChanged
+  fullName: artstudio.Data.FavoriteSwatch.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PropertyChanged
+    path: Data/FavoriteSwatch.cs
+    startLine: 69
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  summary: Occurs when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: artstudio.Data.FavoriteSwatch.OnPropertyChanged(System.String)
+  commentId: M:artstudio.Data.FavoriteSwatch.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string?)
+  nameWithType: FavoriteSwatch.OnPropertyChanged(string?)
+  fullName: artstudio.Data.FavoriteSwatch.OnPropertyChanged(string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OnPropertyChanged
+    path: Data/FavoriteSwatch.cs
+    startLine: 71
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: protected virtual void OnPropertyChanged(string? propertyName = null)
+    parameters:
+    - id: propertyName
+      type: System.String
+    content.vb: Protected Overridable Sub OnPropertyChanged(propertyName As String = Nothing)
+  overload: artstudio.Data.FavoriteSwatch.OnPropertyChanged*
+  nameWithType.vb: FavoriteSwatch.OnPropertyChanged(String)
+  fullName.vb: artstudio.Data.FavoriteSwatch.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+- uid: artstudio.Data.FavoriteSwatch.SetProperty``1(``0@,``0,System.String)
+  commentId: M:artstudio.Data.FavoriteSwatch.SetProperty``1(``0@,``0,System.String)
+  id: SetProperty``1(``0@,``0,System.String)
+  parent: artstudio.Data.FavoriteSwatch
+  langs:
+  - csharp
+  - vb
+  name: SetProperty<T>(ref T, T, string?)
+  nameWithType: FavoriteSwatch.SetProperty<T>(ref T, T, string?)
+  fullName: artstudio.Data.FavoriteSwatch.SetProperty<T>(ref T, T, string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/FavoriteSwatch.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SetProperty
+    path: Data/FavoriteSwatch.cs
+    startLine: 94
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: protected bool SetProperty<T>(ref T field, T value, string? propertyName = null)
+    parameters:
+    - id: field
+      type: '{T}'
+    - id: value
+      type: '{T}'
+    - id: propertyName
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Protected Function SetProperty(Of T)(field As T, value As T, propertyName As String = Nothing) As Boolean
+  overload: artstudio.Data.FavoriteSwatch.SetProperty*
+  nameWithType.vb: FavoriteSwatch.SetProperty(Of T)(T, T, String)
+  fullName.vb: artstudio.Data.FavoriteSwatch.SetProperty(Of T)(T, T, String)
+  name.vb: SetProperty(Of T)(T, T, String)
+references:
+- uid: artstudio.Data
+  commentId: N:artstudio.Data
+  href: artstudio.html
+  name: artstudio.Data
+  nameWithType: artstudio.Data
+  fullName: artstudio.Data
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: artstudio.Data.FavoriteSwatch.Id*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.Id
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_Id
+  name: Id
+  nameWithType: FavoriteSwatch.Id
+  fullName: artstudio.Data.FavoriteSwatch.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: artstudio.Data.FavoriteSwatch.HexColor*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.HexColor
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_HexColor
+  name: HexColor
+  nameWithType: FavoriteSwatch.HexColor
+  fullName: artstudio.Data.FavoriteSwatch.HexColor
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.Data.FavoriteSwatch.ColorName*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.ColorName
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_ColorName
+  name: ColorName
+  nameWithType: FavoriteSwatch.ColorName
+  fullName: artstudio.Data.FavoriteSwatch.ColorName
+- uid: artstudio.Data.FavoriteSwatch.CreatedAt*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.CreatedAt
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_CreatedAt
+  name: CreatedAt
+  nameWithType: FavoriteSwatch.CreatedAt
+  fullName: artstudio.Data.FavoriteSwatch.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: artstudio.Data.FavoriteSwatch.Collection*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.Collection
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_Collection
+  name: Collection
+  nameWithType: FavoriteSwatch.Collection
+  fullName: artstudio.Data.FavoriteSwatch.Collection
+- uid: artstudio.Data.FavoriteSwatch.IsFavorite*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.IsFavorite
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_IsFavorite
+  name: IsFavorite
+  nameWithType: FavoriteSwatch.IsFavorite
+  fullName: artstudio.Data.FavoriteSwatch.IsFavorite
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: artstudio.Data.FavoriteSwatch.Color*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.Color
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_Color
+  name: Color
+  nameWithType: FavoriteSwatch.Color
+  fullName: artstudio.Data.FavoriteSwatch.Color
+- uid: Microsoft.Maui.Graphics.Color
+  commentId: T:Microsoft.Maui.Graphics.Color
+  parent: Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  name: Color
+  nameWithType: Color
+  fullName: Microsoft.Maui.Graphics.Color
+- uid: Microsoft.Maui.Graphics
+  commentId: N:Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Maui.Graphics
+  nameWithType: Microsoft.Maui.Graphics
+  fullName: Microsoft.Maui.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+- uid: artstudio.Data.FavoriteSwatch.DisplayName*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.DisplayName
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_DisplayName
+  name: DisplayName
+  nameWithType: FavoriteSwatch.DisplayName
+  fullName: artstudio.Data.FavoriteSwatch.DisplayName
+- uid: artstudio.Data.FavoriteSwatch.FormattedDate*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.FormattedDate
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_FormattedDate
+  name: FormattedDate
+  nameWithType: FavoriteSwatch.FormattedDate
+  fullName: artstudio.Data.FavoriteSwatch.FormattedDate
+- uid: artstudio.Data.FavoriteSwatch.CollectionDisplay*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.CollectionDisplay
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_CollectionDisplay
+  name: CollectionDisplay
+  nameWithType: FavoriteSwatch.CollectionDisplay
+  fullName: artstudio.Data.FavoriteSwatch.CollectionDisplay
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: artstudio.Data.FavoriteSwatch.OnPropertyChanged*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.OnPropertyChanged
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: FavoriteSwatch.OnPropertyChanged
+  fullName: artstudio.Data.FavoriteSwatch.OnPropertyChanged
+- uid: artstudio.Data.FavoriteSwatch.SetProperty*
+  commentId: Overload:artstudio.Data.FavoriteSwatch.SetProperty
+  href: artstudio.Data.FavoriteSwatch.html#artstudio_Data_FavoriteSwatch_SetProperty__1___0____0_System_String_
+  name: SetProperty
+  nameWithType: FavoriteSwatch.SetProperty
+  fullName: artstudio.Data.FavoriteSwatch.SetProperty
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

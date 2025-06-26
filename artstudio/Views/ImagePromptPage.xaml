@@ -6,12 +6,18 @@
             x:Class="artstudio.Views.ImagePromptPage"
             Title="Image Prompt">
 
+    <ContentPage.ToolbarItems>
+        <ToolbarItem Text="♥ Favorites" 
+                     Command="{Binding ToggleFavoritesFlyoutCommand}" />
+    </ContentPage.ToolbarItems>
+
     <ContentPage.Resources>
         <ResourceDictionary>
             <converters:BoolToVisibilityConverter x:Key="BoolToVisibilityConverter" />
             <converters:InverseBoolConverter x:Key="InverseBoolConverter" />
             <converters:BoolToLockColorConverter x:Key="BoolToLockColorConverter" />
             <converters:BoolToLockIconConverter x:Key="BoolToLockIconConverter" />
+            <converters:BoolToHeartIconConverter x:Key="BoolToHeartIconConverter" />
         </ResourceDictionary>
     </ContentPage.Resources>
 
@@ -43,7 +49,7 @@
                                     VerticalItemSpacing="10" />
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
-                    <DataTemplate x:DataType="viewmodels:ImageItemViewModel">
+                    <DataTemplate>
                         <Border Margin="5" 
                                Stroke="{Binding IsLocked, Converter={StaticResource BoolToLockColorConverter}}"
                                StrokeShape="RoundRectangle"
@@ -59,7 +65,6 @@
                                     <Grid Margin="10,5">
                                         <Grid.ColumnDefinitions>
                                             <ColumnDefinition Width="*" />
-                                            <ColumnDefinition Width="Auto" />
                                             <ColumnDefinition Width="Auto" />
                                         </Grid.ColumnDefinitions>
 
@@ -105,22 +110,45 @@
                                                   IsVisible="{Binding HasUserUrl, Converter={StaticResource InverseBoolConverter}}" />
                                         </StackLayout>
 
-                                        <ImageButton Grid.Column="1" 
-                                                    Command="{Binding ToggleLockCommand}"
-                                                    CommandParameter="{Binding}"
-                                                    Source="{Binding IsLocked, Converter={StaticResource BoolToLockIconConverter}}" 
-                                                    WidthRequest="24" 
-                                                    HeightRequest="24"
-                                                    Background="Transparent" />
-                                        <ImageButton Grid.Column="2"
-                                                    Command="{Binding DeleteCommand}"
-                                                    CommandParameter="{Binding}"
-                                                    Source="delete.png"
-                                                    WidthRequest="24"
-                                                    HeightRequest="24"
-                                                    Background="Transparent"
-                                                    Margin="10,0,0,0" />
+                                        <!-- Action Buttons with Semi-Transparent Background -->
+                                        <Border
+                                            StrokeThickness="2"
+                                            BackgroundColor="#40FFFFFF"
+                                            StrokeShape="RoundRectangle 12"
+                                            HorizontalOptions="End"
+                                            VerticalOptions="Center">
 
+                                            <StackLayout Grid.Column="1" 
+                                                    Orientation="Horizontal" 
+                                                    Spacing="8"
+                                                    HorizontalOptions="End"
+                                                    VerticalOptions="Center">
+
+                                                <!-- Favorite Button -->
+                                                <ImageButton Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.SaveToFavoritesCommand}"
+                                                                CommandParameter="{Binding}"
+                                                                Source="{Binding IsFavorited, Converter={StaticResource BoolToHeartIconConverter}}"
+                                                                Background="Transparent"
+                                                                VerticalOptions="Center"
+                                                                HorizontalOptions="Center"/>
+
+                                                <!-- Lock Button -->
+                                                <ImageButton Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ToggleLockCommand}"
+                                                                CommandParameter="{Binding}"
+                                                                Source="{Binding IsLocked, Converter={StaticResource BoolToLockIconConverter}}" 
+                                                                Background="Transparent"
+                                                                VerticalOptions="Center"
+                                                                HorizontalOptions="Center" />
+
+                                                <!-- Delete Button -->
+                                                <ImageButton Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteImageCommand}"
+                                                                CommandParameter="{Binding}"
+                                                                Source="delete.png"
+                                                                Background="Transparent"
+                                                                VerticalOptions="Center"
+                                                                HorizontalOptions="Center" />
+                                            </StackLayout>
+                                        </Border>
                                     </Grid>
                                 </Grid>
                             </Grid>
@@ -149,21 +177,21 @@
         <StackLayout Grid.Row="2" 
                     Orientation="Horizontal" 
                     HorizontalOptions="Center" 
-                    Margin="0,20,0,0">
+                    Margin="0,20,0,0"
+                    Spacing="10">
+
             <Button Text="Regenerate Images" 
                    Padding="15,10" 
-                   Margin="5,0" 
                    Command="{Binding RegenerateImagesCommand}" 
                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"/>
 
             <Button Text="Add More Images" 
                    Padding="15,10" 
-                   Margin="5,0" 
                    Command="{Binding AddImagesCommand}" 
                    IsEnabled="{Binding IsLoading, Converter={StaticResource InverseBoolConverter}}"/>
+
             <Button Text="Undo"
                    Padding="15,10"
-                   Margin="5,0"
                    Command="{Binding UndoDeleteCommand}"
                    IsEnabled="{Binding CanUndo}" />
 
@@ -176,5 +204,184 @@
               Margin="0,70,0,0" 
               Opacity="0.7"
               FontSize="12"/>
+
+        <!-- Favorites Flyout Overlay -->
+        <BoxView IsVisible="{Binding IsFavoritesFlyoutVisible}"
+                 BackgroundColor="#80000000"
+                 HorizontalOptions="Fill"
+                 VerticalOptions="Fill"
+                 Grid.RowSpan="3">
+            <BoxView.GestureRecognizers>
+                <TapGestureRecognizer Command="{Binding CloseFavoritesFlyoutCommand}" />
+            </BoxView.GestureRecognizers>
+        </BoxView>
+
+        <!-- Favorites Flyout Panel -->
+        <Border IsVisible="{Binding IsFavoritesFlyoutVisible}"
+                BackgroundColor="#2d2d2d"
+                Stroke="#5d5d7d"
+                StrokeShape="RoundRectangle 16,0,0,0"
+                HorizontalOptions="End"
+                VerticalOptions="Fill"
+                WidthRequest="350"
+                Grid.RowSpan="3">
+
+            <Border.Shadow>
+                <Shadow Brush="Black" Offset="-4,0" Radius="16" Opacity="0.3" />
+            </Border.Shadow>
+
+            <Grid RowDefinitions="Auto,*,Auto">
+                <!-- Header -->
+                <Border Grid.Row="0"
+                            BackgroundColor="#2d2d2d"
+                            Padding="20,16">
+
+                    <Grid ColumnDefinitions="*,Auto">
+                        <Label Grid.Column="0"
+                                   Text="♥ Favorite Images"
+                                   FontSize="18"
+                                   FontAttributes="Bold"
+                                   VerticalOptions="Center"
+                                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                        <Button Grid.Column="1"
+                                    Text="✕"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    Padding="8"
+                                    Command="{Binding CloseFavoritesFlyoutCommand}" />
+                    </Grid>
+                </Border>
+
+                <!-- Content -->
+                <ScrollView Grid.Row="1" Padding="20">
+                    <StackLayout Spacing="12">
+
+                        <!-- Loading Indicator -->
+                        <StackLayout IsVisible="{Binding IsLoadingFavorites}" 
+                                         HorizontalOptions="Center" 
+                                         Spacing="12"
+                                         Padding="20">
+                            <ActivityIndicator IsRunning="{Binding IsLoadingFavorites}"
+                                                   Color="#E91E63"
+                                                   Scale="1.2" />
+                            <Label Text="Loading favorite images..."
+                                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                                       FontSize="14"
+                                       HorizontalTextAlignment="Center" />
+                        </StackLayout>
+
+                        <!-- No Favorites Message -->
+                        <StackLayout IsVisible="{Binding HasNoFavorites}"
+                                         HorizontalOptions="Center"
+                                         Spacing="12"
+                                         Padding="20">
+                            <Label Text="♥"
+                                       FontSize="48"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="#E91E63" />
+                            <Label Text="No favorite images yet"
+                                       FontSize="16"
+                                       FontAttributes="Bold"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                            <Label Text="Save images using the heart button to build your collection!"
+                                       FontSize="12"
+                                       HorizontalTextAlignment="Center"
+                                       TextColor="{AppThemeBinding Light=#9CA3AF, Dark=#6B7280}" />
+                        </StackLayout>
+
+                        <!-- Favorites List -->
+                        <StackLayout IsVisible="{Binding HasNoFavorites, Converter={StaticResource InverseBoolConverter}}"
+                                        Spacing="8">
+
+                            <CollectionView ItemsSource="{Binding FavoriteImages}"
+                                               BackgroundColor="Transparent">
+
+                                <CollectionView.ItemsLayout>
+                                    <GridItemsLayout Orientation="Vertical" 
+                                                         Span="2" 
+                                                         HorizontalItemSpacing="8" 
+                                                         VerticalItemSpacing="8" />
+                                </CollectionView.ItemsLayout>
+
+                                <CollectionView.ItemTemplate>
+                                    <DataTemplate>
+                                        <Border BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#374151}"
+                                                    StrokeShape="RoundRectangle 12"
+                                                    Padding="8"
+                                                    Stroke="{AppThemeBinding Light=#E5E7EB, Dark=#4A5568}"
+                                                    StrokeThickness="1">
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.LoadFromFavoritesCommand}"
+                                                                    CommandParameter="{Binding}" />
+                                            </Border.GestureRecognizers>
+
+                                            <Grid RowDefinitions="120,Auto">
+
+                                                <!-- Image with Overlay Buttons -->
+                                                <Border Grid.Row="0" 
+                                                            StrokeShape="RoundRectangle 8"
+                                                            BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#4A5568}">
+
+                                                    <Grid>
+                                                        <!-- Image -->
+                                                        <Image Source="{Binding LocalImagePath}"
+                                                                   Aspect="AspectFill" />
+
+                                                        <Grid BackgroundColor="#77000000"
+                                                                  VerticalOptions="Fill"
+                                                                  HorizontalOptions="Fill">
+
+                                                            <!-- Top Right - Options Menu -->
+                                                            <Button Text="⋮"
+                                                                        BackgroundColor="#40FFFFFF"
+                                                                        TextColor="White"
+                                                                        FontSize="16"
+                                                                        FontAttributes="Bold"
+                                                                        CornerRadius="12"
+                                                                        WidthRequest="24"
+                                                                        HeightRequest="24"
+                                                                        Padding="0"
+                                                                        VerticalOptions="Start"
+                                                                        HorizontalOptions="End"
+                                                                        Margin="8"
+                                                                        Clicked="OnFavoriteOptionsClicked"
+                                                                        BindingContext="{Binding}" />
+                                                        </Grid>
+                                                    </Grid>
+                                                </Border>
+
+                                                <!-- Title -->
+                                                <Label Grid.Row="1"
+                                                           Text="{Binding DisplayTitle}"
+                                                           FontSize="12"
+                                                           FontAttributes="Bold"
+                                                           TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}"
+                                                           LineBreakMode="TailTruncation"
+                                                           Margin="0,4,0,0" />
+                                            </Grid>
+                                        </Border>
+                                    </DataTemplate>
+                                </CollectionView.ItemTemplate>
+                            </CollectionView>
+                        </StackLayout>
+                    </StackLayout>
+                </ScrollView>
+
+                <!-- Footer -->
+                <Border Grid.Row="2"
+                            BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#374151}"
+                            Padding="20,12">
+
+                    <Label Text="💡 Tip: Use the heart button on images to save them to favorites"
+                               FontSize="12"
+                               TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                               HorizontalTextAlignment="Center" />
+                </Border>
+            </Grid>
+        </Border>
     </Grid>
 </ContentPage>

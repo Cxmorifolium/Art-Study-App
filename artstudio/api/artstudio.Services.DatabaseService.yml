@@ -1,0 +1,2162 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Services.DatabaseService
+  commentId: T:artstudio.Services.DatabaseService
+  id: DatabaseService
+  parent: artstudio.Services
+  children:
+  - artstudio.Services.DatabaseService.#ctor
+  - artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync
+  - artstudio.Services.DatabaseService.DeleteFavoriteImageAsync(System.Int32)
+  - artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync(System.String)
+  - artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync(System.Int32)
+  - artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync(System.Int32)
+  - artstudio.Services.DatabaseService.DeletePaletteCollectionAsync(System.Int32)
+  - artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync(System.Int32)
+  - artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync(System.Int32)
+  - artstudio.Services.DatabaseService.DeleteWordCollectionAsync(System.Int32)
+  - artstudio.Services.DatabaseService.Dispose
+  - artstudio.Services.DatabaseService.GetAllCustomTagsAsync
+  - artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync
+  - artstudio.Services.DatabaseService.GetDatabaseAsync
+  - artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync(System.String)
+  - artstudio.Services.DatabaseService.GetFavoriteImagesAsync
+  - artstudio.Services.DatabaseService.GetFavoritePalettesAsync
+  - artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync(System.String)
+  - artstudio.Services.DatabaseService.GetFavoritesAsync
+  - artstudio.Services.DatabaseService.GetGalleryByTagAsync(System.String)
+  - artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync(System.Int32)
+  - artstudio.Services.DatabaseService.GetSessionSnapshotAsync(System.Int32)
+  - artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync
+  - artstudio.Services.DatabaseService.GetUserUploadedImageAsync(System.Int32)
+  - artstudio.Services.DatabaseService.GetUserUploadedImagesAsync
+  - artstudio.Services.DatabaseService.SaveFavoriteImageAsync(artstudio.Data.FavoriteImageItem)
+  - artstudio.Services.DatabaseService.SaveSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  - artstudio.Services.DatabaseService.SaveUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  - artstudio.Services.DatabaseService.SearchGalleryAsync(System.String)
+  - artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  - artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  langs:
+  - csharp
+  - vb
+  name: DatabaseService
+  nameWithType: DatabaseService
+  fullName: artstudio.Services.DatabaseService
+  type: Class
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DatabaseService
+    path: Services/DatabaseService.cs
+    startLine: 7
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: 'public class DatabaseService : IDisposable'
+    content.vb: Public Class DatabaseService Implements IDisposable
+  inheritance:
+  - System.Object
+  implements:
+  - System.IDisposable
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.Services.DatabaseService.#ctor
+  commentId: M:artstudio.Services.DatabaseService.#ctor
+  id: '#ctor'
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DatabaseService()
+  nameWithType: DatabaseService.DatabaseService()
+  fullName: artstudio.Services.DatabaseService.DatabaseService()
+  type: Constructor
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: .ctor
+    path: Services/DatabaseService.cs
+    startLine: 13
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public DatabaseService()
+    content.vb: Public Sub New()
+  overload: artstudio.Services.DatabaseService.#ctor*
+  nameWithType.vb: DatabaseService.New()
+  fullName.vb: artstudio.Services.DatabaseService.New()
+  name.vb: New()
+- uid: artstudio.Services.DatabaseService.GetDatabaseAsync
+  commentId: M:artstudio.Services.DatabaseService.GetDatabaseAsync
+  id: GetDatabaseAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetDatabaseAsync()
+  nameWithType: DatabaseService.GetDatabaseAsync()
+  fullName: artstudio.Services.DatabaseService.GetDatabaseAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetDatabaseAsync
+    path: Services/DatabaseService.cs
+    startLine: 19
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<SQLiteAsyncConnection> GetDatabaseAsync()
+    return:
+      type: System.Threading.Tasks.Task{SQLite.SQLiteAsyncConnection}
+    content.vb: Public Function GetDatabaseAsync() As Task(Of SQLiteAsyncConnection)
+  overload: artstudio.Services.DatabaseService.GetDatabaseAsync*
+- uid: artstudio.Services.DatabaseService.GetFavoritesAsync
+  commentId: M:artstudio.Services.DatabaseService.GetFavoritesAsync
+  id: GetFavoritesAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoritesAsync()
+  nameWithType: DatabaseService.GetFavoritesAsync()
+  fullName: artstudio.Services.DatabaseService.GetFavoritesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoritesAsync
+    path: Services/DatabaseService.cs
+    startLine: 325
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<WordCollection>> GetFavoritesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.WordCollection}}
+    content.vb: Public Function GetFavoritesAsync() As Task(Of List(Of WordCollection))
+  overload: artstudio.Services.DatabaseService.GetFavoritesAsync*
+- uid: artstudio.Services.DatabaseService.DeleteWordCollectionAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.DeleteWordCollectionAsync(System.Int32)
+  id: DeleteWordCollectionAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DeleteWordCollectionAsync(int)
+  nameWithType: DatabaseService.DeleteWordCollectionAsync(int)
+  fullName: artstudio.Services.DatabaseService.DeleteWordCollectionAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteWordCollectionAsync
+    path: Services/DatabaseService.cs
+    startLine: 352
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task DeleteWordCollectionAsync(int collectionId)
+    parameters:
+    - id: collectionId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function DeleteWordCollectionAsync(collectionId As Integer) As Task
+  overload: artstudio.Services.DatabaseService.DeleteWordCollectionAsync*
+  nameWithType.vb: DatabaseService.DeleteWordCollectionAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.DeleteWordCollectionAsync(Integer)
+  name.vb: DeleteWordCollectionAsync(Integer)
+- uid: artstudio.Services.DatabaseService.GetFavoritePalettesAsync
+  commentId: M:artstudio.Services.DatabaseService.GetFavoritePalettesAsync
+  id: GetFavoritePalettesAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoritePalettesAsync()
+  nameWithType: DatabaseService.GetFavoritePalettesAsync()
+  fullName: artstudio.Services.DatabaseService.GetFavoritePalettesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoritePalettesAsync
+    path: Services/DatabaseService.cs
+    startLine: 374
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<PaletteCollection>> GetFavoritePalettesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.PaletteCollection}}
+    content.vb: Public Function GetFavoritePalettesAsync() As Task(Of List(Of PaletteCollection))
+  overload: artstudio.Services.DatabaseService.GetFavoritePalettesAsync*
+- uid: artstudio.Services.DatabaseService.DeletePaletteCollectionAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.DeletePaletteCollectionAsync(System.Int32)
+  id: DeletePaletteCollectionAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DeletePaletteCollectionAsync(int)
+  nameWithType: DatabaseService.DeletePaletteCollectionAsync(int)
+  fullName: artstudio.Services.DatabaseService.DeletePaletteCollectionAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeletePaletteCollectionAsync
+    path: Services/DatabaseService.cs
+    startLine: 401
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task DeletePaletteCollectionAsync(int collectionId)
+    parameters:
+    - id: collectionId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function DeletePaletteCollectionAsync(collectionId As Integer) As Task
+  overload: artstudio.Services.DatabaseService.DeletePaletteCollectionAsync*
+  nameWithType.vb: DatabaseService.DeletePaletteCollectionAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.DeletePaletteCollectionAsync(Integer)
+  name.vb: DeletePaletteCollectionAsync(Integer)
+- uid: artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync(System.String)
+  commentId: M:artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync(System.String)
+  id: GetFavoriteSwatchesAsync(System.String)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoriteSwatchesAsync(string?)
+  nameWithType: DatabaseService.GetFavoriteSwatchesAsync(string?)
+  fullName: artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync(string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoriteSwatchesAsync
+    path: Services/DatabaseService.cs
+    startLine: 426
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<FavoriteSwatch>> GetFavoriteSwatchesAsync(string? collection = null)
+    parameters:
+    - id: collection
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteSwatch}}
+    content.vb: Public Function GetFavoriteSwatchesAsync(collection As String = Nothing) As Task(Of List(Of FavoriteSwatch))
+  overload: artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync*
+  nameWithType.vb: DatabaseService.GetFavoriteSwatchesAsync(String)
+  fullName.vb: artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync(String)
+  name.vb: GetFavoriteSwatchesAsync(String)
+- uid: artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync
+  commentId: M:artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync
+  id: GetSwatchCollectionNamesAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetSwatchCollectionNamesAsync()
+  nameWithType: DatabaseService.GetSwatchCollectionNamesAsync()
+  fullName: artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetSwatchCollectionNamesAsync
+    path: Services/DatabaseService.cs
+    startLine: 456
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<string>> GetSwatchCollectionNamesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{System.String}}
+    content.vb: Public Function GetSwatchCollectionNamesAsync() As Task(Of List(Of String))
+  overload: artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync*
+- uid: artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync(System.Int32)
+  id: DeleteFavoriteSwatchAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DeleteFavoriteSwatchAsync(int)
+  nameWithType: DatabaseService.DeleteFavoriteSwatchAsync(int)
+  fullName: artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteFavoriteSwatchAsync
+    path: Services/DatabaseService.cs
+    startLine: 476
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task DeleteFavoriteSwatchAsync(int swatchId)
+    parameters:
+    - id: swatchId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function DeleteFavoriteSwatchAsync(swatchId As Integer) As Task
+  overload: artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync*
+  nameWithType.vb: DatabaseService.DeleteFavoriteSwatchAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync(Integer)
+  name.vb: DeleteFavoriteSwatchAsync(Integer)
+- uid: artstudio.Services.DatabaseService.SaveFavoriteImageAsync(artstudio.Data.FavoriteImageItem)
+  commentId: M:artstudio.Services.DatabaseService.SaveFavoriteImageAsync(artstudio.Data.FavoriteImageItem)
+  id: SaveFavoriteImageAsync(artstudio.Data.FavoriteImageItem)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: SaveFavoriteImageAsync(FavoriteImageItem)
+  nameWithType: DatabaseService.SaveFavoriteImageAsync(FavoriteImageItem)
+  fullName: artstudio.Services.DatabaseService.SaveFavoriteImageAsync(artstudio.Data.FavoriteImageItem)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SaveFavoriteImageAsync
+    path: Services/DatabaseService.cs
+    startLine: 495
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<int> SaveFavoriteImageAsync(FavoriteImageItem favoriteImage)
+    parameters:
+    - id: favoriteImage
+      type: artstudio.Data.FavoriteImageItem
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function SaveFavoriteImageAsync(favoriteImage As FavoriteImageItem) As Task(Of Integer)
+  overload: artstudio.Services.DatabaseService.SaveFavoriteImageAsync*
+- uid: artstudio.Services.DatabaseService.GetFavoriteImagesAsync
+  commentId: M:artstudio.Services.DatabaseService.GetFavoriteImagesAsync
+  id: GetFavoriteImagesAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoriteImagesAsync()
+  nameWithType: DatabaseService.GetFavoriteImagesAsync()
+  fullName: artstudio.Services.DatabaseService.GetFavoriteImagesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoriteImagesAsync
+    path: Services/DatabaseService.cs
+    startLine: 503
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<FavoriteImageItem>> GetFavoriteImagesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteImageItem}}
+    content.vb: Public Function GetFavoriteImagesAsync() As Task(Of List(Of FavoriteImageItem))
+  overload: artstudio.Services.DatabaseService.GetFavoriteImagesAsync*
+- uid: artstudio.Services.DatabaseService.DeleteFavoriteImageAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.DeleteFavoriteImageAsync(System.Int32)
+  id: DeleteFavoriteImageAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DeleteFavoriteImageAsync(int)
+  nameWithType: DatabaseService.DeleteFavoriteImageAsync(int)
+  fullName: artstudio.Services.DatabaseService.DeleteFavoriteImageAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteFavoriteImageAsync
+    path: Services/DatabaseService.cs
+    startLine: 514
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<int> DeleteFavoriteImageAsync(int favoriteImageId)
+    parameters:
+    - id: favoriteImageId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function DeleteFavoriteImageAsync(favoriteImageId As Integer) As Task(Of Integer)
+  overload: artstudio.Services.DatabaseService.DeleteFavoriteImageAsync*
+  nameWithType.vb: DatabaseService.DeleteFavoriteImageAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.DeleteFavoriteImageAsync(Integer)
+  name.vb: DeleteFavoriteImageAsync(Integer)
+- uid: artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync(System.String)
+  commentId: M:artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync(System.String)
+  id: DeleteFavoriteImageByUnsplashIdAsync(System.String)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DeleteFavoriteImageByUnsplashIdAsync(string)
+  nameWithType: DatabaseService.DeleteFavoriteImageByUnsplashIdAsync(string)
+  fullName: artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteFavoriteImageByUnsplashIdAsync
+    path: Services/DatabaseService.cs
+    startLine: 543
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<int> DeleteFavoriteImageByUnsplashIdAsync(string unsplashId)
+    parameters:
+    - id: unsplashId
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function DeleteFavoriteImageByUnsplashIdAsync(unsplashId As String) As Task(Of Integer)
+  overload: artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync*
+  nameWithType.vb: DatabaseService.DeleteFavoriteImageByUnsplashIdAsync(String)
+  fullName.vb: artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync(String)
+  name.vb: DeleteFavoriteImageByUnsplashIdAsync(String)
+- uid: artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync(System.String)
+  commentId: M:artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync(System.String)
+  id: GetFavoriteByUnsplashIdAsync(System.String)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoriteByUnsplashIdAsync(string)
+  nameWithType: DatabaseService.GetFavoriteByUnsplashIdAsync(string)
+  fullName: artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoriteByUnsplashIdAsync
+    path: Services/DatabaseService.cs
+    startLine: 566
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<FavoriteImageItem?> GetFavoriteByUnsplashIdAsync(string unsplashId)
+    parameters:
+    - id: unsplashId
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{artstudio.Data.FavoriteImageItem}
+    content.vb: Public Function GetFavoriteByUnsplashIdAsync(unsplashId As String) As Task(Of FavoriteImageItem)
+  overload: artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync*
+  nameWithType.vb: DatabaseService.GetFavoriteByUnsplashIdAsync(String)
+  fullName.vb: artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync(String)
+  name.vb: GetFavoriteByUnsplashIdAsync(String)
+- uid: artstudio.Services.DatabaseService.GetUserUploadedImagesAsync
+  commentId: M:artstudio.Services.DatabaseService.GetUserUploadedImagesAsync
+  id: GetUserUploadedImagesAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetUserUploadedImagesAsync()
+  nameWithType: DatabaseService.GetUserUploadedImagesAsync()
+  fullName: artstudio.Services.DatabaseService.GetUserUploadedImagesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetUserUploadedImagesAsync
+    path: Services/DatabaseService.cs
+    startLine: 585
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<UserUploadedImage>> GetUserUploadedImagesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.UserUploadedImage}}
+    content.vb: Public Function GetUserUploadedImagesAsync() As Task(Of List(Of UserUploadedImage))
+  overload: artstudio.Services.DatabaseService.GetUserUploadedImagesAsync*
+- uid: artstudio.Services.DatabaseService.GetUserUploadedImageAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.GetUserUploadedImageAsync(System.Int32)
+  id: GetUserUploadedImageAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetUserUploadedImageAsync(int)
+  nameWithType: DatabaseService.GetUserUploadedImageAsync(int)
+  fullName: artstudio.Services.DatabaseService.GetUserUploadedImageAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetUserUploadedImageAsync
+    path: Services/DatabaseService.cs
+    startLine: 604
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<UserUploadedImage?> GetUserUploadedImageAsync(int imageId)
+    parameters:
+    - id: imageId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{artstudio.Data.UserUploadedImage}
+    content.vb: Public Function GetUserUploadedImageAsync(imageId As Integer) As Task(Of UserUploadedImage)
+  overload: artstudio.Services.DatabaseService.GetUserUploadedImageAsync*
+  nameWithType.vb: DatabaseService.GetUserUploadedImageAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.GetUserUploadedImageAsync(Integer)
+  name.vb: GetUserUploadedImageAsync(Integer)
+- uid: artstudio.Services.DatabaseService.SaveUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.Services.DatabaseService.SaveUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  id: SaveUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: SaveUserUploadedImageAsync(UserUploadedImage)
+  nameWithType: DatabaseService.SaveUserUploadedImageAsync(UserUploadedImage)
+  fullName: artstudio.Services.DatabaseService.SaveUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SaveUserUploadedImageAsync
+    path: Services/DatabaseService.cs
+    startLine: 629
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<int> SaveUserUploadedImageAsync(UserUploadedImage image)
+    parameters:
+    - id: image
+      type: artstudio.Data.UserUploadedImage
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function SaveUserUploadedImageAsync(image As UserUploadedImage) As Task(Of Integer)
+  overload: artstudio.Services.DatabaseService.SaveUserUploadedImageAsync*
+- uid: artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  commentId: M:artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  id: UpdateUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: UpdateUserUploadedImageAsync(UserUploadedImage)
+  nameWithType: DatabaseService.UpdateUserUploadedImageAsync(UserUploadedImage)
+  fullName: artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync(artstudio.Data.UserUploadedImage)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UpdateUserUploadedImageAsync
+    path: Services/DatabaseService.cs
+    startLine: 658
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task UpdateUserUploadedImageAsync(UserUploadedImage image)
+    parameters:
+    - id: image
+      type: artstudio.Data.UserUploadedImage
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function UpdateUserUploadedImageAsync(image As UserUploadedImage) As Task
+  overload: artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync*
+- uid: artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync(System.Int32)
+  id: DeleteUserUploadedImageAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DeleteUserUploadedImageAsync(int)
+  nameWithType: DatabaseService.DeleteUserUploadedImageAsync(int)
+  fullName: artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteUserUploadedImageAsync
+    path: Services/DatabaseService.cs
+    startLine: 674
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task DeleteUserUploadedImageAsync(int imageId)
+    parameters:
+    - id: imageId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function DeleteUserUploadedImageAsync(imageId As Integer) As Task
+  overload: artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync*
+  nameWithType.vb: DatabaseService.DeleteUserUploadedImageAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync(Integer)
+  name.vb: DeleteUserUploadedImageAsync(Integer)
+- uid: artstudio.Services.DatabaseService.SearchGalleryAsync(System.String)
+  commentId: M:artstudio.Services.DatabaseService.SearchGalleryAsync(System.String)
+  id: SearchGalleryAsync(System.String)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: SearchGalleryAsync(string)
+  nameWithType: DatabaseService.SearchGalleryAsync(string)
+  fullName: artstudio.Services.DatabaseService.SearchGalleryAsync(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SearchGalleryAsync
+    path: Services/DatabaseService.cs
+    startLine: 700
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<UserUploadedImage>> SearchGalleryAsync(string searchTerm)
+    parameters:
+    - id: searchTerm
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.UserUploadedImage}}
+    content.vb: Public Function SearchGalleryAsync(searchTerm As String) As Task(Of List(Of UserUploadedImage))
+  overload: artstudio.Services.DatabaseService.SearchGalleryAsync*
+  nameWithType.vb: DatabaseService.SearchGalleryAsync(String)
+  fullName.vb: artstudio.Services.DatabaseService.SearchGalleryAsync(String)
+  name.vb: SearchGalleryAsync(String)
+- uid: artstudio.Services.DatabaseService.GetGalleryByTagAsync(System.String)
+  commentId: M:artstudio.Services.DatabaseService.GetGalleryByTagAsync(System.String)
+  id: GetGalleryByTagAsync(System.String)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetGalleryByTagAsync(string)
+  nameWithType: DatabaseService.GetGalleryByTagAsync(string)
+  fullName: artstudio.Services.DatabaseService.GetGalleryByTagAsync(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetGalleryByTagAsync
+    path: Services/DatabaseService.cs
+    startLine: 733
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<UserUploadedImage>> GetGalleryByTagAsync(string tag)
+    parameters:
+    - id: tag
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.UserUploadedImage}}
+    content.vb: Public Function GetGalleryByTagAsync(tag As String) As Task(Of List(Of UserUploadedImage))
+  overload: artstudio.Services.DatabaseService.GetGalleryByTagAsync*
+  nameWithType.vb: DatabaseService.GetGalleryByTagAsync(String)
+  fullName.vb: artstudio.Services.DatabaseService.GetGalleryByTagAsync(String)
+  name.vb: GetGalleryByTagAsync(String)
+- uid: artstudio.Services.DatabaseService.GetAllCustomTagsAsync
+  commentId: M:artstudio.Services.DatabaseService.GetAllCustomTagsAsync
+  id: GetAllCustomTagsAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetAllCustomTagsAsync()
+  nameWithType: DatabaseService.GetAllCustomTagsAsync()
+  fullName: artstudio.Services.DatabaseService.GetAllCustomTagsAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetAllCustomTagsAsync
+    path: Services/DatabaseService.cs
+    startLine: 756
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<string>> GetAllCustomTagsAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{System.String}}
+    content.vb: Public Function GetAllCustomTagsAsync() As Task(Of List(Of String))
+  overload: artstudio.Services.DatabaseService.GetAllCustomTagsAsync*
+- uid: artstudio.Services.DatabaseService.SaveSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  commentId: M:artstudio.Services.DatabaseService.SaveSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  id: SaveSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: SaveSessionSnapshotAsync(SessionSnapshot)
+  nameWithType: DatabaseService.SaveSessionSnapshotAsync(SessionSnapshot)
+  fullName: artstudio.Services.DatabaseService.SaveSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SaveSessionSnapshotAsync
+    path: Services/DatabaseService.cs
+    startLine: 824
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<int> SaveSessionSnapshotAsync(SessionSnapshot sessionSnapshot)
+    parameters:
+    - id: sessionSnapshot
+      type: artstudio.Data.SessionSnapshot
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function SaveSessionSnapshotAsync(sessionSnapshot As SessionSnapshot) As Task(Of Integer)
+  overload: artstudio.Services.DatabaseService.SaveSessionSnapshotAsync*
+- uid: artstudio.Services.DatabaseService.GetSessionSnapshotAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.GetSessionSnapshotAsync(System.Int32)
+  id: GetSessionSnapshotAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetSessionSnapshotAsync(int)
+  nameWithType: DatabaseService.GetSessionSnapshotAsync(int)
+  fullName: artstudio.Services.DatabaseService.GetSessionSnapshotAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetSessionSnapshotAsync
+    path: Services/DatabaseService.cs
+    startLine: 832
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<SessionSnapshot?> GetSessionSnapshotAsync(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{artstudio.Data.SessionSnapshot}
+    content.vb: Public Function GetSessionSnapshotAsync(id As Integer) As Task(Of SessionSnapshot)
+  overload: artstudio.Services.DatabaseService.GetSessionSnapshotAsync*
+  nameWithType.vb: DatabaseService.GetSessionSnapshotAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.GetSessionSnapshotAsync(Integer)
+  name.vb: GetSessionSnapshotAsync(Integer)
+- uid: artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync
+  commentId: M:artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync
+  id: GetAllSessionSnapshotsAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetAllSessionSnapshotsAsync()
+  nameWithType: DatabaseService.GetAllSessionSnapshotsAsync()
+  fullName: artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetAllSessionSnapshotsAsync
+    path: Services/DatabaseService.cs
+    startLine: 842
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<SessionSnapshot>> GetAllSessionSnapshotsAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.SessionSnapshot}}
+    content.vb: Public Function GetAllSessionSnapshotsAsync() As Task(Of List(Of SessionSnapshot))
+  overload: artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync*
+- uid: artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync(System.Int32)
+  id: GetRecentSessionSnapshotsAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: GetRecentSessionSnapshotsAsync(int)
+  nameWithType: DatabaseService.GetRecentSessionSnapshotsAsync(int)
+  fullName: artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetRecentSessionSnapshotsAsync
+    path: Services/DatabaseService.cs
+    startLine: 852
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<SessionSnapshot>> GetRecentSessionSnapshotsAsync(int count = 10)
+    parameters:
+    - id: count
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.SessionSnapshot}}
+    content.vb: Public Function GetRecentSessionSnapshotsAsync(count As Integer = 10) As Task(Of List(Of SessionSnapshot))
+  overload: artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync*
+  nameWithType.vb: DatabaseService.GetRecentSessionSnapshotsAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync(Integer)
+  name.vb: GetRecentSessionSnapshotsAsync(Integer)
+- uid: artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  commentId: M:artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  id: UpdateSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: UpdateSessionSnapshotAsync(SessionSnapshot)
+  nameWithType: DatabaseService.UpdateSessionSnapshotAsync(SessionSnapshot)
+  fullName: artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync(artstudio.Data.SessionSnapshot)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UpdateSessionSnapshotAsync
+    path: Services/DatabaseService.cs
+    startLine: 863
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<int> UpdateSessionSnapshotAsync(SessionSnapshot sessionSnapshot)
+    parameters:
+    - id: sessionSnapshot
+      type: artstudio.Data.SessionSnapshot
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function UpdateSessionSnapshotAsync(sessionSnapshot As SessionSnapshot) As Task(Of Integer)
+  overload: artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync*
+- uid: artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync(System.Int32)
+  id: DeleteSessionSnapshotAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DeleteSessionSnapshotAsync(int)
+  nameWithType: DatabaseService.DeleteSessionSnapshotAsync(int)
+  fullName: artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteSessionSnapshotAsync
+    path: Services/DatabaseService.cs
+    startLine: 871
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<int> DeleteSessionSnapshotAsync(int id)
+    parameters:
+    - id: id
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function DeleteSessionSnapshotAsync(id As Integer) As Task(Of Integer)
+  overload: artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync*
+  nameWithType.vb: DatabaseService.DeleteSessionSnapshotAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync(Integer)
+  name.vb: DeleteSessionSnapshotAsync(Integer)
+- uid: artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync
+  commentId: M:artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync
+  id: CleanupOldSessionImagesAsync
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: CleanupOldSessionImagesAsync()
+  nameWithType: DatabaseService.CleanupOldSessionImagesAsync()
+  fullName: artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CleanupOldSessionImagesAsync
+    path: Services/DatabaseService.cs
+    startLine: 879
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task CleanupOldSessionImagesAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function CleanupOldSessionImagesAsync() As Task
+  overload: artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync*
+- uid: artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync(System.Int32)
+  commentId: M:artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync(System.Int32)
+  id: DeleteOldSessionSnapshotsAsync(System.Int32)
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: DeleteOldSessionSnapshotsAsync(int)
+  nameWithType: DatabaseService.DeleteOldSessionSnapshotsAsync(int)
+  fullName: artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteOldSessionSnapshotsAsync
+    path: Services/DatabaseService.cs
+    startLine: 922
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<int> DeleteOldSessionSnapshotsAsync(int keepCount = 20)
+    parameters:
+    - id: keepCount
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task{System.Int32}
+    content.vb: Public Function DeleteOldSessionSnapshotsAsync(keepCount As Integer = 20) As Task(Of Integer)
+  overload: artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync*
+  nameWithType.vb: DatabaseService.DeleteOldSessionSnapshotsAsync(Integer)
+  fullName.vb: artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync(Integer)
+  name.vb: DeleteOldSessionSnapshotsAsync(Integer)
+- uid: artstudio.Services.DatabaseService.Dispose
+  commentId: M:artstudio.Services.DatabaseService.Dispose
+  id: Dispose
+  parent: artstudio.Services.DatabaseService
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: DatabaseService.Dispose()
+  fullName: artstudio.Services.DatabaseService.Dispose()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DatabaseService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Dispose
+    path: Services/DatabaseService.cs
+    startLine: 984
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  summary: Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.
+  example: []
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: artstudio.Services.DatabaseService.Dispose*
+  implements:
+  - System.IDisposable.Dispose
+references:
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.IDisposable
+  commentId: T:System.IDisposable
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable
+  name: IDisposable
+  nameWithType: IDisposable
+  fullName: System.IDisposable
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: artstudio.Services.DatabaseService.#ctor*
+  commentId: Overload:artstudio.Services.DatabaseService.#ctor
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService__ctor
+  name: DatabaseService
+  nameWithType: DatabaseService.DatabaseService
+  fullName: artstudio.Services.DatabaseService.DatabaseService
+  nameWithType.vb: DatabaseService.New
+  fullName.vb: artstudio.Services.DatabaseService.New
+  name.vb: New
+- uid: artstudio.Services.DatabaseService.GetDatabaseAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetDatabaseAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetDatabaseAsync
+  name: GetDatabaseAsync
+  nameWithType: DatabaseService.GetDatabaseAsync
+  fullName: artstudio.Services.DatabaseService.GetDatabaseAsync
+- uid: System.Threading.Tasks.Task{SQLite.SQLiteAsyncConnection}
+  commentId: T:System.Threading.Tasks.Task{SQLite.SQLiteAsyncConnection}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SQLiteAsyncConnection>
+  nameWithType: Task<SQLiteAsyncConnection>
+  fullName: System.Threading.Tasks.Task<SQLite.SQLiteAsyncConnection>
+  nameWithType.vb: Task(Of SQLiteAsyncConnection)
+  fullName.vb: System.Threading.Tasks.Task(Of SQLite.SQLiteAsyncConnection)
+  name.vb: Task(Of SQLiteAsyncConnection)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: SQLite.SQLiteAsyncConnection
+    name: SQLiteAsyncConnection
+    isExternal: true
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: SQLite.SQLiteAsyncConnection
+    name: SQLiteAsyncConnection
+    isExternal: true
+  - name: )
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: artstudio.Services.DatabaseService.GetFavoritesAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetFavoritesAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetFavoritesAsync
+  name: GetFavoritesAsync
+  nameWithType: DatabaseService.GetFavoritesAsync
+  fullName: artstudio.Services.DatabaseService.GetFavoritesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.WordCollection}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.WordCollection}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<WordCollection>>
+  nameWithType: Task<List<WordCollection>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.WordCollection>>
+  nameWithType.vb: Task(Of List(Of WordCollection))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.WordCollection))
+  name.vb: Task(Of List(Of WordCollection))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.WordCollection
+    name: WordCollection
+    href: artstudio.Data.WordCollection.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.WordCollection
+    name: WordCollection
+    href: artstudio.Data.WordCollection.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.DatabaseService.DeleteWordCollectionAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.DeleteWordCollectionAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_DeleteWordCollectionAsync_System_Int32_
+  name: DeleteWordCollectionAsync
+  nameWithType: DatabaseService.DeleteWordCollectionAsync
+  fullName: artstudio.Services.DatabaseService.DeleteWordCollectionAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: artstudio.Services.DatabaseService.GetFavoritePalettesAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetFavoritePalettesAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetFavoritePalettesAsync
+  name: GetFavoritePalettesAsync
+  nameWithType: DatabaseService.GetFavoritePalettesAsync
+  fullName: artstudio.Services.DatabaseService.GetFavoritePalettesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.PaletteCollection}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.PaletteCollection}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<PaletteCollection>>
+  nameWithType: Task<List<PaletteCollection>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.PaletteCollection>>
+  nameWithType.vb: Task(Of List(Of PaletteCollection))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.PaletteCollection))
+  name.vb: Task(Of List(Of PaletteCollection))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.PaletteCollection
+    name: PaletteCollection
+    href: artstudio.Data.PaletteCollection.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.PaletteCollection
+    name: PaletteCollection
+    href: artstudio.Data.PaletteCollection.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.DatabaseService.DeletePaletteCollectionAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.DeletePaletteCollectionAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_DeletePaletteCollectionAsync_System_Int32_
+  name: DeletePaletteCollectionAsync
+  nameWithType: DatabaseService.DeletePaletteCollectionAsync
+  fullName: artstudio.Services.DatabaseService.DeletePaletteCollectionAsync
+- uid: artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetFavoriteSwatchesAsync_System_String_
+  name: GetFavoriteSwatchesAsync
+  nameWithType: DatabaseService.GetFavoriteSwatchesAsync
+  fullName: artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteSwatch}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteSwatch}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<FavoriteSwatch>>
+  nameWithType: Task<List<FavoriteSwatch>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.FavoriteSwatch>>
+  nameWithType.vb: Task(Of List(Of FavoriteSwatch))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.FavoriteSwatch))
+  name.vb: Task(Of List(Of FavoriteSwatch))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.FavoriteSwatch
+    name: FavoriteSwatch
+    href: artstudio.Data.FavoriteSwatch.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.FavoriteSwatch
+    name: FavoriteSwatch
+    href: artstudio.Data.FavoriteSwatch.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetSwatchCollectionNamesAsync
+  name: GetSwatchCollectionNamesAsync
+  nameWithType: DatabaseService.GetSwatchCollectionNamesAsync
+  fullName: artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{System.String}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{System.String}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<string>>
+  nameWithType: Task<List<string>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<string>>
+  nameWithType.vb: Task(Of List(Of String))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of String))
+  name.vb: Task(Of List(Of String))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+  - name: )
+- uid: artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_DeleteFavoriteSwatchAsync_System_Int32_
+  name: DeleteFavoriteSwatchAsync
+  nameWithType: DatabaseService.DeleteFavoriteSwatchAsync
+  fullName: artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync
+- uid: artstudio.Services.DatabaseService.SaveFavoriteImageAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.SaveFavoriteImageAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_SaveFavoriteImageAsync_artstudio_Data_FavoriteImageItem_
+  name: SaveFavoriteImageAsync
+  nameWithType: DatabaseService.SaveFavoriteImageAsync
+  fullName: artstudio.Services.DatabaseService.SaveFavoriteImageAsync
+- uid: artstudio.Data.FavoriteImageItem
+  commentId: T:artstudio.Data.FavoriteImageItem
+  parent: artstudio.Data
+  href: artstudio.Data.FavoriteImageItem.html
+  name: FavoriteImageItem
+  nameWithType: FavoriteImageItem
+  fullName: artstudio.Data.FavoriteImageItem
+- uid: System.Threading.Tasks.Task{System.Int32}
+  commentId: T:System.Threading.Tasks.Task{System.Int32}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<int>
+  nameWithType: Task<int>
+  fullName: System.Threading.Tasks.Task<int>
+  nameWithType.vb: Task(Of Integer)
+  fullName.vb: System.Threading.Tasks.Task(Of Integer)
+  name.vb: Task(Of Integer)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Int32
+    name: int
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Int32
+    name: Integer
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.int32
+  - name: )
+- uid: artstudio.Data
+  commentId: N:artstudio.Data
+  href: artstudio.html
+  name: artstudio.Data
+  nameWithType: artstudio.Data
+  fullName: artstudio.Data
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+- uid: artstudio.Services.DatabaseService.GetFavoriteImagesAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetFavoriteImagesAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetFavoriteImagesAsync
+  name: GetFavoriteImagesAsync
+  nameWithType: DatabaseService.GetFavoriteImagesAsync
+  fullName: artstudio.Services.DatabaseService.GetFavoriteImagesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteImageItem}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteImageItem}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<FavoriteImageItem>>
+  nameWithType: Task<List<FavoriteImageItem>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.FavoriteImageItem>>
+  nameWithType.vb: Task(Of List(Of FavoriteImageItem))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.FavoriteImageItem))
+  name.vb: Task(Of List(Of FavoriteImageItem))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.FavoriteImageItem
+    name: FavoriteImageItem
+    href: artstudio.Data.FavoriteImageItem.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.FavoriteImageItem
+    name: FavoriteImageItem
+    href: artstudio.Data.FavoriteImageItem.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.DatabaseService.DeleteFavoriteImageAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.DeleteFavoriteImageAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_DeleteFavoriteImageAsync_System_Int32_
+  name: DeleteFavoriteImageAsync
+  nameWithType: DatabaseService.DeleteFavoriteImageAsync
+  fullName: artstudio.Services.DatabaseService.DeleteFavoriteImageAsync
+- uid: artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_DeleteFavoriteImageByUnsplashIdAsync_System_String_
+  name: DeleteFavoriteImageByUnsplashIdAsync
+  nameWithType: DatabaseService.DeleteFavoriteImageByUnsplashIdAsync
+  fullName: artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync
+- uid: artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetFavoriteByUnsplashIdAsync_System_String_
+  name: GetFavoriteByUnsplashIdAsync
+  nameWithType: DatabaseService.GetFavoriteByUnsplashIdAsync
+  fullName: artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync
+- uid: System.Threading.Tasks.Task{artstudio.Data.FavoriteImageItem}
+  commentId: T:System.Threading.Tasks.Task{artstudio.Data.FavoriteImageItem}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<FavoriteImageItem>
+  nameWithType: Task<FavoriteImageItem>
+  fullName: System.Threading.Tasks.Task<artstudio.Data.FavoriteImageItem>
+  nameWithType.vb: Task(Of FavoriteImageItem)
+  fullName.vb: System.Threading.Tasks.Task(Of artstudio.Data.FavoriteImageItem)
+  name.vb: Task(Of FavoriteImageItem)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: artstudio.Data.FavoriteImageItem
+    name: FavoriteImageItem
+    href: artstudio.Data.FavoriteImageItem.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.FavoriteImageItem
+    name: FavoriteImageItem
+    href: artstudio.Data.FavoriteImageItem.html
+  - name: )
+- uid: artstudio.Services.DatabaseService.GetUserUploadedImagesAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetUserUploadedImagesAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetUserUploadedImagesAsync
+  name: GetUserUploadedImagesAsync
+  nameWithType: DatabaseService.GetUserUploadedImagesAsync
+  fullName: artstudio.Services.DatabaseService.GetUserUploadedImagesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.UserUploadedImage}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.UserUploadedImage}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<UserUploadedImage>>
+  nameWithType: Task<List<UserUploadedImage>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.UserUploadedImage>>
+  nameWithType.vb: Task(Of List(Of UserUploadedImage))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.UserUploadedImage))
+  name.vb: Task(Of List(Of UserUploadedImage))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.DatabaseService.GetUserUploadedImageAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetUserUploadedImageAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetUserUploadedImageAsync_System_Int32_
+  name: GetUserUploadedImageAsync
+  nameWithType: DatabaseService.GetUserUploadedImageAsync
+  fullName: artstudio.Services.DatabaseService.GetUserUploadedImageAsync
+- uid: System.Threading.Tasks.Task{artstudio.Data.UserUploadedImage}
+  commentId: T:System.Threading.Tasks.Task{artstudio.Data.UserUploadedImage}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<UserUploadedImage>
+  nameWithType: Task<UserUploadedImage>
+  fullName: System.Threading.Tasks.Task<artstudio.Data.UserUploadedImage>
+  nameWithType.vb: Task(Of UserUploadedImage)
+  fullName.vb: System.Threading.Tasks.Task(Of artstudio.Data.UserUploadedImage)
+  name.vb: Task(Of UserUploadedImage)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.UserUploadedImage
+    name: UserUploadedImage
+    href: artstudio.Data.UserUploadedImage.html
+  - name: )
+- uid: artstudio.Services.DatabaseService.SaveUserUploadedImageAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.SaveUserUploadedImageAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_SaveUserUploadedImageAsync_artstudio_Data_UserUploadedImage_
+  name: SaveUserUploadedImageAsync
+  nameWithType: DatabaseService.SaveUserUploadedImageAsync
+  fullName: artstudio.Services.DatabaseService.SaveUserUploadedImageAsync
+- uid: artstudio.Data.UserUploadedImage
+  commentId: T:artstudio.Data.UserUploadedImage
+  parent: artstudio.Data
+  href: artstudio.Data.UserUploadedImage.html
+  name: UserUploadedImage
+  nameWithType: UserUploadedImage
+  fullName: artstudio.Data.UserUploadedImage
+- uid: artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_UpdateUserUploadedImageAsync_artstudio_Data_UserUploadedImage_
+  name: UpdateUserUploadedImageAsync
+  nameWithType: DatabaseService.UpdateUserUploadedImageAsync
+  fullName: artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync
+- uid: artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_DeleteUserUploadedImageAsync_System_Int32_
+  name: DeleteUserUploadedImageAsync
+  nameWithType: DatabaseService.DeleteUserUploadedImageAsync
+  fullName: artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync
+- uid: artstudio.Services.DatabaseService.SearchGalleryAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.SearchGalleryAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_SearchGalleryAsync_System_String_
+  name: SearchGalleryAsync
+  nameWithType: DatabaseService.SearchGalleryAsync
+  fullName: artstudio.Services.DatabaseService.SearchGalleryAsync
+- uid: artstudio.Services.DatabaseService.GetGalleryByTagAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetGalleryByTagAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetGalleryByTagAsync_System_String_
+  name: GetGalleryByTagAsync
+  nameWithType: DatabaseService.GetGalleryByTagAsync
+  fullName: artstudio.Services.DatabaseService.GetGalleryByTagAsync
+- uid: artstudio.Services.DatabaseService.GetAllCustomTagsAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetAllCustomTagsAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetAllCustomTagsAsync
+  name: GetAllCustomTagsAsync
+  nameWithType: DatabaseService.GetAllCustomTagsAsync
+  fullName: artstudio.Services.DatabaseService.GetAllCustomTagsAsync
+- uid: artstudio.Services.DatabaseService.SaveSessionSnapshotAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.SaveSessionSnapshotAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_SaveSessionSnapshotAsync_artstudio_Data_SessionSnapshot_
+  name: SaveSessionSnapshotAsync
+  nameWithType: DatabaseService.SaveSessionSnapshotAsync
+  fullName: artstudio.Services.DatabaseService.SaveSessionSnapshotAsync
+- uid: artstudio.Data.SessionSnapshot
+  commentId: T:artstudio.Data.SessionSnapshot
+  parent: artstudio.Data
+  href: artstudio.Data.SessionSnapshot.html
+  name: SessionSnapshot
+  nameWithType: SessionSnapshot
+  fullName: artstudio.Data.SessionSnapshot
+- uid: artstudio.Services.DatabaseService.GetSessionSnapshotAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetSessionSnapshotAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetSessionSnapshotAsync_System_Int32_
+  name: GetSessionSnapshotAsync
+  nameWithType: DatabaseService.GetSessionSnapshotAsync
+  fullName: artstudio.Services.DatabaseService.GetSessionSnapshotAsync
+- uid: System.Threading.Tasks.Task{artstudio.Data.SessionSnapshot}
+  commentId: T:System.Threading.Tasks.Task{artstudio.Data.SessionSnapshot}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<SessionSnapshot>
+  nameWithType: Task<SessionSnapshot>
+  fullName: System.Threading.Tasks.Task<artstudio.Data.SessionSnapshot>
+  nameWithType.vb: Task(Of SessionSnapshot)
+  fullName.vb: System.Threading.Tasks.Task(Of artstudio.Data.SessionSnapshot)
+  name.vb: Task(Of SessionSnapshot)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: artstudio.Data.SessionSnapshot
+    name: SessionSnapshot
+    href: artstudio.Data.SessionSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.SessionSnapshot
+    name: SessionSnapshot
+    href: artstudio.Data.SessionSnapshot.html
+  - name: )
+- uid: artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetAllSessionSnapshotsAsync
+  name: GetAllSessionSnapshotsAsync
+  nameWithType: DatabaseService.GetAllSessionSnapshotsAsync
+  fullName: artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.SessionSnapshot}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.SessionSnapshot}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<SessionSnapshot>>
+  nameWithType: Task<List<SessionSnapshot>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.SessionSnapshot>>
+  nameWithType.vb: Task(Of List(Of SessionSnapshot))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.SessionSnapshot))
+  name.vb: Task(Of List(Of SessionSnapshot))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.SessionSnapshot
+    name: SessionSnapshot
+    href: artstudio.Data.SessionSnapshot.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.SessionSnapshot
+    name: SessionSnapshot
+    href: artstudio.Data.SessionSnapshot.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_GetRecentSessionSnapshotsAsync_System_Int32_
+  name: GetRecentSessionSnapshotsAsync
+  nameWithType: DatabaseService.GetRecentSessionSnapshotsAsync
+  fullName: artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync
+- uid: artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_UpdateSessionSnapshotAsync_artstudio_Data_SessionSnapshot_
+  name: UpdateSessionSnapshotAsync
+  nameWithType: DatabaseService.UpdateSessionSnapshotAsync
+  fullName: artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync
+- uid: artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_DeleteSessionSnapshotAsync_System_Int32_
+  name: DeleteSessionSnapshotAsync
+  nameWithType: DatabaseService.DeleteSessionSnapshotAsync
+  fullName: artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync
+- uid: artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_CleanupOldSessionImagesAsync
+  name: CleanupOldSessionImagesAsync
+  nameWithType: DatabaseService.CleanupOldSessionImagesAsync
+  fullName: artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync
+- uid: artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync*
+  commentId: Overload:artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_DeleteOldSessionSnapshotsAsync_System_Int32_
+  name: DeleteOldSessionSnapshotsAsync
+  nameWithType: DatabaseService.DeleteOldSessionSnapshotsAsync
+  fullName: artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync
+- uid: artstudio.Services.DatabaseService.Dispose*
+  commentId: Overload:artstudio.Services.DatabaseService.Dispose
+  href: artstudio.Services.DatabaseService.html#artstudio_Services_DatabaseService_Dispose
+  name: Dispose
+  nameWithType: DatabaseService.Dispose
+  fullName: artstudio.Services.DatabaseService.Dispose
+- uid: System.IDisposable.Dispose
+  commentId: M:System.IDisposable.Dispose
+  parent: System.IDisposable
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  name: Dispose()
+  nameWithType: IDisposable.Dispose()
+  fullName: System.IDisposable.Dispose()
+  spec.csharp:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.IDisposable.Dispose
+    name: Dispose
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.idisposable.dispose
+  - name: (
+  - name: )

@@ -1,14 +1,15 @@
 ﻿using SQLite;
-using artstudio.Data.Models;
 using System.Diagnostics;
+using artstudio.Data;
+using artstudio.Models;
 
-namespace artstudio.Service
+namespace artstudio.Services
 {
     public partial class DatabaseService : IDisposable
     {
         private SQLiteAsyncConnection? _database;
         private readonly string _dbPath;
-        private const int CurrentDatabaseVersion = 4; // Increment this when schema changes
+        private const int CurrentDatabaseVersion = 10; // Increment this when schema changes: (added new column for session user enter name)
 
         public DatabaseService()
         {
@@ -73,10 +74,15 @@ namespace artstudio.Service
             await _database.CreateTableAsync<PaletteCollection>();
             await _database.CreateTableAsync<PaletteColor>();
             await _database.CreateTableAsync<FavoriteSwatch>();
+            
+            // Gallery
+            await _database.CreateTableAsync<UserUploadedImage>();
 
-            // NEW 6/18/2025
-            //await _database.CreateTableAsync<UserUploadedImage>();
-            //await _database.CreateTableAsync<ImageReference>();
+            // Session snapshots
+            await _database.CreateTableAsync<SessionSnapshot>();
+
+            // Image favoriting
+            await _database.CreateTableAsync<FavoriteImageItem>();
 
             DebugLog("Created all tables: WordCollection, Word, PaletteCollection, PaletteColor, FavoriteSwatch, and Gallery");
         }
@@ -180,97 +186,142 @@ namespace artstudio.Service
                 }
             }
 
-            //if (fromVersion < 5)
-            //{
-            //    // Migration to version 5: Add gallery tables
-            //    try
-            //    {
-            //        await _database.CreateTableAsync<UserUploadedImage>();
-            //        await _database.CreateTableAsync<ImageReference>();
-            //        DebugLog("Added gallery tables: UserUploadedImage, ImageReference");
-            //    }
-            //    catch (Exception ex)
-            //    {
-            //        DebugLog($"Error creating gallery tables: {ex.Message}");
-            //        // Tables might already exist, continue
-            //    }
-            //}
+            if (fromVersion < 5)
+            {
+                // Migration to version 5: Add gallery tables
+                try
+                {
+                    await _database.CreateTableAsync<UserUploadedImage>();
+                    DebugLog("Added gallery tables: UserUploadedImage, ImageReference");
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Error creating gallery tables: {ex.Message}");
+                    // Tables might already exist, continue
+                }
+            }
 
+            if (fromVersion < 6)
+            {
+                // Migration to version 6: Clean recreation of UserUploadedImage table
+                try
+                {
+
+                    // Drop existing table (this will lose any test data)
+                    await _database.ExecuteAsync("DROP TABLE IF EXISTS UserUploadedImage");
+
+                    // Create table with complete schema
+                    await _database.CreateTableAsync<UserUploadedImage>();
+
+                    DebugLog("Successfully created UserUploadedImage table with all required columns");
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Error recreating UserUploadedImage table: {ex.Message}");
+                    throw;
+                }
+            }
+
+            if (fromVersion < 7)
+            {
+                // Migration to version 7: Add SessionSnapshot table
+                try
+                {
+                    await _database.CreateTableAsync<SessionSnapshot>();
+                    DebugLog("Added SessionSnapshot table for session saving functionality");
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Error creating SessionSnapshot table: {ex.Message}");
+                    // Table might already exist, continue
+                }
+            }
+
+            if (fromVersion < 8)
+            {
+                // Migration to version 8: Add FavoriteImageItem table
+                try
+                {
+                    await _database.CreateTableAsync<FavoriteImageItem>();
+                    DebugLog("Added FavoriteImageItem table for image favoriting functionality");
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Error creating FavoriteImageItem table: {ex.Message}");
+                    // Table might already exist, continue
+                }
+            }
+            if (fromVersion < 9) 
+            {
+                // Migration to version 9: Fix FavoriteImageItem table with proper primary key
+                try
+                {
+                    await _database.ExecuteAsync("DROP TABLE IF EXISTS FavoriteImageItem");
+
+                    // Create table with proper schema
+                    await _database.CreateTableAsync<FavoriteImageItem>();
+
+                    DebugLog("Recreated FavoriteImageItem table with proper primary key");
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Error recreating FavoriteImageItem table: {ex.Message}");
+                    // Continue - table might not have existed
+                }
+            }
+
+            if (fromVersion < 10) 
+            {
+                // Migration to version 10: Add Title column to SessionSnapshot table
+                try
+                {
+                    var tableInfo = await _database.GetTableInfoAsync("SessionSnapshot");
+                    var titleColumnExists = tableInfo.Any(column => column.Name.Equals("Title", StringComparison.OrdinalIgnoreCase));
+
+                    if (!titleColumnExists)
+                    {
+                        await _database.ExecuteAsync("ALTER TABLE SessionSnapshot ADD COLUMN Title TEXT");
+                        DebugLog("Added Title column to SessionSnapshot table for custom session naming");
+                    }
+                    else
+                    {
+                        DebugLog("Title column already exists in SessionSnapshot table");
+                    }
+                }
+                catch (Exception ex)
+                {
+                    DebugLog($"Error adding Title column to SessionSnapshot table: {ex.Message}");
+                    // Continue - column might already exist or table structure is different
+                }
+            }
             // Add future migrations here
         }
 
+        //public async Task ResetDatabaseForTestingAsync()
+        //{
+        //    try
+        //    {
+        //        if (_database != null)
+        //        {
+        //            await _database.CloseAsync();
+        //            _database = null;
+        //        }
+
+        //        if (File.Exists(_dbPath))
+        //        {
+        //            File.Delete(_dbPath);
+        //            DebugLog("Deleted existing database for fresh start");
+        //        }
+
+        //        // Next call to GetDatabaseAsync will create fresh database
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        DebugLog($"Error resetting database: {ex.Message}");
+        //    }
+        //}
+
         #region Word Collections
-
-        public async Task<int> CleanupExpiredItemsAsync()
-        {
-            try
-            {
-                if (_database == null) return 0;
-
-                // Get expired collections (not favorited and past expiration date)
-                var expiredCollections = await _database.QueryAsync<WordCollection>
-                        (@" SELECT Id FROM WordCollection 
-                            WHERE ExpiresAt IS NOT NULL 
-                            AND ExpiresAt < datetime('now') 
-                            AND COALESCE(IsFavorite, 0) = 0");
-
-                if (expiredCollections.Count > 0) // Replace Any() with Count > 0
-                {
-                    DebugLog($"Manually cleaning up {expiredCollections.Count} expired collections");
-
-                    foreach (var collection in expiredCollections)
-                    {
-                        // Delete associated words
-                        await _database.ExecuteAsync("DELETE FROM Word WHERE WordCollectionId = ?", collection.Id);
-
-                        // Delete the collection
-                        await _database.ExecuteAsync("DELETE FROM WordCollection WHERE Id = ?", collection.Id);
-
-                        DebugLog($"Deleted expired collection {collection.Id}");
-                    }
-
-                    return expiredCollections.Count;
-                }
-
-                return 0;
-            }
-            catch (Exception ex)
-            {
-                DebugLog($"Error cleaning up expired items: {ex.Message}");
-                return 0;
-            }
-        }
-
-
-        public async Task<List<WordCollection>> GetHistoryAsync()
-        {
-            try
-            {
-                var db = await GetDatabaseAsync();
-
-                var collections = await db.QueryAsync<WordCollection>(@"
-                    SELECT 
-                        Id,
-                        Title,
-                        CreatedAt,
-                        PromptType,
-                        COALESCE(IsHistory, 1) as IsHistory,
-                        COALESCE(IsFavorite, 0) as IsFavorite,
-                        ExpiresAt
-                    FROM WordCollection 
-                    WHERE COALESCE(IsHistory, 1) = 1 
-                    ORDER BY CreatedAt DESC");
-
-                DebugLog($"Retrieved {collections.Count} history collections from database");
-                return collections;
-            }
-            catch (Exception ex)
-            {
-                DebugLog($"Error getting history: {ex.Message}");
-                DebugLog($"Stack trace: {ex.StackTrace}");
-                return [];
-            }
-        }
 
         public async Task<List<WordCollection>> GetFavoritesAsync()
         {
@@ -279,16 +330,15 @@ namespace artstudio.Service
                 var db = await GetDatabaseAsync();
 
                 var collections = await db.QueryAsync<WordCollection>(@"
-                    SELECT 
-                        Id,
-                        Title,
-                        CreatedAt,
-                        PromptType,
-                        COALESCE(IsHistory, 0) as IsHistory,
-                        COALESCE(IsFavorite, 0) as IsFavorite
-                    FROM WordCollection 
-                    WHERE COALESCE(IsFavorite, 0) = 1 
-                    ORDER BY CreatedAt DESC");
+                SELECT 
+                Id,
+                Title,
+                CreatedAt,
+                PromptType,
+                COALESCE(IsFavorite, 0) as IsFavorite
+                FROM WordCollection 
+                WHERE COALESCE(IsFavorite, 0) = 1 
+                ORDER BY CreatedAt DESC");
 
                 DebugLog($"Retrieved {collections.Count} favorite word collections");
                 return collections;
@@ -297,39 +347,6 @@ namespace artstudio.Service
             {
                 DebugLog($"Error getting favorites: {ex.Message}");
                 return [];
-            }
-        }
-
-        public async Task ClearHistoryAsync(bool includeExpiredOnly = false)
-        {
-            try
-            {
-                var db = await GetDatabaseAsync();
-
-                if (includeExpiredOnly)
-                {
-                    var expiredCount = await CleanupExpiredItemsAsync();
-                    DebugLog($"Cleared {expiredCount} expired history items");
-                }
-                else
-                {
-                    var historyIds = await db.QueryAsync<WordCollection>(
-                        "SELECT Id FROM WordCollection WHERE COALESCE(IsHistory, 1) = 1 AND COALESCE(IsFavorite, 0) = 0");
-
-                    foreach (var collection in historyIds)
-                    {
-                        await db.ExecuteAsync("DELETE FROM Word WHERE WordCollectionId = ?", collection.Id);
-                    }
-
-                    await db.ExecuteAsync("DELETE FROM WordCollection WHERE COALESCE(IsHistory, 1) = 1 AND COALESCE(IsFavorite, 0) = 0");
-
-                    DebugLog($"Cleared {historyIds.Count} history items (preserved favorites)");
-                }
-            }
-            catch (Exception ex)
-            {
-                DebugLog($"Error clearing history: {ex.Message}");
-                throw;
             }
         }
 
@@ -475,133 +492,462 @@ namespace artstudio.Service
 
         #endregion
 
-        //#region Gallery Methods
+        #region Image References
+        public async Task<int> SaveFavoriteImageAsync(FavoriteImageItem favoriteImage)
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
 
-        //public async Task<List<UserUploadedImage>> GetUserUploadedImagesAsync()
-        //{
-        //    try
-        //    {
-        //        var db = await GetDatabaseAsync();
-        //        var images = await db.QueryAsync<UserUploadedImage>(@"
-        //    SELECT * FROM UserUploadedImage 
-        //    ORDER BY CreatedAt DESC");
+            return await _database.InsertAsync(favoriteImage);
+        }
 
-        //        DebugLog($"Retrieved {images.Count} user uploaded images");
-        //        return images;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DebugLog($"Error getting user images: {ex.Message}");
-        //        return [];
-        //    }
-        //}
+        public async Task<List<FavoriteImageItem>> GetFavoriteImagesAsync()
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
 
-        //public async Task<int> SaveUserUploadedImageAsync(UserUploadedImage image)
-        //{
-        //    try
-        //    {
-        //        var db = await GetDatabaseAsync();
-        //        await db.InsertAsync(image);
+            return await _database.Table<FavoriteImageItem>()
+                                  .Where(f => f.IsFavorite)
+                                  .OrderByDescending(f => f.CreatedAt)
+                                  .ToListAsync();
+        }
 
-        //        DebugLog($"Saved user uploaded image: {image.Title}");
-        //        return image.Id;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DebugLog($"Error saving user image: {ex.Message}");
-        //        throw;
-        //    }
-        //}
+        public async Task<int> DeleteFavoriteImageAsync(int favoriteImageId)
+        {
+            try
+            {
+                if (_database == null)
+                    throw new InvalidOperationException("Database not initialized");
 
-        //public async Task UpdateUserUploadedImageAsync(UserUploadedImage image)
-        //{
-        //    try
-        //    {
-        //        var db = await GetDatabaseAsync();
-        //        image.UpdatedAt = DateTime.Now;
-        //        await db.UpdateAsync(image);
+                DebugLog($"Attempting to delete favorite image with ID: {favoriteImageId}");
 
-        //        DebugLog($"Updated user uploaded image: {image.Id}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DebugLog($"Error updating user image: {ex.Message}");
-        //        throw;
-        //    }
-        //}
+                // First verify the record exists
+                var existingFavorite = await _database.FindAsync<FavoriteImageItem>(favoriteImageId);
+                if (existingFavorite == null)
+                {
+                    DebugLog($"Favorite image with ID {favoriteImageId} not found");
+                    return 0;
+                }
 
-        //public async Task DeleteUserUploadedImageAsync(int imageId)
-        //{
-        //    try
-        //    {
-        //        var db = await GetDatabaseAsync();
+                // Delete the record
+                var result = await _database.DeleteAsync<FavoriteImageItem>(favoriteImageId);
+                DebugLog($"Successfully deleted favorite image {favoriteImageId}, rows affected: {result}");
 
-        //        // Delete any references first
-        //        await db.ExecuteAsync("DELETE FROM ImageReference WHERE UserUploadedImageId = ?", imageId);
+                return result;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error deleting favorite image {favoriteImageId}: {ex.Message}");
+                throw;
+            }
+        }
+        public async Task<int> DeleteFavoriteImageByUnsplashIdAsync(string unsplashId)
+        {
+            try
+            {
+                if (_database == null)
+                    throw new InvalidOperationException("Database not initialized");
 
-        //        // Delete the image
-        //        await db.DeleteAsync<UserUploadedImage>(imageId);
+                DebugLog($"Attempting to delete favorite image with UnsplashId: {unsplashId}");
 
-        //        DebugLog($"Deleted user uploaded image {imageId}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DebugLog($"Error deleting user image {imageId}: {ex.Message}");
-        //        throw;
-        //    }
-        //}
+                // Find and delete by UnsplashId
+                var result = await _database.ExecuteAsync(
+                    "DELETE FROM FavoriteImageItem WHERE UnsplashId = ?",
+                    unsplashId);
 
-        //public async Task<List<ImageReference>> GetImageReferencesAsync(int imageId)
-        //{
-        //    try
-        //    {
-        //        var db = await GetDatabaseAsync();
-        //        var references = await db.QueryAsync<ImageReference>(@"
-        //    SELECT * FROM ImageReference 
-        //    WHERE UserUploadedImageId = ?
-        //    ORDER BY CreatedAt DESC", imageId);
+                DebugLog($"Successfully deleted favorite image {unsplashId}, rows affected: {result}");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error deleting favorite image by UnsplashId {unsplashId}: {ex.Message}");
+                throw;
+            }
+        }
+        public async Task<FavoriteImageItem?> GetFavoriteByUnsplashIdAsync(string unsplashId)
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+                return await db.Table<FavoriteImageItem>()
+                    .Where(f => f.UnsplashId == unsplashId)
+                    .FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error getting favorite by UnsplashId {unsplashId}: {ex.Message}");
+                return null;
+            }
+        }
+        #endregion
 
-        //        DebugLog($"Retrieved {references.Count} references for image {imageId}");
-        //        return references;
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DebugLog($"Error getting image references: {ex.Message}");
-        //        return [];
-        //    }
-        //}
+        #region Gallery Methods
 
-        //public async Task SaveImageReferenceAsync(ImageReference reference)
-        //{
-        //    try
-        //    {
-        //        var db = await GetDatabaseAsync();
-        //        await db.InsertAsync(reference);
-        //        DebugLog($"Saved image reference: {reference.ReferenceType} {reference.ReferenceId}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DebugLog($"Error saving image reference: {ex.Message}");
-        //        throw;
-        //    }
-        //}
+        public async Task<List<UserUploadedImage>> GetUserUploadedImagesAsync()
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+                var images = await db.QueryAsync<UserUploadedImage>(@"
+            SELECT * FROM UserUploadedImage 
+            ORDER BY CreatedAt DESC");
 
-        //public async Task DeleteImageReferenceAsync(int referenceId)
-        //{
-        //    try
-        //    {
-        //        var db = await GetDatabaseAsync();
-        //        await db.DeleteAsync<ImageReference>(referenceId);
-        //        DebugLog($"Deleted image reference {referenceId}");
-        //    }
-        //    catch (Exception ex)
-        //    {
-        //        DebugLog($"Error deleting image reference: {ex.Message}");
-        //        throw;
-        //    }
-        //}
+                DebugLog($"Retrieved {images.Count} user uploaded images");
+                return images;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error getting user images: {ex.Message}");
+                return [];
+            }
+        }
 
-        //#endregion
+        public async Task<UserUploadedImage?> GetUserUploadedImageAsync(int imageId)
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+                var image = await db.FindAsync<UserUploadedImage>(imageId);
+
+                if (image != null)
+                {
+                    DebugLog($"Retrieved user uploaded image: {image.Id}");
+                }
+                else
+                {
+                    DebugLog($"User uploaded image {imageId} not found");
+                }
+
+                return image;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error getting user image {imageId}: {ex.Message}");
+                return null;
+            }
+        }
+
+        public async Task<int> SaveUserUploadedImageAsync(UserUploadedImage image)
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+
+                if (image.Id == 0)
+                {
+                    // New image
+                    image.CreatedAt = DateTime.Now;
+                    await db.InsertAsync(image);
+                    DebugLog($"Saved new user uploaded image: {image.DisplayTitle} (ID: {image.Id})");
+                }
+                else
+                {
+                    // Update existing image
+                    await db.UpdateAsync(image);
+                    DebugLog($"Updated user uploaded image: {image.Id}");
+                }
+
+                return image.Id;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error saving user image: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task UpdateUserUploadedImageAsync(UserUploadedImage image)
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+                await db.UpdateAsync(image);
+
+                DebugLog($"Updated user uploaded image: {image.Id}");
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error updating user image: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task DeleteUserUploadedImageAsync(int imageId)
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+
+                // Get the image first to clean up the file
+                var image = await db.FindAsync<UserUploadedImage>(imageId);
+                if (image != null)
+                {
+                    // Delete the physical image file if it exists
+                    await DeleteImageFileAsync(image.ArtworkImagePath);
+                }
+
+                // Delete from database
+                await db.DeleteAsync<UserUploadedImage>(imageId);
+
+                DebugLog($"Deleted user uploaded image {imageId}");
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error deleting user image {imageId}: {ex.Message}");
+                throw;
+            }
+        }
+
+        public async Task<List<UserUploadedImage>> SearchGalleryAsync(string searchTerm)
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+
+                if (string.IsNullOrWhiteSpace(searchTerm))
+                {
+                    return await GetUserUploadedImagesAsync();
+                }
+
+                var searchLower = searchTerm.Trim().ToLower();
+
+                // Search in title, notes, and JSON fields
+                var images = await db.QueryAsync<UserUploadedImage>(@"
+            SELECT * FROM UserUploadedImage 
+            WHERE LOWER(COALESCE(Title, '')) LIKE ? 
+               OR LOWER(COALESCE(Notes, '')) LIKE ?
+               OR LOWER(COALESCE(CustomTags, '')) LIKE ?
+               OR LOWER(COALESCE(GeneratedWords, '')) LIKE ?
+            ORDER BY CreatedAt DESC",
+                    $"%{searchLower}%", $"%{searchLower}%", $"%{searchLower}%", $"%{searchLower}%");
+
+                DebugLog($"Search for '{searchTerm}' returned {images.Count} results");
+                return images;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error searching gallery: {ex.Message}");
+                return [];
+            }
+        }
+
+        public async Task<List<UserUploadedImage>> GetGalleryByTagAsync(string tag)
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+                var tagLower = tag.Trim().ToLower();
+
+                var images = await db.QueryAsync<UserUploadedImage>(@"
+            SELECT * FROM UserUploadedImage 
+            WHERE LOWER(COALESCE(CustomTags, '')) LIKE ?
+            ORDER BY CreatedAt DESC",
+                    $"%{tagLower}%");
+
+                DebugLog($"Found {images.Count} images with tag '{tag}'");
+                return images;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error getting images by tag '{tag}': {ex.Message}");
+                return [];
+            }
+        }
+
+        public async Task<List<string>> GetAllCustomTagsAsync()
+        {
+            try
+            {
+                var db = await GetDatabaseAsync();
+                var images = await db.QueryAsync<UserUploadedImage>(@"
+            SELECT CustomTags FROM UserUploadedImage 
+            WHERE CustomTags IS NOT NULL AND CustomTags != ''");
+
+                var allTags = new HashSet<string>();
+
+                foreach (var image in images)
+                {
+                    if (!string.IsNullOrEmpty(image.CustomTags))
+                    {
+                        try
+                        {
+                            var tags = System.Text.Json.JsonSerializer.Deserialize<List<string>>(image.CustomTags);
+                            if (tags != null)
+                            {
+                                foreach (var tag in tags)
+                                {
+                                    if (!string.IsNullOrWhiteSpace(tag))
+                                    {
+                                        allTags.Add(tag.Trim());
+                                    }
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            DebugLog($"Error parsing tags from image: {ex.Message}");
+                        }
+                    }
+                }
+
+                var result = allTags.OrderBy(tag => tag).ToList();
+                DebugLog($"Found {result.Count} unique custom tags");
+                return result;
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error getting all custom tags: {ex.Message}");
+                return [];
+            }
+        }
+
+        private async Task DeleteImageFileAsync(string imagePath)
+        {
+            try
+            {
+                if (string.IsNullOrEmpty(imagePath) || !File.Exists(imagePath))
+                    return;
+
+                await Task.Run(() => File.Delete(imagePath));
+                DebugLog($"Deleted image file: {imagePath}");
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error deleting image file {imagePath}: {ex.Message}");
+                // Don't throw - file deletion failure shouldn't prevent database deletion
+            }
+        }
+
+        #endregion
+
+        #region Session Snapshots
+        // Session Snapshot Methods
+        public async Task<int> SaveSessionSnapshotAsync(SessionSnapshot sessionSnapshot)
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
+
+            return await _database.InsertAsync(sessionSnapshot);
+        }
+
+        public async Task<SessionSnapshot?> GetSessionSnapshotAsync(int id)
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
+
+            return await _database.Table<SessionSnapshot>()
+                                  .Where(s => s.Id == id)
+                                  .FirstOrDefaultAsync();
+        }
+
+        public async Task<List<SessionSnapshot>> GetAllSessionSnapshotsAsync()
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
+
+            return await _database.Table<SessionSnapshot>()
+                                  .OrderByDescending(s => s.CreatedAt)
+                                  .ToListAsync();
+        }
+
+        public async Task<List<SessionSnapshot>> GetRecentSessionSnapshotsAsync(int count = 10)
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
+
+            return await _database.Table<SessionSnapshot>()
+                                  .OrderByDescending(s => s.CreatedAt)
+                                  .Take(count)
+                                  .ToListAsync();
+        }
+
+        public async Task<int> UpdateSessionSnapshotAsync(SessionSnapshot sessionSnapshot)
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
+
+            return await _database.UpdateAsync(sessionSnapshot);
+        }
+
+        public async Task<int> DeleteSessionSnapshotAsync(int id)
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
+
+            return await _database.DeleteAsync<SessionSnapshot>(id);
+        }
+
+        public async Task CleanupOldSessionImagesAsync()
+        {
+            try
+            {
+                var sessionImagesDir = Path.Combine(FileSystem.AppDataDirectory, "SessionImages");
+
+                if (!Directory.Exists(sessionImagesDir))
+                    return;
+
+                var files = Directory.GetFiles(sessionImagesDir);
+                var cutoffDate = DateTime.Now.AddDays(-30); // Keep images for 30 days
+
+                int deletedCount = 0;
+                await Task.Run(() =>
+                {
+                    foreach (var file in files)
+                    {
+                        var fileInfo = new FileInfo(file);
+                        if (fileInfo.CreationTime < cutoffDate)
+                        {
+                            try
+                            {
+                                File.Delete(file);
+                                deletedCount++;
+                            }
+                            catch (Exception ex)
+                            {
+                                DebugLog($"Failed to delete old image file {file}: {ex.Message}");
+                            }
+                        }
+                    }
+                });
+
+                if (deletedCount > 0)
+                {
+                    DebugLog($"Cleaned up {deletedCount} old session image files");
+                }
+            }
+            catch (Exception ex)
+            {
+                DebugLog($"Error during session images cleanup: {ex.Message}");
+            }
+        }
+        public async Task<int> DeleteOldSessionSnapshotsAsync(int keepCount = 20)
+        {
+            if (_database == null)
+                throw new InvalidOperationException("Database not initialized");
+
+            var allSnapshots = await _database.Table<SessionSnapshot>()
+                                             .OrderByDescending(s => s.CreatedAt)
+                                             .ToListAsync();
+
+            if (allSnapshots.Count <= keepCount)
+                return 0;
+
+            var toDelete = allSnapshots.Skip(keepCount).ToList();
+            int deletedCount = 0;
+
+            foreach (var snapshot in toDelete)
+            {
+                await _database.DeleteAsync(snapshot);
+                deletedCount++;
+            }
+
+            // Also cleanup old cached images
+            await CleanupOldSessionImagesAsync();
+
+            return deletedCount;
+        }
+
+        #endregion
 
         #region Common Database Methods
 

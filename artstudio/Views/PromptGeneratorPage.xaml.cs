@@ -1,5 +1,5 @@
 using artstudio.ViewModels;
-using artstudio.Data.Models;
+using artstudio.Data;
 using System.Diagnostics;
 
 namespace artstudio.Views;

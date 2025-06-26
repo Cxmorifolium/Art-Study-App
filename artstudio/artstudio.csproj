@@ -60,8 +60,6 @@
 	</ItemGroup>
 
 	<ItemGroup>
-	  <Compile Remove="Data\Models\ImageReference.cs" />
-	  <Compile Remove="Data\Models\UserUploadedImage.cs" />
 	  <Compile Remove="ViewModels\ArtStudyGalleryViewModel.cs" />
 	  <Compile Remove="ViewModels\FavoritePalettesViewModel.cs" />
 	  <Compile Remove="ViewModels\FavoritePromptsViewModel.cs" />
@@ -178,8 +176,17 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <Compile Update="Views\GalleryDetailPage.xaml.cs">
+	    <DependentUpon>GalleryDetailPage.xaml</DependentUpon>
+	  </Compile>
 	  <Compile Update="Views\ImagePromptPage.xaml.cs">
 	    <DependentUpon>ImagePromptPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\GalleryPage.xaml.cs">
+	    <DependentUpon>GalleryPage.xaml</DependentUpon>
+	  </Compile>
+	  <Compile Update="Views\GalleryCreationPage.xaml.cs">
+	    <DependentUpon>GalleryCreationPage.xaml</DependentUpon>
 	  </Compile>
 	  <Compile Update="Views\PromptGeneratorPage.xaml.cs">
 	    <DependentUpon>PromptGeneratorPage.xaml</DependentUpon>
@@ -187,7 +194,16 @@
 	</ItemGroup>
 
 	<ItemGroup>
+	  <MauiXaml Update="Views\GalleryDetailPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
 	  <MauiXaml Update="Views\ImagePromptPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\GalleryPage.xaml">
+	    <Generator>MSBuild:Compile</Generator>
+	  </MauiXaml>
+	  <MauiXaml Update="Views\GalleryCreationPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
 	  <MauiXaml Update="Views\PalettePage.xaml">

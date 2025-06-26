@@ -1,0 +1,717 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.ViewModels.SelectableColor
+  commentId: T:artstudio.ViewModels.SelectableColor
+  id: SelectableColor
+  parent: artstudio.ViewModels
+  children:
+  - artstudio.ViewModels.SelectableColor.#ctor
+  - artstudio.ViewModels.SelectableColor.Color
+  - artstudio.ViewModels.SelectableColor.HexValue
+  - artstudio.ViewModels.SelectableColor.IsSelected
+  - artstudio.ViewModels.SelectableColor.OnPropertyChanged(System.String)
+  - artstudio.ViewModels.SelectableColor.PropertyChanged
+  - artstudio.ViewModels.SelectableColor.ToggleSelectionCommand
+  langs:
+  - csharp
+  - vb
+  name: SelectableColor
+  nameWithType: SelectableColor
+  fullName: artstudio.ViewModels.SelectableColor
+  type: Class
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectableColor
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1217
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: 'public class SelectableColor : INotifyPropertyChanged'
+    content.vb: Public Class SelectableColor Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.ViewModels.SelectableColor.Color
+  commentId: P:artstudio.ViewModels.SelectableColor.Color
+  id: Color
+  parent: artstudio.ViewModels.SelectableColor
+  langs:
+  - csharp
+  - vb
+  name: Color
+  nameWithType: SelectableColor.Color
+  fullName: artstudio.ViewModels.SelectableColor.Color
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Color
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1221
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public required Color Color { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.Graphics.Color
+    content.vb: Public Property Color As Color
+  overload: artstudio.ViewModels.SelectableColor.Color*
+- uid: artstudio.ViewModels.SelectableColor.IsSelected
+  commentId: P:artstudio.ViewModels.SelectableColor.IsSelected
+  id: IsSelected
+  parent: artstudio.ViewModels.SelectableColor
+  langs:
+  - csharp
+  - vb
+  name: IsSelected
+  nameWithType: SelectableColor.IsSelected
+  fullName: artstudio.ViewModels.SelectableColor.IsSelected
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsSelected
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1223
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsSelected { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsSelected As Boolean
+  overload: artstudio.ViewModels.SelectableColor.IsSelected*
+- uid: artstudio.ViewModels.SelectableColor.HexValue
+  commentId: P:artstudio.ViewModels.SelectableColor.HexValue
+  id: HexValue
+  parent: artstudio.ViewModels.SelectableColor
+  langs:
+  - csharp
+  - vb
+  name: HexValue
+  nameWithType: SelectableColor.HexValue
+  fullName: artstudio.ViewModels.SelectableColor.HexValue
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HexValue
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1233
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string HexValue { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property HexValue As String
+  overload: artstudio.ViewModels.SelectableColor.HexValue*
+- uid: artstudio.ViewModels.SelectableColor.ToggleSelectionCommand
+  commentId: P:artstudio.ViewModels.SelectableColor.ToggleSelectionCommand
+  id: ToggleSelectionCommand
+  parent: artstudio.ViewModels.SelectableColor
+  langs:
+  - csharp
+  - vb
+  name: ToggleSelectionCommand
+  nameWithType: SelectableColor.ToggleSelectionCommand
+  fullName: artstudio.ViewModels.SelectableColor.ToggleSelectionCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleSelectionCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1235
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand ToggleSelectionCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public ReadOnly Property ToggleSelectionCommand As RelayCommand
+  overload: artstudio.ViewModels.SelectableColor.ToggleSelectionCommand*
+- uid: artstudio.ViewModels.SelectableColor.#ctor
+  commentId: M:artstudio.ViewModels.SelectableColor.#ctor
+  id: '#ctor'
+  parent: artstudio.ViewModels.SelectableColor
+  langs:
+  - csharp
+  - vb
+  name: SelectableColor()
+  nameWithType: SelectableColor.SelectableColor()
+  fullName: artstudio.ViewModels.SelectableColor.SelectableColor()
+  type: Constructor
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: .ctor
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1237
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public SelectableColor()
+    content.vb: Public Sub New()
+  overload: artstudio.ViewModels.SelectableColor.#ctor*
+  nameWithType.vb: SelectableColor.New()
+  fullName.vb: artstudio.ViewModels.SelectableColor.New()
+  name.vb: New()
+- uid: artstudio.ViewModels.SelectableColor.PropertyChanged
+  commentId: E:artstudio.ViewModels.SelectableColor.PropertyChanged
+  id: PropertyChanged
+  parent: artstudio.ViewModels.SelectableColor
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: SelectableColor.PropertyChanged
+  fullName: artstudio.ViewModels.SelectableColor.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PropertyChanged
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1242
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  summary: Occurs when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: artstudio.ViewModels.SelectableColor.OnPropertyChanged(System.String)
+  commentId: M:artstudio.ViewModels.SelectableColor.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: artstudio.ViewModels.SelectableColor
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string?)
+  nameWithType: SelectableColor.OnPropertyChanged(string?)
+  fullName: artstudio.ViewModels.SelectableColor.OnPropertyChanged(string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OnPropertyChanged
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1243
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: protected virtual void OnPropertyChanged(string? propertyName = null)
+    parameters:
+    - id: propertyName
+      type: System.String
+    content.vb: Protected Overridable Sub OnPropertyChanged(propertyName As String = Nothing)
+  overload: artstudio.ViewModels.SelectableColor.OnPropertyChanged*
+  nameWithType.vb: SelectableColor.OnPropertyChanged(String)
+  fullName.vb: artstudio.ViewModels.SelectableColor.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+references:
+- uid: artstudio.ViewModels
+  commentId: N:artstudio.ViewModels
+  href: artstudio.html
+  name: artstudio.ViewModels
+  nameWithType: artstudio.ViewModels
+  fullName: artstudio.ViewModels
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: artstudio.ViewModels.SelectableColor.Color*
+  commentId: Overload:artstudio.ViewModels.SelectableColor.Color
+  href: artstudio.ViewModels.SelectableColor.html#artstudio_ViewModels_SelectableColor_Color
+  name: Color
+  nameWithType: SelectableColor.Color
+  fullName: artstudio.ViewModels.SelectableColor.Color
+- uid: Microsoft.Maui.Graphics.Color
+  commentId: T:Microsoft.Maui.Graphics.Color
+  parent: Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  name: Color
+  nameWithType: Color
+  fullName: Microsoft.Maui.Graphics.Color
+- uid: Microsoft.Maui.Graphics
+  commentId: N:Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Maui.Graphics
+  nameWithType: Microsoft.Maui.Graphics
+  fullName: Microsoft.Maui.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+- uid: artstudio.ViewModels.SelectableColor.IsSelected*
+  commentId: Overload:artstudio.ViewModels.SelectableColor.IsSelected
+  href: artstudio.ViewModels.SelectableColor.html#artstudio_ViewModels_SelectableColor_IsSelected
+  name: IsSelected
+  nameWithType: SelectableColor.IsSelected
+  fullName: artstudio.ViewModels.SelectableColor.IsSelected
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: artstudio.ViewModels.SelectableColor.HexValue*
+  commentId: Overload:artstudio.ViewModels.SelectableColor.HexValue
+  href: artstudio.ViewModels.SelectableColor.html#artstudio_ViewModels_SelectableColor_HexValue
+  name: HexValue
+  nameWithType: SelectableColor.HexValue
+  fullName: artstudio.ViewModels.SelectableColor.HexValue
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.ViewModels.SelectableColor.ToggleSelectionCommand*
+  commentId: Overload:artstudio.ViewModels.SelectableColor.ToggleSelectionCommand
+  href: artstudio.ViewModels.SelectableColor.html#artstudio_ViewModels_SelectableColor_ToggleSelectionCommand
+  name: ToggleSelectionCommand
+  nameWithType: SelectableColor.ToggleSelectionCommand
+  fullName: artstudio.ViewModels.SelectableColor.ToggleSelectionCommand
+- uid: CommunityToolkit.Mvvm.Input.RelayCommand
+  commentId: T:CommunityToolkit.Mvvm.Input.RelayCommand
+  parent: CommunityToolkit.Mvvm.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.relaycommand
+  name: RelayCommand
+  nameWithType: RelayCommand
+  fullName: CommunityToolkit.Mvvm.Input.RelayCommand
+- uid: CommunityToolkit.Mvvm.Input
+  commentId: N:CommunityToolkit.Mvvm.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  name: CommunityToolkit.Mvvm.Input
+  nameWithType: CommunityToolkit.Mvvm.Input
+  fullName: CommunityToolkit.Mvvm.Input
+  spec.csharp:
+  - uid: CommunityToolkit
+    name: CommunityToolkit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  - name: .
+  - uid: CommunityToolkit.Mvvm
+    name: Mvvm
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm
+  - name: .
+  - uid: CommunityToolkit.Mvvm.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input
+  spec.vb:
+  - uid: CommunityToolkit
+    name: CommunityToolkit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  - name: .
+  - uid: CommunityToolkit.Mvvm
+    name: Mvvm
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm
+  - name: .
+  - uid: CommunityToolkit.Mvvm.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input
+- uid: artstudio.ViewModels.SelectableColor.#ctor*
+  commentId: Overload:artstudio.ViewModels.SelectableColor.#ctor
+  href: artstudio.ViewModels.SelectableColor.html#artstudio_ViewModels_SelectableColor__ctor
+  name: SelectableColor
+  nameWithType: SelectableColor.SelectableColor
+  fullName: artstudio.ViewModels.SelectableColor.SelectableColor
+  nameWithType.vb: SelectableColor.New
+  fullName.vb: artstudio.ViewModels.SelectableColor.New
+  name.vb: New
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: artstudio.ViewModels.SelectableColor.OnPropertyChanged*
+  commentId: Overload:artstudio.ViewModels.SelectableColor.OnPropertyChanged
+  href: artstudio.ViewModels.SelectableColor.html#artstudio_ViewModels_SelectableColor_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: SelectableColor.OnPropertyChanged
+  fullName: artstudio.ViewModels.SelectableColor.OnPropertyChanged

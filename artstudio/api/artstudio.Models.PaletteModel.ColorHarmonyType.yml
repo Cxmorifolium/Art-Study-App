@@ -1,0 +1,236 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType
+  commentId: T:artstudio.Models.PaletteModel.ColorHarmonyType
+  id: PaletteModel.ColorHarmonyType
+  parent: artstudio.Models
+  children:
+  - artstudio.Models.PaletteModel.ColorHarmonyType.Analogous
+  - artstudio.Models.PaletteModel.ColorHarmonyType.Complementary
+  - artstudio.Models.PaletteModel.ColorHarmonyType.Monochromatic
+  - artstudio.Models.PaletteModel.ColorHarmonyType.SplitComplementary
+  - artstudio.Models.PaletteModel.ColorHarmonyType.Square
+  - artstudio.Models.PaletteModel.ColorHarmonyType.Triadic
+  langs:
+  - csharp
+  - vb
+  name: PaletteModel.ColorHarmonyType
+  nameWithType: PaletteModel.ColorHarmonyType
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType
+  type: Enum
+  source:
+    remote:
+      path: artstudio/Models/PaletteModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ColorHarmonyType
+    path: Models/PaletteModel.cs
+    startLine: 4
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: public enum PaletteModel.ColorHarmonyType
+    content.vb: Public Enum PaletteModel.ColorHarmonyType
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType.Analogous
+  commentId: F:artstudio.Models.PaletteModel.ColorHarmonyType.Analogous
+  id: Analogous
+  parent: artstudio.Models.PaletteModel.ColorHarmonyType
+  langs:
+  - csharp
+  - vb
+  name: Analogous
+  nameWithType: PaletteModel.ColorHarmonyType.Analogous
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType.Analogous
+  type: Field
+  source:
+    remote:
+      path: artstudio/Models/PaletteModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Analogous
+    path: Models/PaletteModel.cs
+    startLine: 6
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: Analogous = 0
+    return:
+      type: artstudio.Models.PaletteModel.ColorHarmonyType
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType.Complementary
+  commentId: F:artstudio.Models.PaletteModel.ColorHarmonyType.Complementary
+  id: Complementary
+  parent: artstudio.Models.PaletteModel.ColorHarmonyType
+  langs:
+  - csharp
+  - vb
+  name: Complementary
+  nameWithType: PaletteModel.ColorHarmonyType.Complementary
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType.Complementary
+  type: Field
+  source:
+    remote:
+      path: artstudio/Models/PaletteModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Complementary
+    path: Models/PaletteModel.cs
+    startLine: 7
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: Complementary = 1
+    return:
+      type: artstudio.Models.PaletteModel.ColorHarmonyType
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType.SplitComplementary
+  commentId: F:artstudio.Models.PaletteModel.ColorHarmonyType.SplitComplementary
+  id: SplitComplementary
+  parent: artstudio.Models.PaletteModel.ColorHarmonyType
+  langs:
+  - csharp
+  - vb
+  name: SplitComplementary
+  nameWithType: PaletteModel.ColorHarmonyType.SplitComplementary
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType.SplitComplementary
+  type: Field
+  source:
+    remote:
+      path: artstudio/Models/PaletteModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SplitComplementary
+    path: Models/PaletteModel.cs
+    startLine: 8
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: SplitComplementary = 2
+    return:
+      type: artstudio.Models.PaletteModel.ColorHarmonyType
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType.Triadic
+  commentId: F:artstudio.Models.PaletteModel.ColorHarmonyType.Triadic
+  id: Triadic
+  parent: artstudio.Models.PaletteModel.ColorHarmonyType
+  langs:
+  - csharp
+  - vb
+  name: Triadic
+  nameWithType: PaletteModel.ColorHarmonyType.Triadic
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType.Triadic
+  type: Field
+  source:
+    remote:
+      path: artstudio/Models/PaletteModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Triadic
+    path: Models/PaletteModel.cs
+    startLine: 9
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: Triadic = 3
+    return:
+      type: artstudio.Models.PaletteModel.ColorHarmonyType
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType.Square
+  commentId: F:artstudio.Models.PaletteModel.ColorHarmonyType.Square
+  id: Square
+  parent: artstudio.Models.PaletteModel.ColorHarmonyType
+  langs:
+  - csharp
+  - vb
+  name: Square
+  nameWithType: PaletteModel.ColorHarmonyType.Square
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType.Square
+  type: Field
+  source:
+    remote:
+      path: artstudio/Models/PaletteModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Square
+    path: Models/PaletteModel.cs
+    startLine: 10
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: Square = 4
+    return:
+      type: artstudio.Models.PaletteModel.ColorHarmonyType
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType.Monochromatic
+  commentId: F:artstudio.Models.PaletteModel.ColorHarmonyType.Monochromatic
+  id: Monochromatic
+  parent: artstudio.Models.PaletteModel.ColorHarmonyType
+  langs:
+  - csharp
+  - vb
+  name: Monochromatic
+  nameWithType: PaletteModel.ColorHarmonyType.Monochromatic
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType.Monochromatic
+  type: Field
+  source:
+    remote:
+      path: artstudio/Models/PaletteModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Monochromatic
+    path: Models/PaletteModel.cs
+    startLine: 11
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: Monochromatic = 5
+    return:
+      type: artstudio.Models.PaletteModel.ColorHarmonyType
+references:
+- uid: artstudio.Models
+  commentId: N:artstudio.Models
+  href: artstudio.html
+  name: artstudio.Models
+  nameWithType: artstudio.Models
+  fullName: artstudio.Models
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+- uid: artstudio.Models.PaletteModel.ColorHarmonyType
+  commentId: T:artstudio.Models.PaletteModel.ColorHarmonyType
+  parent: artstudio.Models
+  href: artstudio.Models.PaletteModel.html
+  name: PaletteModel.ColorHarmonyType
+  nameWithType: PaletteModel.ColorHarmonyType
+  fullName: artstudio.Models.PaletteModel.ColorHarmonyType
+  spec.csharp:
+  - uid: artstudio.Models.PaletteModel
+    name: PaletteModel
+    href: artstudio.Models.PaletteModel.html
+  - name: .
+  - uid: artstudio.Models.PaletteModel.ColorHarmonyType
+    name: ColorHarmonyType
+    href: artstudio.Models.PaletteModel.ColorHarmonyType.html
+  spec.vb:
+  - uid: artstudio.Models.PaletteModel
+    name: PaletteModel
+    href: artstudio.Models.PaletteModel.html
+  - name: .
+  - uid: artstudio.Models.PaletteModel.ColorHarmonyType
+    name: ColorHarmonyType
+    href: artstudio.Models.PaletteModel.ColorHarmonyType.html

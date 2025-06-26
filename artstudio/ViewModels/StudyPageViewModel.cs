@@ -1,11 +1,13 @@
-﻿using System;
+﻿using artstudio.Models;
+using artstudio.Services;
+using artstudio.Data;
+using CommunityToolkit.Maui.Core;
+using CommunityToolkit.Mvvm.Input;
+using Microsoft.Extensions.Logging;
+using System;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
-using CommunityToolkit.Mvvm.Input;
-using artstudio.Models;
-using artstudio.Services;
-using Microsoft.Extensions.Logging;
 
 namespace artstudio.ViewModels
 {
@@ -29,6 +31,8 @@ namespace artstudio.ViewModels
         private readonly Unsplash _unsplash;
         private readonly PaletteModel _paletteModel;
         private readonly ILogger<StudyPageViewModel> _logger;
+        private readonly IToastService _toastService;
+        private readonly DatabaseService _databaseService;
         private bool _disposed = false;
 
         public ObservableCollection<string> ModeOptions { get; } = new()
@@ -61,15 +65,18 @@ namespace artstudio.ViewModels
 
         #region Constructor
 
-        public StudyPageViewModel(PromptGenerator promptGenerator, Unsplash unsplash, PaletteModel paletteModel, ILogger<StudyPageViewModel> logger)
+        public StudyPageViewModel(PromptGenerator promptGenerator, Unsplash unsplash, PaletteModel paletteModel, ILogger<StudyPageViewModel> logger, DatabaseService databaseService, IToastService toastService)
         {
             _promptGenerator = promptGenerator;
             _unsplash = unsplash;
             _paletteModel = paletteModel;
+            _databaseService = databaseService;
+            _toastService = toastService;
             _logger = logger;
 
-            InitializeCommands();
+            InitializeCommands(); 
             DebugPromptGenerator();
+
         }
 
         #endregion
@@ -93,6 +100,7 @@ namespace artstudio.ViewModels
         public bool ShowPalette => IsSessionMode && CurrentPalette.Count > 0;
         public bool CanUndo => IsQuickMode && PreviousContent.Count > 0;
         public bool CanRegenerate => IsSessionMode;
+        public bool CanSaveSession => IsSessionMode && (CurrentWords.Count > 0 || CurrentPalette.Count > 0 || CurrentImages.Count > 0);
 
         public string SelectedMode
         {
@@ -144,6 +152,8 @@ namespace artstudio.ViewModels
             OnPropertyChanged(nameof(PlayPauseButtonColor));
             OnPropertyChanged(nameof(ShowPalette));
             OnPropertyChanged(nameof(CanUndo));
+            OnPropertyChanged(nameof(CanSaveSession)); 
+            SaveSessionCommand.NotifyCanExecuteChanged();
         }
 
         public string SelectedQuickTime
@@ -209,6 +219,7 @@ namespace artstudio.ViewModels
         public RelayCommand ResetCommand { get; private set; } = default!;
         public RelayCommand UndoCommand { get; private set; } = default!;
         public RelayCommand RegenerateCommand { get; private set; } = default!;
+        public AsyncRelayCommand SaveSessionCommand { get; private set; } = null!;
 
         private void InitializeCommands()
         {
@@ -216,6 +227,7 @@ namespace artstudio.ViewModels
             ResetCommand = new RelayCommand(ExecuteReset);
             UndoCommand = new RelayCommand(ExecuteUndo, () => CanUndo);
             RegenerateCommand = new RelayCommand(ExecuteRegenerate, () => CanRegenerate);
+            SaveSessionCommand = new AsyncRelayCommand(ExecuteSaveSessionAsync, () => CanSaveSession);
         }
 
         #endregion
@@ -383,6 +395,9 @@ namespace artstudio.ViewModels
 
             GenerateWords();
             _ = ExecuteGenerateImagesAsync();
+
+            OnPropertyChanged(nameof(CanSaveSession));
+            SaveSessionCommand.NotifyCanExecuteChanged();
         }
 
         private void GeneratePalette()
@@ -568,8 +583,205 @@ namespace artstudio.ViewModels
             }
         }
 
+        private async Task ExecuteSaveSessionAsync()
+        {
+            try
+            {
+                _logger.LogInformation("=== STARTING SESSION SAVE ===");
+
+                if (!CanSaveSession)
+                {
+                    _logger.LogWarning("Cannot save session - CanSaveSession is false");
+                    return;
+                }
+
+                _logger.LogInformation("CanSaveSession check passed");
+
+                // Prompt user for session name
+                var sessionName = await PromptForSessionNameAsync();
+                if (sessionName == null)
+                {
+                    _logger.LogInformation("User cancelled session save");
+                    return; // User cancelled
+                }
+
+                _logger.LogInformation("User provided session name: '{SessionName}'", sessionName);
+
+                // Cache images locally before saving
+                _logger.LogInformation("Caching {ImageCount} images locally...", CurrentImages.Count);
+                var cachedImages = await CacheImagesForSessionAsync(CurrentImages.ToList());
+
+                // Get current session info
+                var sessionMode = SelectedMode;
+                var sessionDuration = IsSessionMode ?
+                    (UseCustomTime ? $"{CustomDuration}m" : SelectedSessionTime) :
+                    SelectedQuickTime;
+
+                // Create session snapshot with cached images and custom title
+                var sessionSnapshot = SessionSnapshot.FromCurrentSession(
+                    CurrentWords.ToList(),
+                    CurrentPalette.ToList(),
+                    cachedImages,
+                    sessionMode,
+                    sessionDuration,
+                    customTitle: sessionName // Pass the user-provided name
+                );
+
+                _logger.LogInformation("About to call database save...");
+                await _databaseService.SaveSessionSnapshotAsync(sessionSnapshot);
+                _logger.LogInformation("Database save completed successfully");
+
+                await _databaseService.DeleteOldSessionSnapshotsAsync(20);
+                _logger.LogInformation("Old sessions cleanup completed");
+
+                _logger.LogInformation("About to show success toast...");
+                await _toastService.ShowToastAsync($"Session '{sessionName}' saved! Load it in Gallery Creation.");
+                _logger.LogInformation("Toast call completed - should be visible now");
+
+                _logger.LogInformation("=== SESSION SAVE COMPLETED ===");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error in ExecuteSaveSessionAsync");
+                _logger.LogInformation("About to show error toast...");
+                await _toastService.ShowToastAsync("Failed to save session");
+                _logger.LogInformation("Error toast call completed");
+            }
+        }
+
+        private async Task<string?> PromptForSessionNameAsync()
+        {
+            try
+            {
+                var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                if (mainPage == null)
+                {
+                    _logger.LogWarning("Could not find main page for session name prompt");
+                    return GenerateDefaultSessionName(); // Fallback to auto-generated name
+                }
+
+                // Generate a suggested name based on current content
+                var suggestedName = GenerateDefaultSessionName();
+
+                // Prompt user for session name
+                var result = await mainPage.DisplayPromptAsync(
+                    "Save Session",
+                    "Give your session a memorable name:",
+                    "Save",
+                    "Cancel",
+                    suggestedName,
+                    maxLength: 50,
+                    keyboard: Keyboard.Text
+                );
+
+                if (string.IsNullOrWhiteSpace(result))
+                {
+                    return null; // User cancelled or entered empty name
+                }
+
+                return result.Trim();
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error prompting for session name");
+                return GenerateDefaultSessionName(); // Fallback to auto-generated name
+            }
+        }
+
+        private string GenerateDefaultSessionName()
+        {
+            var sessionType = IsSessionMode ? "Session" : "Quick Sketch";
+            var duration = IsSessionMode ?
+                (UseCustomTime ? $"{CustomDuration}m" : SelectedSessionTime) :
+                SelectedQuickTime;
+
+            var timestamp = DateTime.Now.ToString("MMM dd, HH:mm");
+
+            // Try to make it more descriptive based on content
+            var description = "";
+            if (CurrentWords.Count > 0)
+            {
+                var firstWord = CurrentWords.FirstOrDefault();
+                if (!string.IsNullOrEmpty(firstWord))
+                {
+                    description = $" - {firstWord}";
+                }
+            }
+
+            return $"{sessionType} ({duration}){description}";
+        }
+
         #endregion
 
+
+        #region Image Caching Methods
+        private async Task<UnsplashImage> CacheImageLocallyAsync(ImageItemViewModel imageViewModel)
+        {
+            try
+            {
+                var originalImage = imageViewModel.UnsplashImage;
+                var thumbUrl = originalImage.urls?.Thumb;
+
+                if (string.IsNullOrEmpty(thumbUrl))
+                {
+                    _logger.LogWarning("No thumbnail URL for image {ImageId}", originalImage.Id);
+                    return originalImage; // Return original if no thumb URL
+                }
+
+                // Create local file path
+                var fileName = $"thumb_{originalImage.Id}_{DateTime.Now:yyyyMMdd_HHmmss}.jpg";
+                var localPath = Path.Combine(FileSystem.AppDataDirectory, "SessionImages", fileName);
+
+                // Ensure directory exists
+                Directory.CreateDirectory(Path.GetDirectoryName(localPath)!);
+
+                // Download and save thumbnail
+                using (var httpClient = new HttpClient())
+                {
+                    var imageBytes = await httpClient.GetByteArrayAsync(thumbUrl);
+                    await File.WriteAllBytesAsync(localPath, imageBytes);
+                }
+
+                // Create new UnsplashImage with local path
+                var cachedImage = new UnsplashImage
+                {
+                    Id = originalImage.Id,
+                    Description = originalImage.Description,
+                    user = originalImage.user,
+                    urls = new UnsplashImage.Urls
+                    {
+                        Raw = originalImage.urls?.Raw,
+                        Full = originalImage.urls?.Full,
+                        Regular = originalImage.urls?.Regular,
+                        Small = originalImage.urls?.Small,
+                        Thumb = localPath // Use local path instead of remote URL
+                    }
+                };
+
+                _logger.LogDebug("Cached image thumbnail locally: {LocalPath}", localPath);
+                return cachedImage;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Failed to cache image {ImageId} locally", imageViewModel.UnsplashImage.Id);
+                return imageViewModel.UnsplashImage; // Return original on failure
+            }
+        }
+
+        private async Task<List<UnsplashImage>> CacheImagesForSessionAsync(List<ImageItemViewModel> images)
+        {
+            var cachedImages = new List<UnsplashImage>();
+
+            foreach (var image in images)
+            {
+                var cachedImage = await CacheImageLocallyAsync(image);
+                cachedImages.Add(cachedImage);
+            }
+
+            return cachedImages;
+        }
+
+        #endregion
         #region IDisposable Implementation
 
         public void Dispose()

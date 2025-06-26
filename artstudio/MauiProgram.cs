@@ -1,6 +1,5 @@
-﻿using artstudio.Service;
+﻿using artstudio.Services;
 using artstudio.Models;
-using artstudio.Services;
 using artstudio.ViewModels;
 using artstudio.Views;
 using CommunityToolkit.Maui;
@@ -23,9 +22,7 @@ public static class MauiProgram
             .UseMauiApp<App>()
             .UseMauiCommunityToolkit(options =>
             {
-#if WINDOWS
                 options.SetShouldEnableSnackbarOnWindows(true);
-#endif
             })
             .ConfigureFonts(fonts =>
             {
@@ -51,11 +48,27 @@ public static class MauiProgram
         builder.Logging.SetMinimumLevel(LogLevel.Warning);
 #endif
 
-        // Build the app FIRST
+        // Build the app first
         var app = builder.Build();
 
-        // THEN initialize the service
+        // Then initialize the service
         using var scope = app.Services.CreateScope();
+
+        // Temporary
+
+        //var databaseService = scope.ServiceProvider.GetRequiredService<DatabaseService>();
+        //_ = Task.Run(async () =>
+        //{
+        //    try
+        //    {
+        //        await databaseService.ResetDatabaseForTestingAsync();
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        System.Diagnostics.Debug.WriteLine($"Database reset error: {ex.Message}");
+        //    }
+        //});
+
         var promptDataService = scope.ServiceProvider.GetRequiredService<IPromptDataService>();
         _ = promptDataService.InitializeAsync();
 
@@ -129,17 +142,27 @@ public static class MauiProgram
 
     private static void RegisterViewModelsAndPages(IServiceCollection services)
     {
-        // ViewModels
+        // Main ViewModels
         services.AddTransient<PaletteViewModel>();
         services.AddTransient<StudyPageViewModel>();
         services.AddTransient<ImagePromptViewModel>();
         services.AddTransient<PromptGeneratorViewModel>();
 
-        // Pages
+        // Gallery ViewModels 
+        services.AddTransient<GalleryPageViewModel>();
+        services.AddTransient<GalleryCreationViewModel>();
+        services.AddTransient<GalleryDetailPageViewModel>();
+
+        // Main Pages
         services.AddTransient<PalettePage>();
         services.AddTransient<StudyPage>();
         services.AddTransient<ImagePromptPage>();
         services.AddTransient<PromptGeneratorPage>();
+
+        // Gallery Pages 
+        services.AddTransient<GalleryPage>();
+        services.AddTransient<GalleryCreationPage>();
+        services.AddTransient<GalleryDetailPage>();
 
         // App
         services.AddSingleton<App>();

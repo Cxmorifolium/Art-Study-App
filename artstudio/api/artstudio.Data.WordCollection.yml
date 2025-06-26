@@ -1,0 +1,1130 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Data.WordCollection
+  commentId: T:artstudio.Data.WordCollection
+  id: WordCollection
+  parent: artstudio.Data
+  children:
+  - artstudio.Data.WordCollection.CleanDisplayTitle
+  - artstudio.Data.WordCollection.CreatedAt
+  - artstudio.Data.WordCollection.DisplayTitle
+  - artstudio.Data.WordCollection.FormattedDate
+  - artstudio.Data.WordCollection.Id
+  - artstudio.Data.WordCollection.IsFavorite
+  - artstudio.Data.WordCollection.OnPropertyChanged(System.String)
+  - artstudio.Data.WordCollection.PromptType
+  - artstudio.Data.WordCollection.PromptTypeDisplay
+  - artstudio.Data.WordCollection.PropertyChanged
+  - artstudio.Data.WordCollection.SetProperty``1(``0@,``0,System.String)
+  - artstudio.Data.WordCollection.Title
+  - artstudio.Data.WordCollection.WordCount
+  - artstudio.Data.WordCollection.WordCountText
+  - artstudio.Data.WordCollection.WordsDisplayText
+  - artstudio.Data.WordCollection.WordsList
+  langs:
+  - csharp
+  - vb
+  name: WordCollection
+  nameWithType: WordCollection
+  fullName: artstudio.Data.WordCollection
+  type: Class
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: WordCollection
+    path: Data/WordCollection.cs
+    startLine: 6
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [Table("WordCollection")]
+
+      public class WordCollection : INotifyPropertyChanged
+    content.vb: >-
+      <Table("WordCollection")>
+
+      Public Class WordCollection Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: SQLite.TableAttribute
+    ctor: SQLite.TableAttribute.#ctor(System.String)
+    arguments:
+    - type: System.String
+      value: WordCollection
+- uid: artstudio.Data.WordCollection.Id
+  commentId: P:artstudio.Data.WordCollection.Id
+  id: Id
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: WordCollection.Id
+  fullName: artstudio.Data.WordCollection.Id
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Id
+    path: Data/WordCollection.cs
+    startLine: 16
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [PrimaryKey]
+
+      [AutoIncrement]
+
+      public int Id { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: >-
+      <PrimaryKey>
+
+      <AutoIncrement>
+
+      Public Property Id As Integer
+  overload: artstudio.Data.WordCollection.Id*
+  attributes:
+  - type: SQLite.PrimaryKeyAttribute
+    ctor: SQLite.PrimaryKeyAttribute.#ctor
+    arguments: []
+  - type: SQLite.AutoIncrementAttribute
+    ctor: SQLite.AutoIncrementAttribute.#ctor
+    arguments: []
+- uid: artstudio.Data.WordCollection.Title
+  commentId: P:artstudio.Data.WordCollection.Title
+  id: Title
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: WordCollection.Title
+  fullName: artstudio.Data.WordCollection.Title
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Title
+    path: Data/WordCollection.cs
+    startLine: 23
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: artstudio.Data.WordCollection.Title*
+- uid: artstudio.Data.WordCollection.WordsList
+  commentId: P:artstudio.Data.WordCollection.WordsList
+  id: WordsList
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: WordsList
+  nameWithType: WordCollection.WordsList
+  fullName: artstudio.Data.WordCollection.WordsList
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: WordsList
+    path: Data/WordCollection.cs
+    startLine: 29
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: >-
+      [Ignore]
+
+      public List<string> WordsList { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.Generic.List{System.String}
+    content.vb: >-
+      <Ignore>
+
+      Public Property WordsList As List(Of String)
+  overload: artstudio.Data.WordCollection.WordsList*
+  attributes:
+  - type: SQLite.IgnoreAttribute
+    ctor: SQLite.IgnoreAttribute.#ctor
+    arguments: []
+- uid: artstudio.Data.WordCollection.CreatedAt
+  commentId: P:artstudio.Data.WordCollection.CreatedAt
+  id: CreatedAt
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: CreatedAt
+  nameWithType: WordCollection.CreatedAt
+  fullName: artstudio.Data.WordCollection.CreatedAt
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CreatedAt
+    path: Data/WordCollection.cs
+    startLine: 36
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public DateTime CreatedAt { get; set; }
+    parameters: []
+    return:
+      type: System.DateTime
+    content.vb: Public Property CreatedAt As Date
+  overload: artstudio.Data.WordCollection.CreatedAt*
+- uid: artstudio.Data.WordCollection.PromptType
+  commentId: P:artstudio.Data.WordCollection.PromptType
+  id: PromptType
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: PromptType
+  nameWithType: WordCollection.PromptType
+  fullName: artstudio.Data.WordCollection.PromptType
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PromptType
+    path: Data/WordCollection.cs
+    startLine: 42
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string? PromptType { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property PromptType As String
+  overload: artstudio.Data.WordCollection.PromptType*
+- uid: artstudio.Data.WordCollection.IsFavorite
+  commentId: P:artstudio.Data.WordCollection.IsFavorite
+  id: IsFavorite
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: IsFavorite
+  nameWithType: WordCollection.IsFavorite
+  fullName: artstudio.Data.WordCollection.IsFavorite
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsFavorite
+    path: Data/WordCollection.cs
+    startLine: 48
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public bool IsFavorite { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsFavorite As Boolean
+  overload: artstudio.Data.WordCollection.IsFavorite*
+- uid: artstudio.Data.WordCollection.DisplayTitle
+  commentId: P:artstudio.Data.WordCollection.DisplayTitle
+  id: DisplayTitle
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: DisplayTitle
+  nameWithType: WordCollection.DisplayTitle
+  fullName: artstudio.Data.WordCollection.DisplayTitle
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DisplayTitle
+    path: Data/WordCollection.cs
+    startLine: 55
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string DisplayTitle { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DisplayTitle As String
+  overload: artstudio.Data.WordCollection.DisplayTitle*
+- uid: artstudio.Data.WordCollection.FormattedDate
+  commentId: P:artstudio.Data.WordCollection.FormattedDate
+  id: FormattedDate
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: FormattedDate
+  nameWithType: WordCollection.FormattedDate
+  fullName: artstudio.Data.WordCollection.FormattedDate
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FormattedDate
+    path: Data/WordCollection.cs
+    startLine: 57
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string FormattedDate { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property FormattedDate As String
+  overload: artstudio.Data.WordCollection.FormattedDate*
+- uid: artstudio.Data.WordCollection.WordsDisplayText
+  commentId: P:artstudio.Data.WordCollection.WordsDisplayText
+  id: WordsDisplayText
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: WordsDisplayText
+  nameWithType: WordCollection.WordsDisplayText
+  fullName: artstudio.Data.WordCollection.WordsDisplayText
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: WordsDisplayText
+    path: Data/WordCollection.cs
+    startLine: 59
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string WordsDisplayText { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property WordsDisplayText As String
+  overload: artstudio.Data.WordCollection.WordsDisplayText*
+- uid: artstudio.Data.WordCollection.WordCount
+  commentId: P:artstudio.Data.WordCollection.WordCount
+  id: WordCount
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: WordCount
+  nameWithType: WordCollection.WordCount
+  fullName: artstudio.Data.WordCollection.WordCount
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: WordCount
+    path: Data/WordCollection.cs
+    startLine: 73
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public int WordCount { get; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public ReadOnly Property WordCount As Integer
+  overload: artstudio.Data.WordCollection.WordCount*
+- uid: artstudio.Data.WordCollection.WordCountText
+  commentId: P:artstudio.Data.WordCollection.WordCountText
+  id: WordCountText
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: WordCountText
+  nameWithType: WordCollection.WordCountText
+  fullName: artstudio.Data.WordCollection.WordCountText
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: WordCountText
+    path: Data/WordCollection.cs
+    startLine: 75
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string WordCountText { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property WordCountText As String
+  overload: artstudio.Data.WordCollection.WordCountText*
+- uid: artstudio.Data.WordCollection.PromptTypeDisplay
+  commentId: P:artstudio.Data.WordCollection.PromptTypeDisplay
+  id: PromptTypeDisplay
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: PromptTypeDisplay
+  nameWithType: WordCollection.PromptTypeDisplay
+  fullName: artstudio.Data.WordCollection.PromptTypeDisplay
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PromptTypeDisplay
+    path: Data/WordCollection.cs
+    startLine: 77
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string PromptTypeDisplay { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property PromptTypeDisplay As String
+  overload: artstudio.Data.WordCollection.PromptTypeDisplay*
+- uid: artstudio.Data.WordCollection.CleanDisplayTitle
+  commentId: P:artstudio.Data.WordCollection.CleanDisplayTitle
+  id: CleanDisplayTitle
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: CleanDisplayTitle
+  nameWithType: WordCollection.CleanDisplayTitle
+  fullName: artstudio.Data.WordCollection.CleanDisplayTitle
+  type: Property
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CleanDisplayTitle
+    path: Data/WordCollection.cs
+    startLine: 85
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: public string CleanDisplayTitle { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property CleanDisplayTitle As String
+  overload: artstudio.Data.WordCollection.CleanDisplayTitle*
+- uid: artstudio.Data.WordCollection.PropertyChanged
+  commentId: E:artstudio.Data.WordCollection.PropertyChanged
+  id: PropertyChanged
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: WordCollection.PropertyChanged
+  fullName: artstudio.Data.WordCollection.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PropertyChanged
+    path: Data/WordCollection.cs
+    startLine: 108
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  summary: Occurs when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: artstudio.Data.WordCollection.OnPropertyChanged(System.String)
+  commentId: M:artstudio.Data.WordCollection.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string?)
+  nameWithType: WordCollection.OnPropertyChanged(string?)
+  fullName: artstudio.Data.WordCollection.OnPropertyChanged(string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OnPropertyChanged
+    path: Data/WordCollection.cs
+    startLine: 110
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: protected virtual void OnPropertyChanged(string? propertyName = null)
+    parameters:
+    - id: propertyName
+      type: System.String
+    content.vb: Protected Overridable Sub OnPropertyChanged(propertyName As String = Nothing)
+  overload: artstudio.Data.WordCollection.OnPropertyChanged*
+  nameWithType.vb: WordCollection.OnPropertyChanged(String)
+  fullName.vb: artstudio.Data.WordCollection.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+- uid: artstudio.Data.WordCollection.SetProperty``1(``0@,``0,System.String)
+  commentId: M:artstudio.Data.WordCollection.SetProperty``1(``0@,``0,System.String)
+  id: SetProperty``1(``0@,``0,System.String)
+  parent: artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: SetProperty<T>(ref T, T, string?)
+  nameWithType: WordCollection.SetProperty<T>(ref T, T, string?)
+  fullName: artstudio.Data.WordCollection.SetProperty<T>(ref T, T, string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Data/WordCollection.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SetProperty
+    path: Data/WordCollection.cs
+    startLine: 135
+  assemblies:
+  - artstudio
+  namespace: artstudio.Data
+  syntax:
+    content: protected bool SetProperty<T>(ref T field, T value, string? propertyName = null)
+    parameters:
+    - id: field
+      type: '{T}'
+    - id: value
+      type: '{T}'
+    - id: propertyName
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Protected Function SetProperty(Of T)(field As T, value As T, propertyName As String = Nothing) As Boolean
+  overload: artstudio.Data.WordCollection.SetProperty*
+  nameWithType.vb: WordCollection.SetProperty(Of T)(T, T, String)
+  fullName.vb: artstudio.Data.WordCollection.SetProperty(Of T)(T, T, String)
+  name.vb: SetProperty(Of T)(T, T, String)
+references:
+- uid: artstudio.Data
+  commentId: N:artstudio.Data
+  href: artstudio.html
+  name: artstudio.Data
+  nameWithType: artstudio.Data
+  fullName: artstudio.Data
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: artstudio.Data.WordCollection.Id*
+  commentId: Overload:artstudio.Data.WordCollection.Id
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_Id
+  name: Id
+  nameWithType: WordCollection.Id
+  fullName: artstudio.Data.WordCollection.Id
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: artstudio.Data.WordCollection.Title*
+  commentId: Overload:artstudio.Data.WordCollection.Title
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_Title
+  name: Title
+  nameWithType: WordCollection.Title
+  fullName: artstudio.Data.WordCollection.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.Data.WordCollection.WordsList*
+  commentId: Overload:artstudio.Data.WordCollection.WordsList
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_WordsList
+  name: WordsList
+  nameWithType: WordCollection.WordsList
+  fullName: artstudio.Data.WordCollection.WordsList
+- uid: System.Collections.Generic.List{System.String}
+  commentId: T:System.Collections.Generic.List{System.String}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<string>
+  nameWithType: List<string>
+  fullName: System.Collections.Generic.List<string>
+  nameWithType.vb: List(Of String)
+  fullName.vb: System.Collections.Generic.List(Of String)
+  name.vb: List(Of String)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: artstudio.Data.WordCollection.CreatedAt*
+  commentId: Overload:artstudio.Data.WordCollection.CreatedAt
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_CreatedAt
+  name: CreatedAt
+  nameWithType: WordCollection.CreatedAt
+  fullName: artstudio.Data.WordCollection.CreatedAt
+- uid: System.DateTime
+  commentId: T:System.DateTime
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.datetime
+  name: DateTime
+  nameWithType: DateTime
+  fullName: System.DateTime
+  nameWithType.vb: Date
+  fullName.vb: Date
+  name.vb: Date
+- uid: artstudio.Data.WordCollection.PromptType*
+  commentId: Overload:artstudio.Data.WordCollection.PromptType
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_PromptType
+  name: PromptType
+  nameWithType: WordCollection.PromptType
+  fullName: artstudio.Data.WordCollection.PromptType
+- uid: artstudio.Data.WordCollection.IsFavorite*
+  commentId: Overload:artstudio.Data.WordCollection.IsFavorite
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_IsFavorite
+  name: IsFavorite
+  nameWithType: WordCollection.IsFavorite
+  fullName: artstudio.Data.WordCollection.IsFavorite
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: artstudio.Data.WordCollection.DisplayTitle*
+  commentId: Overload:artstudio.Data.WordCollection.DisplayTitle
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_DisplayTitle
+  name: DisplayTitle
+  nameWithType: WordCollection.DisplayTitle
+  fullName: artstudio.Data.WordCollection.DisplayTitle
+- uid: artstudio.Data.WordCollection.FormattedDate*
+  commentId: Overload:artstudio.Data.WordCollection.FormattedDate
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_FormattedDate
+  name: FormattedDate
+  nameWithType: WordCollection.FormattedDate
+  fullName: artstudio.Data.WordCollection.FormattedDate
+- uid: artstudio.Data.WordCollection.WordsDisplayText*
+  commentId: Overload:artstudio.Data.WordCollection.WordsDisplayText
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_WordsDisplayText
+  name: WordsDisplayText
+  nameWithType: WordCollection.WordsDisplayText
+  fullName: artstudio.Data.WordCollection.WordsDisplayText
+- uid: artstudio.Data.WordCollection.WordCount*
+  commentId: Overload:artstudio.Data.WordCollection.WordCount
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_WordCount
+  name: WordCount
+  nameWithType: WordCollection.WordCount
+  fullName: artstudio.Data.WordCollection.WordCount
+- uid: artstudio.Data.WordCollection.WordCountText*
+  commentId: Overload:artstudio.Data.WordCollection.WordCountText
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_WordCountText
+  name: WordCountText
+  nameWithType: WordCollection.WordCountText
+  fullName: artstudio.Data.WordCollection.WordCountText
+- uid: artstudio.Data.WordCollection.PromptTypeDisplay*
+  commentId: Overload:artstudio.Data.WordCollection.PromptTypeDisplay
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_PromptTypeDisplay
+  name: PromptTypeDisplay
+  nameWithType: WordCollection.PromptTypeDisplay
+  fullName: artstudio.Data.WordCollection.PromptTypeDisplay
+- uid: artstudio.Data.WordCollection.CleanDisplayTitle*
+  commentId: Overload:artstudio.Data.WordCollection.CleanDisplayTitle
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_CleanDisplayTitle
+  name: CleanDisplayTitle
+  nameWithType: WordCollection.CleanDisplayTitle
+  fullName: artstudio.Data.WordCollection.CleanDisplayTitle
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: artstudio.Data.WordCollection.OnPropertyChanged*
+  commentId: Overload:artstudio.Data.WordCollection.OnPropertyChanged
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: WordCollection.OnPropertyChanged
+  fullName: artstudio.Data.WordCollection.OnPropertyChanged
+- uid: artstudio.Data.WordCollection.SetProperty*
+  commentId: Overload:artstudio.Data.WordCollection.SetProperty
+  href: artstudio.Data.WordCollection.html#artstudio_Data_WordCollection_SetProperty__1___0____0_System_String_
+  name: SetProperty
+  nameWithType: WordCollection.SetProperty
+  fullName: artstudio.Data.WordCollection.SetProperty
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

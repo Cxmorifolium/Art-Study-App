@@ -1,0 +1,321 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Services.IDebugService
+  commentId: T:artstudio.Services.IDebugService
+  id: IDebugService
+  parent: artstudio.Services
+  children:
+  - artstudio.Services.IDebugService.LogDebug(System.String)
+  - artstudio.Services.IDebugService.LogError(System.String,System.Exception)
+  - artstudio.Services.IDebugService.LogInfo(System.String)
+  - artstudio.Services.IDebugService.LogWarning(System.String)
+  - artstudio.Services.IDebugService.WriteToFileAsync(System.String)
+  langs:
+  - csharp
+  - vb
+  name: IDebugService
+  nameWithType: IDebugService
+  fullName: artstudio.Services.IDebugService
+  type: Interface
+  source:
+    remote:
+      path: artstudio/Services/DebugService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IDebugService
+    path: Services/DebugService.cs
+    startLine: 7
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public interface IDebugService
+    content.vb: Public Interface IDebugService
+- uid: artstudio.Services.IDebugService.LogInfo(System.String)
+  commentId: M:artstudio.Services.IDebugService.LogInfo(System.String)
+  id: LogInfo(System.String)
+  parent: artstudio.Services.IDebugService
+  langs:
+  - csharp
+  - vb
+  name: LogInfo(string)
+  nameWithType: IDebugService.LogInfo(string)
+  fullName: artstudio.Services.IDebugService.LogInfo(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DebugService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LogInfo
+    path: Services/DebugService.cs
+    startLine: 9
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: void LogInfo(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub LogInfo(message As String)
+  overload: artstudio.Services.IDebugService.LogInfo*
+  nameWithType.vb: IDebugService.LogInfo(String)
+  fullName.vb: artstudio.Services.IDebugService.LogInfo(String)
+  name.vb: LogInfo(String)
+- uid: artstudio.Services.IDebugService.LogError(System.String,System.Exception)
+  commentId: M:artstudio.Services.IDebugService.LogError(System.String,System.Exception)
+  id: LogError(System.String,System.Exception)
+  parent: artstudio.Services.IDebugService
+  langs:
+  - csharp
+  - vb
+  name: LogError(string, Exception?)
+  nameWithType: IDebugService.LogError(string, Exception?)
+  fullName: artstudio.Services.IDebugService.LogError(string, System.Exception?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DebugService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LogError
+    path: Services/DebugService.cs
+    startLine: 10
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: void LogError(string message, Exception? exception = null)
+    parameters:
+    - id: message
+      type: System.String
+    - id: exception
+      type: System.Exception
+    content.vb: Sub LogError(message As String, exception As Exception = Nothing)
+  overload: artstudio.Services.IDebugService.LogError*
+  nameWithType.vb: IDebugService.LogError(String, Exception)
+  fullName.vb: artstudio.Services.IDebugService.LogError(String, System.Exception)
+  name.vb: LogError(String, Exception)
+- uid: artstudio.Services.IDebugService.LogWarning(System.String)
+  commentId: M:artstudio.Services.IDebugService.LogWarning(System.String)
+  id: LogWarning(System.String)
+  parent: artstudio.Services.IDebugService
+  langs:
+  - csharp
+  - vb
+  name: LogWarning(string)
+  nameWithType: IDebugService.LogWarning(string)
+  fullName: artstudio.Services.IDebugService.LogWarning(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DebugService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LogWarning
+    path: Services/DebugService.cs
+    startLine: 11
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: void LogWarning(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub LogWarning(message As String)
+  overload: artstudio.Services.IDebugService.LogWarning*
+  nameWithType.vb: IDebugService.LogWarning(String)
+  fullName.vb: artstudio.Services.IDebugService.LogWarning(String)
+  name.vb: LogWarning(String)
+- uid: artstudio.Services.IDebugService.LogDebug(System.String)
+  commentId: M:artstudio.Services.IDebugService.LogDebug(System.String)
+  id: LogDebug(System.String)
+  parent: artstudio.Services.IDebugService
+  langs:
+  - csharp
+  - vb
+  name: LogDebug(string)
+  nameWithType: IDebugService.LogDebug(string)
+  fullName: artstudio.Services.IDebugService.LogDebug(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DebugService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LogDebug
+    path: Services/DebugService.cs
+    startLine: 12
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: void LogDebug(string message)
+    parameters:
+    - id: message
+      type: System.String
+    content.vb: Sub LogDebug(message As String)
+  overload: artstudio.Services.IDebugService.LogDebug*
+  nameWithType.vb: IDebugService.LogDebug(String)
+  fullName.vb: artstudio.Services.IDebugService.LogDebug(String)
+  name.vb: LogDebug(String)
+- uid: artstudio.Services.IDebugService.WriteToFileAsync(System.String)
+  commentId: M:artstudio.Services.IDebugService.WriteToFileAsync(System.String)
+  id: WriteToFileAsync(System.String)
+  parent: artstudio.Services.IDebugService
+  langs:
+  - csharp
+  - vb
+  name: WriteToFileAsync(string)
+  nameWithType: IDebugService.WriteToFileAsync(string)
+  fullName: artstudio.Services.IDebugService.WriteToFileAsync(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/DebugService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: WriteToFileAsync
+    path: Services/DebugService.cs
+    startLine: 13
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: Task WriteToFileAsync(string message)
+    parameters:
+    - id: message
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function WriteToFileAsync(message As String) As Task
+  overload: artstudio.Services.IDebugService.WriteToFileAsync*
+  nameWithType.vb: IDebugService.WriteToFileAsync(String)
+  fullName.vb: artstudio.Services.IDebugService.WriteToFileAsync(String)
+  name.vb: WriteToFileAsync(String)
+references:
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: artstudio.Services.IDebugService.LogInfo*
+  commentId: Overload:artstudio.Services.IDebugService.LogInfo
+  href: artstudio.Services.IDebugService.html#artstudio_Services_IDebugService_LogInfo_System_String_
+  name: LogInfo
+  nameWithType: IDebugService.LogInfo
+  fullName: artstudio.Services.IDebugService.LogInfo
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: artstudio.Services.IDebugService.LogError*
+  commentId: Overload:artstudio.Services.IDebugService.LogError
+  href: artstudio.Services.IDebugService.html#artstudio_Services_IDebugService_LogError_System_String_System_Exception_
+  name: LogError
+  nameWithType: IDebugService.LogError
+  fullName: artstudio.Services.IDebugService.LogError
+- uid: System.Exception
+  commentId: T:System.Exception
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.exception
+  name: Exception
+  nameWithType: Exception
+  fullName: System.Exception
+- uid: artstudio.Services.IDebugService.LogWarning*
+  commentId: Overload:artstudio.Services.IDebugService.LogWarning
+  href: artstudio.Services.IDebugService.html#artstudio_Services_IDebugService_LogWarning_System_String_
+  name: LogWarning
+  nameWithType: IDebugService.LogWarning
+  fullName: artstudio.Services.IDebugService.LogWarning
+- uid: artstudio.Services.IDebugService.LogDebug*
+  commentId: Overload:artstudio.Services.IDebugService.LogDebug
+  href: artstudio.Services.IDebugService.html#artstudio_Services_IDebugService_LogDebug_System_String_
+  name: LogDebug
+  nameWithType: IDebugService.LogDebug
+  fullName: artstudio.Services.IDebugService.LogDebug
+- uid: artstudio.Services.IDebugService.WriteToFileAsync*
+  commentId: Overload:artstudio.Services.IDebugService.WriteToFileAsync
+  href: artstudio.Services.IDebugService.html#artstudio_Services_IDebugService_WriteToFileAsync_System_String_
+  name: WriteToFileAsync
+  nameWithType: IDebugService.WriteToFileAsync
+  fullName: artstudio.Services.IDebugService.WriteToFileAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

@@ -1,0 +1,3096 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.ViewModels.GalleryCreationViewModel
+  commentId: T:artstudio.ViewModels.GalleryCreationViewModel
+  id: GalleryCreationViewModel
+  parent: artstudio.ViewModels
+  children:
+  - artstudio.ViewModels.GalleryCreationViewModel.#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.GalleryCreationViewModel},artstudio.Services.IToastService,artstudio.Services.WordPromptService,artstudio.Services.PaletteService)
+  - artstudio.ViewModels.GalleryCreationViewModel.ArtworkImagePath
+  - artstudio.ViewModels.GalleryCreationViewModel.ArtworkImageSource
+  - artstudio.ViewModels.GalleryCreationViewModel.CanSave
+  - artstudio.ViewModels.GalleryCreationViewModel.ClearCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.CloseImagesFlyoutCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.ClosePaletteFlyoutCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.CloseSessionsFlyoutCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.CloseWordsFlyoutCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.CustomTagsText
+  - artstudio.ViewModels.GalleryCreationViewModel.DeleteImageFavoriteCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.DeleteSessionCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.FavoriteImages
+  - artstudio.ViewModels.GalleryCreationViewModel.FavoritePalettesGroups
+  - artstudio.ViewModels.GalleryCreationViewModel.FavoriteWordsGroups
+  - artstudio.ViewModels.GalleryCreationViewModel.GalleryData
+  - artstudio.ViewModels.GalleryCreationViewModel.HasArtworkImage
+  - artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteImages
+  - artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoritePalettes
+  - artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteWords
+  - artstudio.ViewModels.GalleryCreationViewModel.HasNoSavedSessions
+  - artstudio.ViewModels.GalleryCreationViewModel.HasSessionData
+  - artstudio.ViewModels.GalleryCreationViewModel.IsImagesFlyoutVisible
+  - artstudio.ViewModels.GalleryCreationViewModel.IsLoadingImages
+  - artstudio.ViewModels.GalleryCreationViewModel.IsLoadingPalettes
+  - artstudio.ViewModels.GalleryCreationViewModel.IsLoadingSessions
+  - artstudio.ViewModels.GalleryCreationViewModel.IsLoadingWords
+  - artstudio.ViewModels.GalleryCreationViewModel.IsPaletteFlyoutVisible
+  - artstudio.ViewModels.GalleryCreationViewModel.IsSaving
+  - artstudio.ViewModels.GalleryCreationViewModel.IsSessionsFlyoutVisible
+  - artstudio.ViewModels.GalleryCreationViewModel.IsWordsFlyoutVisible
+  - artstudio.ViewModels.GalleryCreationViewModel.LoadImageFromFavoriteCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.LoadPaletteFromFavoriteCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.LoadSessionCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.LoadWordsFromFavoriteCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.Notes
+  - artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged(System.String)
+  - artstudio.ViewModels.GalleryCreationViewModel.PickImageCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.PropertyChanged
+  - artstudio.ViewModels.GalleryCreationViewModel.SaveCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.SavedSessions
+  - artstudio.ViewModels.GalleryCreationViewModel.SelectAllImagesCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.SelectAllWordsCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.SelectNoneImagesCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.SelectNoneWordsCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.SelectableImages
+  - artstudio.ViewModels.GalleryCreationViewModel.SelectablePalette
+  - artstudio.ViewModels.GalleryCreationViewModel.SelectableWords
+  - artstudio.ViewModels.GalleryCreationViewModel.SetProperty``1(``0@,``0,System.String)
+  - artstudio.ViewModels.GalleryCreationViewModel.Title
+  - artstudio.ViewModels.GalleryCreationViewModel.ToggleImagesFlyoutCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.TogglePaletteFlyoutCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.ToggleSessionsFlyoutCommand
+  - artstudio.ViewModels.GalleryCreationViewModel.ToggleWordsFlyoutCommand
+  langs:
+  - csharp
+  - vb
+  name: GalleryCreationViewModel
+  nameWithType: GalleryCreationViewModel
+  fullName: artstudio.ViewModels.GalleryCreationViewModel
+  type: Class
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GalleryCreationViewModel
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 13
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: >-
+      [QueryProperty("GalleryData", "GalleryData")]
+
+      public class GalleryCreationViewModel : INotifyPropertyChanged
+    content.vb: >-
+      <QueryProperty("GalleryData", "GalleryData")>
+
+      Public Class GalleryCreationViewModel Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+  attributes:
+  - type: Microsoft.Maui.Controls.QueryPropertyAttribute
+    ctor: Microsoft.Maui.Controls.QueryPropertyAttribute.#ctor(System.String,System.String)
+    arguments:
+    - type: System.String
+      value: GalleryData
+    - type: System.String
+      value: GalleryData
+- uid: artstudio.ViewModels.GalleryCreationViewModel.#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.GalleryCreationViewModel},artstudio.Services.IToastService,artstudio.Services.WordPromptService,artstudio.Services.PaletteService)
+  commentId: M:artstudio.ViewModels.GalleryCreationViewModel.#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.GalleryCreationViewModel},artstudio.Services.IToastService,artstudio.Services.WordPromptService,artstudio.Services.PaletteService)
+  id: '#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.GalleryCreationViewModel},artstudio.Services.IToastService,artstudio.Services.WordPromptService,artstudio.Services.PaletteService)'
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: GalleryCreationViewModel(DatabaseService, ILogger<GalleryCreationViewModel>, IToastService, WordPromptService, PaletteService)
+  nameWithType: GalleryCreationViewModel.GalleryCreationViewModel(DatabaseService, ILogger<GalleryCreationViewModel>, IToastService, WordPromptService, PaletteService)
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.GalleryCreationViewModel(artstudio.Services.DatabaseService, Microsoft.Extensions.Logging.ILogger<artstudio.ViewModels.GalleryCreationViewModel>, artstudio.Services.IToastService, artstudio.Services.WordPromptService, artstudio.Services.PaletteService)
+  type: Constructor
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: .ctor
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 47
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public GalleryCreationViewModel(DatabaseService databaseService, ILogger<GalleryCreationViewModel> logger, IToastService toastService, WordPromptService wordPromptService, PaletteService paletteService)
+    parameters:
+    - id: databaseService
+      type: artstudio.Services.DatabaseService
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.GalleryCreationViewModel}
+    - id: toastService
+      type: artstudio.Services.IToastService
+    - id: wordPromptService
+      type: artstudio.Services.WordPromptService
+    - id: paletteService
+      type: artstudio.Services.PaletteService
+    content.vb: Public Sub New(databaseService As DatabaseService, logger As ILogger(Of GalleryCreationViewModel), toastService As IToastService, wordPromptService As WordPromptService, paletteService As PaletteService)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.#ctor*
+  nameWithType.vb: GalleryCreationViewModel.New(DatabaseService, ILogger(Of GalleryCreationViewModel), IToastService, WordPromptService, PaletteService)
+  fullName.vb: artstudio.ViewModels.GalleryCreationViewModel.New(artstudio.Services.DatabaseService, Microsoft.Extensions.Logging.ILogger(Of artstudio.ViewModels.GalleryCreationViewModel), artstudio.Services.IToastService, artstudio.Services.WordPromptService, artstudio.Services.PaletteService)
+  name.vb: New(DatabaseService, ILogger(Of GalleryCreationViewModel), IToastService, WordPromptService, PaletteService)
+- uid: artstudio.ViewModels.GalleryCreationViewModel.GalleryData
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.GalleryData
+  id: GalleryData
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: GalleryData
+  nameWithType: GalleryCreationViewModel.GalleryData
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.GalleryData
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GalleryData
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 68
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public GalleryCreationData? GalleryData { get; set; }
+    parameters: []
+    return:
+      type: artstudio.Data.GalleryCreationData
+    content.vb: Public Property GalleryData As GalleryCreationData
+  overload: artstudio.ViewModels.GalleryCreationViewModel.GalleryData*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.Title
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.Title
+  id: Title
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: Title
+  nameWithType: GalleryCreationViewModel.Title
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.Title
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Title
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 80
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string Title { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Title As String
+  overload: artstudio.ViewModels.GalleryCreationViewModel.Title*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.Notes
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.Notes
+  id: Notes
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: Notes
+  nameWithType: GalleryCreationViewModel.Notes
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.Notes
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Notes
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 86
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string Notes { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Notes As String
+  overload: artstudio.ViewModels.GalleryCreationViewModel.Notes*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CustomTagsText
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.CustomTagsText
+  id: CustomTagsText
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: CustomTagsText
+  nameWithType: GalleryCreationViewModel.CustomTagsText
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CustomTagsText
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CustomTagsText
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 92
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string CustomTagsText { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property CustomTagsText As String
+  overload: artstudio.ViewModels.GalleryCreationViewModel.CustomTagsText*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImagePath
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.ArtworkImagePath
+  id: ArtworkImagePath
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: ArtworkImagePath
+  nameWithType: GalleryCreationViewModel.ArtworkImagePath
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImagePath
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ArtworkImagePath
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 98
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string ArtworkImagePath { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property ArtworkImagePath As String
+  overload: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImagePath*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImageSource
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.ArtworkImageSource
+  id: ArtworkImageSource
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: ArtworkImageSource
+  nameWithType: GalleryCreationViewModel.ArtworkImageSource
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImageSource
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ArtworkImageSource
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 114
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ImageSource? ArtworkImageSource { get; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.Controls.ImageSource
+    content.vb: Public ReadOnly Property ArtworkImageSource As ImageSource
+  overload: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImageSource*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsSaving
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsSaving
+  id: IsSaving
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsSaving
+  nameWithType: GalleryCreationViewModel.IsSaving
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsSaving
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsSaving
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 140
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsSaving { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsSaving As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsSaving*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasArtworkImage
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.HasArtworkImage
+  id: HasArtworkImage
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasArtworkImage
+  nameWithType: GalleryCreationViewModel.HasArtworkImage
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasArtworkImage
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasArtworkImage
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 146
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasArtworkImage { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasArtworkImage As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.HasArtworkImage*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CanSave
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.CanSave
+  id: CanSave
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: CanSave
+  nameWithType: GalleryCreationViewModel.CanSave
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CanSave
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CanSave
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 156
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool CanSave { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property CanSave As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.CanSave*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasSessionData
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.HasSessionData
+  id: HasSessionData
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasSessionData
+  nameWithType: GalleryCreationViewModel.HasSessionData
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasSessionData
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasSessionData
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 158
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasSessionData { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasSessionData As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.HasSessionData*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsWordsFlyoutVisible
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsWordsFlyoutVisible
+  id: IsWordsFlyoutVisible
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsWordsFlyoutVisible
+  nameWithType: GalleryCreationViewModel.IsWordsFlyoutVisible
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsWordsFlyoutVisible
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsWordsFlyoutVisible
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 164
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsWordsFlyoutVisible { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsWordsFlyoutVisible As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsWordsFlyoutVisible*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsPaletteFlyoutVisible
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsPaletteFlyoutVisible
+  id: IsPaletteFlyoutVisible
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsPaletteFlyoutVisible
+  nameWithType: GalleryCreationViewModel.IsPaletteFlyoutVisible
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsPaletteFlyoutVisible
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsPaletteFlyoutVisible
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 170
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsPaletteFlyoutVisible { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsPaletteFlyoutVisible As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsPaletteFlyoutVisible*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsImagesFlyoutVisible
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsImagesFlyoutVisible
+  id: IsImagesFlyoutVisible
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsImagesFlyoutVisible
+  nameWithType: GalleryCreationViewModel.IsImagesFlyoutVisible
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsImagesFlyoutVisible
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsImagesFlyoutVisible
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 176
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsImagesFlyoutVisible { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsImagesFlyoutVisible As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsImagesFlyoutVisible*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingWords
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsLoadingWords
+  id: IsLoadingWords
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsLoadingWords
+  nameWithType: GalleryCreationViewModel.IsLoadingWords
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingWords
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsLoadingWords
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 182
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsLoadingWords { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsLoadingWords As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingWords*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingPalettes
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsLoadingPalettes
+  id: IsLoadingPalettes
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsLoadingPalettes
+  nameWithType: GalleryCreationViewModel.IsLoadingPalettes
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingPalettes
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsLoadingPalettes
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 188
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsLoadingPalettes { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsLoadingPalettes As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingPalettes*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsSessionsFlyoutVisible
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsSessionsFlyoutVisible
+  id: IsSessionsFlyoutVisible
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsSessionsFlyoutVisible
+  nameWithType: GalleryCreationViewModel.IsSessionsFlyoutVisible
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsSessionsFlyoutVisible
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsSessionsFlyoutVisible
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 194
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsSessionsFlyoutVisible { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsSessionsFlyoutVisible As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsSessionsFlyoutVisible*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingSessions
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsLoadingSessions
+  id: IsLoadingSessions
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsLoadingSessions
+  nameWithType: GalleryCreationViewModel.IsLoadingSessions
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingSessions
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsLoadingSessions
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 200
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsLoadingSessions { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsLoadingSessions As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingSessions*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.FavoriteImages
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.FavoriteImages
+  id: FavoriteImages
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: FavoriteImages
+  nameWithType: GalleryCreationViewModel.FavoriteImages
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.FavoriteImages
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FavoriteImages
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 207
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<FavoriteImageItem> FavoriteImages { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.Data.FavoriteImageItem}
+    content.vb: Public ReadOnly Property FavoriteImages As ObservableCollection(Of FavoriteImageItem)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.FavoriteImages*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteImages
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteImages
+  id: HasNoFavoriteImages
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasNoFavoriteImages
+  nameWithType: GalleryCreationViewModel.HasNoFavoriteImages
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteImages
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasNoFavoriteImages
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 208
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasNoFavoriteImages { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasNoFavoriteImages As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteImages*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingImages
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.IsLoadingImages
+  id: IsLoadingImages
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsLoadingImages
+  nameWithType: GalleryCreationViewModel.IsLoadingImages
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingImages
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsLoadingImages
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 209
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsLoadingImages { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsLoadingImages As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingImages*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasNoSavedSessions
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.HasNoSavedSessions
+  id: HasNoSavedSessions
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasNoSavedSessions
+  nameWithType: GalleryCreationViewModel.HasNoSavedSessions
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasNoSavedSessions
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasNoSavedSessions
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 216
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasNoSavedSessions { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasNoSavedSessions As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.HasNoSavedSessions*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteWords
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteWords
+  id: HasNoFavoriteWords
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasNoFavoriteWords
+  nameWithType: GalleryCreationViewModel.HasNoFavoriteWords
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteWords
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasNoFavoriteWords
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 218
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasNoFavoriteWords { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasNoFavoriteWords As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteWords*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoritePalettes
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoritePalettes
+  id: HasNoFavoritePalettes
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasNoFavoritePalettes
+  nameWithType: GalleryCreationViewModel.HasNoFavoritePalettes
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoritePalettes
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasNoFavoritePalettes
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 219
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasNoFavoritePalettes { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasNoFavoritePalettes As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoritePalettes*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectableWords
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SelectableWords
+  id: SelectableWords
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectableWords
+  nameWithType: GalleryCreationViewModel.SelectableWords
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectableWords
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectableWords
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 222
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<SelectableWord> SelectableWords { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableWord}
+    content.vb: Public ReadOnly Property SelectableWords As ObservableCollection(Of SelectableWord)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SelectableWords*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectablePalette
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SelectablePalette
+  id: SelectablePalette
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectablePalette
+  nameWithType: GalleryCreationViewModel.SelectablePalette
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectablePalette
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectablePalette
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 223
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<SelectableColor> SelectablePalette { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableColor}
+    content.vb: Public ReadOnly Property SelectablePalette As ObservableCollection(Of SelectableColor)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SelectablePalette*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectableImages
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SelectableImages
+  id: SelectableImages
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectableImages
+  nameWithType: GalleryCreationViewModel.SelectableImages
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectableImages
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectableImages
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 224
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<SelectableImage> SelectableImages { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableImage}
+    content.vb: Public ReadOnly Property SelectableImages As ObservableCollection(Of SelectableImage)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SelectableImages*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.FavoriteWordsGroups
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.FavoriteWordsGroups
+  id: FavoriteWordsGroups
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: FavoriteWordsGroups
+  nameWithType: GalleryCreationViewModel.FavoriteWordsGroups
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.FavoriteWordsGroups
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FavoriteWordsGroups
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 227
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<WordCollectionGroup> FavoriteWordsGroups { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.WordCollectionGroup}
+    content.vb: Public ReadOnly Property FavoriteWordsGroups As ObservableCollection(Of WordCollectionGroup)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.FavoriteWordsGroups*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.FavoritePalettesGroups
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.FavoritePalettesGroups
+  id: FavoritePalettesGroups
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: FavoritePalettesGroups
+  nameWithType: GalleryCreationViewModel.FavoritePalettesGroups
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.FavoritePalettesGroups
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FavoritePalettesGroups
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 228
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<PaletteCollectionGroup> FavoritePalettesGroups { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.PaletteCollectionGroup}
+    content.vb: Public ReadOnly Property FavoritePalettesGroups As ObservableCollection(Of PaletteCollectionGroup)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.FavoritePalettesGroups*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SavedSessions
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SavedSessions
+  id: SavedSessions
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SavedSessions
+  nameWithType: GalleryCreationViewModel.SavedSessions
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SavedSessions
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SavedSessions
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 231
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<SessionSnapshot> SavedSessions { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.Data.SessionSnapshot}
+    content.vb: Public ReadOnly Property SavedSessions As ObservableCollection(Of SessionSnapshot)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SavedSessions*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.PickImageCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.PickImageCommand
+  id: PickImageCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: PickImageCommand
+  nameWithType: GalleryCreationViewModel.PickImageCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.PickImageCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PickImageCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 236
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand PickImageCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+    content.vb: Public Property PickImageCommand As AsyncRelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.PickImageCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SaveCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SaveCommand
+  id: SaveCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SaveCommand
+  nameWithType: GalleryCreationViewModel.SaveCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SaveCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SaveCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 237
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand SaveCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+    content.vb: Public Property SaveCommand As AsyncRelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SaveCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ClearCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.ClearCommand
+  id: ClearCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: ClearCommand
+  nameWithType: GalleryCreationViewModel.ClearCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ClearCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ClearCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 238
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand ClearCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+    content.vb: Public Property ClearCommand As AsyncRelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.ClearCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectAllWordsCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SelectAllWordsCommand
+  id: SelectAllWordsCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectAllWordsCommand
+  nameWithType: GalleryCreationViewModel.SelectAllWordsCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectAllWordsCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectAllWordsCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 239
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand SelectAllWordsCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property SelectAllWordsCommand As RelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SelectAllWordsCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneWordsCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SelectNoneWordsCommand
+  id: SelectNoneWordsCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectNoneWordsCommand
+  nameWithType: GalleryCreationViewModel.SelectNoneWordsCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneWordsCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectNoneWordsCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 240
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand SelectNoneWordsCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property SelectNoneWordsCommand As RelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneWordsCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectAllImagesCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SelectAllImagesCommand
+  id: SelectAllImagesCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectAllImagesCommand
+  nameWithType: GalleryCreationViewModel.SelectAllImagesCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectAllImagesCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectAllImagesCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 241
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand SelectAllImagesCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property SelectAllImagesCommand As RelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SelectAllImagesCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneImagesCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.SelectNoneImagesCommand
+  id: SelectNoneImagesCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectNoneImagesCommand
+  nameWithType: GalleryCreationViewModel.SelectNoneImagesCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneImagesCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectNoneImagesCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 242
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand SelectNoneImagesCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property SelectNoneImagesCommand As RelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneImagesCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ToggleWordsFlyoutCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.ToggleWordsFlyoutCommand
+  id: ToggleWordsFlyoutCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: ToggleWordsFlyoutCommand
+  nameWithType: GalleryCreationViewModel.ToggleWordsFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ToggleWordsFlyoutCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleWordsFlyoutCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 245
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand ToggleWordsFlyoutCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+    content.vb: Public Property ToggleWordsFlyoutCommand As AsyncRelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.ToggleWordsFlyoutCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.TogglePaletteFlyoutCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.TogglePaletteFlyoutCommand
+  id: TogglePaletteFlyoutCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: TogglePaletteFlyoutCommand
+  nameWithType: GalleryCreationViewModel.TogglePaletteFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.TogglePaletteFlyoutCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: TogglePaletteFlyoutCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 246
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand TogglePaletteFlyoutCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+    content.vb: Public Property TogglePaletteFlyoutCommand As AsyncRelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.TogglePaletteFlyoutCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ToggleImagesFlyoutCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.ToggleImagesFlyoutCommand
+  id: ToggleImagesFlyoutCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: ToggleImagesFlyoutCommand
+  nameWithType: GalleryCreationViewModel.ToggleImagesFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ToggleImagesFlyoutCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleImagesFlyoutCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 247
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand ToggleImagesFlyoutCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+    content.vb: Public Property ToggleImagesFlyoutCommand As AsyncRelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.ToggleImagesFlyoutCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CloseWordsFlyoutCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.CloseWordsFlyoutCommand
+  id: CloseWordsFlyoutCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: CloseWordsFlyoutCommand
+  nameWithType: GalleryCreationViewModel.CloseWordsFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CloseWordsFlyoutCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CloseWordsFlyoutCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 248
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand CloseWordsFlyoutCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property CloseWordsFlyoutCommand As RelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.CloseWordsFlyoutCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ClosePaletteFlyoutCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.ClosePaletteFlyoutCommand
+  id: ClosePaletteFlyoutCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: ClosePaletteFlyoutCommand
+  nameWithType: GalleryCreationViewModel.ClosePaletteFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ClosePaletteFlyoutCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ClosePaletteFlyoutCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 249
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand ClosePaletteFlyoutCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property ClosePaletteFlyoutCommand As RelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.ClosePaletteFlyoutCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CloseImagesFlyoutCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.CloseImagesFlyoutCommand
+  id: CloseImagesFlyoutCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: CloseImagesFlyoutCommand
+  nameWithType: GalleryCreationViewModel.CloseImagesFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CloseImagesFlyoutCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CloseImagesFlyoutCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 250
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand CloseImagesFlyoutCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property CloseImagesFlyoutCommand As RelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.CloseImagesFlyoutCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.LoadWordsFromFavoriteCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.LoadWordsFromFavoriteCommand
+  id: LoadWordsFromFavoriteCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: LoadWordsFromFavoriteCommand
+  nameWithType: GalleryCreationViewModel.LoadWordsFromFavoriteCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.LoadWordsFromFavoriteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LoadWordsFromFavoriteCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 251
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand<WordCollection> LoadWordsFromFavoriteCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.WordCollection}
+    content.vb: Public Property LoadWordsFromFavoriteCommand As AsyncRelayCommand(Of WordCollection)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.LoadWordsFromFavoriteCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.LoadPaletteFromFavoriteCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.LoadPaletteFromFavoriteCommand
+  id: LoadPaletteFromFavoriteCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: LoadPaletteFromFavoriteCommand
+  nameWithType: GalleryCreationViewModel.LoadPaletteFromFavoriteCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.LoadPaletteFromFavoriteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LoadPaletteFromFavoriteCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 252
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand<FavoritePaletteItem> LoadPaletteFromFavoriteCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.ViewModels.FavoritePaletteItem}
+    content.vb: Public Property LoadPaletteFromFavoriteCommand As AsyncRelayCommand(Of FavoritePaletteItem)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.LoadPaletteFromFavoriteCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.DeleteImageFavoriteCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.DeleteImageFavoriteCommand
+  id: DeleteImageFavoriteCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: DeleteImageFavoriteCommand
+  nameWithType: GalleryCreationViewModel.DeleteImageFavoriteCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.DeleteImageFavoriteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteImageFavoriteCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 253
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand<FavoriteImageItem> DeleteImageFavoriteCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.FavoriteImageItem}
+    content.vb: Public Property DeleteImageFavoriteCommand As AsyncRelayCommand(Of FavoriteImageItem)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.DeleteImageFavoriteCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.LoadImageFromFavoriteCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.LoadImageFromFavoriteCommand
+  id: LoadImageFromFavoriteCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: LoadImageFromFavoriteCommand
+  nameWithType: GalleryCreationViewModel.LoadImageFromFavoriteCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.LoadImageFromFavoriteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LoadImageFromFavoriteCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 254
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand<FavoriteImageItem> LoadImageFromFavoriteCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.FavoriteImageItem}
+    content.vb: Public Property LoadImageFromFavoriteCommand As AsyncRelayCommand(Of FavoriteImageItem)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.LoadImageFromFavoriteCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ToggleSessionsFlyoutCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.ToggleSessionsFlyoutCommand
+  id: ToggleSessionsFlyoutCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: ToggleSessionsFlyoutCommand
+  nameWithType: GalleryCreationViewModel.ToggleSessionsFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ToggleSessionsFlyoutCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleSessionsFlyoutCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 257
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand ToggleSessionsFlyoutCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+    content.vb: Public Property ToggleSessionsFlyoutCommand As AsyncRelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.ToggleSessionsFlyoutCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CloseSessionsFlyoutCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.CloseSessionsFlyoutCommand
+  id: CloseSessionsFlyoutCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: CloseSessionsFlyoutCommand
+  nameWithType: GalleryCreationViewModel.CloseSessionsFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CloseSessionsFlyoutCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CloseSessionsFlyoutCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 258
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand CloseSessionsFlyoutCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property CloseSessionsFlyoutCommand As RelayCommand
+  overload: artstudio.ViewModels.GalleryCreationViewModel.CloseSessionsFlyoutCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.LoadSessionCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.LoadSessionCommand
+  id: LoadSessionCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: LoadSessionCommand
+  nameWithType: GalleryCreationViewModel.LoadSessionCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.LoadSessionCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LoadSessionCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 259
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand<SessionSnapshot> LoadSessionCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.SessionSnapshot}
+    content.vb: Public Property LoadSessionCommand As AsyncRelayCommand(Of SessionSnapshot)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.LoadSessionCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.DeleteSessionCommand
+  commentId: P:artstudio.ViewModels.GalleryCreationViewModel.DeleteSessionCommand
+  id: DeleteSessionCommand
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: DeleteSessionCommand
+  nameWithType: GalleryCreationViewModel.DeleteSessionCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.DeleteSessionCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteSessionCommand
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 260
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand<SessionSnapshot> DeleteSessionCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.SessionSnapshot}
+    content.vb: Public Property DeleteSessionCommand As AsyncRelayCommand(Of SessionSnapshot)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.DeleteSessionCommand*
+- uid: artstudio.ViewModels.GalleryCreationViewModel.PropertyChanged
+  commentId: E:artstudio.ViewModels.GalleryCreationViewModel.PropertyChanged
+  id: PropertyChanged
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: GalleryCreationViewModel.PropertyChanged
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PropertyChanged
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1169
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  summary: Occurs when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged(System.String)
+  commentId: M:artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string?)
+  nameWithType: GalleryCreationViewModel.OnPropertyChanged(string?)
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged(string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OnPropertyChanged
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1171
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: protected virtual void OnPropertyChanged(string? propertyName = null)
+    parameters:
+    - id: propertyName
+      type: System.String
+    content.vb: Protected Overridable Sub OnPropertyChanged(propertyName As String = Nothing)
+  overload: artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged*
+  nameWithType.vb: GalleryCreationViewModel.OnPropertyChanged(String)
+  fullName.vb: artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SetProperty``1(``0@,``0,System.String)
+  commentId: M:artstudio.ViewModels.GalleryCreationViewModel.SetProperty``1(``0@,``0,System.String)
+  id: SetProperty``1(``0@,``0,System.String)
+  parent: artstudio.ViewModels.GalleryCreationViewModel
+  langs:
+  - csharp
+  - vb
+  name: SetProperty<T>(ref T, T, string?)
+  nameWithType: GalleryCreationViewModel.SetProperty<T>(ref T, T, string?)
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SetProperty<T>(ref T, T, string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/GalleryCreationViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SetProperty
+    path: ViewModels/GalleryCreationViewModel.cs
+    startLine: 1174
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: protected bool SetProperty<T>(ref T field, T value, string? propertyName = null)
+    parameters:
+    - id: field
+      type: '{T}'
+    - id: value
+      type: '{T}'
+    - id: propertyName
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Protected Function SetProperty(Of T)(field As T, value As T, propertyName As String = Nothing) As Boolean
+  overload: artstudio.ViewModels.GalleryCreationViewModel.SetProperty*
+  nameWithType.vb: GalleryCreationViewModel.SetProperty(Of T)(T, T, String)
+  fullName.vb: artstudio.ViewModels.GalleryCreationViewModel.SetProperty(Of T)(T, T, String)
+  name.vb: SetProperty(Of T)(T, T, String)
+references:
+- uid: artstudio.ViewModels
+  commentId: N:artstudio.ViewModels
+  href: artstudio.html
+  name: artstudio.ViewModels
+  nameWithType: artstudio.ViewModels
+  fullName: artstudio.ViewModels
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: artstudio.ViewModels.GalleryCreationViewModel.#ctor*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.#ctor
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel__ctor_artstudio_Services_DatabaseService_Microsoft_Extensions_Logging_ILogger_artstudio_ViewModels_GalleryCreationViewModel__artstudio_Services_IToastService_artstudio_Services_WordPromptService_artstudio_Services_PaletteService_
+  name: GalleryCreationViewModel
+  nameWithType: GalleryCreationViewModel.GalleryCreationViewModel
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.GalleryCreationViewModel
+  nameWithType.vb: GalleryCreationViewModel.New
+  fullName.vb: artstudio.ViewModels.GalleryCreationViewModel.New
+  name.vb: New
+- uid: artstudio.Services.DatabaseService
+  commentId: T:artstudio.Services.DatabaseService
+  parent: artstudio.Services
+  href: artstudio.Services.DatabaseService.html
+  name: DatabaseService
+  nameWithType: DatabaseService
+  fullName: artstudio.Services.DatabaseService
+- uid: Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.GalleryCreationViewModel}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.GalleryCreationViewModel}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<GalleryCreationViewModel>
+  nameWithType: ILogger<GalleryCreationViewModel>
+  fullName: Microsoft.Extensions.Logging.ILogger<artstudio.ViewModels.GalleryCreationViewModel>
+  nameWithType.vb: ILogger(Of GalleryCreationViewModel)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of artstudio.ViewModels.GalleryCreationViewModel)
+  name.vb: ILogger(Of GalleryCreationViewModel)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: artstudio.ViewModels.GalleryCreationViewModel
+    name: GalleryCreationViewModel
+    href: artstudio.ViewModels.GalleryCreationViewModel.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.GalleryCreationViewModel
+    name: GalleryCreationViewModel
+    href: artstudio.ViewModels.GalleryCreationViewModel.html
+  - name: )
+- uid: artstudio.Services.IToastService
+  commentId: T:artstudio.Services.IToastService
+  parent: artstudio.Services
+  href: artstudio.Services.IToastService.html
+  name: IToastService
+  nameWithType: IToastService
+  fullName: artstudio.Services.IToastService
+- uid: artstudio.Services.WordPromptService
+  commentId: T:artstudio.Services.WordPromptService
+  parent: artstudio.Services
+  href: artstudio.Services.WordPromptService.html
+  name: WordPromptService
+  nameWithType: WordPromptService
+  fullName: artstudio.Services.WordPromptService
+- uid: artstudio.Services.PaletteService
+  commentId: T:artstudio.Services.PaletteService
+  parent: artstudio.Services
+  href: artstudio.Services.PaletteService.html
+  name: PaletteService
+  nameWithType: PaletteService
+  fullName: artstudio.Services.PaletteService
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: artstudio.ViewModels.GalleryCreationViewModel.GalleryData*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.GalleryData
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_GalleryData
+  name: GalleryData
+  nameWithType: GalleryCreationViewModel.GalleryData
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.GalleryData
+- uid: artstudio.Data.GalleryCreationData
+  commentId: T:artstudio.Data.GalleryCreationData
+  parent: artstudio.Data
+  href: artstudio.Data.GalleryCreationData.html
+  name: GalleryCreationData
+  nameWithType: GalleryCreationData
+  fullName: artstudio.Data.GalleryCreationData
+- uid: artstudio.Data
+  commentId: N:artstudio.Data
+  href: artstudio.html
+  name: artstudio.Data
+  nameWithType: artstudio.Data
+  fullName: artstudio.Data
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+- uid: artstudio.ViewModels.GalleryCreationViewModel.Title*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.Title
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_Title
+  name: Title
+  nameWithType: GalleryCreationViewModel.Title
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.Title
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.ViewModels.GalleryCreationViewModel.Notes*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.Notes
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_Notes
+  name: Notes
+  nameWithType: GalleryCreationViewModel.Notes
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.Notes
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CustomTagsText*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.CustomTagsText
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_CustomTagsText
+  name: CustomTagsText
+  nameWithType: GalleryCreationViewModel.CustomTagsText
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CustomTagsText
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImagePath*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.ArtworkImagePath
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_ArtworkImagePath
+  name: ArtworkImagePath
+  nameWithType: GalleryCreationViewModel.ArtworkImagePath
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImagePath
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImageSource*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.ArtworkImageSource
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_ArtworkImageSource
+  name: ArtworkImageSource
+  nameWithType: GalleryCreationViewModel.ArtworkImageSource
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ArtworkImageSource
+- uid: Microsoft.Maui.Controls.ImageSource
+  commentId: T:Microsoft.Maui.Controls.ImageSource
+  parent: Microsoft.Maui.Controls
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.maui.controls.imagesource
+  name: ImageSource
+  nameWithType: ImageSource
+  fullName: Microsoft.Maui.Controls.ImageSource
+- uid: Microsoft.Maui.Controls
+  commentId: N:Microsoft.Maui.Controls
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Maui.Controls
+  nameWithType: Microsoft.Maui.Controls
+  fullName: Microsoft.Maui.Controls
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Controls
+    name: Controls
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.controls
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Controls
+    name: Controls
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.controls
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsSaving*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsSaving
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsSaving
+  name: IsSaving
+  nameWithType: GalleryCreationViewModel.IsSaving
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsSaving
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasArtworkImage*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.HasArtworkImage
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_HasArtworkImage
+  name: HasArtworkImage
+  nameWithType: GalleryCreationViewModel.HasArtworkImage
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasArtworkImage
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CanSave*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.CanSave
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_CanSave
+  name: CanSave
+  nameWithType: GalleryCreationViewModel.CanSave
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CanSave
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasSessionData*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.HasSessionData
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_HasSessionData
+  name: HasSessionData
+  nameWithType: GalleryCreationViewModel.HasSessionData
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasSessionData
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsWordsFlyoutVisible*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsWordsFlyoutVisible
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsWordsFlyoutVisible
+  name: IsWordsFlyoutVisible
+  nameWithType: GalleryCreationViewModel.IsWordsFlyoutVisible
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsWordsFlyoutVisible
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsPaletteFlyoutVisible*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsPaletteFlyoutVisible
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsPaletteFlyoutVisible
+  name: IsPaletteFlyoutVisible
+  nameWithType: GalleryCreationViewModel.IsPaletteFlyoutVisible
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsPaletteFlyoutVisible
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsImagesFlyoutVisible*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsImagesFlyoutVisible
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsImagesFlyoutVisible
+  name: IsImagesFlyoutVisible
+  nameWithType: GalleryCreationViewModel.IsImagesFlyoutVisible
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsImagesFlyoutVisible
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingWords*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsLoadingWords
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsLoadingWords
+  name: IsLoadingWords
+  nameWithType: GalleryCreationViewModel.IsLoadingWords
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingWords
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingPalettes*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsLoadingPalettes
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsLoadingPalettes
+  name: IsLoadingPalettes
+  nameWithType: GalleryCreationViewModel.IsLoadingPalettes
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingPalettes
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsSessionsFlyoutVisible*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsSessionsFlyoutVisible
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsSessionsFlyoutVisible
+  name: IsSessionsFlyoutVisible
+  nameWithType: GalleryCreationViewModel.IsSessionsFlyoutVisible
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsSessionsFlyoutVisible
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingSessions*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsLoadingSessions
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsLoadingSessions
+  name: IsLoadingSessions
+  nameWithType: GalleryCreationViewModel.IsLoadingSessions
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingSessions
+- uid: artstudio.ViewModels.GalleryCreationViewModel.FavoriteImages*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.FavoriteImages
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_FavoriteImages
+  name: FavoriteImages
+  nameWithType: GalleryCreationViewModel.FavoriteImages
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.FavoriteImages
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.Data.FavoriteImageItem}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.Data.FavoriteImageItem}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<FavoriteImageItem>
+  nameWithType: ObservableCollection<FavoriteImageItem>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.Data.FavoriteImageItem>
+  nameWithType.vb: ObservableCollection(Of FavoriteImageItem)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.Data.FavoriteImageItem)
+  name.vb: ObservableCollection(Of FavoriteImageItem)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.Data.FavoriteImageItem
+    name: FavoriteImageItem
+    href: artstudio.Data.FavoriteImageItem.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.FavoriteImageItem
+    name: FavoriteImageItem
+    href: artstudio.Data.FavoriteImageItem.html
+  - name: )
+- uid: System.Collections.ObjectModel.ObservableCollection`1
+  commentId: T:System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<T>
+  nameWithType: ObservableCollection<T>
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>
+  nameWithType.vb: ObservableCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of T)
+  name.vb: ObservableCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteImages*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteImages
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_HasNoFavoriteImages
+  name: HasNoFavoriteImages
+  nameWithType: GalleryCreationViewModel.HasNoFavoriteImages
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteImages
+- uid: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingImages*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.IsLoadingImages
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_IsLoadingImages
+  name: IsLoadingImages
+  nameWithType: GalleryCreationViewModel.IsLoadingImages
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.IsLoadingImages
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasNoSavedSessions*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.HasNoSavedSessions
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_HasNoSavedSessions
+  name: HasNoSavedSessions
+  nameWithType: GalleryCreationViewModel.HasNoSavedSessions
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasNoSavedSessions
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteWords*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteWords
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_HasNoFavoriteWords
+  name: HasNoFavoriteWords
+  nameWithType: GalleryCreationViewModel.HasNoFavoriteWords
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoriteWords
+- uid: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoritePalettes*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoritePalettes
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_HasNoFavoritePalettes
+  name: HasNoFavoritePalettes
+  nameWithType: GalleryCreationViewModel.HasNoFavoritePalettes
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.HasNoFavoritePalettes
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectableWords*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SelectableWords
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SelectableWords
+  name: SelectableWords
+  nameWithType: GalleryCreationViewModel.SelectableWords
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectableWords
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableWord}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableWord}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<SelectableWord>
+  nameWithType: ObservableCollection<SelectableWord>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.SelectableWord>
+  nameWithType.vb: ObservableCollection(Of SelectableWord)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.SelectableWord)
+  name.vb: ObservableCollection(Of SelectableWord)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.SelectableWord
+    name: SelectableWord
+    href: artstudio.ViewModels.SelectableWord.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.SelectableWord
+    name: SelectableWord
+    href: artstudio.ViewModels.SelectableWord.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectablePalette*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SelectablePalette
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SelectablePalette
+  name: SelectablePalette
+  nameWithType: GalleryCreationViewModel.SelectablePalette
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectablePalette
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableColor}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableColor}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<SelectableColor>
+  nameWithType: ObservableCollection<SelectableColor>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.SelectableColor>
+  nameWithType.vb: ObservableCollection(Of SelectableColor)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.SelectableColor)
+  name.vb: ObservableCollection(Of SelectableColor)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.SelectableColor
+    name: SelectableColor
+    href: artstudio.ViewModels.SelectableColor.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.SelectableColor
+    name: SelectableColor
+    href: artstudio.ViewModels.SelectableColor.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectableImages*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SelectableImages
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SelectableImages
+  name: SelectableImages
+  nameWithType: GalleryCreationViewModel.SelectableImages
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectableImages
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableImage}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SelectableImage}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<SelectableImage>
+  nameWithType: ObservableCollection<SelectableImage>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.SelectableImage>
+  nameWithType.vb: ObservableCollection(Of SelectableImage)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.SelectableImage)
+  name.vb: ObservableCollection(Of SelectableImage)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.SelectableImage
+    name: SelectableImage
+    href: artstudio.ViewModels.SelectableImage.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.SelectableImage
+    name: SelectableImage
+    href: artstudio.ViewModels.SelectableImage.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.FavoriteWordsGroups*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.FavoriteWordsGroups
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_FavoriteWordsGroups
+  name: FavoriteWordsGroups
+  nameWithType: GalleryCreationViewModel.FavoriteWordsGroups
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.FavoriteWordsGroups
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.WordCollectionGroup}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.WordCollectionGroup}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<WordCollectionGroup>
+  nameWithType: ObservableCollection<WordCollectionGroup>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.WordCollectionGroup>
+  nameWithType.vb: ObservableCollection(Of WordCollectionGroup)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.WordCollectionGroup)
+  name.vb: ObservableCollection(Of WordCollectionGroup)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.WordCollectionGroup
+    name: WordCollectionGroup
+    href: artstudio.ViewModels.WordCollectionGroup.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.WordCollectionGroup
+    name: WordCollectionGroup
+    href: artstudio.ViewModels.WordCollectionGroup.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.FavoritePalettesGroups*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.FavoritePalettesGroups
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_FavoritePalettesGroups
+  name: FavoritePalettesGroups
+  nameWithType: GalleryCreationViewModel.FavoritePalettesGroups
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.FavoritePalettesGroups
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.PaletteCollectionGroup}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.PaletteCollectionGroup}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<PaletteCollectionGroup>
+  nameWithType: ObservableCollection<PaletteCollectionGroup>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.PaletteCollectionGroup>
+  nameWithType.vb: ObservableCollection(Of PaletteCollectionGroup)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.PaletteCollectionGroup)
+  name.vb: ObservableCollection(Of PaletteCollectionGroup)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.PaletteCollectionGroup
+    name: PaletteCollectionGroup
+    href: artstudio.ViewModels.PaletteCollectionGroup.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.PaletteCollectionGroup
+    name: PaletteCollectionGroup
+    href: artstudio.ViewModels.PaletteCollectionGroup.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SavedSessions*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SavedSessions
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SavedSessions
+  name: SavedSessions
+  nameWithType: GalleryCreationViewModel.SavedSessions
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SavedSessions
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.Data.SessionSnapshot}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.Data.SessionSnapshot}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<SessionSnapshot>
+  nameWithType: ObservableCollection<SessionSnapshot>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.Data.SessionSnapshot>
+  nameWithType.vb: ObservableCollection(Of SessionSnapshot)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.Data.SessionSnapshot)
+  name.vb: ObservableCollection(Of SessionSnapshot)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.Data.SessionSnapshot
+    name: SessionSnapshot
+    href: artstudio.Data.SessionSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.SessionSnapshot
+    name: SessionSnapshot
+    href: artstudio.Data.SessionSnapshot.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.PickImageCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.PickImageCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_PickImageCommand
+  name: PickImageCommand
+  nameWithType: GalleryCreationViewModel.PickImageCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.PickImageCommand
+- uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+  commentId: T:CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+  parent: CommunityToolkit.Mvvm.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand
+  name: AsyncRelayCommand
+  nameWithType: AsyncRelayCommand
+  fullName: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+- uid: CommunityToolkit.Mvvm.Input
+  commentId: N:CommunityToolkit.Mvvm.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  name: CommunityToolkit.Mvvm.Input
+  nameWithType: CommunityToolkit.Mvvm.Input
+  fullName: CommunityToolkit.Mvvm.Input
+  spec.csharp:
+  - uid: CommunityToolkit
+    name: CommunityToolkit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  - name: .
+  - uid: CommunityToolkit.Mvvm
+    name: Mvvm
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm
+  - name: .
+  - uid: CommunityToolkit.Mvvm.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input
+  spec.vb:
+  - uid: CommunityToolkit
+    name: CommunityToolkit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  - name: .
+  - uid: CommunityToolkit.Mvvm
+    name: Mvvm
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm
+  - name: .
+  - uid: CommunityToolkit.Mvvm.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SaveCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SaveCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SaveCommand
+  name: SaveCommand
+  nameWithType: GalleryCreationViewModel.SaveCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SaveCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ClearCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.ClearCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_ClearCommand
+  name: ClearCommand
+  nameWithType: GalleryCreationViewModel.ClearCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ClearCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectAllWordsCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SelectAllWordsCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SelectAllWordsCommand
+  name: SelectAllWordsCommand
+  nameWithType: GalleryCreationViewModel.SelectAllWordsCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectAllWordsCommand
+- uid: CommunityToolkit.Mvvm.Input.RelayCommand
+  commentId: T:CommunityToolkit.Mvvm.Input.RelayCommand
+  parent: CommunityToolkit.Mvvm.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.relaycommand
+  name: RelayCommand
+  nameWithType: RelayCommand
+  fullName: CommunityToolkit.Mvvm.Input.RelayCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneWordsCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SelectNoneWordsCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SelectNoneWordsCommand
+  name: SelectNoneWordsCommand
+  nameWithType: GalleryCreationViewModel.SelectNoneWordsCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneWordsCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectAllImagesCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SelectAllImagesCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SelectAllImagesCommand
+  name: SelectAllImagesCommand
+  nameWithType: GalleryCreationViewModel.SelectAllImagesCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectAllImagesCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneImagesCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SelectNoneImagesCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SelectNoneImagesCommand
+  name: SelectNoneImagesCommand
+  nameWithType: GalleryCreationViewModel.SelectNoneImagesCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SelectNoneImagesCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ToggleWordsFlyoutCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.ToggleWordsFlyoutCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_ToggleWordsFlyoutCommand
+  name: ToggleWordsFlyoutCommand
+  nameWithType: GalleryCreationViewModel.ToggleWordsFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ToggleWordsFlyoutCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.TogglePaletteFlyoutCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.TogglePaletteFlyoutCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_TogglePaletteFlyoutCommand
+  name: TogglePaletteFlyoutCommand
+  nameWithType: GalleryCreationViewModel.TogglePaletteFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.TogglePaletteFlyoutCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ToggleImagesFlyoutCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.ToggleImagesFlyoutCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_ToggleImagesFlyoutCommand
+  name: ToggleImagesFlyoutCommand
+  nameWithType: GalleryCreationViewModel.ToggleImagesFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ToggleImagesFlyoutCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CloseWordsFlyoutCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.CloseWordsFlyoutCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_CloseWordsFlyoutCommand
+  name: CloseWordsFlyoutCommand
+  nameWithType: GalleryCreationViewModel.CloseWordsFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CloseWordsFlyoutCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ClosePaletteFlyoutCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.ClosePaletteFlyoutCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_ClosePaletteFlyoutCommand
+  name: ClosePaletteFlyoutCommand
+  nameWithType: GalleryCreationViewModel.ClosePaletteFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ClosePaletteFlyoutCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CloseImagesFlyoutCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.CloseImagesFlyoutCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_CloseImagesFlyoutCommand
+  name: CloseImagesFlyoutCommand
+  nameWithType: GalleryCreationViewModel.CloseImagesFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CloseImagesFlyoutCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.LoadWordsFromFavoriteCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.LoadWordsFromFavoriteCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_LoadWordsFromFavoriteCommand
+  name: LoadWordsFromFavoriteCommand
+  nameWithType: GalleryCreationViewModel.LoadWordsFromFavoriteCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.LoadWordsFromFavoriteCommand
+- uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.WordCollection}
+  commentId: T:CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.WordCollection}
+  parent: CommunityToolkit.Mvvm.Input
+  definition: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  name: AsyncRelayCommand<WordCollection>
+  nameWithType: AsyncRelayCommand<WordCollection>
+  fullName: CommunityToolkit.Mvvm.Input.AsyncRelayCommand<artstudio.Data.WordCollection>
+  nameWithType.vb: AsyncRelayCommand(Of WordCollection)
+  fullName.vb: CommunityToolkit.Mvvm.Input.AsyncRelayCommand(Of artstudio.Data.WordCollection)
+  name.vb: AsyncRelayCommand(Of WordCollection)
+  spec.csharp:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: <
+  - uid: artstudio.Data.WordCollection
+    name: WordCollection
+    href: artstudio.Data.WordCollection.html
+  - name: '>'
+  spec.vb:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.WordCollection
+    name: WordCollection
+    href: artstudio.Data.WordCollection.html
+  - name: )
+- uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+  commentId: T:CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  name: AsyncRelayCommand<T>
+  nameWithType: AsyncRelayCommand<T>
+  fullName: CommunityToolkit.Mvvm.Input.AsyncRelayCommand<T>
+  nameWithType.vb: AsyncRelayCommand(Of T)
+  fullName.vb: CommunityToolkit.Mvvm.Input.AsyncRelayCommand(Of T)
+  name.vb: AsyncRelayCommand(Of T)
+  spec.csharp:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.LoadPaletteFromFavoriteCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.LoadPaletteFromFavoriteCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_LoadPaletteFromFavoriteCommand
+  name: LoadPaletteFromFavoriteCommand
+  nameWithType: GalleryCreationViewModel.LoadPaletteFromFavoriteCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.LoadPaletteFromFavoriteCommand
+- uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.ViewModels.FavoritePaletteItem}
+  commentId: T:CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.ViewModels.FavoritePaletteItem}
+  parent: CommunityToolkit.Mvvm.Input
+  definition: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  name: AsyncRelayCommand<FavoritePaletteItem>
+  nameWithType: AsyncRelayCommand<FavoritePaletteItem>
+  fullName: CommunityToolkit.Mvvm.Input.AsyncRelayCommand<artstudio.ViewModels.FavoritePaletteItem>
+  nameWithType.vb: AsyncRelayCommand(Of FavoritePaletteItem)
+  fullName.vb: CommunityToolkit.Mvvm.Input.AsyncRelayCommand(Of artstudio.ViewModels.FavoritePaletteItem)
+  name.vb: AsyncRelayCommand(Of FavoritePaletteItem)
+  spec.csharp:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: <
+  - uid: artstudio.ViewModels.FavoritePaletteItem
+    name: FavoritePaletteItem
+    href: artstudio.ViewModels.FavoritePaletteItem.html
+  - name: '>'
+  spec.vb:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.FavoritePaletteItem
+    name: FavoritePaletteItem
+    href: artstudio.ViewModels.FavoritePaletteItem.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.DeleteImageFavoriteCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.DeleteImageFavoriteCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_DeleteImageFavoriteCommand
+  name: DeleteImageFavoriteCommand
+  nameWithType: GalleryCreationViewModel.DeleteImageFavoriteCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.DeleteImageFavoriteCommand
+- uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.FavoriteImageItem}
+  commentId: T:CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.FavoriteImageItem}
+  parent: CommunityToolkit.Mvvm.Input
+  definition: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  name: AsyncRelayCommand<FavoriteImageItem>
+  nameWithType: AsyncRelayCommand<FavoriteImageItem>
+  fullName: CommunityToolkit.Mvvm.Input.AsyncRelayCommand<artstudio.Data.FavoriteImageItem>
+  nameWithType.vb: AsyncRelayCommand(Of FavoriteImageItem)
+  fullName.vb: CommunityToolkit.Mvvm.Input.AsyncRelayCommand(Of artstudio.Data.FavoriteImageItem)
+  name.vb: AsyncRelayCommand(Of FavoriteImageItem)
+  spec.csharp:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: <
+  - uid: artstudio.Data.FavoriteImageItem
+    name: FavoriteImageItem
+    href: artstudio.Data.FavoriteImageItem.html
+  - name: '>'
+  spec.vb:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.FavoriteImageItem
+    name: FavoriteImageItem
+    href: artstudio.Data.FavoriteImageItem.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.LoadImageFromFavoriteCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.LoadImageFromFavoriteCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_LoadImageFromFavoriteCommand
+  name: LoadImageFromFavoriteCommand
+  nameWithType: GalleryCreationViewModel.LoadImageFromFavoriteCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.LoadImageFromFavoriteCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.ToggleSessionsFlyoutCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.ToggleSessionsFlyoutCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_ToggleSessionsFlyoutCommand
+  name: ToggleSessionsFlyoutCommand
+  nameWithType: GalleryCreationViewModel.ToggleSessionsFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.ToggleSessionsFlyoutCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.CloseSessionsFlyoutCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.CloseSessionsFlyoutCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_CloseSessionsFlyoutCommand
+  name: CloseSessionsFlyoutCommand
+  nameWithType: GalleryCreationViewModel.CloseSessionsFlyoutCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.CloseSessionsFlyoutCommand
+- uid: artstudio.ViewModels.GalleryCreationViewModel.LoadSessionCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.LoadSessionCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_LoadSessionCommand
+  name: LoadSessionCommand
+  nameWithType: GalleryCreationViewModel.LoadSessionCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.LoadSessionCommand
+- uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.SessionSnapshot}
+  commentId: T:CommunityToolkit.Mvvm.Input.AsyncRelayCommand{artstudio.Data.SessionSnapshot}
+  parent: CommunityToolkit.Mvvm.Input
+  definition: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  name: AsyncRelayCommand<SessionSnapshot>
+  nameWithType: AsyncRelayCommand<SessionSnapshot>
+  fullName: CommunityToolkit.Mvvm.Input.AsyncRelayCommand<artstudio.Data.SessionSnapshot>
+  nameWithType.vb: AsyncRelayCommand(Of SessionSnapshot)
+  fullName.vb: CommunityToolkit.Mvvm.Input.AsyncRelayCommand(Of artstudio.Data.SessionSnapshot)
+  name.vb: AsyncRelayCommand(Of SessionSnapshot)
+  spec.csharp:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: <
+  - uid: artstudio.Data.SessionSnapshot
+    name: SessionSnapshot
+    href: artstudio.Data.SessionSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand`1
+    name: AsyncRelayCommand
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.SessionSnapshot
+    name: SessionSnapshot
+    href: artstudio.Data.SessionSnapshot.html
+  - name: )
+- uid: artstudio.ViewModels.GalleryCreationViewModel.DeleteSessionCommand*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.DeleteSessionCommand
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_DeleteSessionCommand
+  name: DeleteSessionCommand
+  nameWithType: GalleryCreationViewModel.DeleteSessionCommand
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.DeleteSessionCommand
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: GalleryCreationViewModel.OnPropertyChanged
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.OnPropertyChanged
+- uid: artstudio.ViewModels.GalleryCreationViewModel.SetProperty*
+  commentId: Overload:artstudio.ViewModels.GalleryCreationViewModel.SetProperty
+  href: artstudio.ViewModels.GalleryCreationViewModel.html#artstudio_ViewModels_GalleryCreationViewModel_SetProperty__1___0____0_System_String_
+  name: SetProperty
+  nameWithType: GalleryCreationViewModel.SetProperty
+  fullName: artstudio.ViewModels.GalleryCreationViewModel.SetProperty
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

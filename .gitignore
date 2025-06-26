@@ -4,6 +4,10 @@ obj/
 [Bb]uild*/
 [Ll]ogs/
 
+# Folders
+python/
+Documentation/
+
 # User-specific files
 *.user
 *.userosscache

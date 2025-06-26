@@ -1,0 +1,2150 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.ViewModels.PaletteViewModel
+  commentId: T:artstudio.ViewModels.PaletteViewModel
+  id: PaletteViewModel
+  parent: artstudio.ViewModels
+  children:
+  - artstudio.ViewModels.PaletteViewModel.#ctor(artstudio.Services.IFileSaveService,artstudio.Services.Export,artstudio.Services.PaletteService,artstudio.Services.IToastService,Microsoft.Extensions.Logging.ILoggerFactory)
+  - artstudio.ViewModels.PaletteViewModel.ChangeSortToBrightnessCommand
+  - artstudio.ViewModels.PaletteViewModel.ChangeSortToDateCommand
+  - artstudio.ViewModels.PaletteViewModel.ChangeSortToHueCommand
+  - artstudio.ViewModels.PaletteViewModel.CloseFavoritesPanelCommand
+  - artstudio.ViewModels.PaletteViewModel.CurrentFavTab
+  - artstudio.ViewModels.PaletteViewModel.DefaultSwatchSort
+  - artstudio.ViewModels.PaletteViewModel.Dispose
+  - artstudio.ViewModels.PaletteViewModel.ExportPaletteCommand
+  - artstudio.ViewModels.PaletteViewModel.FavoriteSwatches
+  - artstudio.ViewModels.PaletteViewModel.FavoritesPanelWidth
+  - artstudio.ViewModels.PaletteViewModel.GroupedFavoritePalettes
+  - artstudio.ViewModels.PaletteViewModel.HasNoFavoritePalettes
+  - artstudio.ViewModels.PaletteViewModel.HasNoFavoriteSwatches
+  - artstudio.ViewModels.PaletteViewModel.IsFavoritePalette
+  - artstudio.ViewModels.PaletteViewModel.IsFavoritesPanelOpen
+  - artstudio.ViewModels.PaletteViewModel.IsPalettesFavTabVisible
+  - artstudio.ViewModels.PaletteViewModel.IsSwatchesFavTabVisible
+  - artstudio.ViewModels.PaletteViewModel.LoadFavoritePaletteCommand
+  - artstudio.ViewModels.PaletteViewModel.LoadSwatchColorCommand
+  - artstudio.ViewModels.PaletteViewModel.OnPropertyChanged(System.String)
+  - artstudio.ViewModels.PaletteViewModel.PalettesTabBackgroundColor
+  - artstudio.ViewModels.PaletteViewModel.PalettesTabTextColor
+  - artstudio.ViewModels.PaletteViewModel.PropertyChanged
+  - artstudio.ViewModels.PaletteViewModel.RegenerateCommand
+  - artstudio.ViewModels.PaletteViewModel.RemoveFavoritePaletteCommand
+  - artstudio.ViewModels.PaletteViewModel.RemoveFavoriteSwatchCommand
+  - artstudio.ViewModels.PaletteViewModel.SavePaletteToFavoritesCommand
+  - artstudio.ViewModels.PaletteViewModel.SelectPalettesFavTabCommand
+  - artstudio.ViewModels.PaletteViewModel.SelectSwatchesFavTabCommand
+  - artstudio.ViewModels.PaletteViewModel.SetProperty``1(``0@,``0,System.String)
+  - artstudio.ViewModels.PaletteViewModel.SortColorsCommand
+  - artstudio.ViewModels.PaletteViewModel.Swatches
+  - artstudio.ViewModels.PaletteViewModel.SwatchesTabBackgroundColor
+  - artstudio.ViewModels.PaletteViewModel.SwatchesTabTextColor
+  - artstudio.ViewModels.PaletteViewModel.ToggleFavoritePaletteCommand
+  - artstudio.ViewModels.PaletteViewModel.ToggleFavoritesPanelCommand
+  langs:
+  - csharp
+  - vb
+  name: PaletteViewModel
+  nameWithType: PaletteViewModel
+  fullName: artstudio.ViewModels.PaletteViewModel
+  type: Class
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PaletteViewModel
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 11
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: 'public class PaletteViewModel : INotifyPropertyChanged'
+    content.vb: Public Class PaletteViewModel Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.ViewModels.PaletteViewModel.Swatches
+  commentId: P:artstudio.ViewModels.PaletteViewModel.Swatches
+  id: Swatches
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: Swatches
+  nameWithType: PaletteViewModel.Swatches
+  fullName: artstudio.ViewModels.PaletteViewModel.Swatches
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Swatches
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 46
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<SwatchViewModel> Swatches { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SwatchViewModel}
+    content.vb: Public Property Swatches As ObservableCollection(Of SwatchViewModel)
+  overload: artstudio.ViewModels.PaletteViewModel.Swatches*
+- uid: artstudio.ViewModels.PaletteViewModel.IsFavoritePalette
+  commentId: P:artstudio.ViewModels.PaletteViewModel.IsFavoritePalette
+  id: IsFavoritePalette
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsFavoritePalette
+  nameWithType: PaletteViewModel.IsFavoritePalette
+  fullName: artstudio.ViewModels.PaletteViewModel.IsFavoritePalette
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsFavoritePalette
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 48
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsFavoritePalette { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsFavoritePalette As Boolean
+  overload: artstudio.ViewModels.PaletteViewModel.IsFavoritePalette*
+- uid: artstudio.ViewModels.PaletteViewModel.IsFavoritesPanelOpen
+  commentId: P:artstudio.ViewModels.PaletteViewModel.IsFavoritesPanelOpen
+  id: IsFavoritesPanelOpen
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsFavoritesPanelOpen
+  nameWithType: PaletteViewModel.IsFavoritesPanelOpen
+  fullName: artstudio.ViewModels.PaletteViewModel.IsFavoritesPanelOpen
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsFavoritesPanelOpen
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 62
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsFavoritesPanelOpen { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsFavoritesPanelOpen As Boolean
+  overload: artstudio.ViewModels.PaletteViewModel.IsFavoritesPanelOpen*
+- uid: artstudio.ViewModels.PaletteViewModel.FavoritesPanelWidth
+  commentId: P:artstudio.ViewModels.PaletteViewModel.FavoritesPanelWidth
+  id: FavoritesPanelWidth
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: FavoritesPanelWidth
+  nameWithType: PaletteViewModel.FavoritesPanelWidth
+  fullName: artstudio.ViewModels.PaletteViewModel.FavoritesPanelWidth
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FavoritesPanelWidth
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 76
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public GridLength FavoritesPanelWidth { get; set; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.GridLength
+    content.vb: Public Property FavoritesPanelWidth As GridLength
+  overload: artstudio.ViewModels.PaletteViewModel.FavoritesPanelWidth*
+- uid: artstudio.ViewModels.PaletteViewModel.CurrentFavTab
+  commentId: P:artstudio.ViewModels.PaletteViewModel.CurrentFavTab
+  id: CurrentFavTab
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: CurrentFavTab
+  nameWithType: PaletteViewModel.CurrentFavTab
+  fullName: artstudio.ViewModels.PaletteViewModel.CurrentFavTab
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CurrentFavTab
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 82
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public PaletteViewModel.FavTabType CurrentFavTab { get; set; }
+    parameters: []
+    return:
+      type: artstudio.ViewModels.PaletteViewModel.FavTabType
+    content.vb: Public Property CurrentFavTab As PaletteViewModel.FavTabType
+  overload: artstudio.ViewModels.PaletteViewModel.CurrentFavTab*
+- uid: artstudio.ViewModels.PaletteViewModel.IsSwatchesFavTabVisible
+  commentId: P:artstudio.ViewModels.PaletteViewModel.IsSwatchesFavTabVisible
+  id: IsSwatchesFavTabVisible
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsSwatchesFavTabVisible
+  nameWithType: PaletteViewModel.IsSwatchesFavTabVisible
+  fullName: artstudio.ViewModels.PaletteViewModel.IsSwatchesFavTabVisible
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsSwatchesFavTabVisible
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 99
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsSwatchesFavTabVisible { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsSwatchesFavTabVisible As Boolean
+  overload: artstudio.ViewModels.PaletteViewModel.IsSwatchesFavTabVisible*
+- uid: artstudio.ViewModels.PaletteViewModel.IsPalettesFavTabVisible
+  commentId: P:artstudio.ViewModels.PaletteViewModel.IsPalettesFavTabVisible
+  id: IsPalettesFavTabVisible
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsPalettesFavTabVisible
+  nameWithType: PaletteViewModel.IsPalettesFavTabVisible
+  fullName: artstudio.ViewModels.PaletteViewModel.IsPalettesFavTabVisible
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsPalettesFavTabVisible
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 100
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsPalettesFavTabVisible { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsPalettesFavTabVisible As Boolean
+  overload: artstudio.ViewModels.PaletteViewModel.IsPalettesFavTabVisible*
+- uid: artstudio.ViewModels.PaletteViewModel.SwatchesTabBackgroundColor
+  commentId: P:artstudio.ViewModels.PaletteViewModel.SwatchesTabBackgroundColor
+  id: SwatchesTabBackgroundColor
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: SwatchesTabBackgroundColor
+  nameWithType: PaletteViewModel.SwatchesTabBackgroundColor
+  fullName: artstudio.ViewModels.PaletteViewModel.SwatchesTabBackgroundColor
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SwatchesTabBackgroundColor
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 103
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public Color SwatchesTabBackgroundColor { get; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.Graphics.Color
+    content.vb: Public ReadOnly Property SwatchesTabBackgroundColor As Color
+  overload: artstudio.ViewModels.PaletteViewModel.SwatchesTabBackgroundColor*
+- uid: artstudio.ViewModels.PaletteViewModel.PalettesTabBackgroundColor
+  commentId: P:artstudio.ViewModels.PaletteViewModel.PalettesTabBackgroundColor
+  id: PalettesTabBackgroundColor
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: PalettesTabBackgroundColor
+  nameWithType: PaletteViewModel.PalettesTabBackgroundColor
+  fullName: artstudio.ViewModels.PaletteViewModel.PalettesTabBackgroundColor
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PalettesTabBackgroundColor
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 104
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public Color PalettesTabBackgroundColor { get; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.Graphics.Color
+    content.vb: Public ReadOnly Property PalettesTabBackgroundColor As Color
+  overload: artstudio.ViewModels.PaletteViewModel.PalettesTabBackgroundColor*
+- uid: artstudio.ViewModels.PaletteViewModel.SwatchesTabTextColor
+  commentId: P:artstudio.ViewModels.PaletteViewModel.SwatchesTabTextColor
+  id: SwatchesTabTextColor
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: SwatchesTabTextColor
+  nameWithType: PaletteViewModel.SwatchesTabTextColor
+  fullName: artstudio.ViewModels.PaletteViewModel.SwatchesTabTextColor
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SwatchesTabTextColor
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 105
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public Color SwatchesTabTextColor { get; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.Graphics.Color
+    content.vb: Public ReadOnly Property SwatchesTabTextColor As Color
+  overload: artstudio.ViewModels.PaletteViewModel.SwatchesTabTextColor*
+- uid: artstudio.ViewModels.PaletteViewModel.PalettesTabTextColor
+  commentId: P:artstudio.ViewModels.PaletteViewModel.PalettesTabTextColor
+  id: PalettesTabTextColor
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: PalettesTabTextColor
+  nameWithType: PaletteViewModel.PalettesTabTextColor
+  fullName: artstudio.ViewModels.PaletteViewModel.PalettesTabTextColor
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PalettesTabTextColor
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 106
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public Color PalettesTabTextColor { get; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.Graphics.Color
+    content.vb: Public ReadOnly Property PalettesTabTextColor As Color
+  overload: artstudio.ViewModels.PaletteViewModel.PalettesTabTextColor*
+- uid: artstudio.ViewModels.PaletteViewModel.FavoriteSwatches
+  commentId: P:artstudio.ViewModels.PaletteViewModel.FavoriteSwatches
+  id: FavoriteSwatches
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: FavoriteSwatches
+  nameWithType: PaletteViewModel.FavoriteSwatches
+  fullName: artstudio.ViewModels.PaletteViewModel.FavoriteSwatches
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FavoriteSwatches
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 109
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<FavoriteSwatchItem> FavoriteSwatches { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.FavoriteSwatchItem}
+    content.vb: Public Property FavoriteSwatches As ObservableCollection(Of FavoriteSwatchItem)
+  overload: artstudio.ViewModels.PaletteViewModel.FavoriteSwatches*
+- uid: artstudio.ViewModels.PaletteViewModel.GroupedFavoritePalettes
+  commentId: P:artstudio.ViewModels.PaletteViewModel.GroupedFavoritePalettes
+  id: GroupedFavoritePalettes
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: GroupedFavoritePalettes
+  nameWithType: PaletteViewModel.GroupedFavoritePalettes
+  fullName: artstudio.ViewModels.PaletteViewModel.GroupedFavoritePalettes
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GroupedFavoritePalettes
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 110
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<PaletteCollectionGroup> GroupedFavoritePalettes { get; set; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.PaletteCollectionGroup}
+    content.vb: Public Property GroupedFavoritePalettes As ObservableCollection(Of PaletteCollectionGroup)
+  overload: artstudio.ViewModels.PaletteViewModel.GroupedFavoritePalettes*
+- uid: artstudio.ViewModels.PaletteViewModel.HasNoFavoriteSwatches
+  commentId: P:artstudio.ViewModels.PaletteViewModel.HasNoFavoriteSwatches
+  id: HasNoFavoriteSwatches
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasNoFavoriteSwatches
+  nameWithType: PaletteViewModel.HasNoFavoriteSwatches
+  fullName: artstudio.ViewModels.PaletteViewModel.HasNoFavoriteSwatches
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasNoFavoriteSwatches
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 113
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasNoFavoriteSwatches { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasNoFavoriteSwatches As Boolean
+  overload: artstudio.ViewModels.PaletteViewModel.HasNoFavoriteSwatches*
+- uid: artstudio.ViewModels.PaletteViewModel.HasNoFavoritePalettes
+  commentId: P:artstudio.ViewModels.PaletteViewModel.HasNoFavoritePalettes
+  id: HasNoFavoritePalettes
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasNoFavoritePalettes
+  nameWithType: PaletteViewModel.HasNoFavoritePalettes
+  fullName: artstudio.ViewModels.PaletteViewModel.HasNoFavoritePalettes
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasNoFavoritePalettes
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 114
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasNoFavoritePalettes { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasNoFavoritePalettes As Boolean
+  overload: artstudio.ViewModels.PaletteViewModel.HasNoFavoritePalettes*
+- uid: artstudio.ViewModels.PaletteViewModel.DefaultSwatchSort
+  commentId: P:artstudio.ViewModels.PaletteViewModel.DefaultSwatchSort
+  id: DefaultSwatchSort
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: DefaultSwatchSort
+  nameWithType: PaletteViewModel.DefaultSwatchSort
+  fullName: artstudio.ViewModels.PaletteViewModel.DefaultSwatchSort
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DefaultSwatchSort
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 117
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public SwatchSortMethod DefaultSwatchSort { get; }
+    parameters: []
+    return:
+      type: artstudio.Services.SwatchSortMethod
+    content.vb: Public Property DefaultSwatchSort As SwatchSortMethod
+  overload: artstudio.ViewModels.PaletteViewModel.DefaultSwatchSort*
+- uid: artstudio.ViewModels.PaletteViewModel.RegenerateCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.RegenerateCommand
+  id: RegenerateCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: RegenerateCommand
+  nameWithType: PaletteViewModel.RegenerateCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.RegenerateCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RegenerateCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 131
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand RegenerateCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property RegenerateCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.RegenerateCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.ExportPaletteCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.ExportPaletteCommand
+  id: ExportPaletteCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: ExportPaletteCommand
+  nameWithType: PaletteViewModel.ExportPaletteCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ExportPaletteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ExportPaletteCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 132
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ExportPaletteCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ExportPaletteCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.ExportPaletteCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.ToggleFavoritePaletteCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.ToggleFavoritePaletteCommand
+  id: ToggleFavoritePaletteCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: ToggleFavoritePaletteCommand
+  nameWithType: PaletteViewModel.ToggleFavoritePaletteCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ToggleFavoritePaletteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleFavoritePaletteCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 133
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ToggleFavoritePaletteCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ToggleFavoritePaletteCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.ToggleFavoritePaletteCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.SortColorsCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.SortColorsCommand
+  id: SortColorsCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: SortColorsCommand
+  nameWithType: PaletteViewModel.SortColorsCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.SortColorsCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SortColorsCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 134
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand SortColorsCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public Property SortColorsCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.SortColorsCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.SavePaletteToFavoritesCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.SavePaletteToFavoritesCommand
+  id: SavePaletteToFavoritesCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: SavePaletteToFavoritesCommand
+  nameWithType: PaletteViewModel.SavePaletteToFavoritesCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.SavePaletteToFavoritesCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SavePaletteToFavoritesCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 137
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand SavePaletteToFavoritesCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property SavePaletteToFavoritesCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.SavePaletteToFavoritesCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.ToggleFavoritesPanelCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.ToggleFavoritesPanelCommand
+  id: ToggleFavoritesPanelCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: ToggleFavoritesPanelCommand
+  nameWithType: PaletteViewModel.ToggleFavoritesPanelCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ToggleFavoritesPanelCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleFavoritesPanelCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 140
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ToggleFavoritesPanelCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ToggleFavoritesPanelCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.ToggleFavoritesPanelCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.CloseFavoritesPanelCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.CloseFavoritesPanelCommand
+  id: CloseFavoritesPanelCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: CloseFavoritesPanelCommand
+  nameWithType: PaletteViewModel.CloseFavoritesPanelCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.CloseFavoritesPanelCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CloseFavoritesPanelCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 141
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand CloseFavoritesPanelCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property CloseFavoritesPanelCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.CloseFavoritesPanelCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.SelectSwatchesFavTabCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.SelectSwatchesFavTabCommand
+  id: SelectSwatchesFavTabCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectSwatchesFavTabCommand
+  nameWithType: PaletteViewModel.SelectSwatchesFavTabCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.SelectSwatchesFavTabCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectSwatchesFavTabCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 142
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand SelectSwatchesFavTabCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property SelectSwatchesFavTabCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.SelectSwatchesFavTabCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.SelectPalettesFavTabCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.SelectPalettesFavTabCommand
+  id: SelectPalettesFavTabCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectPalettesFavTabCommand
+  nameWithType: PaletteViewModel.SelectPalettesFavTabCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.SelectPalettesFavTabCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectPalettesFavTabCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 143
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand SelectPalettesFavTabCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property SelectPalettesFavTabCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.SelectPalettesFavTabCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.LoadSwatchColorCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.LoadSwatchColorCommand
+  id: LoadSwatchColorCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: LoadSwatchColorCommand
+  nameWithType: PaletteViewModel.LoadSwatchColorCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.LoadSwatchColorCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LoadSwatchColorCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 144
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand LoadSwatchColorCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property LoadSwatchColorCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.LoadSwatchColorCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.LoadFavoritePaletteCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.LoadFavoritePaletteCommand
+  id: LoadFavoritePaletteCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: LoadFavoritePaletteCommand
+  nameWithType: PaletteViewModel.LoadFavoritePaletteCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.LoadFavoritePaletteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: LoadFavoritePaletteCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 145
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand LoadFavoritePaletteCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property LoadFavoritePaletteCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.LoadFavoritePaletteCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.RemoveFavoriteSwatchCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.RemoveFavoriteSwatchCommand
+  id: RemoveFavoriteSwatchCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: RemoveFavoriteSwatchCommand
+  nameWithType: PaletteViewModel.RemoveFavoriteSwatchCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.RemoveFavoriteSwatchCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RemoveFavoriteSwatchCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 146
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand RemoveFavoriteSwatchCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property RemoveFavoriteSwatchCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.RemoveFavoriteSwatchCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.RemoveFavoritePaletteCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.RemoveFavoritePaletteCommand
+  id: RemoveFavoritePaletteCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: RemoveFavoritePaletteCommand
+  nameWithType: PaletteViewModel.RemoveFavoritePaletteCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.RemoveFavoritePaletteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RemoveFavoritePaletteCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 147
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand RemoveFavoritePaletteCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property RemoveFavoritePaletteCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.RemoveFavoritePaletteCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.ChangeSortToHueCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.ChangeSortToHueCommand
+  id: ChangeSortToHueCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: ChangeSortToHueCommand
+  nameWithType: PaletteViewModel.ChangeSortToHueCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ChangeSortToHueCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ChangeSortToHueCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 150
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ChangeSortToHueCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ChangeSortToHueCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.ChangeSortToHueCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.ChangeSortToDateCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.ChangeSortToDateCommand
+  id: ChangeSortToDateCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: ChangeSortToDateCommand
+  nameWithType: PaletteViewModel.ChangeSortToDateCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ChangeSortToDateCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ChangeSortToDateCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 151
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ChangeSortToDateCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ChangeSortToDateCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.ChangeSortToDateCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.ChangeSortToBrightnessCommand
+  commentId: P:artstudio.ViewModels.PaletteViewModel.ChangeSortToBrightnessCommand
+  id: ChangeSortToBrightnessCommand
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: ChangeSortToBrightnessCommand
+  nameWithType: PaletteViewModel.ChangeSortToBrightnessCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ChangeSortToBrightnessCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ChangeSortToBrightnessCommand
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 152
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ChangeSortToBrightnessCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ChangeSortToBrightnessCommand As ICommand
+  overload: artstudio.ViewModels.PaletteViewModel.ChangeSortToBrightnessCommand*
+- uid: artstudio.ViewModels.PaletteViewModel.#ctor(artstudio.Services.IFileSaveService,artstudio.Services.Export,artstudio.Services.PaletteService,artstudio.Services.IToastService,Microsoft.Extensions.Logging.ILoggerFactory)
+  commentId: M:artstudio.ViewModels.PaletteViewModel.#ctor(artstudio.Services.IFileSaveService,artstudio.Services.Export,artstudio.Services.PaletteService,artstudio.Services.IToastService,Microsoft.Extensions.Logging.ILoggerFactory)
+  id: '#ctor(artstudio.Services.IFileSaveService,artstudio.Services.Export,artstudio.Services.PaletteService,artstudio.Services.IToastService,Microsoft.Extensions.Logging.ILoggerFactory)'
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: PaletteViewModel(IFileSaveService, Export, PaletteService, IToastService, ILoggerFactory)
+  nameWithType: PaletteViewModel.PaletteViewModel(IFileSaveService, Export, PaletteService, IToastService, ILoggerFactory)
+  fullName: artstudio.ViewModels.PaletteViewModel.PaletteViewModel(artstudio.Services.IFileSaveService, artstudio.Services.Export, artstudio.Services.PaletteService, artstudio.Services.IToastService, Microsoft.Extensions.Logging.ILoggerFactory)
+  type: Constructor
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: .ctor
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 158
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public PaletteViewModel(IFileSaveService fileSaveService, Export exportService, PaletteService paletteService, IToastService toastService, ILoggerFactory loggerFactory)
+    parameters:
+    - id: fileSaveService
+      type: artstudio.Services.IFileSaveService
+    - id: exportService
+      type: artstudio.Services.Export
+    - id: paletteService
+      type: artstudio.Services.PaletteService
+    - id: toastService
+      type: artstudio.Services.IToastService
+    - id: loggerFactory
+      type: Microsoft.Extensions.Logging.ILoggerFactory
+    content.vb: Public Sub New(fileSaveService As IFileSaveService, exportService As Export, paletteService As PaletteService, toastService As IToastService, loggerFactory As ILoggerFactory)
+  overload: artstudio.ViewModels.PaletteViewModel.#ctor*
+  nameWithType.vb: PaletteViewModel.New(IFileSaveService, Export, PaletteService, IToastService, ILoggerFactory)
+  fullName.vb: artstudio.ViewModels.PaletteViewModel.New(artstudio.Services.IFileSaveService, artstudio.Services.Export, artstudio.Services.PaletteService, artstudio.Services.IToastService, Microsoft.Extensions.Logging.ILoggerFactory)
+  name.vb: New(IFileSaveService, Export, PaletteService, IToastService, ILoggerFactory)
+- uid: artstudio.ViewModels.PaletteViewModel.Dispose
+  commentId: M:artstudio.ViewModels.PaletteViewModel.Dispose
+  id: Dispose
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: PaletteViewModel.Dispose()
+  fullName: artstudio.ViewModels.PaletteViewModel.Dispose()
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Dispose
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 904
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: artstudio.ViewModels.PaletteViewModel.Dispose*
+- uid: artstudio.ViewModels.PaletteViewModel.PropertyChanged
+  commentId: E:artstudio.ViewModels.PaletteViewModel.PropertyChanged
+  id: PropertyChanged
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: PaletteViewModel.PropertyChanged
+  fullName: artstudio.ViewModels.PaletteViewModel.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PropertyChanged
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 931
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  summary: Occurs when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: artstudio.ViewModels.PaletteViewModel.OnPropertyChanged(System.String)
+  commentId: M:artstudio.ViewModels.PaletteViewModel.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string)
+  nameWithType: PaletteViewModel.OnPropertyChanged(string)
+  fullName: artstudio.ViewModels.PaletteViewModel.OnPropertyChanged(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OnPropertyChanged
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 933
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public void OnPropertyChanged(string name = null)
+    parameters:
+    - id: name
+      type: System.String
+    content.vb: Public Sub OnPropertyChanged(name As String = Nothing)
+  overload: artstudio.ViewModels.PaletteViewModel.OnPropertyChanged*
+  nameWithType.vb: PaletteViewModel.OnPropertyChanged(String)
+  fullName.vb: artstudio.ViewModels.PaletteViewModel.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+- uid: artstudio.ViewModels.PaletteViewModel.SetProperty``1(``0@,``0,System.String)
+  commentId: M:artstudio.ViewModels.PaletteViewModel.SetProperty``1(``0@,``0,System.String)
+  id: SetProperty``1(``0@,``0,System.String)
+  parent: artstudio.ViewModels.PaletteViewModel
+  langs:
+  - csharp
+  - vb
+  name: SetProperty<T>(ref T, T, string?)
+  nameWithType: PaletteViewModel.SetProperty<T>(ref T, T, string?)
+  fullName: artstudio.ViewModels.PaletteViewModel.SetProperty<T>(ref T, T, string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SetProperty
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 938
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: protected bool SetProperty<T>(ref T field, T value, string? propertyName = null)
+    parameters:
+    - id: field
+      type: '{T}'
+    - id: value
+      type: '{T}'
+    - id: propertyName
+      type: System.String
+    typeParameters:
+    - id: T
+    return:
+      type: System.Boolean
+    content.vb: Protected Function SetProperty(Of T)(field As T, value As T, propertyName As String = Nothing) As Boolean
+  overload: artstudio.ViewModels.PaletteViewModel.SetProperty*
+  nameWithType.vb: PaletteViewModel.SetProperty(Of T)(T, T, String)
+  fullName.vb: artstudio.ViewModels.PaletteViewModel.SetProperty(Of T)(T, T, String)
+  name.vb: SetProperty(Of T)(T, T, String)
+references:
+- uid: artstudio.ViewModels
+  commentId: N:artstudio.ViewModels
+  href: artstudio.html
+  name: artstudio.ViewModels
+  nameWithType: artstudio.ViewModels
+  fullName: artstudio.ViewModels
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: artstudio.ViewModels.PaletteViewModel.Swatches*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.Swatches
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_Swatches
+  name: Swatches
+  nameWithType: PaletteViewModel.Swatches
+  fullName: artstudio.ViewModels.PaletteViewModel.Swatches
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SwatchViewModel}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.SwatchViewModel}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<SwatchViewModel>
+  nameWithType: ObservableCollection<SwatchViewModel>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.SwatchViewModel>
+  nameWithType.vb: ObservableCollection(Of SwatchViewModel)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.SwatchViewModel)
+  name.vb: ObservableCollection(Of SwatchViewModel)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.SwatchViewModel
+    name: SwatchViewModel
+    href: artstudio.ViewModels.SwatchViewModel.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.SwatchViewModel
+    name: SwatchViewModel
+    href: artstudio.ViewModels.SwatchViewModel.html
+  - name: )
+- uid: System.Collections.ObjectModel.ObservableCollection`1
+  commentId: T:System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<T>
+  nameWithType: ObservableCollection<T>
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>
+  nameWithType.vb: ObservableCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of T)
+  name.vb: ObservableCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: artstudio.ViewModels.PaletteViewModel.IsFavoritePalette*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.IsFavoritePalette
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_IsFavoritePalette
+  name: IsFavoritePalette
+  nameWithType: PaletteViewModel.IsFavoritePalette
+  fullName: artstudio.ViewModels.PaletteViewModel.IsFavoritePalette
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: artstudio.ViewModels.PaletteViewModel.IsFavoritesPanelOpen*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.IsFavoritesPanelOpen
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_IsFavoritesPanelOpen
+  name: IsFavoritesPanelOpen
+  nameWithType: PaletteViewModel.IsFavoritesPanelOpen
+  fullName: artstudio.ViewModels.PaletteViewModel.IsFavoritesPanelOpen
+- uid: artstudio.ViewModels.PaletteViewModel.FavoritesPanelWidth*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.FavoritesPanelWidth
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_FavoritesPanelWidth
+  name: FavoritesPanelWidth
+  nameWithType: PaletteViewModel.FavoritesPanelWidth
+  fullName: artstudio.ViewModels.PaletteViewModel.FavoritesPanelWidth
+- uid: Microsoft.Maui.GridLength
+  commentId: T:Microsoft.Maui.GridLength
+  parent: Microsoft.Maui
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.maui.gridlength
+  name: GridLength
+  nameWithType: GridLength
+  fullName: Microsoft.Maui.GridLength
+- uid: Microsoft.Maui
+  commentId: N:Microsoft.Maui
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Maui
+  nameWithType: Microsoft.Maui
+  fullName: Microsoft.Maui
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+- uid: artstudio.ViewModels.PaletteViewModel.CurrentFavTab*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.CurrentFavTab
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_CurrentFavTab
+  name: CurrentFavTab
+  nameWithType: PaletteViewModel.CurrentFavTab
+  fullName: artstudio.ViewModels.PaletteViewModel.CurrentFavTab
+- uid: artstudio.ViewModels.PaletteViewModel.FavTabType
+  commentId: T:artstudio.ViewModels.PaletteViewModel.FavTabType
+  parent: artstudio.ViewModels
+  href: artstudio.ViewModels.PaletteViewModel.html
+  name: PaletteViewModel.FavTabType
+  nameWithType: PaletteViewModel.FavTabType
+  fullName: artstudio.ViewModels.PaletteViewModel.FavTabType
+  spec.csharp:
+  - uid: artstudio.ViewModels.PaletteViewModel
+    name: PaletteViewModel
+    href: artstudio.ViewModels.PaletteViewModel.html
+  - name: .
+  - uid: artstudio.ViewModels.PaletteViewModel.FavTabType
+    name: FavTabType
+    href: artstudio.ViewModels.PaletteViewModel.FavTabType.html
+  spec.vb:
+  - uid: artstudio.ViewModels.PaletteViewModel
+    name: PaletteViewModel
+    href: artstudio.ViewModels.PaletteViewModel.html
+  - name: .
+  - uid: artstudio.ViewModels.PaletteViewModel.FavTabType
+    name: FavTabType
+    href: artstudio.ViewModels.PaletteViewModel.FavTabType.html
+- uid: artstudio.ViewModels.PaletteViewModel.IsSwatchesFavTabVisible*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.IsSwatchesFavTabVisible
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_IsSwatchesFavTabVisible
+  name: IsSwatchesFavTabVisible
+  nameWithType: PaletteViewModel.IsSwatchesFavTabVisible
+  fullName: artstudio.ViewModels.PaletteViewModel.IsSwatchesFavTabVisible
+- uid: artstudio.ViewModels.PaletteViewModel.IsPalettesFavTabVisible*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.IsPalettesFavTabVisible
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_IsPalettesFavTabVisible
+  name: IsPalettesFavTabVisible
+  nameWithType: PaletteViewModel.IsPalettesFavTabVisible
+  fullName: artstudio.ViewModels.PaletteViewModel.IsPalettesFavTabVisible
+- uid: artstudio.ViewModels.PaletteViewModel.SwatchesTabBackgroundColor*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.SwatchesTabBackgroundColor
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_SwatchesTabBackgroundColor
+  name: SwatchesTabBackgroundColor
+  nameWithType: PaletteViewModel.SwatchesTabBackgroundColor
+  fullName: artstudio.ViewModels.PaletteViewModel.SwatchesTabBackgroundColor
+- uid: Microsoft.Maui.Graphics.Color
+  commentId: T:Microsoft.Maui.Graphics.Color
+  parent: Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  name: Color
+  nameWithType: Color
+  fullName: Microsoft.Maui.Graphics.Color
+- uid: Microsoft.Maui.Graphics
+  commentId: N:Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Maui.Graphics
+  nameWithType: Microsoft.Maui.Graphics
+  fullName: Microsoft.Maui.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+- uid: artstudio.ViewModels.PaletteViewModel.PalettesTabBackgroundColor*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.PalettesTabBackgroundColor
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_PalettesTabBackgroundColor
+  name: PalettesTabBackgroundColor
+  nameWithType: PaletteViewModel.PalettesTabBackgroundColor
+  fullName: artstudio.ViewModels.PaletteViewModel.PalettesTabBackgroundColor
+- uid: artstudio.ViewModels.PaletteViewModel.SwatchesTabTextColor*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.SwatchesTabTextColor
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_SwatchesTabTextColor
+  name: SwatchesTabTextColor
+  nameWithType: PaletteViewModel.SwatchesTabTextColor
+  fullName: artstudio.ViewModels.PaletteViewModel.SwatchesTabTextColor
+- uid: artstudio.ViewModels.PaletteViewModel.PalettesTabTextColor*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.PalettesTabTextColor
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_PalettesTabTextColor
+  name: PalettesTabTextColor
+  nameWithType: PaletteViewModel.PalettesTabTextColor
+  fullName: artstudio.ViewModels.PaletteViewModel.PalettesTabTextColor
+- uid: artstudio.ViewModels.PaletteViewModel.FavoriteSwatches*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.FavoriteSwatches
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_FavoriteSwatches
+  name: FavoriteSwatches
+  nameWithType: PaletteViewModel.FavoriteSwatches
+  fullName: artstudio.ViewModels.PaletteViewModel.FavoriteSwatches
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.FavoriteSwatchItem}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.FavoriteSwatchItem}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<FavoriteSwatchItem>
+  nameWithType: ObservableCollection<FavoriteSwatchItem>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.FavoriteSwatchItem>
+  nameWithType.vb: ObservableCollection(Of FavoriteSwatchItem)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.FavoriteSwatchItem)
+  name.vb: ObservableCollection(Of FavoriteSwatchItem)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.FavoriteSwatchItem
+    name: FavoriteSwatchItem
+    href: artstudio.ViewModels.FavoriteSwatchItem.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.FavoriteSwatchItem
+    name: FavoriteSwatchItem
+    href: artstudio.ViewModels.FavoriteSwatchItem.html
+  - name: )
+- uid: artstudio.ViewModels.PaletteViewModel.GroupedFavoritePalettes*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.GroupedFavoritePalettes
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_GroupedFavoritePalettes
+  name: GroupedFavoritePalettes
+  nameWithType: PaletteViewModel.GroupedFavoritePalettes
+  fullName: artstudio.ViewModels.PaletteViewModel.GroupedFavoritePalettes
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.PaletteCollectionGroup}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.PaletteCollectionGroup}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<PaletteCollectionGroup>
+  nameWithType: ObservableCollection<PaletteCollectionGroup>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.PaletteCollectionGroup>
+  nameWithType.vb: ObservableCollection(Of PaletteCollectionGroup)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.PaletteCollectionGroup)
+  name.vb: ObservableCollection(Of PaletteCollectionGroup)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.PaletteCollectionGroup
+    name: PaletteCollectionGroup
+    href: artstudio.ViewModels.PaletteCollectionGroup.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.PaletteCollectionGroup
+    name: PaletteCollectionGroup
+    href: artstudio.ViewModels.PaletteCollectionGroup.html
+  - name: )
+- uid: artstudio.ViewModels.PaletteViewModel.HasNoFavoriteSwatches*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.HasNoFavoriteSwatches
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_HasNoFavoriteSwatches
+  name: HasNoFavoriteSwatches
+  nameWithType: PaletteViewModel.HasNoFavoriteSwatches
+  fullName: artstudio.ViewModels.PaletteViewModel.HasNoFavoriteSwatches
+- uid: artstudio.ViewModels.PaletteViewModel.HasNoFavoritePalettes*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.HasNoFavoritePalettes
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_HasNoFavoritePalettes
+  name: HasNoFavoritePalettes
+  nameWithType: PaletteViewModel.HasNoFavoritePalettes
+  fullName: artstudio.ViewModels.PaletteViewModel.HasNoFavoritePalettes
+- uid: artstudio.ViewModels.PaletteViewModel.DefaultSwatchSort*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.DefaultSwatchSort
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_DefaultSwatchSort
+  name: DefaultSwatchSort
+  nameWithType: PaletteViewModel.DefaultSwatchSort
+  fullName: artstudio.ViewModels.PaletteViewModel.DefaultSwatchSort
+- uid: artstudio.Services.SwatchSortMethod
+  commentId: T:artstudio.Services.SwatchSortMethod
+  parent: artstudio.Services
+  href: artstudio.Services.SwatchSortMethod.html
+  name: SwatchSortMethod
+  nameWithType: SwatchSortMethod
+  fullName: artstudio.Services.SwatchSortMethod
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: artstudio.ViewModels.PaletteViewModel.RegenerateCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.RegenerateCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_RegenerateCommand
+  name: RegenerateCommand
+  nameWithType: PaletteViewModel.RegenerateCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.RegenerateCommand
+- uid: System.Windows.Input.ICommand
+  commentId: T:System.Windows.Input.ICommand
+  parent: System.Windows.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.windows.input.icommand
+  name: ICommand
+  nameWithType: ICommand
+  fullName: System.Windows.Input.ICommand
+- uid: System.Windows.Input
+  commentId: N:System.Windows.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Windows.Input
+  nameWithType: System.Windows.Input
+  fullName: System.Windows.Input
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Windows
+    name: Windows
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows
+  - name: .
+  - uid: System.Windows.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows.input
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Windows
+    name: Windows
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows
+  - name: .
+  - uid: System.Windows.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows.input
+- uid: artstudio.ViewModels.PaletteViewModel.ExportPaletteCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.ExportPaletteCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_ExportPaletteCommand
+  name: ExportPaletteCommand
+  nameWithType: PaletteViewModel.ExportPaletteCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ExportPaletteCommand
+- uid: artstudio.ViewModels.PaletteViewModel.ToggleFavoritePaletteCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.ToggleFavoritePaletteCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_ToggleFavoritePaletteCommand
+  name: ToggleFavoritePaletteCommand
+  nameWithType: PaletteViewModel.ToggleFavoritePaletteCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ToggleFavoritePaletteCommand
+- uid: artstudio.ViewModels.PaletteViewModel.SortColorsCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.SortColorsCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_SortColorsCommand
+  name: SortColorsCommand
+  nameWithType: PaletteViewModel.SortColorsCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.SortColorsCommand
+- uid: artstudio.ViewModels.PaletteViewModel.SavePaletteToFavoritesCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.SavePaletteToFavoritesCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_SavePaletteToFavoritesCommand
+  name: SavePaletteToFavoritesCommand
+  nameWithType: PaletteViewModel.SavePaletteToFavoritesCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.SavePaletteToFavoritesCommand
+- uid: artstudio.ViewModels.PaletteViewModel.ToggleFavoritesPanelCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.ToggleFavoritesPanelCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_ToggleFavoritesPanelCommand
+  name: ToggleFavoritesPanelCommand
+  nameWithType: PaletteViewModel.ToggleFavoritesPanelCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ToggleFavoritesPanelCommand
+- uid: artstudio.ViewModels.PaletteViewModel.CloseFavoritesPanelCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.CloseFavoritesPanelCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_CloseFavoritesPanelCommand
+  name: CloseFavoritesPanelCommand
+  nameWithType: PaletteViewModel.CloseFavoritesPanelCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.CloseFavoritesPanelCommand
+- uid: artstudio.ViewModels.PaletteViewModel.SelectSwatchesFavTabCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.SelectSwatchesFavTabCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_SelectSwatchesFavTabCommand
+  name: SelectSwatchesFavTabCommand
+  nameWithType: PaletteViewModel.SelectSwatchesFavTabCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.SelectSwatchesFavTabCommand
+- uid: artstudio.ViewModels.PaletteViewModel.SelectPalettesFavTabCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.SelectPalettesFavTabCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_SelectPalettesFavTabCommand
+  name: SelectPalettesFavTabCommand
+  nameWithType: PaletteViewModel.SelectPalettesFavTabCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.SelectPalettesFavTabCommand
+- uid: artstudio.ViewModels.PaletteViewModel.LoadSwatchColorCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.LoadSwatchColorCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_LoadSwatchColorCommand
+  name: LoadSwatchColorCommand
+  nameWithType: PaletteViewModel.LoadSwatchColorCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.LoadSwatchColorCommand
+- uid: artstudio.ViewModels.PaletteViewModel.LoadFavoritePaletteCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.LoadFavoritePaletteCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_LoadFavoritePaletteCommand
+  name: LoadFavoritePaletteCommand
+  nameWithType: PaletteViewModel.LoadFavoritePaletteCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.LoadFavoritePaletteCommand
+- uid: artstudio.ViewModels.PaletteViewModel.RemoveFavoriteSwatchCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.RemoveFavoriteSwatchCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_RemoveFavoriteSwatchCommand
+  name: RemoveFavoriteSwatchCommand
+  nameWithType: PaletteViewModel.RemoveFavoriteSwatchCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.RemoveFavoriteSwatchCommand
+- uid: artstudio.ViewModels.PaletteViewModel.RemoveFavoritePaletteCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.RemoveFavoritePaletteCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_RemoveFavoritePaletteCommand
+  name: RemoveFavoritePaletteCommand
+  nameWithType: PaletteViewModel.RemoveFavoritePaletteCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.RemoveFavoritePaletteCommand
+- uid: artstudio.ViewModels.PaletteViewModel.ChangeSortToHueCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.ChangeSortToHueCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_ChangeSortToHueCommand
+  name: ChangeSortToHueCommand
+  nameWithType: PaletteViewModel.ChangeSortToHueCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ChangeSortToHueCommand
+- uid: artstudio.ViewModels.PaletteViewModel.ChangeSortToDateCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.ChangeSortToDateCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_ChangeSortToDateCommand
+  name: ChangeSortToDateCommand
+  nameWithType: PaletteViewModel.ChangeSortToDateCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ChangeSortToDateCommand
+- uid: artstudio.ViewModels.PaletteViewModel.ChangeSortToBrightnessCommand*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.ChangeSortToBrightnessCommand
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_ChangeSortToBrightnessCommand
+  name: ChangeSortToBrightnessCommand
+  nameWithType: PaletteViewModel.ChangeSortToBrightnessCommand
+  fullName: artstudio.ViewModels.PaletteViewModel.ChangeSortToBrightnessCommand
+- uid: artstudio.ViewModels.PaletteViewModel.#ctor*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.#ctor
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel__ctor_artstudio_Services_IFileSaveService_artstudio_Services_Export_artstudio_Services_PaletteService_artstudio_Services_IToastService_Microsoft_Extensions_Logging_ILoggerFactory_
+  name: PaletteViewModel
+  nameWithType: PaletteViewModel.PaletteViewModel
+  fullName: artstudio.ViewModels.PaletteViewModel.PaletteViewModel
+  nameWithType.vb: PaletteViewModel.New
+  fullName.vb: artstudio.ViewModels.PaletteViewModel.New
+  name.vb: New
+- uid: artstudio.Services.IFileSaveService
+  commentId: T:artstudio.Services.IFileSaveService
+  parent: artstudio.Services
+  href: artstudio.Services.IFileSaveService.html
+  name: IFileSaveService
+  nameWithType: IFileSaveService
+  fullName: artstudio.Services.IFileSaveService
+- uid: artstudio.Services.Export
+  commentId: T:artstudio.Services.Export
+  parent: artstudio.Services
+  href: artstudio.Services.Export.html
+  name: Export
+  nameWithType: Export
+  fullName: artstudio.Services.Export
+- uid: artstudio.Services.PaletteService
+  commentId: T:artstudio.Services.PaletteService
+  parent: artstudio.Services
+  href: artstudio.Services.PaletteService.html
+  name: PaletteService
+  nameWithType: PaletteService
+  fullName: artstudio.Services.PaletteService
+- uid: artstudio.Services.IToastService
+  commentId: T:artstudio.Services.IToastService
+  parent: artstudio.Services
+  href: artstudio.Services.IToastService.html
+  name: IToastService
+  nameWithType: IToastService
+  fullName: artstudio.Services.IToastService
+- uid: Microsoft.Extensions.Logging.ILoggerFactory
+  commentId: T:Microsoft.Extensions.Logging.ILoggerFactory
+  parent: Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.iloggerfactory
+  name: ILoggerFactory
+  nameWithType: ILoggerFactory
+  fullName: Microsoft.Extensions.Logging.ILoggerFactory
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: artstudio.ViewModels.PaletteViewModel.Dispose*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.Dispose
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_Dispose
+  name: Dispose
+  nameWithType: PaletteViewModel.Dispose
+  fullName: artstudio.ViewModels.PaletteViewModel.Dispose
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: artstudio.ViewModels.PaletteViewModel.OnPropertyChanged*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.OnPropertyChanged
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: PaletteViewModel.OnPropertyChanged
+  fullName: artstudio.ViewModels.PaletteViewModel.OnPropertyChanged
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.ViewModels.PaletteViewModel.SetProperty*
+  commentId: Overload:artstudio.ViewModels.PaletteViewModel.SetProperty
+  href: artstudio.ViewModels.PaletteViewModel.html#artstudio_ViewModels_PaletteViewModel_SetProperty__1___0____0_System_String_
+  name: SetProperty
+  nameWithType: PaletteViewModel.SetProperty
+  fullName: artstudio.ViewModels.PaletteViewModel.SetProperty
+- uid: '{T}'
+  commentId: '!:T'
+  definition: T
+  name: T
+  nameWithType: T
+  fullName: T
+- uid: T
+  name: T
+  nameWithType: T
+  fullName: T

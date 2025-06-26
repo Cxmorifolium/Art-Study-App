@@ -211,6 +211,15 @@
                         Command="{Binding RegenerateCommand}"
                         IsVisible="{Binding IsSessionMode}"
                         Margin="5" />
+                <!-- Save Session Button - Only visible in Session mode when content exists -->
+                <Button Grid.Column="3" 
+                        Text="Save" 
+                        BackgroundColor="#9C27B0"
+                        TextColor="White"
+                        Command="{Binding SaveSessionCommand}"
+                        IsVisible="{Binding IsSessionMode}"
+                        IsEnabled="{Binding CanSaveSession}"
+                        Margin="5" />
             </Grid>
 
         </Grid>

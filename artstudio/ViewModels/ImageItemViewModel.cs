@@ -4,6 +4,7 @@ using System.ComponentModel;
 using System.Runtime.CompilerServices;
 using System.Windows.Input;
 using artstudio.Models;
+using artstudio.Data;
 
 namespace artstudio.ViewModels
 {
@@ -13,6 +14,7 @@ namespace artstudio.ViewModels
         private readonly ImagePromptViewModel? _parentViewModel;
         private bool _isLocked;
         private bool _isDeleted;
+        private bool _isFavorited;
 
         public UnsplashImage UnsplashImage { get; }
 
@@ -39,6 +41,18 @@ namespace artstudio.ViewModels
                     _isDeleted = value;
                     OnPropertyChanged();
                     OnPropertyChanged(nameof(DeleteOrUndoIcon));
+                }
+            }
+        }
+        public bool IsFavorited
+        {
+            get => _isFavorited;
+            set
+            {
+                if (_isFavorited != value)
+                {
+                    _isFavorited = value;
+                    OnPropertyChanged();
                 }
             }
         }
@@ -72,6 +86,11 @@ namespace artstudio.ViewModels
         public ICommand ToggleLockCommand { get; }
         public ICommand DeleteCommand { get; }
 
+        // Wrapper command to delegate to the parent view model's commands since it's not working
+        public ICommand ToggleFavoriteCommand { get; }
+        public ICommand ParentToggleLockCommand { get; }
+        public ICommand ParentDeleteCommand { get; }
+
         public ImageItemViewModel(UnsplashImage unsplashImage, ImagePromptViewModel? parentViewModel = null, ILogger<ImageItemViewModel>? logger = null)
         {
             UnsplashImage = unsplashImage ?? throw new ArgumentNullException(nameof(unsplashImage));
@@ -82,6 +101,37 @@ namespace artstudio.ViewModels
             OpenImagePageCommand = new AsyncRelayCommand(OpenImagePageAsync);
             ToggleLockCommand = new RelayCommand(ToggleLock);
             DeleteCommand = new AsyncRelayCommand(DeleteAsync);
+
+            ToggleFavoriteCommand = new AsyncRelayCommand(async () =>
+            {
+                _logger?.LogDebug("ToggleFavoriteCommand called for image: {ImageId}", UnsplashImage.Id);
+                if (_parentViewModel?.SaveToFavoritesCommand?.CanExecute(this) == true)
+                {
+                    await _parentViewModel.SaveToFavoritesCommand.ExecuteAsync(this);
+                }
+                else
+                {
+                    _logger?.LogWarning("SaveToFavoritesCommand not available or cannot execute");
+                }
+            });
+
+            ParentToggleLockCommand = new RelayCommand(() =>
+            {
+                _logger?.LogDebug("ParentToggleLockCommand called for image: {ImageId}", UnsplashImage.Id);
+                if (_parentViewModel?.ToggleLockCommand?.CanExecute(this) == true)
+                {
+                    _parentViewModel.ToggleLockCommand.Execute(this);
+                }
+            });
+
+            ParentDeleteCommand = new AsyncRelayCommand(async () =>
+            {
+                _logger?.LogDebug("ParentDeleteCommand called for image: {ImageId}", UnsplashImage.Id);
+                if (_parentViewModel?.DeleteImageCommand?.CanExecute(this) == true)
+                {
+                    await _parentViewModel.DeleteImageCommand.ExecuteAsync(this);
+                }
+            });
         }
 
         private void ToggleLock()

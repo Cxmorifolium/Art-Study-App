@@ -1,5 +1,4 @@
-﻿using artstudio.Service;
-using artstudio.Data.Models;
+﻿using artstudio.Data;
 using artstudio.Services;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
@@ -35,6 +34,7 @@ namespace artstudio.ViewModels
         private bool _isFavoritesVisible = false;
         private bool _isLoadingFavorites = false;
 
+        #region Constructor
         public PromptGeneratorViewModel(WordPromptService wordPromptService, DatabaseService databaseService, IToastService toastService, ILogger<PromptGeneratorViewModel> logger)
         {
             _logger = logger;
@@ -73,6 +73,7 @@ namespace artstudio.ViewModels
             _logger.LogDebug("PromptGeneratorViewModel Constructor Completed!");
         }
 
+        #endregion
         protected virtual void Dispose(bool disposing)
         {
             if (disposing)
@@ -583,6 +584,8 @@ namespace artstudio.ViewModels
                 // Mark as favorite
                 await _wordPromptService.ToggleFavoriteAsync(savedCollection.Id);
 
+                await RefreshFavoritesAfterSaveAsync();
+
                 await _toastService.ShowToastAsync("Saved to favorites! ⭐");
                 _logger.LogDebug("Prompt saved to default favorites with title: {Title}", title);
             }
@@ -656,7 +659,7 @@ namespace artstudio.ViewModels
 
                         // Mark as favorite
                         await _wordPromptService.ToggleFavoriteAsync(savedCollection.Id);
-
+                        await RefreshFavoritesAfterSaveAsync();
                         await _toastService.ShowToastAsync($"Saved to '{cleanName}' collection ⭐");
                         _logger.LogDebug("Prompt saved to collection: {CollectionName} with title: {Title}", cleanName, title);
                     }
@@ -683,6 +686,36 @@ namespace artstudio.ViewModels
                 return parts[0].Trim();
 
             return "Default";
+        }
+
+        private async Task RefreshFavoritesAfterSaveAsync()
+        {
+            try
+            {
+                DebugLog("=== RefreshFavoritesAfterSaveAsync START ===");
+
+                // If the favorites flyout is currently visible, refresh it
+                if (IsFavoritesVisible)
+                {
+                    DebugLog("Flyout is visible, refreshing groups...");
+                    await LoadFavoriteGroupsAsync();
+                }
+                else
+                {
+                    DebugLog("Flyout is not visible, skipping refresh");
+                }
+
+                // Always refresh the main favorites collection for other UI elements
+                DebugLog("Refreshing main favorites collection...");
+                await LoadFavoritesAsync();
+
+                DebugLog("=== RefreshFavoritesAfterSaveAsync COMPLETE ===");
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, "Error refreshing favorites after save");
+                DebugLog($"ERROR in RefreshFavoritesAfterSaveAsync: {ex.Message}");
+            }
         }
 
         private async Task LoadFavoritesAsync()
@@ -781,7 +814,8 @@ namespace artstudio.ViewModels
         }
     }
 
-    // Helper classes for grouping
+
+   // Helper classes for grouping
     public partial class PromptCollectionGroup(string collectionName, IEnumerable<WordCollection> prompts)
         : ObservableCollection<WordCollection>(prompts)
     {

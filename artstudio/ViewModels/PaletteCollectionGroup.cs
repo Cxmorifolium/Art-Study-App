@@ -1,6 +1,6 @@
 ﻿using System.Collections.ObjectModel;
 using System.ComponentModel;
-using artstudio.Data.Models;
+using artstudio.Data;
 
 namespace artstudio.ViewModels
 {

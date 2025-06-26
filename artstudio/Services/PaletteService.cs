@@ -1,7 +1,5 @@
-﻿using artstudio.Data.Models;
-using artstudio.Data;
+﻿using artstudio.Data;
 using Microsoft.Extensions.Logging;
-using artstudio.Service;
 
 namespace artstudio.Services
 {

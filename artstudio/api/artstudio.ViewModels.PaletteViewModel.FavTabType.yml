@@ -1,0 +1,128 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.ViewModels.PaletteViewModel.FavTabType
+  commentId: T:artstudio.ViewModels.PaletteViewModel.FavTabType
+  id: PaletteViewModel.FavTabType
+  parent: artstudio.ViewModels
+  children:
+  - artstudio.ViewModels.PaletteViewModel.FavTabType.Palettes
+  - artstudio.ViewModels.PaletteViewModel.FavTabType.Swatches
+  langs:
+  - csharp
+  - vb
+  name: PaletteViewModel.FavTabType
+  nameWithType: PaletteViewModel.FavTabType
+  fullName: artstudio.ViewModels.PaletteViewModel.FavTabType
+  type: Enum
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: FavTabType
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 36
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public enum PaletteViewModel.FavTabType
+    content.vb: Public Enum PaletteViewModel.FavTabType
+- uid: artstudio.ViewModels.PaletteViewModel.FavTabType.Swatches
+  commentId: F:artstudio.ViewModels.PaletteViewModel.FavTabType.Swatches
+  id: Swatches
+  parent: artstudio.ViewModels.PaletteViewModel.FavTabType
+  langs:
+  - csharp
+  - vb
+  name: Swatches
+  nameWithType: PaletteViewModel.FavTabType.Swatches
+  fullName: artstudio.ViewModels.PaletteViewModel.FavTabType.Swatches
+  type: Field
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Swatches
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 38
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: Swatches = 0
+    return:
+      type: artstudio.ViewModels.PaletteViewModel.FavTabType
+- uid: artstudio.ViewModels.PaletteViewModel.FavTabType.Palettes
+  commentId: F:artstudio.ViewModels.PaletteViewModel.FavTabType.Palettes
+  id: Palettes
+  parent: artstudio.ViewModels.PaletteViewModel.FavTabType
+  langs:
+  - csharp
+  - vb
+  name: Palettes
+  nameWithType: PaletteViewModel.FavTabType.Palettes
+  fullName: artstudio.ViewModels.PaletteViewModel.FavTabType.Palettes
+  type: Field
+  source:
+    remote:
+      path: artstudio/ViewModels/PaletteViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Palettes
+    path: ViewModels/PaletteViewModel.cs
+    startLine: 39
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: Palettes = 1
+    return:
+      type: artstudio.ViewModels.PaletteViewModel.FavTabType
+references:
+- uid: artstudio.ViewModels
+  commentId: N:artstudio.ViewModels
+  href: artstudio.html
+  name: artstudio.ViewModels
+  nameWithType: artstudio.ViewModels
+  fullName: artstudio.ViewModels
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+- uid: artstudio.ViewModels.PaletteViewModel.FavTabType
+  commentId: T:artstudio.ViewModels.PaletteViewModel.FavTabType
+  parent: artstudio.ViewModels
+  href: artstudio.ViewModels.PaletteViewModel.html
+  name: PaletteViewModel.FavTabType
+  nameWithType: PaletteViewModel.FavTabType
+  fullName: artstudio.ViewModels.PaletteViewModel.FavTabType
+  spec.csharp:
+  - uid: artstudio.ViewModels.PaletteViewModel
+    name: PaletteViewModel
+    href: artstudio.ViewModels.PaletteViewModel.html
+  - name: .
+  - uid: artstudio.ViewModels.PaletteViewModel.FavTabType
+    name: FavTabType
+    href: artstudio.ViewModels.PaletteViewModel.FavTabType.html
+  spec.vb:
+  - uid: artstudio.ViewModels.PaletteViewModel
+    name: PaletteViewModel
+    href: artstudio.ViewModels.PaletteViewModel.html
+  - name: .
+  - uid: artstudio.ViewModels.PaletteViewModel.FavTabType
+    name: FavTabType
+    href: artstudio.ViewModels.PaletteViewModel.FavTabType.html

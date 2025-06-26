@@ -1,0 +1,713 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Services.ColorSortingExtensions
+  commentId: T:artstudio.Services.ColorSortingExtensions
+  id: ColorSortingExtensions
+  parent: artstudio.Services
+  children:
+  - artstudio.Services.ColorSortingExtensions.SortByBrightness(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  - artstudio.Services.ColorSortingExtensions.SortByHue(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  - artstudio.Services.ColorSortingExtensions.SortBySaturation(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  - artstudio.Services.ColorSortingExtensions.SortCoolorsStyle(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  - artstudio.Services.ColorSortingExtensions.SortProfessional(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  - artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  langs:
+  - csharp
+  - vb
+  name: ColorSortingExtensions
+  nameWithType: ColorSortingExtensions
+  fullName: artstudio.Services.ColorSortingExtensions
+  type: Class
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ColorSortingExtensions
+    path: Services/ColorSortingExtensions.cs
+    startLine: 6
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public static class ColorSortingExtensions
+    content.vb: Public Module ColorSortingExtensions
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.Services.ColorSortingExtensions.SortByHue(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  commentId: M:artstudio.Services.ColorSortingExtensions.SortByHue(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  id: SortByHue(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  isExtensionMethod: true
+  parent: artstudio.Services.ColorSortingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SortByHue(IEnumerable<Color>)
+  nameWithType: ColorSortingExtensions.SortByHue(IEnumerable<Color>)
+  fullName: artstudio.Services.ColorSortingExtensions.SortByHue(System.Collections.Generic.IEnumerable<Microsoft.Maui.Graphics.Color>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SortByHue
+    path: Services/ColorSortingExtensions.cs
+    startLine: 9
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public static List<Color> SortByHue(this IEnumerable<Color> colors)
+    parameters:
+    - id: colors
+      type: System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color}
+    return:
+      type: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+    content.vb: Public Shared Function SortByHue(colors As IEnumerable(Of Color)) As List(Of Color)
+  overload: artstudio.Services.ColorSortingExtensions.SortByHue*
+  nameWithType.vb: ColorSortingExtensions.SortByHue(IEnumerable(Of Color))
+  fullName.vb: artstudio.Services.ColorSortingExtensions.SortByHue(System.Collections.Generic.IEnumerable(Of Microsoft.Maui.Graphics.Color))
+  name.vb: SortByHue(IEnumerable(Of Color))
+- uid: artstudio.Services.ColorSortingExtensions.SortByBrightness(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  commentId: M:artstudio.Services.ColorSortingExtensions.SortByBrightness(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  id: SortByBrightness(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  isExtensionMethod: true
+  parent: artstudio.Services.ColorSortingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SortByBrightness(IEnumerable<Color>)
+  nameWithType: ColorSortingExtensions.SortByBrightness(IEnumerable<Color>)
+  fullName: artstudio.Services.ColorSortingExtensions.SortByBrightness(System.Collections.Generic.IEnumerable<Microsoft.Maui.Graphics.Color>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SortByBrightness
+    path: Services/ColorSortingExtensions.cs
+    startLine: 16
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public static List<Color> SortByBrightness(this IEnumerable<Color> colors)
+    parameters:
+    - id: colors
+      type: System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color}
+    return:
+      type: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+    content.vb: Public Shared Function SortByBrightness(colors As IEnumerable(Of Color)) As List(Of Color)
+  overload: artstudio.Services.ColorSortingExtensions.SortByBrightness*
+  nameWithType.vb: ColorSortingExtensions.SortByBrightness(IEnumerable(Of Color))
+  fullName.vb: artstudio.Services.ColorSortingExtensions.SortByBrightness(System.Collections.Generic.IEnumerable(Of Microsoft.Maui.Graphics.Color))
+  name.vb: SortByBrightness(IEnumerable(Of Color))
+- uid: artstudio.Services.ColorSortingExtensions.SortBySaturation(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  commentId: M:artstudio.Services.ColorSortingExtensions.SortBySaturation(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  id: SortBySaturation(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  isExtensionMethod: true
+  parent: artstudio.Services.ColorSortingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SortBySaturation(IEnumerable<Color>)
+  nameWithType: ColorSortingExtensions.SortBySaturation(IEnumerable<Color>)
+  fullName: artstudio.Services.ColorSortingExtensions.SortBySaturation(System.Collections.Generic.IEnumerable<Microsoft.Maui.Graphics.Color>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SortBySaturation
+    path: Services/ColorSortingExtensions.cs
+    startLine: 22
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public static List<Color> SortBySaturation(this IEnumerable<Color> colors)
+    parameters:
+    - id: colors
+      type: System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color}
+    return:
+      type: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+    content.vb: Public Shared Function SortBySaturation(colors As IEnumerable(Of Color)) As List(Of Color)
+  overload: artstudio.Services.ColorSortingExtensions.SortBySaturation*
+  nameWithType.vb: ColorSortingExtensions.SortBySaturation(IEnumerable(Of Color))
+  fullName.vb: artstudio.Services.ColorSortingExtensions.SortBySaturation(System.Collections.Generic.IEnumerable(Of Microsoft.Maui.Graphics.Color))
+  name.vb: SortBySaturation(IEnumerable(Of Color))
+- uid: artstudio.Services.ColorSortingExtensions.SortCoolorsStyle(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  commentId: M:artstudio.Services.ColorSortingExtensions.SortCoolorsStyle(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  id: SortCoolorsStyle(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  isExtensionMethod: true
+  parent: artstudio.Services.ColorSortingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SortCoolorsStyle(IEnumerable<Color>)
+  nameWithType: ColorSortingExtensions.SortCoolorsStyle(IEnumerable<Color>)
+  fullName: artstudio.Services.ColorSortingExtensions.SortCoolorsStyle(System.Collections.Generic.IEnumerable<Microsoft.Maui.Graphics.Color>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SortCoolorsStyle
+    path: Services/ColorSortingExtensions.cs
+    startLine: 30
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public static List<Color> SortCoolorsStyle(this IEnumerable<Color> colors)
+    parameters:
+    - id: colors
+      type: System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color}
+    return:
+      type: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+    content.vb: Public Shared Function SortCoolorsStyle(colors As IEnumerable(Of Color)) As List(Of Color)
+  overload: artstudio.Services.ColorSortingExtensions.SortCoolorsStyle*
+  nameWithType.vb: ColorSortingExtensions.SortCoolorsStyle(IEnumerable(Of Color))
+  fullName.vb: artstudio.Services.ColorSortingExtensions.SortCoolorsStyle(System.Collections.Generic.IEnumerable(Of Microsoft.Maui.Graphics.Color))
+  name.vb: SortCoolorsStyle(IEnumerable(Of Color))
+- uid: artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  commentId: M:artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  id: SortWithSmoothTransitions(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  isExtensionMethod: true
+  parent: artstudio.Services.ColorSortingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SortWithSmoothTransitions(IEnumerable<Color>)
+  nameWithType: ColorSortingExtensions.SortWithSmoothTransitions(IEnumerable<Color>)
+  fullName: artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions(System.Collections.Generic.IEnumerable<Microsoft.Maui.Graphics.Color>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SortWithSmoothTransitions
+    path: Services/ColorSortingExtensions.cs
+    startLine: 69
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public static List<Color> SortWithSmoothTransitions(this IEnumerable<Color> colors)
+    parameters:
+    - id: colors
+      type: System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color}
+    return:
+      type: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+    content.vb: Public Shared Function SortWithSmoothTransitions(colors As IEnumerable(Of Color)) As List(Of Color)
+  overload: artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions*
+  nameWithType.vb: ColorSortingExtensions.SortWithSmoothTransitions(IEnumerable(Of Color))
+  fullName.vb: artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions(System.Collections.Generic.IEnumerable(Of Microsoft.Maui.Graphics.Color))
+  name.vb: SortWithSmoothTransitions(IEnumerable(Of Color))
+- uid: artstudio.Services.ColorSortingExtensions.SortProfessional(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  commentId: M:artstudio.Services.ColorSortingExtensions.SortProfessional(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  id: SortProfessional(System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color})
+  isExtensionMethod: true
+  parent: artstudio.Services.ColorSortingExtensions
+  langs:
+  - csharp
+  - vb
+  name: SortProfessional(IEnumerable<Color>)
+  nameWithType: ColorSortingExtensions.SortProfessional(IEnumerable<Color>)
+  fullName: artstudio.Services.ColorSortingExtensions.SortProfessional(System.Collections.Generic.IEnumerable<Microsoft.Maui.Graphics.Color>)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SortProfessional
+    path: Services/ColorSortingExtensions.cs
+    startLine: 96
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public static List<Color> SortProfessional(this IEnumerable<Color> colors)
+    parameters:
+    - id: colors
+      type: System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color}
+    return:
+      type: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+    content.vb: Public Shared Function SortProfessional(colors As IEnumerable(Of Color)) As List(Of Color)
+  overload: artstudio.Services.ColorSortingExtensions.SortProfessional*
+  nameWithType.vb: ColorSortingExtensions.SortProfessional(IEnumerable(Of Color))
+  fullName.vb: artstudio.Services.ColorSortingExtensions.SortProfessional(System.Collections.Generic.IEnumerable(Of Microsoft.Maui.Graphics.Color))
+  name.vb: SortProfessional(IEnumerable(Of Color))
+references:
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: artstudio.Services.ColorSortingExtensions.SortByHue*
+  commentId: Overload:artstudio.Services.ColorSortingExtensions.SortByHue
+  href: artstudio.Services.ColorSortingExtensions.html#artstudio_Services_ColorSortingExtensions_SortByHue_System_Collections_Generic_IEnumerable_Microsoft_Maui_Graphics_Color__
+  name: SortByHue
+  nameWithType: ColorSortingExtensions.SortByHue
+  fullName: artstudio.Services.ColorSortingExtensions.SortByHue
+- uid: System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color}
+  commentId: T:System.Collections.Generic.IEnumerable{Microsoft.Maui.Graphics.Color}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.IEnumerable`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<Color>
+  nameWithType: IEnumerable<Color>
+  fullName: System.Collections.Generic.IEnumerable<Microsoft.Maui.Graphics.Color>
+  nameWithType.vb: IEnumerable(Of Color)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of Microsoft.Maui.Graphics.Color)
+  name.vb: IEnumerable(Of Color)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - uid: Microsoft.Maui.Graphics.Color
+    name: Color
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.Maui.Graphics.Color
+    name: Color
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  - name: )
+- uid: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+  commentId: T:System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Color>
+  nameWithType: List<Color>
+  fullName: System.Collections.Generic.List<Microsoft.Maui.Graphics.Color>
+  nameWithType.vb: List(Of Color)
+  fullName.vb: System.Collections.Generic.List(Of Microsoft.Maui.Graphics.Color)
+  name.vb: List(Of Color)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Microsoft.Maui.Graphics.Color
+    name: Color
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.Maui.Graphics.Color
+    name: Color
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  - name: )
+- uid: System.Collections.Generic.IEnumerable`1
+  commentId: T:System.Collections.Generic.IEnumerable`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  name: IEnumerable<T>
+  nameWithType: IEnumerable<T>
+  fullName: System.Collections.Generic.IEnumerable<T>
+  nameWithType.vb: IEnumerable(Of T)
+  fullName.vb: System.Collections.Generic.IEnumerable(Of T)
+  name.vb: IEnumerable(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.IEnumerable`1
+    name: IEnumerable
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.ienumerable-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: artstudio.Services.ColorSortingExtensions.SortByBrightness*
+  commentId: Overload:artstudio.Services.ColorSortingExtensions.SortByBrightness
+  href: artstudio.Services.ColorSortingExtensions.html#artstudio_Services_ColorSortingExtensions_SortByBrightness_System_Collections_Generic_IEnumerable_Microsoft_Maui_Graphics_Color__
+  name: SortByBrightness
+  nameWithType: ColorSortingExtensions.SortByBrightness
+  fullName: artstudio.Services.ColorSortingExtensions.SortByBrightness
+- uid: artstudio.Services.ColorSortingExtensions.SortBySaturation*
+  commentId: Overload:artstudio.Services.ColorSortingExtensions.SortBySaturation
+  href: artstudio.Services.ColorSortingExtensions.html#artstudio_Services_ColorSortingExtensions_SortBySaturation_System_Collections_Generic_IEnumerable_Microsoft_Maui_Graphics_Color__
+  name: SortBySaturation
+  nameWithType: ColorSortingExtensions.SortBySaturation
+  fullName: artstudio.Services.ColorSortingExtensions.SortBySaturation
+- uid: artstudio.Services.ColorSortingExtensions.SortCoolorsStyle*
+  commentId: Overload:artstudio.Services.ColorSortingExtensions.SortCoolorsStyle
+  href: artstudio.Services.ColorSortingExtensions.html#artstudio_Services_ColorSortingExtensions_SortCoolorsStyle_System_Collections_Generic_IEnumerable_Microsoft_Maui_Graphics_Color__
+  name: SortCoolorsStyle
+  nameWithType: ColorSortingExtensions.SortCoolorsStyle
+  fullName: artstudio.Services.ColorSortingExtensions.SortCoolorsStyle
+- uid: artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions*
+  commentId: Overload:artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions
+  href: artstudio.Services.ColorSortingExtensions.html#artstudio_Services_ColorSortingExtensions_SortWithSmoothTransitions_System_Collections_Generic_IEnumerable_Microsoft_Maui_Graphics_Color__
+  name: SortWithSmoothTransitions
+  nameWithType: ColorSortingExtensions.SortWithSmoothTransitions
+  fullName: artstudio.Services.ColorSortingExtensions.SortWithSmoothTransitions
+- uid: artstudio.Services.ColorSortingExtensions.SortProfessional*
+  commentId: Overload:artstudio.Services.ColorSortingExtensions.SortProfessional
+  href: artstudio.Services.ColorSortingExtensions.html#artstudio_Services_ColorSortingExtensions_SortProfessional_System_Collections_Generic_IEnumerable_Microsoft_Maui_Graphics_Color__
+  name: SortProfessional
+  nameWithType: ColorSortingExtensions.SortProfessional
+  fullName: artstudio.Services.ColorSortingExtensions.SortProfessional

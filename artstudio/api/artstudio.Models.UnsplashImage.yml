@@ -1,0 +1,499 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Models.UnsplashImage
+  commentId: T:artstudio.Models.UnsplashImage
+  id: UnsplashImage
+  parent: artstudio.Models
+  children:
+  - artstudio.Models.UnsplashImage.Description
+  - artstudio.Models.UnsplashImage.Id
+  - artstudio.Models.UnsplashImage.urls
+  - artstudio.Models.UnsplashImage.user
+  langs:
+  - csharp
+  - vb
+  name: UnsplashImage
+  nameWithType: UnsplashImage
+  fullName: artstudio.Models.UnsplashImage
+  type: Class
+  source:
+    remote:
+      path: artstudio/Models/UnsplashImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UnsplashImage
+    path: Models/UnsplashImage.cs
+    startLine: 8
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: public class UnsplashImage
+    content.vb: Public Class UnsplashImage
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.Models.UnsplashImage.Id
+  commentId: P:artstudio.Models.UnsplashImage.Id
+  id: Id
+  parent: artstudio.Models.UnsplashImage
+  langs:
+  - csharp
+  - vb
+  name: Id
+  nameWithType: UnsplashImage.Id
+  fullName: artstudio.Models.UnsplashImage.Id
+  type: Property
+  source:
+    remote:
+      path: artstudio/Models/UnsplashImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Id
+    path: Models/UnsplashImage.cs
+    startLine: 10
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: public string? Id { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Id As String
+  overload: artstudio.Models.UnsplashImage.Id*
+- uid: artstudio.Models.UnsplashImage.Description
+  commentId: P:artstudio.Models.UnsplashImage.Description
+  id: Description
+  parent: artstudio.Models.UnsplashImage
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: UnsplashImage.Description
+  fullName: artstudio.Models.UnsplashImage.Description
+  type: Property
+  source:
+    remote:
+      path: artstudio/Models/UnsplashImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Description
+    path: Models/UnsplashImage.cs
+    startLine: 11
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: public string? Description { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property Description As String
+  overload: artstudio.Models.UnsplashImage.Description*
+- uid: artstudio.Models.UnsplashImage.urls
+  commentId: P:artstudio.Models.UnsplashImage.urls
+  id: urls
+  parent: artstudio.Models.UnsplashImage
+  langs:
+  - csharp
+  - vb
+  name: urls
+  nameWithType: UnsplashImage.urls
+  fullName: artstudio.Models.UnsplashImage.urls
+  type: Property
+  source:
+    remote:
+      path: artstudio/Models/UnsplashImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: urls
+    path: Models/UnsplashImage.cs
+    startLine: 12
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: public UnsplashImage.Urls? urls { get; set; }
+    parameters: []
+    return:
+      type: artstudio.Models.UnsplashImage.Urls
+    content.vb: Public Property urls As UnsplashImage.Urls
+  overload: artstudio.Models.UnsplashImage.urls*
+- uid: artstudio.Models.UnsplashImage.user
+  commentId: P:artstudio.Models.UnsplashImage.user
+  id: user
+  parent: artstudio.Models.UnsplashImage
+  langs:
+  - csharp
+  - vb
+  name: user
+  nameWithType: UnsplashImage.user
+  fullName: artstudio.Models.UnsplashImage.user
+  type: Property
+  source:
+    remote:
+      path: artstudio/Models/UnsplashImage.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: user
+    path: Models/UnsplashImage.cs
+    startLine: 13
+  assemblies:
+  - artstudio
+  namespace: artstudio.Models
+  syntax:
+    content: public UnsplashImage.User? user { get; set; }
+    parameters: []
+    return:
+      type: artstudio.Models.UnsplashImage.User
+    content.vb: Public Property user As UnsplashImage.User
+  overload: artstudio.Models.UnsplashImage.user*
+references:
+- uid: artstudio.Models
+  commentId: N:artstudio.Models
+  href: artstudio.html
+  name: artstudio.Models
+  nameWithType: artstudio.Models
+  fullName: artstudio.Models
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: artstudio.Models.UnsplashImage.Id*
+  commentId: Overload:artstudio.Models.UnsplashImage.Id
+  href: artstudio.Models.UnsplashImage.html#artstudio_Models_UnsplashImage_Id
+  name: Id
+  nameWithType: UnsplashImage.Id
+  fullName: artstudio.Models.UnsplashImage.Id
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.Models.UnsplashImage.Description*
+  commentId: Overload:artstudio.Models.UnsplashImage.Description
+  href: artstudio.Models.UnsplashImage.html#artstudio_Models_UnsplashImage_Description
+  name: Description
+  nameWithType: UnsplashImage.Description
+  fullName: artstudio.Models.UnsplashImage.Description
+- uid: artstudio.Models.UnsplashImage.urls*
+  commentId: Overload:artstudio.Models.UnsplashImage.urls
+  href: artstudio.Models.UnsplashImage.html#artstudio_Models_UnsplashImage_urls
+  name: urls
+  nameWithType: UnsplashImage.urls
+  fullName: artstudio.Models.UnsplashImage.urls
+- uid: artstudio.Models.UnsplashImage.Urls
+  commentId: T:artstudio.Models.UnsplashImage.Urls
+  parent: artstudio.Models
+  href: artstudio.Models.UnsplashImage.html
+  name: UnsplashImage.Urls
+  nameWithType: UnsplashImage.Urls
+  fullName: artstudio.Models.UnsplashImage.Urls
+  spec.csharp:
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: .
+  - uid: artstudio.Models.UnsplashImage.Urls
+    name: Urls
+    href: artstudio.Models.UnsplashImage.Urls.html
+  spec.vb:
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: .
+  - uid: artstudio.Models.UnsplashImage.Urls
+    name: Urls
+    href: artstudio.Models.UnsplashImage.Urls.html
+- uid: artstudio.Models.UnsplashImage.user*
+  commentId: Overload:artstudio.Models.UnsplashImage.user
+  href: artstudio.Models.UnsplashImage.html#artstudio_Models_UnsplashImage_user
+  name: user
+  nameWithType: UnsplashImage.user
+  fullName: artstudio.Models.UnsplashImage.user
+- uid: artstudio.Models.UnsplashImage.User
+  commentId: T:artstudio.Models.UnsplashImage.User
+  parent: artstudio.Models
+  href: artstudio.Models.UnsplashImage.html
+  name: UnsplashImage.User
+  nameWithType: UnsplashImage.User
+  fullName: artstudio.Models.UnsplashImage.User
+  spec.csharp:
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: .
+  - uid: artstudio.Models.UnsplashImage.User
+    name: User
+    href: artstudio.Models.UnsplashImage.User.html
+  spec.vb:
+  - uid: artstudio.Models.UnsplashImage
+    name: UnsplashImage
+    href: artstudio.Models.UnsplashImage.html
+  - name: .
+  - uid: artstudio.Models.UnsplashImage.User
+    name: User
+    href: artstudio.Models.UnsplashImage.User.html

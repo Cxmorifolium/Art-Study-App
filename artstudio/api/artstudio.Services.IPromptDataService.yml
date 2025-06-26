@@ -1,0 +1,131 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Services.IPromptDataService
+  commentId: T:artstudio.Services.IPromptDataService
+  id: IPromptDataService
+  parent: artstudio.Services
+  children:
+  - artstudio.Services.IPromptDataService.InitializeAsync
+  langs:
+  - csharp
+  - vb
+  name: IPromptDataService
+  nameWithType: IPromptDataService
+  fullName: artstudio.Services.IPromptDataService
+  type: Interface
+  source:
+    remote:
+      path: artstudio/Services/PromptDataService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IPromptDataService
+    path: Services/PromptDataService.cs
+    startLine: 5
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public interface IPromptDataService
+    content.vb: Public Interface IPromptDataService
+- uid: artstudio.Services.IPromptDataService.InitializeAsync
+  commentId: M:artstudio.Services.IPromptDataService.InitializeAsync
+  id: InitializeAsync
+  parent: artstudio.Services.IPromptDataService
+  langs:
+  - csharp
+  - vb
+  name: InitializeAsync()
+  nameWithType: IPromptDataService.InitializeAsync()
+  fullName: artstudio.Services.IPromptDataService.InitializeAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PromptDataService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: InitializeAsync
+    path: Services/PromptDataService.cs
+    startLine: 7
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: Task InitializeAsync()
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Function InitializeAsync() As Task
+  overload: artstudio.Services.IPromptDataService.InitializeAsync*
+references:
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: artstudio.Services.IPromptDataService.InitializeAsync*
+  commentId: Overload:artstudio.Services.IPromptDataService.InitializeAsync
+  href: artstudio.Services.IPromptDataService.html#artstudio_Services_IPromptDataService_InitializeAsync
+  name: InitializeAsync
+  nameWithType: IPromptDataService.InitializeAsync
+  fullName: artstudio.Services.IPromptDataService.InitializeAsync
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks

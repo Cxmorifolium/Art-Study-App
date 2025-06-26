@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class GalleryPageViewModel | artstudio-study-app </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class GalleryPageViewModel | artstudio-study-app ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Cxmorifolium/Art-Study-App/new/main/apiSpec/new?filename=artstudio_ViewModels_GalleryPageViewModel.md&amp;value=---%0Auid%3A%20artstudio.ViewModels.GalleryPageViewModel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="artstudio-study-app">
+            artstudio-study-app
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="artstudio.ViewModels.GalleryPageViewModel">
+
+
+
+  <h1 id="artstudio_ViewModels_GalleryPageViewModel" data-uid="artstudio.ViewModels.GalleryPageViewModel" class="text-break">
+Class GalleryPageViewModel  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L13"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="artstudio.html">artstudio</a>.<a class="xref" href="artstudio.ViewModels.html">ViewModels</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>artstudio.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class GalleryPageViewModel : INotifyPropertyChanged, IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">GalleryPageViewModel</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel__ctor_" data-uid="artstudio.ViewModels.GalleryPageViewModel.#ctor*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel__ctor_artstudio_Services_DatabaseService_Microsoft_Extensions_Logging_ILogger_artstudio_ViewModels_GalleryPageViewModel__" data-uid="artstudio.ViewModels.GalleryPageViewModel.#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.GalleryPageViewModel})">
+  GalleryPageViewModel(DatabaseService, ILogger&lt;GalleryPageViewModel&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L29"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public GalleryPageViewModel(DatabaseService databaseService, ILogger&lt;GalleryPageViewModel&gt; logger)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>databaseService</code> <a class="xref" href="artstudio.Services.DatabaseService.html">DatabaseService</a></dt>
+    <dd></dd>
+    <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="artstudio.ViewModels.GalleryPageViewModel.html">GalleryPageViewModel</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_AddToGalleryCommand_" data-uid="artstudio.ViewModels.GalleryPageViewModel.AddToGalleryCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_AddToGalleryCommand" data-uid="artstudio.ViewModels.GalleryPageViewModel.AddToGalleryCommand">
+  AddToGalleryCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L79"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AsyncRelayCommand AddToGalleryCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand">AsyncRelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_ClearSearchCommand_" data-uid="artstudio.ViewModels.GalleryPageViewModel.ClearSearchCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_ClearSearchCommand" data-uid="artstudio.ViewModels.GalleryPageViewModel.ClearSearchCommand">
+  ClearSearchCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L81"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public RelayCommand ClearSearchCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.relaycommand">RelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_GalleryItems_" data-uid="artstudio.ViewModels.GalleryPageViewModel.GalleryItems*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_GalleryItems" data-uid="artstudio.ViewModels.GalleryPageViewModel.GalleryItems">
+  GalleryItems
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L44"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;UserUploadedImage&gt; GalleryItems { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_GoToStudyCommand_" data-uid="artstudio.ViewModels.GalleryPageViewModel.GoToStudyCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_GoToStudyCommand" data-uid="artstudio.ViewModels.GalleryPageViewModel.GoToStudyCommand">
+  GoToStudyCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L82"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AsyncRelayCommand GoToStudyCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand">AsyncRelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_HasSearchText_" data-uid="artstudio.ViewModels.GalleryPageViewModel.HasSearchText*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_HasSearchText" data-uid="artstudio.ViewModels.GalleryPageViewModel.HasSearchText">
+  HasSearchText
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L71"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasSearchText { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_IsLoading_" data-uid="artstudio.ViewModels.GalleryPageViewModel.IsLoading*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_IsLoading" data-uid="artstudio.ViewModels.GalleryPageViewModel.IsLoading">
+  IsLoading
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L46"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsLoading { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_IsRefreshing_" data-uid="artstudio.ViewModels.GalleryPageViewModel.IsRefreshing*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_IsRefreshing" data-uid="artstudio.ViewModels.GalleryPageViewModel.IsRefreshing">
+  IsRefreshing
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L52"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsRefreshing { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_RefreshCommand_" data-uid="artstudio.ViewModels.GalleryPageViewModel.RefreshCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_RefreshCommand" data-uid="artstudio.ViewModels.GalleryPageViewModel.RefreshCommand">
+  RefreshCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AsyncRelayCommand RefreshCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand">AsyncRelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_SearchCommand_" data-uid="artstudio.ViewModels.GalleryPageViewModel.SearchCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_SearchCommand" data-uid="artstudio.ViewModels.GalleryPageViewModel.SearchCommand">
+  SearchCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L80"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AsyncRelayCommand SearchCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand">AsyncRelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_SearchText_" data-uid="artstudio.ViewModels.GalleryPageViewModel.SearchText*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_SearchText" data-uid="artstudio.ViewModels.GalleryPageViewModel.SearchText">
+  SearchText
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L58"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string SearchText { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_ShowFilterCommand_" data-uid="artstudio.ViewModels.GalleryPageViewModel.ShowFilterCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_ShowFilterCommand" data-uid="artstudio.ViewModels.GalleryPageViewModel.ShowFilterCommand">
+  ShowFilterCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L78"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AsyncRelayCommand ShowFilterCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand">AsyncRelayCommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_ViewDetailsCommand_" data-uid="artstudio.ViewModels.GalleryPageViewModel.ViewDetailsCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_ViewDetailsCommand" data-uid="artstudio.ViewModels.GalleryPageViewModel.ViewDetailsCommand">
+  ViewDetailsCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L83"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public AsyncRelayCommand&lt;UserUploadedImage&gt; ViewDetailsCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand-1">AsyncRelayCommand</a>&lt;<a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_DeleteGalleryItemAsync_" data-uid="artstudio.ViewModels.GalleryPageViewModel.DeleteGalleryItemAsync*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_DeleteGalleryItemAsync_artstudio_Data_UserUploadedImage_" data-uid="artstudio.ViewModels.GalleryPageViewModel.DeleteGalleryItemAsync(artstudio.Data.UserUploadedImage)">
+  DeleteGalleryItemAsync(UserUploadedImage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L262"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteGalleryItemAsync(UserUploadedImage item)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>item</code> <a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_Dispose_" data-uid="artstudio.ViewModels.GalleryPageViewModel.Dispose*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_Dispose" data-uid="artstudio.ViewModels.GalleryPageViewModel.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L350"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_Dispose_" data-uid="artstudio.ViewModels.GalleryPageViewModel.Dispose*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_Dispose_System_Boolean_" data-uid="artstudio.ViewModels.GalleryPageViewModel.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L356"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_LoadGalleryAsync_" data-uid="artstudio.ViewModels.GalleryPageViewModel.LoadGalleryAsync*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_LoadGalleryAsync" data-uid="artstudio.ViewModels.GalleryPageViewModel.LoadGalleryAsync">
+  LoadGalleryAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L189"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task LoadGalleryAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_OnAppearingAsync_" data-uid="artstudio.ViewModels.GalleryPageViewModel.OnAppearingAsync*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_OnAppearingAsync" data-uid="artstudio.ViewModels.GalleryPageViewModel.OnAppearingAsync">
+  OnAppearingAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L308"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task OnAppearingAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_OnPropertyChanged_" data-uid="artstudio.ViewModels.GalleryPageViewModel.OnPropertyChanged*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_OnPropertyChanged_System_String_" data-uid="artstudio.ViewModels.GalleryPageViewModel.OnPropertyChanged(System.String)">
+  OnPropertyChanged(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L332"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void OnPropertyChanged(string? propertyName = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_GalleryPageViewModel_SetProperty_" data-uid="artstudio.ViewModels.GalleryPageViewModel.SetProperty*"></a>
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_SetProperty__1___0____0_System_String_" data-uid="artstudio.ViewModels.GalleryPageViewModel.SetProperty``1(``0@,``0,System.String)">
+  SetProperty&lt;T&gt;(ref T, T, string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L335"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected bool SetProperty&lt;T&gt;(ref T field, T value, string? propertyName = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>field</code> <span class="xref">T</span></dt>
+    <dd></dd>
+    <dt><code>value</code> <span class="xref">T</span></dt>
+    <dd></dd>
+    <dt><code>propertyName</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Type Parameters</h4>
+  <dl class="parameters">
+    <dt><code>T</code></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="events">Events
+</h2>
+
+
+
+  <h3 id="artstudio_ViewModels_GalleryPageViewModel_PropertyChanged" data-uid="artstudio.ViewModels.GalleryPageViewModel.PropertyChanged">
+  PropertyChanged
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L330"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Occurs when a property value changes.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public event PropertyChangedEventHandler? PropertyChanged</code></pre>
+  </div>
+
+
+
+
+
+
+  <h4 class="section">Event Type</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler">PropertyChangedEventHandler</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/GalleryPageViewModel.cs/#L13" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

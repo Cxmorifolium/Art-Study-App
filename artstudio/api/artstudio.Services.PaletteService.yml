@@ -1,0 +1,1363 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Services.PaletteService
+  commentId: T:artstudio.Services.PaletteService
+  id: PaletteService
+  parent: artstudio.Services
+  children:
+  - artstudio.Services.PaletteService.#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.Services.PaletteService})
+  - artstudio.Services.PaletteService.AddSwatchToFavoritesAsync(System.String)
+  - artstudio.Services.PaletteService.DeletePaletteCollectionAsync(System.Int32)
+  - artstudio.Services.PaletteService.GetFavoritePalettesAsync
+  - artstudio.Services.PaletteService.GetFavoriteSwatchesAsync
+  - artstudio.Services.PaletteService.GetSwatchesSortedAsync(artstudio.Services.SwatchSortMethod)
+  - artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync(System.String)
+  - artstudio.Services.PaletteService.IsSwatchFavoriteAsync(Microsoft.Maui.Graphics.Color)
+  - artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(System.Int32)
+  - artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(System.String)
+  - artstudio.Services.PaletteService.SavePaletteCollectionAsync(System.Collections.Generic.List{Microsoft.Maui.Graphics.Color},System.String,System.String)
+  - artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync(Microsoft.Maui.Graphics.Color,System.String)
+  - artstudio.Services.PaletteService.TogglePaletteFavoriteAsync(System.Int32)
+  langs:
+  - csharp
+  - vb
+  name: PaletteService
+  nameWithType: PaletteService
+  fullName: artstudio.Services.PaletteService
+  type: Class
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PaletteService
+    path: Services/PaletteService.cs
+    startLine: 5
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public class PaletteService
+    content.vb: Public Class PaletteService
+  inheritance:
+  - System.Object
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.Services.PaletteService.#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.Services.PaletteService})
+  commentId: M:artstudio.Services.PaletteService.#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.Services.PaletteService})
+  id: '#ctor(artstudio.Services.DatabaseService,Microsoft.Extensions.Logging.ILogger{artstudio.Services.PaletteService})'
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: PaletteService(DatabaseService, ILogger<PaletteService>)
+  nameWithType: PaletteService.PaletteService(DatabaseService, ILogger<PaletteService>)
+  fullName: artstudio.Services.PaletteService.PaletteService(artstudio.Services.DatabaseService, Microsoft.Extensions.Logging.ILogger<artstudio.Services.PaletteService>)
+  type: Constructor
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: .ctor
+    path: Services/PaletteService.cs
+    startLine: 10
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public PaletteService(DatabaseService databaseService, ILogger<PaletteService> logger)
+    parameters:
+    - id: databaseService
+      type: artstudio.Services.DatabaseService
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{artstudio.Services.PaletteService}
+    content.vb: Public Sub New(databaseService As DatabaseService, logger As ILogger(Of PaletteService))
+  overload: artstudio.Services.PaletteService.#ctor*
+  nameWithType.vb: PaletteService.New(DatabaseService, ILogger(Of PaletteService))
+  fullName.vb: artstudio.Services.PaletteService.New(artstudio.Services.DatabaseService, Microsoft.Extensions.Logging.ILogger(Of artstudio.Services.PaletteService))
+  name.vb: New(DatabaseService, ILogger(Of PaletteService))
+- uid: artstudio.Services.PaletteService.SavePaletteCollectionAsync(System.Collections.Generic.List{Microsoft.Maui.Graphics.Color},System.String,System.String)
+  commentId: M:artstudio.Services.PaletteService.SavePaletteCollectionAsync(System.Collections.Generic.List{Microsoft.Maui.Graphics.Color},System.String,System.String)
+  id: SavePaletteCollectionAsync(System.Collections.Generic.List{Microsoft.Maui.Graphics.Color},System.String,System.String)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: SavePaletteCollectionAsync(List<Color>, string?, string?)
+  nameWithType: PaletteService.SavePaletteCollectionAsync(List<Color>, string?, string?)
+  fullName: artstudio.Services.PaletteService.SavePaletteCollectionAsync(System.Collections.Generic.List<Microsoft.Maui.Graphics.Color>, string?, string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SavePaletteCollectionAsync
+    path: Services/PaletteService.cs
+    startLine: 18
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<PaletteCollection> SavePaletteCollectionAsync(List<Color> colors, string? title = null, string? paletteType = "generated")
+    parameters:
+    - id: colors
+      type: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+    - id: title
+      type: System.String
+    - id: paletteType
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{artstudio.Data.PaletteCollection}
+    content.vb: Public Function SavePaletteCollectionAsync(colors As List(Of Color), title As String = Nothing, paletteType As String = "generated") As Task(Of PaletteCollection)
+  overload: artstudio.Services.PaletteService.SavePaletteCollectionAsync*
+  nameWithType.vb: PaletteService.SavePaletteCollectionAsync(List(Of Color), String, String)
+  fullName.vb: artstudio.Services.PaletteService.SavePaletteCollectionAsync(System.Collections.Generic.List(Of Microsoft.Maui.Graphics.Color), String, String)
+  name.vb: SavePaletteCollectionAsync(List(Of Color), String, String)
+- uid: artstudio.Services.PaletteService.GetFavoritePalettesAsync
+  commentId: M:artstudio.Services.PaletteService.GetFavoritePalettesAsync
+  id: GetFavoritePalettesAsync
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoritePalettesAsync()
+  nameWithType: PaletteService.GetFavoritePalettesAsync()
+  fullName: artstudio.Services.PaletteService.GetFavoritePalettesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoritePalettesAsync
+    path: Services/PaletteService.cs
+    startLine: 75
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<PaletteCollection>> GetFavoritePalettesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.PaletteCollection}}
+    content.vb: Public Function GetFavoritePalettesAsync() As Task(Of List(Of PaletteCollection))
+  overload: artstudio.Services.PaletteService.GetFavoritePalettesAsync*
+- uid: artstudio.Services.PaletteService.TogglePaletteFavoriteAsync(System.Int32)
+  commentId: M:artstudio.Services.PaletteService.TogglePaletteFavoriteAsync(System.Int32)
+  id: TogglePaletteFavoriteAsync(System.Int32)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: TogglePaletteFavoriteAsync(int)
+  nameWithType: PaletteService.TogglePaletteFavoriteAsync(int)
+  fullName: artstudio.Services.PaletteService.TogglePaletteFavoriteAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: TogglePaletteFavoriteAsync
+    path: Services/PaletteService.cs
+    startLine: 112
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task TogglePaletteFavoriteAsync(int collectionId)
+    parameters:
+    - id: collectionId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function TogglePaletteFavoriteAsync(collectionId As Integer) As Task
+  overload: artstudio.Services.PaletteService.TogglePaletteFavoriteAsync*
+  nameWithType.vb: PaletteService.TogglePaletteFavoriteAsync(Integer)
+  fullName.vb: artstudio.Services.PaletteService.TogglePaletteFavoriteAsync(Integer)
+  name.vb: TogglePaletteFavoriteAsync(Integer)
+- uid: artstudio.Services.PaletteService.DeletePaletteCollectionAsync(System.Int32)
+  commentId: M:artstudio.Services.PaletteService.DeletePaletteCollectionAsync(System.Int32)
+  id: DeletePaletteCollectionAsync(System.Int32)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: DeletePaletteCollectionAsync(int)
+  nameWithType: PaletteService.DeletePaletteCollectionAsync(int)
+  fullName: artstudio.Services.PaletteService.DeletePaletteCollectionAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeletePaletteCollectionAsync
+    path: Services/PaletteService.cs
+    startLine: 137
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task DeletePaletteCollectionAsync(int collectionId)
+    parameters:
+    - id: collectionId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function DeletePaletteCollectionAsync(collectionId As Integer) As Task
+  overload: artstudio.Services.PaletteService.DeletePaletteCollectionAsync*
+  nameWithType.vb: PaletteService.DeletePaletteCollectionAsync(Integer)
+  fullName.vb: artstudio.Services.PaletteService.DeletePaletteCollectionAsync(Integer)
+  name.vb: DeletePaletteCollectionAsync(Integer)
+- uid: artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync(Microsoft.Maui.Graphics.Color,System.String)
+  commentId: M:artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync(Microsoft.Maui.Graphics.Color,System.String)
+  id: SaveSwatchToFavoritesAsync(Microsoft.Maui.Graphics.Color,System.String)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: SaveSwatchToFavoritesAsync(Color, string?)
+  nameWithType: PaletteService.SaveSwatchToFavoritesAsync(Color, string?)
+  fullName: artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync(Microsoft.Maui.Graphics.Color, string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SaveSwatchToFavoritesAsync
+    path: Services/PaletteService.cs
+    startLine: 155
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<FavoriteSwatch> SaveSwatchToFavoritesAsync(Color color, string? colorName = null)
+    parameters:
+    - id: color
+      type: Microsoft.Maui.Graphics.Color
+    - id: colorName
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{artstudio.Data.FavoriteSwatch}
+    content.vb: Public Function SaveSwatchToFavoritesAsync(color As Color, colorName As String = Nothing) As Task(Of FavoriteSwatch)
+  overload: artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync*
+  nameWithType.vb: PaletteService.SaveSwatchToFavoritesAsync(Color, String)
+  fullName.vb: artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync(Microsoft.Maui.Graphics.Color, String)
+  name.vb: SaveSwatchToFavoritesAsync(Color, String)
+- uid: artstudio.Services.PaletteService.GetFavoriteSwatchesAsync
+  commentId: M:artstudio.Services.PaletteService.GetFavoriteSwatchesAsync
+  id: GetFavoriteSwatchesAsync
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: GetFavoriteSwatchesAsync()
+  nameWithType: PaletteService.GetFavoriteSwatchesAsync()
+  fullName: artstudio.Services.PaletteService.GetFavoriteSwatchesAsync()
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetFavoriteSwatchesAsync
+    path: Services/PaletteService.cs
+    startLine: 199
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<FavoriteSwatch>> GetFavoriteSwatchesAsync()
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteSwatch}}
+    content.vb: Public Function GetFavoriteSwatchesAsync() As Task(Of List(Of FavoriteSwatch))
+  overload: artstudio.Services.PaletteService.GetFavoriteSwatchesAsync*
+- uid: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(System.Int32)
+  commentId: M:artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(System.Int32)
+  id: RemoveSwatchFromFavoritesAsync(System.Int32)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: RemoveSwatchFromFavoritesAsync(int)
+  nameWithType: PaletteService.RemoveSwatchFromFavoritesAsync(int)
+  fullName: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(int)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RemoveSwatchFromFavoritesAsync
+    path: Services/PaletteService.cs
+    startLine: 219
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task RemoveSwatchFromFavoritesAsync(int swatchId)
+    parameters:
+    - id: swatchId
+      type: System.Int32
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RemoveSwatchFromFavoritesAsync(swatchId As Integer) As Task
+  overload: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync*
+  nameWithType.vb: PaletteService.RemoveSwatchFromFavoritesAsync(Integer)
+  fullName.vb: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(Integer)
+  name.vb: RemoveSwatchFromFavoritesAsync(Integer)
+- uid: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(System.String)
+  commentId: M:artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(System.String)
+  id: RemoveSwatchFromFavoritesAsync(System.String)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: RemoveSwatchFromFavoritesAsync(string)
+  nameWithType: PaletteService.RemoveSwatchFromFavoritesAsync(string)
+  fullName: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RemoveSwatchFromFavoritesAsync
+    path: Services/PaletteService.cs
+    startLine: 236
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task RemoveSwatchFromFavoritesAsync(string hexColor)
+    parameters:
+    - id: hexColor
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task
+    content.vb: Public Function RemoveSwatchFromFavoritesAsync(hexColor As String) As Task
+  overload: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync*
+  nameWithType.vb: PaletteService.RemoveSwatchFromFavoritesAsync(String)
+  fullName.vb: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync(String)
+  name.vb: RemoveSwatchFromFavoritesAsync(String)
+- uid: artstudio.Services.PaletteService.GetSwatchesSortedAsync(artstudio.Services.SwatchSortMethod)
+  commentId: M:artstudio.Services.PaletteService.GetSwatchesSortedAsync(artstudio.Services.SwatchSortMethod)
+  id: GetSwatchesSortedAsync(artstudio.Services.SwatchSortMethod)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: GetSwatchesSortedAsync(SwatchSortMethod)
+  nameWithType: PaletteService.GetSwatchesSortedAsync(SwatchSortMethod)
+  fullName: artstudio.Services.PaletteService.GetSwatchesSortedAsync(artstudio.Services.SwatchSortMethod)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: GetSwatchesSortedAsync
+    path: Services/PaletteService.cs
+    startLine: 263
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<List<FavoriteSwatch>> GetSwatchesSortedAsync(SwatchSortMethod sortMethod)
+    parameters:
+    - id: sortMethod
+      type: artstudio.Services.SwatchSortMethod
+    return:
+      type: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteSwatch}}
+    content.vb: Public Function GetSwatchesSortedAsync(sortMethod As SwatchSortMethod) As Task(Of List(Of FavoriteSwatch))
+  overload: artstudio.Services.PaletteService.GetSwatchesSortedAsync*
+- uid: artstudio.Services.PaletteService.IsSwatchFavoriteAsync(Microsoft.Maui.Graphics.Color)
+  commentId: M:artstudio.Services.PaletteService.IsSwatchFavoriteAsync(Microsoft.Maui.Graphics.Color)
+  id: IsSwatchFavoriteAsync(Microsoft.Maui.Graphics.Color)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: IsSwatchFavoriteAsync(Color)
+  nameWithType: PaletteService.IsSwatchFavoriteAsync(Color)
+  fullName: artstudio.Services.PaletteService.IsSwatchFavoriteAsync(Microsoft.Maui.Graphics.Color)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsSwatchFavoriteAsync
+    path: Services/PaletteService.cs
+    startLine: 287
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<bool> IsSwatchFavoriteAsync(Color color)
+    parameters:
+    - id: color
+      type: Microsoft.Maui.Graphics.Color
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function IsSwatchFavoriteAsync(color As Color) As Task(Of Boolean)
+  overload: artstudio.Services.PaletteService.IsSwatchFavoriteAsync*
+- uid: artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync(System.String)
+  commentId: M:artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync(System.String)
+  id: IsSwatchAlreadyFavoritedAsync(System.String)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: IsSwatchAlreadyFavoritedAsync(string)
+  nameWithType: PaletteService.IsSwatchAlreadyFavoritedAsync(string)
+  fullName: artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsSwatchAlreadyFavoritedAsync
+    path: Services/PaletteService.cs
+    startLine: 292
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<bool> IsSwatchAlreadyFavoritedAsync(string hexColor)
+    parameters:
+    - id: hexColor
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function IsSwatchAlreadyFavoritedAsync(hexColor As String) As Task(Of Boolean)
+  overload: artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync*
+  nameWithType.vb: PaletteService.IsSwatchAlreadyFavoritedAsync(String)
+  fullName.vb: artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync(String)
+  name.vb: IsSwatchAlreadyFavoritedAsync(String)
+- uid: artstudio.Services.PaletteService.AddSwatchToFavoritesAsync(System.String)
+  commentId: M:artstudio.Services.PaletteService.AddSwatchToFavoritesAsync(System.String)
+  id: AddSwatchToFavoritesAsync(System.String)
+  parent: artstudio.Services.PaletteService
+  langs:
+  - csharp
+  - vb
+  name: AddSwatchToFavoritesAsync(string)
+  nameWithType: PaletteService.AddSwatchToFavoritesAsync(string)
+  fullName: artstudio.Services.PaletteService.AddSwatchToFavoritesAsync(string)
+  type: Method
+  source:
+    remote:
+      path: artstudio/Services/PaletteService.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: AddSwatchToFavoritesAsync
+    path: Services/PaletteService.cs
+    startLine: 310
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public Task<bool> AddSwatchToFavoritesAsync(string hexColor)
+    parameters:
+    - id: hexColor
+      type: System.String
+    return:
+      type: System.Threading.Tasks.Task{System.Boolean}
+    content.vb: Public Function AddSwatchToFavoritesAsync(hexColor As String) As Task(Of Boolean)
+  overload: artstudio.Services.PaletteService.AddSwatchToFavoritesAsync*
+  nameWithType.vb: PaletteService.AddSwatchToFavoritesAsync(String)
+  fullName.vb: artstudio.Services.PaletteService.AddSwatchToFavoritesAsync(String)
+  name.vb: AddSwatchToFavoritesAsync(String)
+references:
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: artstudio.Services.PaletteService.#ctor*
+  commentId: Overload:artstudio.Services.PaletteService.#ctor
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService__ctor_artstudio_Services_DatabaseService_Microsoft_Extensions_Logging_ILogger_artstudio_Services_PaletteService__
+  name: PaletteService
+  nameWithType: PaletteService.PaletteService
+  fullName: artstudio.Services.PaletteService.PaletteService
+  nameWithType.vb: PaletteService.New
+  fullName.vb: artstudio.Services.PaletteService.New
+  name.vb: New
+- uid: artstudio.Services.DatabaseService
+  commentId: T:artstudio.Services.DatabaseService
+  parent: artstudio.Services
+  href: artstudio.Services.DatabaseService.html
+  name: DatabaseService
+  nameWithType: DatabaseService
+  fullName: artstudio.Services.DatabaseService
+- uid: Microsoft.Extensions.Logging.ILogger{artstudio.Services.PaletteService}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{artstudio.Services.PaletteService}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<PaletteService>
+  nameWithType: ILogger<PaletteService>
+  fullName: Microsoft.Extensions.Logging.ILogger<artstudio.Services.PaletteService>
+  nameWithType.vb: ILogger(Of PaletteService)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of artstudio.Services.PaletteService)
+  name.vb: ILogger(Of PaletteService)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: artstudio.Services.PaletteService
+    name: PaletteService
+    href: artstudio.Services.PaletteService.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Services.PaletteService
+    name: PaletteService
+    href: artstudio.Services.PaletteService.html
+  - name: )
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: artstudio.Services.PaletteService.SavePaletteCollectionAsync*
+  commentId: Overload:artstudio.Services.PaletteService.SavePaletteCollectionAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_SavePaletteCollectionAsync_System_Collections_Generic_List_Microsoft_Maui_Graphics_Color__System_String_System_String_
+  name: SavePaletteCollectionAsync
+  nameWithType: PaletteService.SavePaletteCollectionAsync
+  fullName: artstudio.Services.PaletteService.SavePaletteCollectionAsync
+- uid: System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+  commentId: T:System.Collections.Generic.List{Microsoft.Maui.Graphics.Color}
+  parent: System.Collections.Generic
+  definition: System.Collections.Generic.List`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<Color>
+  nameWithType: List<Color>
+  fullName: System.Collections.Generic.List<Microsoft.Maui.Graphics.Color>
+  nameWithType.vb: List(Of Color)
+  fullName.vb: System.Collections.Generic.List(Of Microsoft.Maui.Graphics.Color)
+  name.vb: List(Of Color)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: Microsoft.Maui.Graphics.Color
+    name: Color
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.Maui.Graphics.Color
+    name: Color
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  - name: )
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: System.Threading.Tasks.Task{artstudio.Data.PaletteCollection}
+  commentId: T:System.Threading.Tasks.Task{artstudio.Data.PaletteCollection}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<PaletteCollection>
+  nameWithType: Task<PaletteCollection>
+  fullName: System.Threading.Tasks.Task<artstudio.Data.PaletteCollection>
+  nameWithType.vb: Task(Of PaletteCollection)
+  fullName.vb: System.Threading.Tasks.Task(Of artstudio.Data.PaletteCollection)
+  name.vb: Task(Of PaletteCollection)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: artstudio.Data.PaletteCollection
+    name: PaletteCollection
+    href: artstudio.Data.PaletteCollection.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.PaletteCollection
+    name: PaletteCollection
+    href: artstudio.Data.PaletteCollection.html
+  - name: )
+- uid: System.Collections.Generic.List`1
+  commentId: T:System.Collections.Generic.List`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  name: List<T>
+  nameWithType: List<T>
+  fullName: System.Collections.Generic.List<T>
+  nameWithType.vb: List(Of T)
+  fullName.vb: System.Collections.Generic.List(Of T)
+  name.vb: List(Of T)
+  spec.csharp:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.Generic
+  commentId: N:System.Collections.Generic
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.Generic
+  nameWithType: System.Collections.Generic
+  fullName: System.Collections.Generic
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.Generic
+    name: Generic
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic
+- uid: System.Threading.Tasks.Task`1
+  commentId: T:System.Threading.Tasks.Task`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<TResult>
+  nameWithType: Task<TResult>
+  fullName: System.Threading.Tasks.Task<TResult>
+  nameWithType.vb: Task(Of TResult)
+  fullName.vb: System.Threading.Tasks.Task(Of TResult)
+  name.vb: Task(Of TResult)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - name: TResult
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TResult
+  - name: )
+- uid: System.Threading.Tasks
+  commentId: N:System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Threading.Tasks
+  nameWithType: System.Threading.Tasks
+  fullName: System.Threading.Tasks
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Threading
+    name: Threading
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading
+  - name: .
+  - uid: System.Threading.Tasks
+    name: Tasks
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks
+- uid: artstudio.Services.PaletteService.GetFavoritePalettesAsync*
+  commentId: Overload:artstudio.Services.PaletteService.GetFavoritePalettesAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_GetFavoritePalettesAsync
+  name: GetFavoritePalettesAsync
+  nameWithType: PaletteService.GetFavoritePalettesAsync
+  fullName: artstudio.Services.PaletteService.GetFavoritePalettesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.PaletteCollection}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.PaletteCollection}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<PaletteCollection>>
+  nameWithType: Task<List<PaletteCollection>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.PaletteCollection>>
+  nameWithType.vb: Task(Of List(Of PaletteCollection))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.PaletteCollection))
+  name.vb: Task(Of List(Of PaletteCollection))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.PaletteCollection
+    name: PaletteCollection
+    href: artstudio.Data.PaletteCollection.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.PaletteCollection
+    name: PaletteCollection
+    href: artstudio.Data.PaletteCollection.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.PaletteService.TogglePaletteFavoriteAsync*
+  commentId: Overload:artstudio.Services.PaletteService.TogglePaletteFavoriteAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_TogglePaletteFavoriteAsync_System_Int32_
+  name: TogglePaletteFavoriteAsync
+  nameWithType: PaletteService.TogglePaletteFavoriteAsync
+  fullName: artstudio.Services.PaletteService.TogglePaletteFavoriteAsync
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: System.Threading.Tasks.Task
+  commentId: T:System.Threading.Tasks.Task
+  parent: System.Threading.Tasks
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task
+  name: Task
+  nameWithType: Task
+  fullName: System.Threading.Tasks.Task
+- uid: artstudio.Services.PaletteService.DeletePaletteCollectionAsync*
+  commentId: Overload:artstudio.Services.PaletteService.DeletePaletteCollectionAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_DeletePaletteCollectionAsync_System_Int32_
+  name: DeletePaletteCollectionAsync
+  nameWithType: PaletteService.DeletePaletteCollectionAsync
+  fullName: artstudio.Services.PaletteService.DeletePaletteCollectionAsync
+- uid: artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync*
+  commentId: Overload:artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_SaveSwatchToFavoritesAsync_Microsoft_Maui_Graphics_Color_System_String_
+  name: SaveSwatchToFavoritesAsync
+  nameWithType: PaletteService.SaveSwatchToFavoritesAsync
+  fullName: artstudio.Services.PaletteService.SaveSwatchToFavoritesAsync
+- uid: Microsoft.Maui.Graphics.Color
+  commentId: T:Microsoft.Maui.Graphics.Color
+  parent: Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  name: Color
+  nameWithType: Color
+  fullName: Microsoft.Maui.Graphics.Color
+- uid: System.Threading.Tasks.Task{artstudio.Data.FavoriteSwatch}
+  commentId: T:System.Threading.Tasks.Task{artstudio.Data.FavoriteSwatch}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<FavoriteSwatch>
+  nameWithType: Task<FavoriteSwatch>
+  fullName: System.Threading.Tasks.Task<artstudio.Data.FavoriteSwatch>
+  nameWithType.vb: Task(Of FavoriteSwatch)
+  fullName.vb: System.Threading.Tasks.Task(Of artstudio.Data.FavoriteSwatch)
+  name.vb: Task(Of FavoriteSwatch)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: artstudio.Data.FavoriteSwatch
+    name: FavoriteSwatch
+    href: artstudio.Data.FavoriteSwatch.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.FavoriteSwatch
+    name: FavoriteSwatch
+    href: artstudio.Data.FavoriteSwatch.html
+  - name: )
+- uid: Microsoft.Maui.Graphics
+  commentId: N:Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Maui.Graphics
+  nameWithType: Microsoft.Maui.Graphics
+  fullName: Microsoft.Maui.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+- uid: artstudio.Services.PaletteService.GetFavoriteSwatchesAsync*
+  commentId: Overload:artstudio.Services.PaletteService.GetFavoriteSwatchesAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_GetFavoriteSwatchesAsync
+  name: GetFavoriteSwatchesAsync
+  nameWithType: PaletteService.GetFavoriteSwatchesAsync
+  fullName: artstudio.Services.PaletteService.GetFavoriteSwatchesAsync
+- uid: System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteSwatch}}
+  commentId: T:System.Threading.Tasks.Task{System.Collections.Generic.List{artstudio.Data.FavoriteSwatch}}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<List<FavoriteSwatch>>
+  nameWithType: Task<List<FavoriteSwatch>>
+  fullName: System.Threading.Tasks.Task<System.Collections.Generic.List<artstudio.Data.FavoriteSwatch>>
+  nameWithType.vb: Task(Of List(Of FavoriteSwatch))
+  fullName.vb: System.Threading.Tasks.Task(Of System.Collections.Generic.List(Of artstudio.Data.FavoriteSwatch))
+  name.vb: Task(Of List(Of FavoriteSwatch))
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: <
+  - uid: artstudio.Data.FavoriteSwatch
+    name: FavoriteSwatch
+    href: artstudio.Data.FavoriteSwatch.html
+  - name: '>'
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Collections.Generic.List`1
+    name: List
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.Data.FavoriteSwatch
+    name: FavoriteSwatch
+    href: artstudio.Data.FavoriteSwatch.html
+  - name: )
+  - name: )
+- uid: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync*
+  commentId: Overload:artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_RemoveSwatchFromFavoritesAsync_System_Int32_
+  name: RemoveSwatchFromFavoritesAsync
+  nameWithType: PaletteService.RemoveSwatchFromFavoritesAsync
+  fullName: artstudio.Services.PaletteService.RemoveSwatchFromFavoritesAsync
+- uid: artstudio.Services.PaletteService.GetSwatchesSortedAsync*
+  commentId: Overload:artstudio.Services.PaletteService.GetSwatchesSortedAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_GetSwatchesSortedAsync_artstudio_Services_SwatchSortMethod_
+  name: GetSwatchesSortedAsync
+  nameWithType: PaletteService.GetSwatchesSortedAsync
+  fullName: artstudio.Services.PaletteService.GetSwatchesSortedAsync
+- uid: artstudio.Services.SwatchSortMethod
+  commentId: T:artstudio.Services.SwatchSortMethod
+  parent: artstudio.Services
+  href: artstudio.Services.SwatchSortMethod.html
+  name: SwatchSortMethod
+  nameWithType: SwatchSortMethod
+  fullName: artstudio.Services.SwatchSortMethod
+- uid: artstudio.Services.PaletteService.IsSwatchFavoriteAsync*
+  commentId: Overload:artstudio.Services.PaletteService.IsSwatchFavoriteAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_IsSwatchFavoriteAsync_Microsoft_Maui_Graphics_Color_
+  name: IsSwatchFavoriteAsync
+  nameWithType: PaletteService.IsSwatchFavoriteAsync
+  fullName: artstudio.Services.PaletteService.IsSwatchFavoriteAsync
+- uid: System.Threading.Tasks.Task{System.Boolean}
+  commentId: T:System.Threading.Tasks.Task{System.Boolean}
+  parent: System.Threading.Tasks
+  definition: System.Threading.Tasks.Task`1
+  href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  name: Task<bool>
+  nameWithType: Task<bool>
+  fullName: System.Threading.Tasks.Task<bool>
+  nameWithType.vb: Task(Of Boolean)
+  fullName.vb: System.Threading.Tasks.Task(Of Boolean)
+  name.vb: Task(Of Boolean)
+  spec.csharp:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: <
+  - uid: System.Boolean
+    name: bool
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: '>'
+  spec.vb:
+  - uid: System.Threading.Tasks.Task`1
+    name: Task
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.Boolean
+    name: Boolean
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.boolean
+  - name: )
+- uid: artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync*
+  commentId: Overload:artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_IsSwatchAlreadyFavoritedAsync_System_String_
+  name: IsSwatchAlreadyFavoritedAsync
+  nameWithType: PaletteService.IsSwatchAlreadyFavoritedAsync
+  fullName: artstudio.Services.PaletteService.IsSwatchAlreadyFavoritedAsync
+- uid: artstudio.Services.PaletteService.AddSwatchToFavoritesAsync*
+  commentId: Overload:artstudio.Services.PaletteService.AddSwatchToFavoritesAsync
+  href: artstudio.Services.PaletteService.html#artstudio_Services_PaletteService_AddSwatchToFavoritesAsync_System_String_
+  name: AddSwatchToFavoritesAsync
+  nameWithType: PaletteService.AddSwatchToFavoritesAsync
+  fullName: artstudio.Services.PaletteService.AddSwatchToFavoritesAsync

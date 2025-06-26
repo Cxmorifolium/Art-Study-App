@@ -1,0 +1,1242 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class DatabaseService | artstudio-study-app </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class DatabaseService | artstudio-study-app ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Cxmorifolium/Art-Study-App/new/main/apiSpec/new?filename=artstudio_Services_DatabaseService.md&amp;value=---%0Auid%3A%20artstudio.Services.DatabaseService%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="artstudio-study-app">
+            artstudio-study-app
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="artstudio.Services.DatabaseService">
+
+
+
+  <h1 id="artstudio_Services_DatabaseService" data-uid="artstudio.Services.DatabaseService" class="text-break">
+Class DatabaseService  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L8"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="artstudio.html">artstudio</a>.<a class="xref" href="artstudio.Services.html">Services</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>artstudio.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class DatabaseService : IDisposable</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><span class="xref">DatabaseService</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.idisposable">IDisposable</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="artstudio_Services_DatabaseService__ctor_" data-uid="artstudio.Services.DatabaseService.#ctor*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService__ctor" data-uid="artstudio.Services.DatabaseService.#ctor">
+  DatabaseService()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L14"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public DatabaseService()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="artstudio_Services_DatabaseService_CleanupOldSessionImagesAsync_" data-uid="artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_CleanupOldSessionImagesAsync" data-uid="artstudio.Services.DatabaseService.CleanupOldSessionImagesAsync">
+  CleanupOldSessionImagesAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L880"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task CleanupOldSessionImagesAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_DeleteFavoriteImageAsync_" data-uid="artstudio.Services.DatabaseService.DeleteFavoriteImageAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_DeleteFavoriteImageAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.DeleteFavoriteImageAsync(System.Int32)">
+  DeleteFavoriteImageAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L515"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; DeleteFavoriteImageAsync(int favoriteImageId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>favoriteImageId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_DeleteFavoriteImageByUnsplashIdAsync_" data-uid="artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_DeleteFavoriteImageByUnsplashIdAsync_System_String_" data-uid="artstudio.Services.DatabaseService.DeleteFavoriteImageByUnsplashIdAsync(System.String)">
+  DeleteFavoriteImageByUnsplashIdAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L544"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; DeleteFavoriteImageByUnsplashIdAsync(string unsplashId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>unsplashId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_DeleteFavoriteSwatchAsync_" data-uid="artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_DeleteFavoriteSwatchAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.DeleteFavoriteSwatchAsync(System.Int32)">
+  DeleteFavoriteSwatchAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L477"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteFavoriteSwatchAsync(int swatchId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>swatchId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_DeleteOldSessionSnapshotsAsync_" data-uid="artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_DeleteOldSessionSnapshotsAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.DeleteOldSessionSnapshotsAsync(System.Int32)">
+  DeleteOldSessionSnapshotsAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L923"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; DeleteOldSessionSnapshotsAsync(int keepCount = 20)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>keepCount</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_DeletePaletteCollectionAsync_" data-uid="artstudio.Services.DatabaseService.DeletePaletteCollectionAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_DeletePaletteCollectionAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.DeletePaletteCollectionAsync(System.Int32)">
+  DeletePaletteCollectionAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L402"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeletePaletteCollectionAsync(int collectionId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collectionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_DeleteSessionSnapshotAsync_" data-uid="artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_DeleteSessionSnapshotAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.DeleteSessionSnapshotAsync(System.Int32)">
+  DeleteSessionSnapshotAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L872"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; DeleteSessionSnapshotAsync(int id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_DeleteUserUploadedImageAsync_" data-uid="artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_DeleteUserUploadedImageAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.DeleteUserUploadedImageAsync(System.Int32)">
+  DeleteUserUploadedImageAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L675"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteUserUploadedImageAsync(int imageId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>imageId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_DeleteWordCollectionAsync_" data-uid="artstudio.Services.DatabaseService.DeleteWordCollectionAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_DeleteWordCollectionAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.DeleteWordCollectionAsync(System.Int32)">
+  DeleteWordCollectionAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L353"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task DeleteWordCollectionAsync(int collectionId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collectionId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_Dispose_" data-uid="artstudio.Services.DatabaseService.Dispose*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_Dispose" data-uid="artstudio.Services.DatabaseService.Dispose">
+  Dispose()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L985"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"><p>Performs application-defined tasks associated with freeing, releasing, or resetting unmanaged resources.</p>
+</div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public void Dispose()</code></pre>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetAllCustomTagsAsync_" data-uid="artstudio.Services.DatabaseService.GetAllCustomTagsAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetAllCustomTagsAsync" data-uid="artstudio.Services.DatabaseService.GetAllCustomTagsAsync">
+  GetAllCustomTagsAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L757"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;string&gt;&gt; GetAllCustomTagsAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetAllSessionSnapshotsAsync_" data-uid="artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetAllSessionSnapshotsAsync" data-uid="artstudio.Services.DatabaseService.GetAllSessionSnapshotsAsync">
+  GetAllSessionSnapshotsAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L843"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;SessionSnapshot&gt;&gt; GetAllSessionSnapshotsAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.SessionSnapshot.html">SessionSnapshot</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetDatabaseAsync_" data-uid="artstudio.Services.DatabaseService.GetDatabaseAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetDatabaseAsync" data-uid="artstudio.Services.DatabaseService.GetDatabaseAsync">
+  GetDatabaseAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L20"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;SQLiteAsyncConnection&gt; GetDatabaseAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<span class="xref">SQLiteAsyncConnection</span>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetFavoriteByUnsplashIdAsync_" data-uid="artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetFavoriteByUnsplashIdAsync_System_String_" data-uid="artstudio.Services.DatabaseService.GetFavoriteByUnsplashIdAsync(System.String)">
+  GetFavoriteByUnsplashIdAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L567"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;FavoriteImageItem?&gt; GetFavoriteByUnsplashIdAsync(string unsplashId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>unsplashId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="artstudio.Data.FavoriteImageItem.html">FavoriteImageItem</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetFavoriteImagesAsync_" data-uid="artstudio.Services.DatabaseService.GetFavoriteImagesAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetFavoriteImagesAsync" data-uid="artstudio.Services.DatabaseService.GetFavoriteImagesAsync">
+  GetFavoriteImagesAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L504"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;FavoriteImageItem&gt;&gt; GetFavoriteImagesAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.FavoriteImageItem.html">FavoriteImageItem</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetFavoritePalettesAsync_" data-uid="artstudio.Services.DatabaseService.GetFavoritePalettesAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetFavoritePalettesAsync" data-uid="artstudio.Services.DatabaseService.GetFavoritePalettesAsync">
+  GetFavoritePalettesAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L375"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;PaletteCollection&gt;&gt; GetFavoritePalettesAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.PaletteCollection.html">PaletteCollection</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetFavoriteSwatchesAsync_" data-uid="artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetFavoriteSwatchesAsync_System_String_" data-uid="artstudio.Services.DatabaseService.GetFavoriteSwatchesAsync(System.String)">
+  GetFavoriteSwatchesAsync(string?)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L427"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;FavoriteSwatch&gt;&gt; GetFavoriteSwatchesAsync(string? collection = null)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>collection</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.FavoriteSwatch.html">FavoriteSwatch</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetFavoritesAsync_" data-uid="artstudio.Services.DatabaseService.GetFavoritesAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetFavoritesAsync" data-uid="artstudio.Services.DatabaseService.GetFavoritesAsync">
+  GetFavoritesAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L326"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;WordCollection&gt;&gt; GetFavoritesAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.WordCollection.html">WordCollection</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetGalleryByTagAsync_" data-uid="artstudio.Services.DatabaseService.GetGalleryByTagAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetGalleryByTagAsync_System_String_" data-uid="artstudio.Services.DatabaseService.GetGalleryByTagAsync(System.String)">
+  GetGalleryByTagAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L734"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;UserUploadedImage&gt;&gt; GetGalleryByTagAsync(string tag)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>tag</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetRecentSessionSnapshotsAsync_" data-uid="artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetRecentSessionSnapshotsAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.GetRecentSessionSnapshotsAsync(System.Int32)">
+  GetRecentSessionSnapshotsAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L853"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;SessionSnapshot&gt;&gt; GetRecentSessionSnapshotsAsync(int count = 10)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>count</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.SessionSnapshot.html">SessionSnapshot</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetSessionSnapshotAsync_" data-uid="artstudio.Services.DatabaseService.GetSessionSnapshotAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetSessionSnapshotAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.GetSessionSnapshotAsync(System.Int32)">
+  GetSessionSnapshotAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L833"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;SessionSnapshot?&gt; GetSessionSnapshotAsync(int id)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>id</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="artstudio.Data.SessionSnapshot.html">SessionSnapshot</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetSwatchCollectionNamesAsync_" data-uid="artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetSwatchCollectionNamesAsync" data-uid="artstudio.Services.DatabaseService.GetSwatchCollectionNamesAsync">
+  GetSwatchCollectionNamesAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L457"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;string&gt;&gt; GetSwatchCollectionNamesAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetUserUploadedImageAsync_" data-uid="artstudio.Services.DatabaseService.GetUserUploadedImageAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetUserUploadedImageAsync_System_Int32_" data-uid="artstudio.Services.DatabaseService.GetUserUploadedImageAsync(System.Int32)">
+  GetUserUploadedImageAsync(int)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L605"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;UserUploadedImage?&gt; GetUserUploadedImageAsync(int imageId)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>imageId</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_GetUserUploadedImagesAsync_" data-uid="artstudio.Services.DatabaseService.GetUserUploadedImagesAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_GetUserUploadedImagesAsync" data-uid="artstudio.Services.DatabaseService.GetUserUploadedImagesAsync">
+  GetUserUploadedImagesAsync()
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L586"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;UserUploadedImage&gt;&gt; GetUserUploadedImagesAsync()</code></pre>
+  </div>
+
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_SaveFavoriteImageAsync_" data-uid="artstudio.Services.DatabaseService.SaveFavoriteImageAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_SaveFavoriteImageAsync_artstudio_Data_FavoriteImageItem_" data-uid="artstudio.Services.DatabaseService.SaveFavoriteImageAsync(artstudio.Data.FavoriteImageItem)">
+  SaveFavoriteImageAsync(FavoriteImageItem)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L496"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; SaveFavoriteImageAsync(FavoriteImageItem favoriteImage)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>favoriteImage</code> <a class="xref" href="artstudio.Data.FavoriteImageItem.html">FavoriteImageItem</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_SaveSessionSnapshotAsync_" data-uid="artstudio.Services.DatabaseService.SaveSessionSnapshotAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_SaveSessionSnapshotAsync_artstudio_Data_SessionSnapshot_" data-uid="artstudio.Services.DatabaseService.SaveSessionSnapshotAsync(artstudio.Data.SessionSnapshot)">
+  SaveSessionSnapshotAsync(SessionSnapshot)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L825"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; SaveSessionSnapshotAsync(SessionSnapshot sessionSnapshot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sessionSnapshot</code> <a class="xref" href="artstudio.Data.SessionSnapshot.html">SessionSnapshot</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_SaveUserUploadedImageAsync_" data-uid="artstudio.Services.DatabaseService.SaveUserUploadedImageAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_SaveUserUploadedImageAsync_artstudio_Data_UserUploadedImage_" data-uid="artstudio.Services.DatabaseService.SaveUserUploadedImageAsync(artstudio.Data.UserUploadedImage)">
+  SaveUserUploadedImageAsync(UserUploadedImage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L630"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; SaveUserUploadedImageAsync(UserUploadedImage image)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>image</code> <a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_SearchGalleryAsync_" data-uid="artstudio.Services.DatabaseService.SearchGalleryAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_SearchGalleryAsync_System_String_" data-uid="artstudio.Services.DatabaseService.SearchGalleryAsync(System.String)">
+  SearchGalleryAsync(string)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L701"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;List&lt;UserUploadedImage&gt;&gt; SearchGalleryAsync(string searchTerm)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>searchTerm</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.generic.list-1">List</a>&lt;<a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a>&gt;&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_UpdateSessionSnapshotAsync_" data-uid="artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_UpdateSessionSnapshotAsync_artstudio_Data_SessionSnapshot_" data-uid="artstudio.Services.DatabaseService.UpdateSessionSnapshotAsync(artstudio.Data.SessionSnapshot)">
+  UpdateSessionSnapshotAsync(SessionSnapshot)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L864"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task&lt;int&gt; UpdateSessionSnapshotAsync(SessionSnapshot sessionSnapshot)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>sessionSnapshot</code> <a class="xref" href="artstudio.Data.SessionSnapshot.html">SessionSnapshot</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task-1">Task</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+  <a id="artstudio_Services_DatabaseService_UpdateUserUploadedImageAsync_" data-uid="artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync*"></a>
+
+  <h3 id="artstudio_Services_DatabaseService_UpdateUserUploadedImageAsync_artstudio_Data_UserUploadedImage_" data-uid="artstudio.Services.DatabaseService.UpdateUserUploadedImageAsync(artstudio.Data.UserUploadedImage)">
+  UpdateUserUploadedImageAsync(UserUploadedImage)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L659"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public Task UpdateUserUploadedImageAsync(UserUploadedImage image)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>image</code> <a class="xref" href="artstudio.Data.UserUploadedImage.html">UserUploadedImage</a></dt>
+    <dd></dd>
+  </dl>
+
+  <h4 class="section">Returns</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.threading.tasks.task">Task</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/Services/DatabaseService.cs/#L8" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>

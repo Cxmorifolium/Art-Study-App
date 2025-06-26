@@ -13,6 +13,7 @@ namespace artstudio.Services
         Task ShowToastAsync(string message);
         Task ShowToastAsync(string message, int durationMs = 3000);
     }
+
     public class ToastService : IToastService
     {
         public async Task ShowToastAsync(string message)
@@ -24,38 +25,36 @@ namespace artstudio.Services
         {
             try
             {
-#if WINDOWS
-                    var snackbarOptions = new SnackbarOptions
-                    {
-                        BackgroundColor = Colors.DarkSlateGray,
-                        TextColor = Colors.White,
-                        ActionButtonTextColor = Colors.Yellow,
-                        CornerRadius = new CornerRadius(10),
-                        Font = Microsoft.Maui.Font.SystemFontOfSize(14),
-                        ActionButtonFont = Microsoft.Maui.Font.SystemFontOfSize(14),
-                        CharacterSpacing = 0.5
-                    };
-
-                    var snackbar = Snackbar.Make(message, duration: TimeSpan.FromMilliseconds(durationMs), visualOptions: snackbarOptions);
-                    await snackbar.Show();
-#else
-                var toast = Toast.Make(message, ToastDuration.Short, 14);
-                await toast.Show();
-#endif
+                var snackbarOptions = new SnackbarOptions
+                {
+                    BackgroundColor = Colors.DarkSlateGray,
+                    TextColor = Colors.White,
+                    ActionButtonTextColor = Colors.Yellow,
+                    CornerRadius = new CornerRadius(10),
+                    Font = Microsoft.Maui.Font.SystemFontOfSize(14),
+                    ActionButtonFont = Microsoft.Maui.Font.SystemFontOfSize(14),
+                    CharacterSpacing = 0.5
+                };
+                var snackbar = Snackbar.Make(message, duration: TimeSpan.FromMilliseconds(durationMs), visualOptions: snackbarOptions);
+                await snackbar.Show();
             }
-            catch (Exception)
+            catch (Exception ex)
             {
+                System.Diagnostics.Debug.WriteLine($"Toast/Snackbar failed: {ex.Message}");
                 try
                 {
-                    var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
-                    if (mainPage != null)
+                    await MainThread.InvokeOnMainThreadAsync(async () =>
                     {
-                        await mainPage.DisplayAlert("Notification", message, "OK");
-                    }
+                        var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                        if (mainPage != null)
+                        {
+                            await mainPage.DisplayAlert("Notification", message, "OK");
+                        }
+                    });
                 }
-                catch
+                catch (Exception fallbackEx)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Toast failed: {message}");
+                    System.Diagnostics.Debug.WriteLine($"Fallback alert also failed: {fallbackEx.Message}");
                 }
             }
         }
@@ -72,6 +71,8 @@ namespace artstudio.Services
         {
             try
             {
+                System.Diagnostics.Debug.WriteLine($"WindowsToastService: Attempting to show snackbar: {message}");
+
                 var snackbarOptions = new SnackbarOptions
                 {
                     BackgroundColor = Colors.DarkSlateGray,
@@ -83,16 +84,26 @@ namespace artstudio.Services
 
                 var snackbar = Snackbar.Make(message, duration: TimeSpan.FromMilliseconds(durationMs), visualOptions: snackbarOptions);
                 await snackbar.Show();
+
+                System.Diagnostics.Debug.WriteLine($"WindowsToastService: Snackbar.Show() completed");
             }
-            catch (Exception)
+            catch (Exception ex)
             {
-                var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page; // Updated to use Windows[0].Page
-                if (mainPage != null)
+                System.Diagnostics.Debug.WriteLine($"WindowsToastService: Snackbar failed: {ex.Message}");
+                try
                 {
                     await MainThread.InvokeOnMainThreadAsync(async () =>
                     {
-                        await mainPage.DisplayAlert("Success", message, "OK");
+                        var mainPage = Application.Current?.Windows.FirstOrDefault()?.Page;
+                        if (mainPage != null)
+                        {
+                            await mainPage.DisplayAlert("Success", message, "OK");
+                        }
                     });
+                }
+                catch (Exception fallbackEx)
+                {
+                    System.Diagnostics.Debug.WriteLine($"WindowsToastService: Fallback also failed: {fallbackEx.Message}");
                 }
             }
         }

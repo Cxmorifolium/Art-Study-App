@@ -1,0 +1,72 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Views
+  commentId: N:artstudio.Views
+  id: artstudio.Views
+  children:
+  - artstudio.Views.GalleryCreationPage
+  - artstudio.Views.GalleryDetailPage
+  - artstudio.Views.GalleryPage
+  - artstudio.Views.ImagePromptPage
+  - artstudio.Views.PalettePage
+  - artstudio.Views.PromptGeneratorPage
+  - artstudio.Views.StudyPage
+  - artstudio.Views.UnderConstruction
+  langs:
+  - csharp
+  - vb
+  name: artstudio.Views
+  nameWithType: artstudio.Views
+  fullName: artstudio.Views
+  type: Namespace
+  assemblies:
+  - artstudio
+references:
+- uid: artstudio.Views.GalleryCreationPage
+  commentId: T:artstudio.Views.GalleryCreationPage
+  href: artstudio.Views.GalleryCreationPage.html
+  name: GalleryCreationPage
+  nameWithType: GalleryCreationPage
+  fullName: artstudio.Views.GalleryCreationPage
+- uid: artstudio.Views.GalleryDetailPage
+  commentId: T:artstudio.Views.GalleryDetailPage
+  href: artstudio.Views.GalleryDetailPage.html
+  name: GalleryDetailPage
+  nameWithType: GalleryDetailPage
+  fullName: artstudio.Views.GalleryDetailPage
+- uid: artstudio.Views.GalleryPage
+  commentId: T:artstudio.Views.GalleryPage
+  href: artstudio.Views.GalleryPage.html
+  name: GalleryPage
+  nameWithType: GalleryPage
+  fullName: artstudio.Views.GalleryPage
+- uid: artstudio.Views.ImagePromptPage
+  commentId: T:artstudio.Views.ImagePromptPage
+  href: artstudio.Views.ImagePromptPage.html
+  name: ImagePromptPage
+  nameWithType: ImagePromptPage
+  fullName: artstudio.Views.ImagePromptPage
+- uid: artstudio.Views.PalettePage
+  commentId: T:artstudio.Views.PalettePage
+  href: artstudio.Views.PalettePage.html
+  name: PalettePage
+  nameWithType: PalettePage
+  fullName: artstudio.Views.PalettePage
+- uid: artstudio.Views.PromptGeneratorPage
+  commentId: T:artstudio.Views.PromptGeneratorPage
+  href: artstudio.Views.PromptGeneratorPage.html
+  name: PromptGeneratorPage
+  nameWithType: PromptGeneratorPage
+  fullName: artstudio.Views.PromptGeneratorPage
+- uid: artstudio.Views.StudyPage
+  commentId: T:artstudio.Views.StudyPage
+  href: artstudio.Views.StudyPage.html
+  name: StudyPage
+  nameWithType: StudyPage
+  fullName: artstudio.Views.StudyPage
+- uid: artstudio.Views.UnderConstruction
+  commentId: T:artstudio.Views.UnderConstruction
+  href: artstudio.Views.UnderConstruction.html
+  name: UnderConstruction
+  nameWithType: UnderConstruction
+  fullName: artstudio.Views.UnderConstruction

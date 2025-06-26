@@ -1,0 +1,2057 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.ViewModels.StudyPageViewModel
+  commentId: T:artstudio.ViewModels.StudyPageViewModel
+  id: StudyPageViewModel
+  parent: artstudio.ViewModels
+  children:
+  - artstudio.ViewModels.StudyPageViewModel.#ctor(artstudio.Services.PromptGenerator,artstudio.Services.Unsplash,artstudio.Models.PaletteModel,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.StudyPageViewModel},artstudio.Services.DatabaseService,artstudio.Services.IToastService)
+  - artstudio.ViewModels.StudyPageViewModel.CanRegenerate
+  - artstudio.ViewModels.StudyPageViewModel.CanSaveSession
+  - artstudio.ViewModels.StudyPageViewModel.CanUndo
+  - artstudio.ViewModels.StudyPageViewModel.CurrentImages
+  - artstudio.ViewModels.StudyPageViewModel.CurrentModeDisplay
+  - artstudio.ViewModels.StudyPageViewModel.CurrentPalette
+  - artstudio.ViewModels.StudyPageViewModel.CurrentWords
+  - artstudio.ViewModels.StudyPageViewModel.CustomDuration
+  - artstudio.ViewModels.StudyPageViewModel.Dispose
+  - artstudio.ViewModels.StudyPageViewModel.Dispose(System.Boolean)
+  - artstudio.ViewModels.StudyPageViewModel.IsQuickMode
+  - artstudio.ViewModels.StudyPageViewModel.IsSessionMode
+  - artstudio.ViewModels.StudyPageViewModel.ModeOptions
+  - artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged(System.String)
+  - artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonColor
+  - artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonText
+  - artstudio.ViewModels.StudyPageViewModel.PlayPauseCommand
+  - artstudio.ViewModels.StudyPageViewModel.PreviousContent
+  - artstudio.ViewModels.StudyPageViewModel.PropertyChanged
+  - artstudio.ViewModels.StudyPageViewModel.QuickTimeOptions
+  - artstudio.ViewModels.StudyPageViewModel.RegenerateCommand
+  - artstudio.ViewModels.StudyPageViewModel.ResetCommand
+  - artstudio.ViewModels.StudyPageViewModel.SaveSessionCommand
+  - artstudio.ViewModels.StudyPageViewModel.SelectedMode
+  - artstudio.ViewModels.StudyPageViewModel.SelectedQuickTime
+  - artstudio.ViewModels.StudyPageViewModel.SelectedSessionTime
+  - artstudio.ViewModels.StudyPageViewModel.SessionTimeOptions
+  - artstudio.ViewModels.StudyPageViewModel.ShowCustomDuration
+  - artstudio.ViewModels.StudyPageViewModel.ShowPalette
+  - artstudio.ViewModels.StudyPageViewModel.TimeLeftDisplay
+  - artstudio.ViewModels.StudyPageViewModel.UndoCommand
+  - artstudio.ViewModels.StudyPageViewModel.UseCustomTime
+  langs:
+  - csharp
+  - vb
+  name: StudyPageViewModel
+  nameWithType: StudyPageViewModel
+  fullName: artstudio.ViewModels.StudyPageViewModel
+  type: Class
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: StudyPageViewModel
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 14
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: 'public class StudyPageViewModel : INotifyPropertyChanged'
+    content.vb: Public Class StudyPageViewModel Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.ViewModels.StudyPageViewModel.ModeOptions
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.ModeOptions
+  id: ModeOptions
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: ModeOptions
+  nameWithType: StudyPageViewModel.ModeOptions
+  fullName: artstudio.ViewModels.StudyPageViewModel.ModeOptions
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ModeOptions
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 37
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<string> ModeOptions { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{System.String}
+    content.vb: Public ReadOnly Property ModeOptions As ObservableCollection(Of String)
+  overload: artstudio.ViewModels.StudyPageViewModel.ModeOptions*
+- uid: artstudio.ViewModels.StudyPageViewModel.QuickTimeOptions
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.QuickTimeOptions
+  id: QuickTimeOptions
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: QuickTimeOptions
+  nameWithType: StudyPageViewModel.QuickTimeOptions
+  fullName: artstudio.ViewModels.StudyPageViewModel.QuickTimeOptions
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: QuickTimeOptions
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 43
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<string> QuickTimeOptions { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{System.String}
+    content.vb: Public ReadOnly Property QuickTimeOptions As ObservableCollection(Of String)
+  overload: artstudio.ViewModels.StudyPageViewModel.QuickTimeOptions*
+- uid: artstudio.ViewModels.StudyPageViewModel.SessionTimeOptions
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.SessionTimeOptions
+  id: SessionTimeOptions
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: SessionTimeOptions
+  nameWithType: StudyPageViewModel.SessionTimeOptions
+  fullName: artstudio.ViewModels.StudyPageViewModel.SessionTimeOptions
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SessionTimeOptions
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 52
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<string> SessionTimeOptions { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{System.String}
+    content.vb: Public ReadOnly Property SessionTimeOptions As ObservableCollection(Of String)
+  overload: artstudio.ViewModels.StudyPageViewModel.SessionTimeOptions*
+- uid: artstudio.ViewModels.StudyPageViewModel.#ctor(artstudio.Services.PromptGenerator,artstudio.Services.Unsplash,artstudio.Models.PaletteModel,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.StudyPageViewModel},artstudio.Services.DatabaseService,artstudio.Services.IToastService)
+  commentId: M:artstudio.ViewModels.StudyPageViewModel.#ctor(artstudio.Services.PromptGenerator,artstudio.Services.Unsplash,artstudio.Models.PaletteModel,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.StudyPageViewModel},artstudio.Services.DatabaseService,artstudio.Services.IToastService)
+  id: '#ctor(artstudio.Services.PromptGenerator,artstudio.Services.Unsplash,artstudio.Models.PaletteModel,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.StudyPageViewModel},artstudio.Services.DatabaseService,artstudio.Services.IToastService)'
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: StudyPageViewModel(PromptGenerator, Unsplash, PaletteModel, ILogger<StudyPageViewModel>, DatabaseService, IToastService)
+  nameWithType: StudyPageViewModel.StudyPageViewModel(PromptGenerator, Unsplash, PaletteModel, ILogger<StudyPageViewModel>, DatabaseService, IToastService)
+  fullName: artstudio.ViewModels.StudyPageViewModel.StudyPageViewModel(artstudio.Services.PromptGenerator, artstudio.Services.Unsplash, artstudio.Models.PaletteModel, Microsoft.Extensions.Logging.ILogger<artstudio.ViewModels.StudyPageViewModel>, artstudio.Services.DatabaseService, artstudio.Services.IToastService)
+  type: Constructor
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: .ctor
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 67
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public StudyPageViewModel(PromptGenerator promptGenerator, Unsplash unsplash, PaletteModel paletteModel, ILogger<StudyPageViewModel> logger, DatabaseService databaseService, IToastService toastService)
+    parameters:
+    - id: promptGenerator
+      type: artstudio.Services.PromptGenerator
+    - id: unsplash
+      type: artstudio.Services.Unsplash
+    - id: paletteModel
+      type: artstudio.Models.PaletteModel
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.StudyPageViewModel}
+    - id: databaseService
+      type: artstudio.Services.DatabaseService
+    - id: toastService
+      type: artstudio.Services.IToastService
+    content.vb: Public Sub New(promptGenerator As PromptGenerator, unsplash As Unsplash, paletteModel As PaletteModel, logger As ILogger(Of StudyPageViewModel), databaseService As DatabaseService, toastService As IToastService)
+  overload: artstudio.ViewModels.StudyPageViewModel.#ctor*
+  nameWithType.vb: StudyPageViewModel.New(PromptGenerator, Unsplash, PaletteModel, ILogger(Of StudyPageViewModel), DatabaseService, IToastService)
+  fullName.vb: artstudio.ViewModels.StudyPageViewModel.New(artstudio.Services.PromptGenerator, artstudio.Services.Unsplash, artstudio.Models.PaletteModel, Microsoft.Extensions.Logging.ILogger(Of artstudio.ViewModels.StudyPageViewModel), artstudio.Services.DatabaseService, artstudio.Services.IToastService)
+  name.vb: New(PromptGenerator, Unsplash, PaletteModel, ILogger(Of StudyPageViewModel), DatabaseService, IToastService)
+- uid: artstudio.ViewModels.StudyPageViewModel.TimeLeftDisplay
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.TimeLeftDisplay
+  id: TimeLeftDisplay
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: TimeLeftDisplay
+  nameWithType: StudyPageViewModel.TimeLeftDisplay
+  fullName: artstudio.ViewModels.StudyPageViewModel.TimeLeftDisplay
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: TimeLeftDisplay
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 85
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string TimeLeftDisplay { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property TimeLeftDisplay As String
+  overload: artstudio.ViewModels.StudyPageViewModel.TimeLeftDisplay*
+- uid: artstudio.ViewModels.StudyPageViewModel.CurrentModeDisplay
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.CurrentModeDisplay
+  id: CurrentModeDisplay
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: CurrentModeDisplay
+  nameWithType: StudyPageViewModel.CurrentModeDisplay
+  fullName: artstudio.ViewModels.StudyPageViewModel.CurrentModeDisplay
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CurrentModeDisplay
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 87
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string CurrentModeDisplay { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property CurrentModeDisplay As String
+  overload: artstudio.ViewModels.StudyPageViewModel.CurrentModeDisplay*
+- uid: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonText
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonText
+  id: PlayPauseButtonText
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: PlayPauseButtonText
+  nameWithType: StudyPageViewModel.PlayPauseButtonText
+  fullName: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonText
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PlayPauseButtonText
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 91
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string PlayPauseButtonText { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property PlayPauseButtonText As String
+  overload: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonText*
+- uid: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonColor
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonColor
+  id: PlayPauseButtonColor
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: PlayPauseButtonColor
+  nameWithType: StudyPageViewModel.PlayPauseButtonColor
+  fullName: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonColor
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PlayPauseButtonColor
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 94
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public Color PlayPauseButtonColor { get; }
+    parameters: []
+    return:
+      type: Microsoft.Maui.Graphics.Color
+    content.vb: Public ReadOnly Property PlayPauseButtonColor As Color
+  overload: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonColor*
+- uid: artstudio.ViewModels.StudyPageViewModel.IsQuickMode
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.IsQuickMode
+  id: IsQuickMode
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsQuickMode
+  nameWithType: StudyPageViewModel.IsQuickMode
+  fullName: artstudio.ViewModels.StudyPageViewModel.IsQuickMode
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsQuickMode
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 97
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsQuickMode { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsQuickMode As Boolean
+  overload: artstudio.ViewModels.StudyPageViewModel.IsQuickMode*
+- uid: artstudio.ViewModels.StudyPageViewModel.IsSessionMode
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.IsSessionMode
+  id: IsSessionMode
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsSessionMode
+  nameWithType: StudyPageViewModel.IsSessionMode
+  fullName: artstudio.ViewModels.StudyPageViewModel.IsSessionMode
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsSessionMode
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 98
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsSessionMode { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property IsSessionMode As Boolean
+  overload: artstudio.ViewModels.StudyPageViewModel.IsSessionMode*
+- uid: artstudio.ViewModels.StudyPageViewModel.ShowPalette
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.ShowPalette
+  id: ShowPalette
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: ShowPalette
+  nameWithType: StudyPageViewModel.ShowPalette
+  fullName: artstudio.ViewModels.StudyPageViewModel.ShowPalette
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ShowPalette
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 99
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool ShowPalette { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ShowPalette As Boolean
+  overload: artstudio.ViewModels.StudyPageViewModel.ShowPalette*
+- uid: artstudio.ViewModels.StudyPageViewModel.CanUndo
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.CanUndo
+  id: CanUndo
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: CanUndo
+  nameWithType: StudyPageViewModel.CanUndo
+  fullName: artstudio.ViewModels.StudyPageViewModel.CanUndo
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CanUndo
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 100
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool CanUndo { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property CanUndo As Boolean
+  overload: artstudio.ViewModels.StudyPageViewModel.CanUndo*
+- uid: artstudio.ViewModels.StudyPageViewModel.CanRegenerate
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.CanRegenerate
+  id: CanRegenerate
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: CanRegenerate
+  nameWithType: StudyPageViewModel.CanRegenerate
+  fullName: artstudio.ViewModels.StudyPageViewModel.CanRegenerate
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CanRegenerate
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 101
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool CanRegenerate { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property CanRegenerate As Boolean
+  overload: artstudio.ViewModels.StudyPageViewModel.CanRegenerate*
+- uid: artstudio.ViewModels.StudyPageViewModel.CanSaveSession
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.CanSaveSession
+  id: CanSaveSession
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: CanSaveSession
+  nameWithType: StudyPageViewModel.CanSaveSession
+  fullName: artstudio.ViewModels.StudyPageViewModel.CanSaveSession
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CanSaveSession
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 102
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool CanSaveSession { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property CanSaveSession As Boolean
+  overload: artstudio.ViewModels.StudyPageViewModel.CanSaveSession*
+- uid: artstudio.ViewModels.StudyPageViewModel.SelectedMode
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.SelectedMode
+  id: SelectedMode
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedMode
+  nameWithType: StudyPageViewModel.SelectedMode
+  fullName: artstudio.ViewModels.StudyPageViewModel.SelectedMode
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectedMode
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 104
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string SelectedMode { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SelectedMode As String
+  overload: artstudio.ViewModels.StudyPageViewModel.SelectedMode*
+- uid: artstudio.ViewModels.StudyPageViewModel.SelectedQuickTime
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.SelectedQuickTime
+  id: SelectedQuickTime
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedQuickTime
+  nameWithType: StudyPageViewModel.SelectedQuickTime
+  fullName: artstudio.ViewModels.StudyPageViewModel.SelectedQuickTime
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectedQuickTime
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 158
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string SelectedQuickTime { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SelectedQuickTime As String
+  overload: artstudio.ViewModels.StudyPageViewModel.SelectedQuickTime*
+- uid: artstudio.ViewModels.StudyPageViewModel.SelectedSessionTime
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.SelectedSessionTime
+  id: SelectedSessionTime
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: SelectedSessionTime
+  nameWithType: StudyPageViewModel.SelectedSessionTime
+  fullName: artstudio.ViewModels.StudyPageViewModel.SelectedSessionTime
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SelectedSessionTime
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 169
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string SelectedSessionTime { get; set; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public Property SelectedSessionTime As String
+  overload: artstudio.ViewModels.StudyPageViewModel.SelectedSessionTime*
+- uid: artstudio.ViewModels.StudyPageViewModel.UseCustomTime
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.UseCustomTime
+  id: UseCustomTime
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: UseCustomTime
+  nameWithType: StudyPageViewModel.UseCustomTime
+  fullName: artstudio.ViewModels.StudyPageViewModel.UseCustomTime
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UseCustomTime
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 183
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool UseCustomTime { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property UseCustomTime As Boolean
+  overload: artstudio.ViewModels.StudyPageViewModel.UseCustomTime*
+- uid: artstudio.ViewModels.StudyPageViewModel.ShowCustomDuration
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.ShowCustomDuration
+  id: ShowCustomDuration
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: ShowCustomDuration
+  nameWithType: StudyPageViewModel.ShowCustomDuration
+  fullName: artstudio.ViewModels.StudyPageViewModel.ShowCustomDuration
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ShowCustomDuration
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 195
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool ShowCustomDuration { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property ShowCustomDuration As Boolean
+  overload: artstudio.ViewModels.StudyPageViewModel.ShowCustomDuration*
+- uid: artstudio.ViewModels.StudyPageViewModel.CustomDuration
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.CustomDuration
+  id: CustomDuration
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: CustomDuration
+  nameWithType: StudyPageViewModel.CustomDuration
+  fullName: artstudio.ViewModels.StudyPageViewModel.CustomDuration
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CustomDuration
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 197
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public int CustomDuration { get; set; }
+    parameters: []
+    return:
+      type: System.Int32
+    content.vb: Public Property CustomDuration As Integer
+  overload: artstudio.ViewModels.StudyPageViewModel.CustomDuration*
+- uid: artstudio.ViewModels.StudyPageViewModel.CurrentPalette
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.CurrentPalette
+  id: CurrentPalette
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: CurrentPalette
+  nameWithType: StudyPageViewModel.CurrentPalette
+  fullName: artstudio.ViewModels.StudyPageViewModel.CurrentPalette
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CurrentPalette
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 208
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<Color> CurrentPalette { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{Microsoft.Maui.Graphics.Color}
+    content.vb: Public Property CurrentPalette As ObservableCollection(Of Color)
+  overload: artstudio.ViewModels.StudyPageViewModel.CurrentPalette*
+- uid: artstudio.ViewModels.StudyPageViewModel.CurrentWords
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.CurrentWords
+  id: CurrentWords
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: CurrentWords
+  nameWithType: StudyPageViewModel.CurrentWords
+  fullName: artstudio.ViewModels.StudyPageViewModel.CurrentWords
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CurrentWords
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 209
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<string> CurrentWords { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{System.String}
+    content.vb: Public ReadOnly Property CurrentWords As ObservableCollection(Of String)
+  overload: artstudio.ViewModels.StudyPageViewModel.CurrentWords*
+- uid: artstudio.ViewModels.StudyPageViewModel.CurrentImages
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.CurrentImages
+  id: CurrentImages
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: CurrentImages
+  nameWithType: StudyPageViewModel.CurrentImages
+  fullName: artstudio.ViewModels.StudyPageViewModel.CurrentImages
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CurrentImages
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 210
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<ImageItemViewModel> CurrentImages { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.ImageItemViewModel}
+    content.vb: Public Property CurrentImages As ObservableCollection(Of ImageItemViewModel)
+  overload: artstudio.ViewModels.StudyPageViewModel.CurrentImages*
+- uid: artstudio.ViewModels.StudyPageViewModel.PreviousContent
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.PreviousContent
+  id: PreviousContent
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: PreviousContent
+  nameWithType: StudyPageViewModel.PreviousContent
+  fullName: artstudio.ViewModels.StudyPageViewModel.PreviousContent
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PreviousContent
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 211
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ObservableCollection<ContentSnapshot> PreviousContent { get; }
+    parameters: []
+    return:
+      type: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.ContentSnapshot}
+    content.vb: Public Property PreviousContent As ObservableCollection(Of ContentSnapshot)
+  overload: artstudio.ViewModels.StudyPageViewModel.PreviousContent*
+- uid: artstudio.ViewModels.StudyPageViewModel.PlayPauseCommand
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.PlayPauseCommand
+  id: PlayPauseCommand
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: PlayPauseCommand
+  nameWithType: StudyPageViewModel.PlayPauseCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.PlayPauseCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PlayPauseCommand
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 217
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand PlayPauseCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property PlayPauseCommand As RelayCommand
+  overload: artstudio.ViewModels.StudyPageViewModel.PlayPauseCommand*
+- uid: artstudio.ViewModels.StudyPageViewModel.ResetCommand
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.ResetCommand
+  id: ResetCommand
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: ResetCommand
+  nameWithType: StudyPageViewModel.ResetCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.ResetCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ResetCommand
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 218
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand ResetCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property ResetCommand As RelayCommand
+  overload: artstudio.ViewModels.StudyPageViewModel.ResetCommand*
+- uid: artstudio.ViewModels.StudyPageViewModel.UndoCommand
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.UndoCommand
+  id: UndoCommand
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: UndoCommand
+  nameWithType: StudyPageViewModel.UndoCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.UndoCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UndoCommand
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 219
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand UndoCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property UndoCommand As RelayCommand
+  overload: artstudio.ViewModels.StudyPageViewModel.UndoCommand*
+- uid: artstudio.ViewModels.StudyPageViewModel.RegenerateCommand
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.RegenerateCommand
+  id: RegenerateCommand
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: RegenerateCommand
+  nameWithType: StudyPageViewModel.RegenerateCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.RegenerateCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: RegenerateCommand
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 220
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public RelayCommand RegenerateCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.RelayCommand
+    content.vb: Public Property RegenerateCommand As RelayCommand
+  overload: artstudio.ViewModels.StudyPageViewModel.RegenerateCommand*
+- uid: artstudio.ViewModels.StudyPageViewModel.SaveSessionCommand
+  commentId: P:artstudio.ViewModels.StudyPageViewModel.SaveSessionCommand
+  id: SaveSessionCommand
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: SaveSessionCommand
+  nameWithType: StudyPageViewModel.SaveSessionCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.SaveSessionCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SaveSessionCommand
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 221
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public AsyncRelayCommand SaveSessionCommand { get; }
+    parameters: []
+    return:
+      type: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+    content.vb: Public Property SaveSessionCommand As AsyncRelayCommand
+  overload: artstudio.ViewModels.StudyPageViewModel.SaveSessionCommand*
+- uid: artstudio.ViewModels.StudyPageViewModel.Dispose
+  commentId: M:artstudio.ViewModels.StudyPageViewModel.Dispose
+  id: Dispose
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: Dispose()
+  nameWithType: StudyPageViewModel.Dispose()
+  fullName: artstudio.ViewModels.StudyPageViewModel.Dispose()
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Dispose
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 786
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public void Dispose()
+    content.vb: Public Sub Dispose()
+  overload: artstudio.ViewModels.StudyPageViewModel.Dispose*
+- uid: artstudio.ViewModels.StudyPageViewModel.Dispose(System.Boolean)
+  commentId: M:artstudio.ViewModels.StudyPageViewModel.Dispose(System.Boolean)
+  id: Dispose(System.Boolean)
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: Dispose(bool)
+  nameWithType: StudyPageViewModel.Dispose(bool)
+  fullName: artstudio.ViewModels.StudyPageViewModel.Dispose(bool)
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Dispose
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 792
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: protected virtual void Dispose(bool disposing)
+    parameters:
+    - id: disposing
+      type: System.Boolean
+    content.vb: Protected Overridable Sub Dispose(disposing As Boolean)
+  overload: artstudio.ViewModels.StudyPageViewModel.Dispose*
+  nameWithType.vb: StudyPageViewModel.Dispose(Boolean)
+  fullName.vb: artstudio.ViewModels.StudyPageViewModel.Dispose(Boolean)
+  name.vb: Dispose(Boolean)
+- uid: artstudio.ViewModels.StudyPageViewModel.PropertyChanged
+  commentId: E:artstudio.ViewModels.StudyPageViewModel.PropertyChanged
+  id: PropertyChanged
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: StudyPageViewModel.PropertyChanged
+  fullName: artstudio.ViewModels.StudyPageViewModel.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PropertyChanged
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 806
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  summary: Occurs when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged(System.String)
+  commentId: M:artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: artstudio.ViewModels.StudyPageViewModel
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string?)
+  nameWithType: StudyPageViewModel.OnPropertyChanged(string?)
+  fullName: artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged(string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/StudyPageViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OnPropertyChanged
+    path: ViewModels/StudyPageViewModel.cs
+    startLine: 808
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: protected virtual void OnPropertyChanged(string? propertyName = null)
+    parameters:
+    - id: propertyName
+      type: System.String
+    content.vb: Protected Overridable Sub OnPropertyChanged(propertyName As String = Nothing)
+  overload: artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged*
+  nameWithType.vb: StudyPageViewModel.OnPropertyChanged(String)
+  fullName.vb: artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+references:
+- uid: artstudio.ViewModels
+  commentId: N:artstudio.ViewModels
+  href: artstudio.html
+  name: artstudio.ViewModels
+  nameWithType: artstudio.ViewModels
+  fullName: artstudio.ViewModels
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: artstudio.ViewModels.StudyPageViewModel.ModeOptions*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.ModeOptions
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_ModeOptions
+  name: ModeOptions
+  nameWithType: StudyPageViewModel.ModeOptions
+  fullName: artstudio.ViewModels.StudyPageViewModel.ModeOptions
+- uid: System.Collections.ObjectModel.ObservableCollection{System.String}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{System.String}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<string>
+  nameWithType: ObservableCollection<string>
+  fullName: System.Collections.ObjectModel.ObservableCollection<string>
+  nameWithType.vb: ObservableCollection(Of String)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of String)
+  name.vb: ObservableCollection(Of String)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: System.String
+    name: string
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: System.String
+    name: String
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.string
+  - name: )
+- uid: System.Collections.ObjectModel.ObservableCollection`1
+  commentId: T:System.Collections.ObjectModel.ObservableCollection`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<T>
+  nameWithType: ObservableCollection<T>
+  fullName: System.Collections.ObjectModel.ObservableCollection<T>
+  nameWithType.vb: ObservableCollection(Of T)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of T)
+  name.vb: ObservableCollection(Of T)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - name: T
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: T
+  - name: )
+- uid: System.Collections.ObjectModel
+  commentId: N:System.Collections.ObjectModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Collections.ObjectModel
+  nameWithType: System.Collections.ObjectModel
+  fullName: System.Collections.ObjectModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Collections
+    name: Collections
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections
+  - name: .
+  - uid: System.Collections.ObjectModel
+    name: ObjectModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel
+- uid: artstudio.ViewModels.StudyPageViewModel.QuickTimeOptions*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.QuickTimeOptions
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_QuickTimeOptions
+  name: QuickTimeOptions
+  nameWithType: StudyPageViewModel.QuickTimeOptions
+  fullName: artstudio.ViewModels.StudyPageViewModel.QuickTimeOptions
+- uid: artstudio.ViewModels.StudyPageViewModel.SessionTimeOptions*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.SessionTimeOptions
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_SessionTimeOptions
+  name: SessionTimeOptions
+  nameWithType: StudyPageViewModel.SessionTimeOptions
+  fullName: artstudio.ViewModels.StudyPageViewModel.SessionTimeOptions
+- uid: artstudio.ViewModels.StudyPageViewModel.#ctor*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.#ctor
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel__ctor_artstudio_Services_PromptGenerator_artstudio_Services_Unsplash_artstudio_Models_PaletteModel_Microsoft_Extensions_Logging_ILogger_artstudio_ViewModels_StudyPageViewModel__artstudio_Services_DatabaseService_artstudio_Services_IToastService_
+  name: StudyPageViewModel
+  nameWithType: StudyPageViewModel.StudyPageViewModel
+  fullName: artstudio.ViewModels.StudyPageViewModel.StudyPageViewModel
+  nameWithType.vb: StudyPageViewModel.New
+  fullName.vb: artstudio.ViewModels.StudyPageViewModel.New
+  name.vb: New
+- uid: artstudio.Services.PromptGenerator
+  commentId: T:artstudio.Services.PromptGenerator
+  parent: artstudio.Services
+  href: artstudio.Services.PromptGenerator.html
+  name: PromptGenerator
+  nameWithType: PromptGenerator
+  fullName: artstudio.Services.PromptGenerator
+- uid: artstudio.Services.Unsplash
+  commentId: T:artstudio.Services.Unsplash
+  parent: artstudio.Services
+  href: artstudio.Services.Unsplash.html
+  name: Unsplash
+  nameWithType: Unsplash
+  fullName: artstudio.Services.Unsplash
+- uid: artstudio.Models.PaletteModel
+  commentId: T:artstudio.Models.PaletteModel
+  parent: artstudio.Models
+  href: artstudio.Models.PaletteModel.html
+  name: PaletteModel
+  nameWithType: PaletteModel
+  fullName: artstudio.Models.PaletteModel
+- uid: Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.StudyPageViewModel}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.StudyPageViewModel}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<StudyPageViewModel>
+  nameWithType: ILogger<StudyPageViewModel>
+  fullName: Microsoft.Extensions.Logging.ILogger<artstudio.ViewModels.StudyPageViewModel>
+  nameWithType.vb: ILogger(Of StudyPageViewModel)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of artstudio.ViewModels.StudyPageViewModel)
+  name.vb: ILogger(Of StudyPageViewModel)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: artstudio.ViewModels.StudyPageViewModel
+    name: StudyPageViewModel
+    href: artstudio.ViewModels.StudyPageViewModel.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.StudyPageViewModel
+    name: StudyPageViewModel
+    href: artstudio.ViewModels.StudyPageViewModel.html
+  - name: )
+- uid: artstudio.Services.DatabaseService
+  commentId: T:artstudio.Services.DatabaseService
+  parent: artstudio.Services
+  href: artstudio.Services.DatabaseService.html
+  name: DatabaseService
+  nameWithType: DatabaseService
+  fullName: artstudio.Services.DatabaseService
+- uid: artstudio.Services.IToastService
+  commentId: T:artstudio.Services.IToastService
+  parent: artstudio.Services
+  href: artstudio.Services.IToastService.html
+  name: IToastService
+  nameWithType: IToastService
+  fullName: artstudio.Services.IToastService
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: artstudio.Models
+  commentId: N:artstudio.Models
+  href: artstudio.html
+  name: artstudio.Models
+  nameWithType: artstudio.Models
+  fullName: artstudio.Models
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: artstudio.ViewModels.StudyPageViewModel.TimeLeftDisplay*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.TimeLeftDisplay
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_TimeLeftDisplay
+  name: TimeLeftDisplay
+  nameWithType: StudyPageViewModel.TimeLeftDisplay
+  fullName: artstudio.ViewModels.StudyPageViewModel.TimeLeftDisplay
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.ViewModels.StudyPageViewModel.CurrentModeDisplay*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.CurrentModeDisplay
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_CurrentModeDisplay
+  name: CurrentModeDisplay
+  nameWithType: StudyPageViewModel.CurrentModeDisplay
+  fullName: artstudio.ViewModels.StudyPageViewModel.CurrentModeDisplay
+- uid: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonText*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonText
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_PlayPauseButtonText
+  name: PlayPauseButtonText
+  nameWithType: StudyPageViewModel.PlayPauseButtonText
+  fullName: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonText
+- uid: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonColor*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonColor
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_PlayPauseButtonColor
+  name: PlayPauseButtonColor
+  nameWithType: StudyPageViewModel.PlayPauseButtonColor
+  fullName: artstudio.ViewModels.StudyPageViewModel.PlayPauseButtonColor
+- uid: Microsoft.Maui.Graphics.Color
+  commentId: T:Microsoft.Maui.Graphics.Color
+  parent: Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  name: Color
+  nameWithType: Color
+  fullName: Microsoft.Maui.Graphics.Color
+- uid: Microsoft.Maui.Graphics
+  commentId: N:Microsoft.Maui.Graphics
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Maui.Graphics
+  nameWithType: Microsoft.Maui.Graphics
+  fullName: Microsoft.Maui.Graphics
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Maui
+    name: Maui
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui
+  - name: .
+  - uid: Microsoft.Maui.Graphics
+    name: Graphics
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics
+- uid: artstudio.ViewModels.StudyPageViewModel.IsQuickMode*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.IsQuickMode
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_IsQuickMode
+  name: IsQuickMode
+  nameWithType: StudyPageViewModel.IsQuickMode
+  fullName: artstudio.ViewModels.StudyPageViewModel.IsQuickMode
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: artstudio.ViewModels.StudyPageViewModel.IsSessionMode*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.IsSessionMode
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_IsSessionMode
+  name: IsSessionMode
+  nameWithType: StudyPageViewModel.IsSessionMode
+  fullName: artstudio.ViewModels.StudyPageViewModel.IsSessionMode
+- uid: artstudio.ViewModels.StudyPageViewModel.ShowPalette*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.ShowPalette
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_ShowPalette
+  name: ShowPalette
+  nameWithType: StudyPageViewModel.ShowPalette
+  fullName: artstudio.ViewModels.StudyPageViewModel.ShowPalette
+- uid: artstudio.ViewModels.StudyPageViewModel.CanUndo*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.CanUndo
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_CanUndo
+  name: CanUndo
+  nameWithType: StudyPageViewModel.CanUndo
+  fullName: artstudio.ViewModels.StudyPageViewModel.CanUndo
+- uid: artstudio.ViewModels.StudyPageViewModel.CanRegenerate*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.CanRegenerate
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_CanRegenerate
+  name: CanRegenerate
+  nameWithType: StudyPageViewModel.CanRegenerate
+  fullName: artstudio.ViewModels.StudyPageViewModel.CanRegenerate
+- uid: artstudio.ViewModels.StudyPageViewModel.CanSaveSession*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.CanSaveSession
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_CanSaveSession
+  name: CanSaveSession
+  nameWithType: StudyPageViewModel.CanSaveSession
+  fullName: artstudio.ViewModels.StudyPageViewModel.CanSaveSession
+- uid: artstudio.ViewModels.StudyPageViewModel.SelectedMode*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.SelectedMode
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_SelectedMode
+  name: SelectedMode
+  nameWithType: StudyPageViewModel.SelectedMode
+  fullName: artstudio.ViewModels.StudyPageViewModel.SelectedMode
+- uid: artstudio.ViewModels.StudyPageViewModel.SelectedQuickTime*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.SelectedQuickTime
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_SelectedQuickTime
+  name: SelectedQuickTime
+  nameWithType: StudyPageViewModel.SelectedQuickTime
+  fullName: artstudio.ViewModels.StudyPageViewModel.SelectedQuickTime
+- uid: artstudio.ViewModels.StudyPageViewModel.SelectedSessionTime*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.SelectedSessionTime
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_SelectedSessionTime
+  name: SelectedSessionTime
+  nameWithType: StudyPageViewModel.SelectedSessionTime
+  fullName: artstudio.ViewModels.StudyPageViewModel.SelectedSessionTime
+- uid: artstudio.ViewModels.StudyPageViewModel.UseCustomTime*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.UseCustomTime
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_UseCustomTime
+  name: UseCustomTime
+  nameWithType: StudyPageViewModel.UseCustomTime
+  fullName: artstudio.ViewModels.StudyPageViewModel.UseCustomTime
+- uid: artstudio.ViewModels.StudyPageViewModel.ShowCustomDuration*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.ShowCustomDuration
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_ShowCustomDuration
+  name: ShowCustomDuration
+  nameWithType: StudyPageViewModel.ShowCustomDuration
+  fullName: artstudio.ViewModels.StudyPageViewModel.ShowCustomDuration
+- uid: artstudio.ViewModels.StudyPageViewModel.CustomDuration*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.CustomDuration
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_CustomDuration
+  name: CustomDuration
+  nameWithType: StudyPageViewModel.CustomDuration
+  fullName: artstudio.ViewModels.StudyPageViewModel.CustomDuration
+- uid: System.Int32
+  commentId: T:System.Int32
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.int32
+  name: int
+  nameWithType: int
+  fullName: int
+  nameWithType.vb: Integer
+  fullName.vb: Integer
+  name.vb: Integer
+- uid: artstudio.ViewModels.StudyPageViewModel.CurrentPalette*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.CurrentPalette
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_CurrentPalette
+  name: CurrentPalette
+  nameWithType: StudyPageViewModel.CurrentPalette
+  fullName: artstudio.ViewModels.StudyPageViewModel.CurrentPalette
+- uid: System.Collections.ObjectModel.ObservableCollection{Microsoft.Maui.Graphics.Color}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{Microsoft.Maui.Graphics.Color}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<Color>
+  nameWithType: ObservableCollection<Color>
+  fullName: System.Collections.ObjectModel.ObservableCollection<Microsoft.Maui.Graphics.Color>
+  nameWithType.vb: ObservableCollection(Of Color)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of Microsoft.Maui.Graphics.Color)
+  name.vb: ObservableCollection(Of Color)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: Microsoft.Maui.Graphics.Color
+    name: Color
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: Microsoft.Maui.Graphics.Color
+    name: Color
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.maui.graphics.color
+  - name: )
+- uid: artstudio.ViewModels.StudyPageViewModel.CurrentWords*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.CurrentWords
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_CurrentWords
+  name: CurrentWords
+  nameWithType: StudyPageViewModel.CurrentWords
+  fullName: artstudio.ViewModels.StudyPageViewModel.CurrentWords
+- uid: artstudio.ViewModels.StudyPageViewModel.CurrentImages*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.CurrentImages
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_CurrentImages
+  name: CurrentImages
+  nameWithType: StudyPageViewModel.CurrentImages
+  fullName: artstudio.ViewModels.StudyPageViewModel.CurrentImages
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.ImageItemViewModel}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.ImageItemViewModel}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<ImageItemViewModel>
+  nameWithType: ObservableCollection<ImageItemViewModel>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.ImageItemViewModel>
+  nameWithType.vb: ObservableCollection(Of ImageItemViewModel)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.ImageItemViewModel)
+  name.vb: ObservableCollection(Of ImageItemViewModel)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.ImageItemViewModel
+    name: ImageItemViewModel
+    href: artstudio.ViewModels.ImageItemViewModel.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.ImageItemViewModel
+    name: ImageItemViewModel
+    href: artstudio.ViewModels.ImageItemViewModel.html
+  - name: )
+- uid: artstudio.ViewModels.StudyPageViewModel.PreviousContent*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.PreviousContent
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_PreviousContent
+  name: PreviousContent
+  nameWithType: StudyPageViewModel.PreviousContent
+  fullName: artstudio.ViewModels.StudyPageViewModel.PreviousContent
+- uid: System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.ContentSnapshot}
+  commentId: T:System.Collections.ObjectModel.ObservableCollection{artstudio.ViewModels.ContentSnapshot}
+  parent: System.Collections.ObjectModel
+  definition: System.Collections.ObjectModel.ObservableCollection`1
+  href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  name: ObservableCollection<ContentSnapshot>
+  nameWithType: ObservableCollection<ContentSnapshot>
+  fullName: System.Collections.ObjectModel.ObservableCollection<artstudio.ViewModels.ContentSnapshot>
+  nameWithType.vb: ObservableCollection(Of ContentSnapshot)
+  fullName.vb: System.Collections.ObjectModel.ObservableCollection(Of artstudio.ViewModels.ContentSnapshot)
+  name.vb: ObservableCollection(Of ContentSnapshot)
+  spec.csharp:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: <
+  - uid: artstudio.ViewModels.ContentSnapshot
+    name: ContentSnapshot
+    href: artstudio.ViewModels.ContentSnapshot.html
+  - name: '>'
+  spec.vb:
+  - uid: System.Collections.ObjectModel.ObservableCollection`1
+    name: ObservableCollection
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.ContentSnapshot
+    name: ContentSnapshot
+    href: artstudio.ViewModels.ContentSnapshot.html
+  - name: )
+- uid: artstudio.ViewModels.StudyPageViewModel.PlayPauseCommand*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.PlayPauseCommand
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_PlayPauseCommand
+  name: PlayPauseCommand
+  nameWithType: StudyPageViewModel.PlayPauseCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.PlayPauseCommand
+- uid: CommunityToolkit.Mvvm.Input.RelayCommand
+  commentId: T:CommunityToolkit.Mvvm.Input.RelayCommand
+  parent: CommunityToolkit.Mvvm.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.relaycommand
+  name: RelayCommand
+  nameWithType: RelayCommand
+  fullName: CommunityToolkit.Mvvm.Input.RelayCommand
+- uid: CommunityToolkit.Mvvm.Input
+  commentId: N:CommunityToolkit.Mvvm.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  name: CommunityToolkit.Mvvm.Input
+  nameWithType: CommunityToolkit.Mvvm.Input
+  fullName: CommunityToolkit.Mvvm.Input
+  spec.csharp:
+  - uid: CommunityToolkit
+    name: CommunityToolkit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  - name: .
+  - uid: CommunityToolkit.Mvvm
+    name: Mvvm
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm
+  - name: .
+  - uid: CommunityToolkit.Mvvm.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input
+  spec.vb:
+  - uid: CommunityToolkit
+    name: CommunityToolkit
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit
+  - name: .
+  - uid: CommunityToolkit.Mvvm
+    name: Mvvm
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm
+  - name: .
+  - uid: CommunityToolkit.Mvvm.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input
+- uid: artstudio.ViewModels.StudyPageViewModel.ResetCommand*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.ResetCommand
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_ResetCommand
+  name: ResetCommand
+  nameWithType: StudyPageViewModel.ResetCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.ResetCommand
+- uid: artstudio.ViewModels.StudyPageViewModel.UndoCommand*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.UndoCommand
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_UndoCommand
+  name: UndoCommand
+  nameWithType: StudyPageViewModel.UndoCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.UndoCommand
+- uid: artstudio.ViewModels.StudyPageViewModel.RegenerateCommand*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.RegenerateCommand
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_RegenerateCommand
+  name: RegenerateCommand
+  nameWithType: StudyPageViewModel.RegenerateCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.RegenerateCommand
+- uid: artstudio.ViewModels.StudyPageViewModel.SaveSessionCommand*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.SaveSessionCommand
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_SaveSessionCommand
+  name: SaveSessionCommand
+  nameWithType: StudyPageViewModel.SaveSessionCommand
+  fullName: artstudio.ViewModels.StudyPageViewModel.SaveSessionCommand
+- uid: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+  commentId: T:CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+  parent: CommunityToolkit.Mvvm.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.input.asyncrelaycommand
+  name: AsyncRelayCommand
+  nameWithType: AsyncRelayCommand
+  fullName: CommunityToolkit.Mvvm.Input.AsyncRelayCommand
+- uid: artstudio.ViewModels.StudyPageViewModel.Dispose*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.Dispose
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_Dispose
+  name: Dispose
+  nameWithType: StudyPageViewModel.Dispose
+  fullName: artstudio.ViewModels.StudyPageViewModel.Dispose
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged*
+  commentId: Overload:artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged
+  href: artstudio.ViewModels.StudyPageViewModel.html#artstudio_ViewModels_StudyPageViewModel_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: StudyPageViewModel.OnPropertyChanged
+  fullName: artstudio.ViewModels.StudyPageViewModel.OnPropertyChanged

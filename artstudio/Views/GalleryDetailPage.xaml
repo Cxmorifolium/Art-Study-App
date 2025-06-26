@@ -1,0 +1,504 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"  
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"  
+             x:Class="artstudio.Views.GalleryDetailPage"  
+             Title="{Binding GalleryItem.DisplayTitle}"  
+             BackgroundColor="{AppThemeBinding Light=#F8F9FA, Dark=#1A202C}">
+
+    <ContentPage.ToolbarItems>
+        <!-- Normal Mode Buttons -->
+        <ToolbarItem Text="Edit" 
+                     Command="{Binding EditCommand}"
+                     IsEnabled="{Binding IsNotEditing}" />
+
+        <ToolbarItem Text="Delete" 
+                     Command="{Binding DeleteCommand}"
+                     IsEnabled="{Binding IsNotEditing}" />
+
+        <!-- Edit Mode Buttons -->
+        <ToolbarItem Text="Save" 
+                     Command="{Binding SaveChangesCommand}"
+                     IsEnabled="{Binding IsEditing}" />
+
+        <ToolbarItem Text="Cancel" 
+                     Command="{Binding CancelEditCommand}"
+                     IsEnabled="{Binding IsEditing}" />
+    </ContentPage.ToolbarItems>
+
+    <Grid Padding="24, 16" ColumnSpacing="20">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="3*" />
+            <ColumnDefinition Width="2*" />
+        </Grid.ColumnDefinitions>
+
+        <!-- LEFT SIDE: Image and Title Editing -->
+        <Border Grid.Column="0"  
+                BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"  
+                Shadow="0,4,15,0,Black,0.1"  
+                StrokeShape="RoundRectangle 16"  
+                Padding="16"  
+                VerticalOptions="Center">
+
+            <StackLayout Spacing="12">
+                <Border StrokeShape="RoundRectangle 12"  
+                        BackgroundColor="{AppThemeBinding Light=#F3F4F6, Dark=#374151}">
+
+                    <Image Source="{Binding GalleryItem.ArtworkImagePath}"  
+                           Aspect="AspectFit"  
+                           MinimumHeightRequest="300"  
+                           MaximumHeightRequest="500" />
+                </Border>
+
+                <StackLayout>
+                    <!-- Title Display/Edit -->
+                    <Label Text="{Binding GalleryItem.DisplayTitle}"  
+                           FontSize="20"  
+                           FontAttributes="Bold"  
+                           TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}"  
+                           HorizontalTextAlignment="Center"
+                           IsVisible="{Binding IsNotEditing}" />
+
+                    <Entry Text="{Binding EditTitle}"
+                           FontSize="20"
+                           FontAttributes="Bold"
+                           HorizontalTextAlignment="Center"
+                           Placeholder="Enter title..."
+                           BackgroundColor="{AppThemeBinding Light=White, Dark=#374151}"
+                           TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}"
+                           IsVisible="{Binding IsEditing}" />
+
+                    <Label Text="{Binding GalleryItem.FormattedDate}"  
+                           FontSize="14"  
+                           TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"  
+                           HorizontalTextAlignment="Center" />
+
+                    <Label Text="{Binding GalleryItem.SessionDuration}"  
+                           FontSize="14"  
+                           TextColor="{AppThemeBinding Light=#059669, Dark=#10B981}"  
+                           FontAttributes="Bold"  
+                           HorizontalTextAlignment="Center"  
+                           IsVisible="{Binding GalleryItem.HasSessionDuration}" />
+                </StackLayout>
+            </StackLayout>
+        </Border>
+
+        <!-- RIGHT SIDE: Details (Scrollable) -->
+        <ScrollView Grid.Column="1">
+            <StackLayout Spacing="16">
+
+                <!-- Generated Words -->
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"  
+                        Shadow="0,4,15,0,Black,0.1"  
+                        StrokeShape="RoundRectangle 16"  
+                        Padding="16"  
+                        IsVisible="{Binding GalleryItem.HasWords}">
+
+                    <StackLayout Spacing="12">
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <Label Text="📝" FontSize="16" />
+                            <Label Text="Theme"  
+                                   FontSize="16"  
+                                   FontAttributes="Bold"  
+                                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                            <!-- Copy button for display mode -->
+                            <Button Text="⋮"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                                    BorderWidth="0"
+                                    Padding="8,4"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Command="{Binding CopyWordsCommand}"
+                                    IsVisible="{Binding IsNotEditing}"
+                                    ToolTipProperties.Text="Copy words" />
+
+                            <!-- Edit Mode: Manual/Select Buttons -->
+                            <StackLayout Orientation="Horizontal" Spacing="4" IsVisible="{Binding IsEditing}" HorizontalOptions="End">
+                                <Button Text="Favorites"
+                                        FontSize="12"
+                                        BackgroundColor="{AppThemeBinding Light=#3B82F6, Dark=#2563EB}"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Padding="4,4"
+                                        Command="{Binding SelectFavoriteWordsCommand}" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!-- Edit Mode: Add Words Entry -->
+                        <Entry Text="{Binding NewWordsText}"
+                               FontSize="14"
+                               Placeholder="Enter words separated by commas..."
+                               BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                               TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                               IsVisible="{Binding IsEditing}"
+                               ReturnCommand="{Binding AddWordsFromTextCommand}" />
+
+                        <CollectionView ItemsSource="{Binding GalleryItem.WordsList}"  
+                                        BackgroundColor="Transparent"
+                                        IsVisible="{Binding GalleryItem.HasWords}">
+                            <CollectionView.ItemsLayout>
+                                <GridItemsLayout Orientation="Vertical" 
+                                                 Span="4" 
+                                                 HorizontalItemSpacing="4" 
+                                                 VerticalItemSpacing="4" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BackgroundColor="#4CAF50"  
+                                            StrokeShape="RoundRectangle 12"  
+                                            Padding="6,3"
+                                            HorizontalOptions="Fill">
+                                        <Grid>
+                                            <!-- Display Mode: Just the word -->
+                                            <Label Text="{Binding}"  
+                                               TextColor="White"  
+                                               FontSize="12"
+                                               HorizontalTextAlignment="Center"
+                                               VerticalTextAlignment="Center"
+                                               LineBreakMode="WordWrap"
+                                               IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsNotEditing}" />
+
+                                            <!-- Edit Mode: Word with delete button -->
+                                            <Grid IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing}">
+                                                <Grid.ColumnDefinitions>
+                                                    <ColumnDefinition Width="*" />
+                                                    <ColumnDefinition Width="Auto" />
+                                                </Grid.ColumnDefinitions>
+
+                                                <Label Grid.Column="0"
+                                                   Text="{Binding}"  
+                                                   TextColor="White"  
+                                                   FontSize="12"
+                                                   HorizontalTextAlignment="Center"
+                                                   VerticalTextAlignment="Center"
+                                                   LineBreakMode="WordWrap" />
+
+                                                <Button Grid.Column="1"
+                                                    Text="×"
+                                                    FontSize="14"
+                                                    FontAttributes="Bold"
+                                                    BackgroundColor="Transparent"
+                                                    TextColor="White"
+                                                    BorderWidth="0"
+                                                    Padding="4,0"
+                                                    Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteWordCommand}"
+                                                    CommandParameter="{Binding}" />
+                                            </Grid>
+                                        </Grid>
+                                    </Border>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Border>
+
+                <!-- Generated Palette -->
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"  
+                        Shadow="0,4,15,0,Black,0.1"  
+                        StrokeShape="RoundRectangle 16"  
+                        Padding="16"  
+                        IsVisible="{Binding GalleryItem.HasPalette}">
+
+                    <StackLayout Spacing="12">
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <Label Text="🎨" FontSize="16" />
+                            <Label Text="Palette"  
+                                   FontSize="16"  
+                                   FontAttributes="Bold"  
+                                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                            <!-- Copy button for display mode -->
+                            <Button Text="⋮"
+                                    FontSize="18"
+                                    FontAttributes="Bold"
+                                    BackgroundColor="Transparent"
+                                    TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"
+                                    BorderWidth="0"
+                                    Padding="8,4"
+                                    HorizontalOptions="End"
+                                    VerticalOptions="Center"
+                                    Command="{Binding CopyPaletteCommand}"
+                                    IsVisible="{Binding IsNotEditing}"
+                                    ToolTipProperties.Text="Copy palette" />
+
+                            <!-- Edit Mode: Extract/Add/Select Buttons -->
+                            <StackLayout Orientation="Horizontal" Spacing="4" IsVisible="{Binding IsEditing}" HorizontalOptions="End">
+                                <Button Text="Extract"
+                                        FontSize="12"
+                                        BackgroundColor="{AppThemeBinding Light=#8B5CF6, Dark=#7C3AED}"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Padding="6,4"
+                                        Command="{Binding ExtractColorsCommand}" />
+                                <Button Text="Favorites"
+                                        FontSize="12"
+                                        BackgroundColor="{AppThemeBinding Light=#3B82F6, Dark=#2563EB}"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Padding="0"
+                                        Command="{Binding SelectFavoritePalettesCommand}" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <!-- Edit Mode: Add Colors Entry -->
+                        <Entry Text="{Binding NewColorsText}"
+                               FontSize="14"
+                               Placeholder="Enter hex colors (e.g., #FF5733, #33C3FF)..."
+                               BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                               TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                               IsVisible="{Binding IsEditing}"
+                               ReturnCommand="{Binding AddColorsFromTextCommand}" />
+
+                        <CollectionView ItemsSource="{Binding GalleryItem.PaletteList}"  
+                                        BackgroundColor="Transparent"  
+                                        MinimumHeightRequest="40"
+                                        HeightRequest="80">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"   
+                                                   ItemSpacing="8" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="4">
+                                        <Border BackgroundColor="{Binding}"  
+                                                Shadow="0,2,6,0,Black,0.15"  
+                                                StrokeShape="RoundRectangle 6"  
+                                                HeightRequest="40"  
+                                                WidthRequest="40">
+
+                                            <Grid>
+                                                <!-- Display Mode: Tap to copy -->
+                                                <Grid.GestureRecognizers>
+                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.CopyColorCommand}"  
+                                                                          CommandParameter="{Binding}" />
+                                                </Grid.GestureRecognizers>
+
+                                                <!-- Edit Mode: Delete button overlay -->
+                                                <Button Text="×"
+                                                        FontSize="16"
+                                                        FontAttributes="Bold"
+                                                        BackgroundColor="#80000000"
+                                                        TextColor="White"
+                                                        BorderWidth="0"
+                                                        CornerRadius="10"
+                                                        WidthRequest="20"
+                                                        HeightRequest="20"
+                                                        Padding="0"
+                                                        HorizontalOptions="End"
+                                                        VerticalOptions="Start"
+                                                        Margin="2"
+                                                        Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.DeleteColorCommand}"
+                                                        CommandParameter="{Binding}"
+                                                        IsVisible="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.IsEditing}" />
+                                            </Grid>
+                                        </Border>
+
+                                        <Label Text="{Binding}"  
+                                               FontSize="8"  
+                                               TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"  
+                                               HorizontalTextAlignment="Center"  
+                                               FontFamily="Courier"  
+                                               WidthRequest="40" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Border>
+
+                <!-- Reference Images -->
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"  
+                        Shadow="0,4,15,0,Black,0.1"  
+                        StrokeShape="RoundRectangle 16"  
+                        Padding="16"  
+                        IsVisible="{Binding GalleryItem.HasImages}">
+
+                    <StackLayout Spacing="12">
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <Label Text="🖼️" FontSize="16" />
+                            <Label Text="Reference Images"  
+                                   FontSize="16"  
+                                   FontAttributes="Bold"  
+                                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+
+                            <!-- Edit Mode: Manual Edit/Select Buttons -->
+                            <StackLayout Orientation="Horizontal" Spacing="4" IsVisible="{Binding IsEditing}" HorizontalOptions="End">
+                                <Button Text="Upload"
+                                        FontSize="12"
+                                        BackgroundColor="{AppThemeBinding Light=#10B981, Dark=#059669}"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Padding="4,4"
+                                        Command="{Binding UploadImageCommand}" />
+                                <Button Text="Favorites"
+                                        FontSize="12"
+                                        BackgroundColor="{AppThemeBinding Light=#3B82F6, Dark=#2563EB}"
+                                        TextColor="White"
+                                        CornerRadius="8"
+                                        Padding="4,4"
+                                        Command="{Binding SelectFavoriteImagesCommand}" />
+                            </StackLayout>
+                        </StackLayout>
+
+                        <CollectionView ItemsSource="{Binding GalleryItem.ImagesList}"  
+                                        BackgroundColor="Transparent"  
+                                        MinimumHeightRequest="40"
+                                        HeightRequest="100">
+                            <CollectionView.ItemsLayout>
+                                <LinearItemsLayout Orientation="Horizontal"   
+                                                   ItemSpacing="8" />
+                            </CollectionView.ItemsLayout>
+
+                            <CollectionView.ItemTemplate>
+                                <DataTemplate>
+                                    <StackLayout Spacing="4">
+                                        <Border Shadow="0,2,6,0,Black,0.15"  
+                                                StrokeShape="RoundRectangle 6"  
+                                                HeightRequest="60"  
+                                                WidthRequest="60">
+
+                                            <Image Source="{Binding urls.Thumb}"  
+                                                   Aspect="AspectFill" />
+
+                                            <Border.GestureRecognizers>
+                                                <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type ContentPage}}, Path=BindingContext.ViewImageCommand}"  
+                                                                      CommandParameter="{Binding}" />
+                                            </Border.GestureRecognizers>
+                                        </Border>
+
+                                        <Label Text="{Binding user.Name}"  
+                                               FontSize="8"  
+                                               TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}"  
+                                               HorizontalTextAlignment="Center"  
+                                               LineBreakMode="TailTruncation"  
+                                               WidthRequest="60" />
+                                    </StackLayout>
+                                </DataTemplate>
+                            </CollectionView.ItemTemplate>
+                        </CollectionView>
+                    </StackLayout>
+                </Border>
+
+                <!-- Notes Display/Edit -->
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"  
+                        Shadow="0,4,15,0,Black,0.1"  
+                        StrokeShape="RoundRectangle 16"  
+                        Padding="16">
+
+                    <StackLayout Spacing="12">
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <Label Text="📋" FontSize="16" />
+                            <Label Text="Notes"  
+                                   FontSize="16"  
+                                   FontAttributes="Bold"  
+                                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+                        </StackLayout>
+
+                        <!-- Display Mode -->
+                        <Label Text="{Binding GalleryItem.Notes}"  
+                               FontSize="14"  
+                               TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"  
+                               LineBreakMode="WordWrap"
+                               IsVisible="{Binding IsNotEditing}"
+                               MinimumHeightRequest="30" />
+
+                        <!-- Edit Mode -->
+                        <Editor Text="{Binding EditNotes}"
+                                FontSize="14"
+                                TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                                BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                                Placeholder="Enter notes..."
+                                AutoSize="TextChanges"
+                                MinimumHeightRequest="100"
+                                IsVisible="{Binding IsEditing}" />
+                    </StackLayout>
+                </Border>
+
+                <!-- Custom Tags Display/Edit -->
+                <Border BackgroundColor="{AppThemeBinding Light=White, Dark=#2D3748}"  
+                        Shadow="0,4,15,0,Black,0.1"  
+                        StrokeShape="RoundRectangle 16"  
+                        Padding="16">
+
+                    <StackLayout Spacing="12">
+                        <StackLayout Orientation="Horizontal" Spacing="8">
+                            <Label Text="🏷️" FontSize="16" />
+                            <Label Text="Tags"  
+                                   FontSize="16"  
+                                   FontAttributes="Bold"  
+                                   TextColor="{AppThemeBinding Light=#1A202C, Dark=#F7FAFC}" />
+                        </StackLayout>
+
+                        <!-- Display Mode -->
+                        <FlexLayout BindableLayout.ItemsSource="{Binding GalleryItem.CustomTagsList}"  
+                                    Wrap="Wrap"  
+                                    Direction="Row"  
+                                    JustifyContent="Start"  
+                                    AlignItems="Start"
+                                    IsVisible="{Binding IsNotEditing}"
+                                    MinimumHeightRequest="30">
+
+                            <BindableLayout.ItemTemplate>
+                                <DataTemplate>
+                                    <Border BackgroundColor="{AppThemeBinding Light=#E5E7EB, Dark=#374151}"  
+                                            StrokeShape="RoundRectangle 12"  
+                                            Padding="12,6"
+                                            Margin="4,2">
+                                        <Label Text="{Binding}"  
+                                               TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"  
+                                               FontSize="12"  
+                                               HorizontalTextAlignment="Center"  
+                                               VerticalTextAlignment="Center" />
+                                    </Border>
+                                </DataTemplate>
+                            </BindableLayout.ItemTemplate>
+                        </FlexLayout>
+
+                        <!-- Edit Mode -->
+                        <StackLayout IsVisible="{Binding IsEditing}" Spacing="8">
+                            <Editor Text="{Binding EditCustomTags}"
+                                    FontSize="14"
+                                    TextColor="{AppThemeBinding Light=#374151, Dark=#D1D5DB}"
+                                    BackgroundColor="{AppThemeBinding Light=#F9FAFB, Dark=#374151}"
+                                    Placeholder="Enter tags separated by commas..."
+                                    AutoSize="TextChanges"
+                                    MinimumHeightRequest="80" />
+
+                            <Label Text="Separate tags with commas, semicolons, or new lines"
+                                   FontSize="12"
+                                   TextColor="{AppThemeBinding Light=#6B7280, Dark=#9CA3AF}" />
+                        </StackLayout>
+                    </StackLayout>
+                </Border>
+
+                <!-- Bottom spacing -->
+                <BoxView HeightRequest="20" BackgroundColor="Transparent" />
+
+            </StackLayout>
+        </ScrollView>
+
+        <!-- Loading Overlay -->
+        <Border Grid.ColumnSpan="2"  
+                IsVisible="{Binding IsLoading}"  
+                BackgroundColor="#80000000"  
+                StrokeShape="Rectangle">
+
+            <StackLayout VerticalOptions="Center"   
+                         HorizontalOptions="Center"  
+                         Spacing="16">
+                <ActivityIndicator IsRunning="{Binding IsLoading}"  
+                                   Color="White"  
+                                   Scale="1.5" />
+                <Label Text="Loading..."  
+                       TextColor="White"  
+                       FontSize="16"  
+                       HorizontalTextAlignment="Center" />
+            </StackLayout>
+        </Border>
+    </Grid>
+</ContentPage>

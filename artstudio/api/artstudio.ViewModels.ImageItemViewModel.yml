@@ -1,0 +1,1353 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.ViewModels.ImageItemViewModel
+  commentId: T:artstudio.ViewModels.ImageItemViewModel
+  id: ImageItemViewModel
+  parent: artstudio.ViewModels
+  children:
+  - artstudio.ViewModels.ImageItemViewModel.#ctor(artstudio.Models.UnsplashImage,artstudio.ViewModels.ImagePromptViewModel,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.ImageItemViewModel})
+  - artstudio.ViewModels.ImageItemViewModel.AttributionText
+  - artstudio.ViewModels.ImageItemViewModel.DeleteCommand
+  - artstudio.ViewModels.ImageItemViewModel.DeleteOrUndoIcon
+  - artstudio.ViewModels.ImageItemViewModel.Description
+  - artstudio.ViewModels.ImageItemViewModel.HasImageUrl
+  - artstudio.ViewModels.ImageItemViewModel.HasUserUrl
+  - artstudio.ViewModels.ImageItemViewModel.ImagePageUrl
+  - artstudio.ViewModels.ImageItemViewModel.ImageSource
+  - artstudio.ViewModels.ImageItemViewModel.IsDeleted
+  - artstudio.ViewModels.ImageItemViewModel.IsFavorited
+  - artstudio.ViewModels.ImageItemViewModel.IsLocked
+  - artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged(System.String)
+  - artstudio.ViewModels.ImageItemViewModel.OpenImagePageCommand
+  - artstudio.ViewModels.ImageItemViewModel.OpenUserProfileCommand
+  - artstudio.ViewModels.ImageItemViewModel.ParentDeleteCommand
+  - artstudio.ViewModels.ImageItemViewModel.ParentToggleLockCommand
+  - artstudio.ViewModels.ImageItemViewModel.PropertyChanged
+  - artstudio.ViewModels.ImageItemViewModel.ToggleFavoriteCommand
+  - artstudio.ViewModels.ImageItemViewModel.ToggleLockCommand
+  - artstudio.ViewModels.ImageItemViewModel.UnsplashImage
+  - artstudio.ViewModels.ImageItemViewModel.UserProfileUrl
+  langs:
+  - csharp
+  - vb
+  name: ImageItemViewModel
+  nameWithType: ImageItemViewModel
+  fullName: artstudio.ViewModels.ImageItemViewModel
+  type: Class
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ImageItemViewModel
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 10
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: 'public class ImageItemViewModel : INotifyPropertyChanged'
+    content.vb: Public Class ImageItemViewModel Implements INotifyPropertyChanged
+  inheritance:
+  - System.Object
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged
+  inheritedMembers:
+  - System.Object.Equals(System.Object)
+  - System.Object.Equals(System.Object,System.Object)
+  - System.Object.GetHashCode
+  - System.Object.GetType
+  - System.Object.MemberwiseClone
+  - System.Object.ReferenceEquals(System.Object,System.Object)
+  - System.Object.ToString
+- uid: artstudio.ViewModels.ImageItemViewModel.UnsplashImage
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.UnsplashImage
+  id: UnsplashImage
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: UnsplashImage
+  nameWithType: ImageItemViewModel.UnsplashImage
+  fullName: artstudio.ViewModels.ImageItemViewModel.UnsplashImage
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UnsplashImage
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 18
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public UnsplashImage UnsplashImage { get; }
+    parameters: []
+    return:
+      type: artstudio.Models.UnsplashImage
+    content.vb: Public ReadOnly Property UnsplashImage As UnsplashImage
+  overload: artstudio.ViewModels.ImageItemViewModel.UnsplashImage*
+- uid: artstudio.ViewModels.ImageItemViewModel.IsLocked
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.IsLocked
+  id: IsLocked
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsLocked
+  nameWithType: ImageItemViewModel.IsLocked
+  fullName: artstudio.ViewModels.ImageItemViewModel.IsLocked
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsLocked
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 20
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsLocked { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsLocked As Boolean
+  overload: artstudio.ViewModels.ImageItemViewModel.IsLocked*
+- uid: artstudio.ViewModels.ImageItemViewModel.IsDeleted
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.IsDeleted
+  id: IsDeleted
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsDeleted
+  nameWithType: ImageItemViewModel.IsDeleted
+  fullName: artstudio.ViewModels.ImageItemViewModel.IsDeleted
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsDeleted
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 33
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsDeleted { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsDeleted As Boolean
+  overload: artstudio.ViewModels.ImageItemViewModel.IsDeleted*
+- uid: artstudio.ViewModels.ImageItemViewModel.IsFavorited
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.IsFavorited
+  id: IsFavorited
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: IsFavorited
+  nameWithType: ImageItemViewModel.IsFavorited
+  fullName: artstudio.ViewModels.ImageItemViewModel.IsFavorited
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: IsFavorited
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 46
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool IsFavorited { get; set; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public Property IsFavorited As Boolean
+  overload: artstudio.ViewModels.ImageItemViewModel.IsFavorited*
+- uid: artstudio.ViewModels.ImageItemViewModel.DeleteOrUndoIcon
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.DeleteOrUndoIcon
+  id: DeleteOrUndoIcon
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DeleteOrUndoIcon
+  nameWithType: ImageItemViewModel.DeleteOrUndoIcon
+  fullName: artstudio.ViewModels.ImageItemViewModel.DeleteOrUndoIcon
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteOrUndoIcon
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 59
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string DeleteOrUndoIcon { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property DeleteOrUndoIcon As String
+  overload: artstudio.ViewModels.ImageItemViewModel.DeleteOrUndoIcon*
+- uid: artstudio.ViewModels.ImageItemViewModel.ImageSource
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.ImageSource
+  id: ImageSource
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ImageSource
+  nameWithType: ImageItemViewModel.ImageSource
+  fullName: artstudio.ViewModels.ImageItemViewModel.ImageSource
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ImageSource
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 60
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string ImageSource { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ImageSource As String
+  overload: artstudio.ViewModels.ImageItemViewModel.ImageSource*
+- uid: artstudio.ViewModels.ImageItemViewModel.Description
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.Description
+  id: Description
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: Description
+  nameWithType: ImageItemViewModel.Description
+  fullName: artstudio.ViewModels.ImageItemViewModel.Description
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Description
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 62
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string Description { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property Description As String
+  overload: artstudio.ViewModels.ImageItemViewModel.Description*
+- uid: artstudio.ViewModels.ImageItemViewModel.AttributionText
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.AttributionText
+  id: AttributionText
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: AttributionText
+  nameWithType: ImageItemViewModel.AttributionText
+  fullName: artstudio.ViewModels.ImageItemViewModel.AttributionText
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: AttributionText
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 72
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string AttributionText { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property AttributionText As String
+  overload: artstudio.ViewModels.ImageItemViewModel.AttributionText*
+- uid: artstudio.ViewModels.ImageItemViewModel.UserProfileUrl
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.UserProfileUrl
+  id: UserProfileUrl
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: UserProfileUrl
+  nameWithType: ImageItemViewModel.UserProfileUrl
+  fullName: artstudio.ViewModels.ImageItemViewModel.UserProfileUrl
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: UserProfileUrl
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 73
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string UserProfileUrl { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property UserProfileUrl As String
+  overload: artstudio.ViewModels.ImageItemViewModel.UserProfileUrl*
+- uid: artstudio.ViewModels.ImageItemViewModel.HasUserUrl
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.HasUserUrl
+  id: HasUserUrl
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasUserUrl
+  nameWithType: ImageItemViewModel.HasUserUrl
+  fullName: artstudio.ViewModels.ImageItemViewModel.HasUserUrl
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasUserUrl
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 74
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasUserUrl { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasUserUrl As Boolean
+  overload: artstudio.ViewModels.ImageItemViewModel.HasUserUrl*
+- uid: artstudio.ViewModels.ImageItemViewModel.ImagePageUrl
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.ImagePageUrl
+  id: ImagePageUrl
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ImagePageUrl
+  nameWithType: ImageItemViewModel.ImagePageUrl
+  fullName: artstudio.ViewModels.ImageItemViewModel.ImagePageUrl
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ImagePageUrl
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 77
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public string ImagePageUrl { get; }
+    parameters: []
+    return:
+      type: System.String
+    content.vb: Public ReadOnly Property ImagePageUrl As String
+  overload: artstudio.ViewModels.ImageItemViewModel.ImagePageUrl*
+- uid: artstudio.ViewModels.ImageItemViewModel.HasImageUrl
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.HasImageUrl
+  id: HasImageUrl
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: HasImageUrl
+  nameWithType: ImageItemViewModel.HasImageUrl
+  fullName: artstudio.ViewModels.ImageItemViewModel.HasImageUrl
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: HasImageUrl
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 80
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public bool HasImageUrl { get; }
+    parameters: []
+    return:
+      type: System.Boolean
+    content.vb: Public ReadOnly Property HasImageUrl As Boolean
+  overload: artstudio.ViewModels.ImageItemViewModel.HasImageUrl*
+- uid: artstudio.ViewModels.ImageItemViewModel.OpenUserProfileCommand
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.OpenUserProfileCommand
+  id: OpenUserProfileCommand
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: OpenUserProfileCommand
+  nameWithType: ImageItemViewModel.OpenUserProfileCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.OpenUserProfileCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OpenUserProfileCommand
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 83
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand OpenUserProfileCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property OpenUserProfileCommand As ICommand
+  overload: artstudio.ViewModels.ImageItemViewModel.OpenUserProfileCommand*
+- uid: artstudio.ViewModels.ImageItemViewModel.OpenImagePageCommand
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.OpenImagePageCommand
+  id: OpenImagePageCommand
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: OpenImagePageCommand
+  nameWithType: ImageItemViewModel.OpenImagePageCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.OpenImagePageCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OpenImagePageCommand
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 84
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand OpenImagePageCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property OpenImagePageCommand As ICommand
+  overload: artstudio.ViewModels.ImageItemViewModel.OpenImagePageCommand*
+- uid: artstudio.ViewModels.ImageItemViewModel.ToggleLockCommand
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.ToggleLockCommand
+  id: ToggleLockCommand
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ToggleLockCommand
+  nameWithType: ImageItemViewModel.ToggleLockCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.ToggleLockCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleLockCommand
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 85
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ToggleLockCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ToggleLockCommand As ICommand
+  overload: artstudio.ViewModels.ImageItemViewModel.ToggleLockCommand*
+- uid: artstudio.ViewModels.ImageItemViewModel.DeleteCommand
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.DeleteCommand
+  id: DeleteCommand
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: DeleteCommand
+  nameWithType: ImageItemViewModel.DeleteCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.DeleteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: DeleteCommand
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 86
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand DeleteCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property DeleteCommand As ICommand
+  overload: artstudio.ViewModels.ImageItemViewModel.DeleteCommand*
+- uid: artstudio.ViewModels.ImageItemViewModel.ToggleFavoriteCommand
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.ToggleFavoriteCommand
+  id: ToggleFavoriteCommand
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ToggleFavoriteCommand
+  nameWithType: ImageItemViewModel.ToggleFavoriteCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.ToggleFavoriteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ToggleFavoriteCommand
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 89
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ToggleFavoriteCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ToggleFavoriteCommand As ICommand
+  overload: artstudio.ViewModels.ImageItemViewModel.ToggleFavoriteCommand*
+- uid: artstudio.ViewModels.ImageItemViewModel.ParentToggleLockCommand
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.ParentToggleLockCommand
+  id: ParentToggleLockCommand
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ParentToggleLockCommand
+  nameWithType: ImageItemViewModel.ParentToggleLockCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.ParentToggleLockCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ParentToggleLockCommand
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 90
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ParentToggleLockCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ParentToggleLockCommand As ICommand
+  overload: artstudio.ViewModels.ImageItemViewModel.ParentToggleLockCommand*
+- uid: artstudio.ViewModels.ImageItemViewModel.ParentDeleteCommand
+  commentId: P:artstudio.ViewModels.ImageItemViewModel.ParentDeleteCommand
+  id: ParentDeleteCommand
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ParentDeleteCommand
+  nameWithType: ImageItemViewModel.ParentDeleteCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.ParentDeleteCommand
+  type: Property
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ParentDeleteCommand
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 91
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ICommand ParentDeleteCommand { get; }
+    parameters: []
+    return:
+      type: System.Windows.Input.ICommand
+    content.vb: Public ReadOnly Property ParentDeleteCommand As ICommand
+  overload: artstudio.ViewModels.ImageItemViewModel.ParentDeleteCommand*
+- uid: artstudio.ViewModels.ImageItemViewModel.#ctor(artstudio.Models.UnsplashImage,artstudio.ViewModels.ImagePromptViewModel,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.ImageItemViewModel})
+  commentId: M:artstudio.ViewModels.ImageItemViewModel.#ctor(artstudio.Models.UnsplashImage,artstudio.ViewModels.ImagePromptViewModel,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.ImageItemViewModel})
+  id: '#ctor(artstudio.Models.UnsplashImage,artstudio.ViewModels.ImagePromptViewModel,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.ImageItemViewModel})'
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: ImageItemViewModel(UnsplashImage, ImagePromptViewModel?, ILogger<ImageItemViewModel>?)
+  nameWithType: ImageItemViewModel.ImageItemViewModel(UnsplashImage, ImagePromptViewModel?, ILogger<ImageItemViewModel>?)
+  fullName: artstudio.ViewModels.ImageItemViewModel.ImageItemViewModel(artstudio.Models.UnsplashImage, artstudio.ViewModels.ImagePromptViewModel?, Microsoft.Extensions.Logging.ILogger<artstudio.ViewModels.ImageItemViewModel>?)
+  type: Constructor
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: .ctor
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 93
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: public ImageItemViewModel(UnsplashImage unsplashImage, ImagePromptViewModel? parentViewModel = null, ILogger<ImageItemViewModel>? logger = null)
+    parameters:
+    - id: unsplashImage
+      type: artstudio.Models.UnsplashImage
+    - id: parentViewModel
+      type: artstudio.ViewModels.ImagePromptViewModel
+    - id: logger
+      type: Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.ImageItemViewModel}
+    content.vb: Public Sub New(unsplashImage As UnsplashImage, parentViewModel As ImagePromptViewModel = Nothing, logger As ILogger(Of ImageItemViewModel) = Nothing)
+  overload: artstudio.ViewModels.ImageItemViewModel.#ctor*
+  nameWithType.vb: ImageItemViewModel.New(UnsplashImage, ImagePromptViewModel, ILogger(Of ImageItemViewModel))
+  fullName.vb: artstudio.ViewModels.ImageItemViewModel.New(artstudio.Models.UnsplashImage, artstudio.ViewModels.ImagePromptViewModel, Microsoft.Extensions.Logging.ILogger(Of artstudio.ViewModels.ImageItemViewModel))
+  name.vb: New(UnsplashImage, ImagePromptViewModel, ILogger(Of ImageItemViewModel))
+- uid: artstudio.ViewModels.ImageItemViewModel.PropertyChanged
+  commentId: E:artstudio.ViewModels.ImageItemViewModel.PropertyChanged
+  id: PropertyChanged
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: PropertyChanged
+  nameWithType: ImageItemViewModel.PropertyChanged
+  fullName: artstudio.ViewModels.ImageItemViewModel.PropertyChanged
+  type: Event
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: PropertyChanged
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 190
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  summary: Occurs when a property value changes.
+  example: []
+  syntax:
+    content: public event PropertyChangedEventHandler? PropertyChanged
+    return:
+      type: System.ComponentModel.PropertyChangedEventHandler
+    content.vb: Public Event PropertyChanged As PropertyChangedEventHandler
+  implements:
+  - System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged(System.String)
+  commentId: M:artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged(System.String)
+  id: OnPropertyChanged(System.String)
+  parent: artstudio.ViewModels.ImageItemViewModel
+  langs:
+  - csharp
+  - vb
+  name: OnPropertyChanged(string?)
+  nameWithType: ImageItemViewModel.OnPropertyChanged(string?)
+  fullName: artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged(string?)
+  type: Method
+  source:
+    remote:
+      path: artstudio/ViewModels/ImageItemViewModel.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: OnPropertyChanged
+    path: ViewModels/ImageItemViewModel.cs
+    startLine: 192
+  assemblies:
+  - artstudio
+  namespace: artstudio.ViewModels
+  syntax:
+    content: protected virtual void OnPropertyChanged(string? propertyName = null)
+    parameters:
+    - id: propertyName
+      type: System.String
+    content.vb: Protected Overridable Sub OnPropertyChanged(propertyName As String = Nothing)
+  overload: artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged*
+  nameWithType.vb: ImageItemViewModel.OnPropertyChanged(String)
+  fullName.vb: artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged(String)
+  name.vb: OnPropertyChanged(String)
+references:
+- uid: artstudio.ViewModels
+  commentId: N:artstudio.ViewModels
+  href: artstudio.html
+  name: artstudio.ViewModels
+  nameWithType: artstudio.ViewModels
+  fullName: artstudio.ViewModels
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.ViewModels
+    name: ViewModels
+    href: artstudio.ViewModels.html
+- uid: System.Object
+  commentId: T:System.Object
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object
+  name: object
+  nameWithType: object
+  fullName: object
+  nameWithType.vb: Object
+  fullName.vb: Object
+  name.vb: Object
+- uid: System.ComponentModel.INotifyPropertyChanged
+  commentId: T:System.ComponentModel.INotifyPropertyChanged
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged
+  name: INotifyPropertyChanged
+  nameWithType: INotifyPropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged
+- uid: System.Object.Equals(System.Object)
+  commentId: M:System.Object.Equals(System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  name: Equals(object)
+  nameWithType: object.Equals(object)
+  fullName: object.Equals(object)
+  nameWithType.vb: Object.Equals(Object)
+  fullName.vb: Object.Equals(Object)
+  name.vb: Equals(Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.Equals(System.Object,System.Object)
+  commentId: M:System.Object.Equals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  name: Equals(object, object)
+  nameWithType: object.Equals(object, object)
+  fullName: object.Equals(object, object)
+  nameWithType.vb: Object.Equals(Object, Object)
+  fullName.vb: Object.Equals(Object, Object)
+  name.vb: Equals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.Equals(System.Object,System.Object)
+    name: Equals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.GetHashCode
+  commentId: M:System.Object.GetHashCode
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  name: GetHashCode()
+  nameWithType: object.GetHashCode()
+  fullName: object.GetHashCode()
+  nameWithType.vb: Object.GetHashCode()
+  fullName.vb: Object.GetHashCode()
+  spec.csharp:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetHashCode
+    name: GetHashCode
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gethashcode
+  - name: (
+  - name: )
+- uid: System.Object.GetType
+  commentId: M:System.Object.GetType
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  name: GetType()
+  nameWithType: object.GetType()
+  fullName: object.GetType()
+  nameWithType.vb: Object.GetType()
+  fullName.vb: Object.GetType()
+  spec.csharp:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.GetType
+    name: GetType
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.gettype
+  - name: (
+  - name: )
+- uid: System.Object.MemberwiseClone
+  commentId: M:System.Object.MemberwiseClone
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  name: MemberwiseClone()
+  nameWithType: object.MemberwiseClone()
+  fullName: object.MemberwiseClone()
+  nameWithType.vb: Object.MemberwiseClone()
+  fullName.vb: Object.MemberwiseClone()
+  spec.csharp:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.MemberwiseClone
+    name: MemberwiseClone
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone
+  - name: (
+  - name: )
+- uid: System.Object.ReferenceEquals(System.Object,System.Object)
+  commentId: M:System.Object.ReferenceEquals(System.Object,System.Object)
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  name: ReferenceEquals(object, object)
+  nameWithType: object.ReferenceEquals(object, object)
+  fullName: object.ReferenceEquals(object, object)
+  nameWithType.vb: Object.ReferenceEquals(Object, Object)
+  fullName.vb: Object.ReferenceEquals(Object, Object)
+  name.vb: ReferenceEquals(Object, Object)
+  spec.csharp:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+  spec.vb:
+  - uid: System.Object.ReferenceEquals(System.Object,System.Object)
+    name: ReferenceEquals
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.referenceequals
+  - name: (
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: ','
+  - name: " "
+  - uid: System.Object
+    name: Object
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object
+  - name: )
+- uid: System.Object.ToString
+  commentId: M:System.Object.ToString
+  parent: System.Object
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  name: ToString()
+  nameWithType: object.ToString()
+  fullName: object.ToString()
+  nameWithType.vb: Object.ToString()
+  fullName.vb: Object.ToString()
+  spec.csharp:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+  spec.vb:
+  - uid: System.Object.ToString
+    name: ToString
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.object.tostring
+  - name: (
+  - name: )
+- uid: System
+  commentId: N:System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System
+  nameWithType: System
+  fullName: System
+- uid: System.ComponentModel
+  commentId: N:System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.ComponentModel
+  nameWithType: System.ComponentModel
+  fullName: System.ComponentModel
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.ComponentModel
+    name: ComponentModel
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.componentmodel
+- uid: artstudio.ViewModels.ImageItemViewModel.UnsplashImage*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.UnsplashImage
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_UnsplashImage
+  name: UnsplashImage
+  nameWithType: ImageItemViewModel.UnsplashImage
+  fullName: artstudio.ViewModels.ImageItemViewModel.UnsplashImage
+- uid: artstudio.Models.UnsplashImage
+  commentId: T:artstudio.Models.UnsplashImage
+  parent: artstudio.Models
+  href: artstudio.Models.UnsplashImage.html
+  name: UnsplashImage
+  nameWithType: UnsplashImage
+  fullName: artstudio.Models.UnsplashImage
+- uid: artstudio.Models
+  commentId: N:artstudio.Models
+  href: artstudio.html
+  name: artstudio.Models
+  nameWithType: artstudio.Models
+  fullName: artstudio.Models
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Models
+    name: Models
+    href: artstudio.Models.html
+- uid: artstudio.ViewModels.ImageItemViewModel.IsLocked*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.IsLocked
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_IsLocked
+  name: IsLocked
+  nameWithType: ImageItemViewModel.IsLocked
+  fullName: artstudio.ViewModels.ImageItemViewModel.IsLocked
+- uid: System.Boolean
+  commentId: T:System.Boolean
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.boolean
+  name: bool
+  nameWithType: bool
+  fullName: bool
+  nameWithType.vb: Boolean
+  fullName.vb: Boolean
+  name.vb: Boolean
+- uid: artstudio.ViewModels.ImageItemViewModel.IsDeleted*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.IsDeleted
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_IsDeleted
+  name: IsDeleted
+  nameWithType: ImageItemViewModel.IsDeleted
+  fullName: artstudio.ViewModels.ImageItemViewModel.IsDeleted
+- uid: artstudio.ViewModels.ImageItemViewModel.IsFavorited*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.IsFavorited
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_IsFavorited
+  name: IsFavorited
+  nameWithType: ImageItemViewModel.IsFavorited
+  fullName: artstudio.ViewModels.ImageItemViewModel.IsFavorited
+- uid: artstudio.ViewModels.ImageItemViewModel.DeleteOrUndoIcon*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.DeleteOrUndoIcon
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_DeleteOrUndoIcon
+  name: DeleteOrUndoIcon
+  nameWithType: ImageItemViewModel.DeleteOrUndoIcon
+  fullName: artstudio.ViewModels.ImageItemViewModel.DeleteOrUndoIcon
+- uid: System.String
+  commentId: T:System.String
+  parent: System
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.string
+  name: string
+  nameWithType: string
+  fullName: string
+  nameWithType.vb: String
+  fullName.vb: String
+  name.vb: String
+- uid: artstudio.ViewModels.ImageItemViewModel.ImageSource*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.ImageSource
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_ImageSource
+  name: ImageSource
+  nameWithType: ImageItemViewModel.ImageSource
+  fullName: artstudio.ViewModels.ImageItemViewModel.ImageSource
+- uid: artstudio.ViewModels.ImageItemViewModel.Description*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.Description
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_Description
+  name: Description
+  nameWithType: ImageItemViewModel.Description
+  fullName: artstudio.ViewModels.ImageItemViewModel.Description
+- uid: artstudio.ViewModels.ImageItemViewModel.AttributionText*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.AttributionText
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_AttributionText
+  name: AttributionText
+  nameWithType: ImageItemViewModel.AttributionText
+  fullName: artstudio.ViewModels.ImageItemViewModel.AttributionText
+- uid: artstudio.ViewModels.ImageItemViewModel.UserProfileUrl*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.UserProfileUrl
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_UserProfileUrl
+  name: UserProfileUrl
+  nameWithType: ImageItemViewModel.UserProfileUrl
+  fullName: artstudio.ViewModels.ImageItemViewModel.UserProfileUrl
+- uid: artstudio.ViewModels.ImageItemViewModel.HasUserUrl*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.HasUserUrl
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_HasUserUrl
+  name: HasUserUrl
+  nameWithType: ImageItemViewModel.HasUserUrl
+  fullName: artstudio.ViewModels.ImageItemViewModel.HasUserUrl
+- uid: artstudio.ViewModels.ImageItemViewModel.ImagePageUrl*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.ImagePageUrl
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_ImagePageUrl
+  name: ImagePageUrl
+  nameWithType: ImageItemViewModel.ImagePageUrl
+  fullName: artstudio.ViewModels.ImageItemViewModel.ImagePageUrl
+- uid: artstudio.ViewModels.ImageItemViewModel.HasImageUrl*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.HasImageUrl
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_HasImageUrl
+  name: HasImageUrl
+  nameWithType: ImageItemViewModel.HasImageUrl
+  fullName: artstudio.ViewModels.ImageItemViewModel.HasImageUrl
+- uid: artstudio.ViewModels.ImageItemViewModel.OpenUserProfileCommand*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.OpenUserProfileCommand
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_OpenUserProfileCommand
+  name: OpenUserProfileCommand
+  nameWithType: ImageItemViewModel.OpenUserProfileCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.OpenUserProfileCommand
+- uid: System.Windows.Input.ICommand
+  commentId: T:System.Windows.Input.ICommand
+  parent: System.Windows.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.windows.input.icommand
+  name: ICommand
+  nameWithType: ICommand
+  fullName: System.Windows.Input.ICommand
+- uid: System.Windows.Input
+  commentId: N:System.Windows.Input
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system
+  name: System.Windows.Input
+  nameWithType: System.Windows.Input
+  fullName: System.Windows.Input
+  spec.csharp:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Windows
+    name: Windows
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows
+  - name: .
+  - uid: System.Windows.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows.input
+  spec.vb:
+  - uid: System
+    name: System
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system
+  - name: .
+  - uid: System.Windows
+    name: Windows
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows
+  - name: .
+  - uid: System.Windows.Input
+    name: Input
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/system.windows.input
+- uid: artstudio.ViewModels.ImageItemViewModel.OpenImagePageCommand*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.OpenImagePageCommand
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_OpenImagePageCommand
+  name: OpenImagePageCommand
+  nameWithType: ImageItemViewModel.OpenImagePageCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.OpenImagePageCommand
+- uid: artstudio.ViewModels.ImageItemViewModel.ToggleLockCommand*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.ToggleLockCommand
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_ToggleLockCommand
+  name: ToggleLockCommand
+  nameWithType: ImageItemViewModel.ToggleLockCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.ToggleLockCommand
+- uid: artstudio.ViewModels.ImageItemViewModel.DeleteCommand*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.DeleteCommand
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_DeleteCommand
+  name: DeleteCommand
+  nameWithType: ImageItemViewModel.DeleteCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.DeleteCommand
+- uid: artstudio.ViewModels.ImageItemViewModel.ToggleFavoriteCommand*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.ToggleFavoriteCommand
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_ToggleFavoriteCommand
+  name: ToggleFavoriteCommand
+  nameWithType: ImageItemViewModel.ToggleFavoriteCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.ToggleFavoriteCommand
+- uid: artstudio.ViewModels.ImageItemViewModel.ParentToggleLockCommand*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.ParentToggleLockCommand
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_ParentToggleLockCommand
+  name: ParentToggleLockCommand
+  nameWithType: ImageItemViewModel.ParentToggleLockCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.ParentToggleLockCommand
+- uid: artstudio.ViewModels.ImageItemViewModel.ParentDeleteCommand*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.ParentDeleteCommand
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_ParentDeleteCommand
+  name: ParentDeleteCommand
+  nameWithType: ImageItemViewModel.ParentDeleteCommand
+  fullName: artstudio.ViewModels.ImageItemViewModel.ParentDeleteCommand
+- uid: artstudio.ViewModels.ImageItemViewModel.#ctor*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.#ctor
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel__ctor_artstudio_Models_UnsplashImage_artstudio_ViewModels_ImagePromptViewModel_Microsoft_Extensions_Logging_ILogger_artstudio_ViewModels_ImageItemViewModel__
+  name: ImageItemViewModel
+  nameWithType: ImageItemViewModel.ImageItemViewModel
+  fullName: artstudio.ViewModels.ImageItemViewModel.ImageItemViewModel
+  nameWithType.vb: ImageItemViewModel.New
+  fullName.vb: artstudio.ViewModels.ImageItemViewModel.New
+  name.vb: New
+- uid: artstudio.ViewModels.ImagePromptViewModel
+  commentId: T:artstudio.ViewModels.ImagePromptViewModel
+  parent: artstudio.ViewModels
+  href: artstudio.ViewModels.ImagePromptViewModel.html
+  name: ImagePromptViewModel
+  nameWithType: ImagePromptViewModel
+  fullName: artstudio.ViewModels.ImagePromptViewModel
+- uid: Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.ImageItemViewModel}
+  commentId: T:Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.ImageItemViewModel}
+  parent: Microsoft.Extensions.Logging
+  definition: Microsoft.Extensions.Logging.ILogger`1
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<ImageItemViewModel>
+  nameWithType: ILogger<ImageItemViewModel>
+  fullName: Microsoft.Extensions.Logging.ILogger<artstudio.ViewModels.ImageItemViewModel>
+  nameWithType.vb: ILogger(Of ImageItemViewModel)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of artstudio.ViewModels.ImageItemViewModel)
+  name.vb: ILogger(Of ImageItemViewModel)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - uid: artstudio.ViewModels.ImageItemViewModel
+    name: ImageItemViewModel
+    href: artstudio.ViewModels.ImageItemViewModel.html
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - uid: artstudio.ViewModels.ImageItemViewModel
+    name: ImageItemViewModel
+    href: artstudio.ViewModels.ImageItemViewModel.html
+  - name: )
+- uid: Microsoft.Extensions.Logging.ILogger`1
+  commentId: T:Microsoft.Extensions.Logging.ILogger`1
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  name: ILogger<TCategoryName>
+  nameWithType: ILogger<TCategoryName>
+  fullName: Microsoft.Extensions.Logging.ILogger<TCategoryName>
+  nameWithType.vb: ILogger(Of TCategoryName)
+  fullName.vb: Microsoft.Extensions.Logging.ILogger(Of TCategoryName)
+  name.vb: ILogger(Of TCategoryName)
+  spec.csharp:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: <
+  - name: TCategoryName
+  - name: '>'
+  spec.vb:
+  - uid: Microsoft.Extensions.Logging.ILogger`1
+    name: ILogger
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1
+  - name: (
+  - name: Of
+  - name: " "
+  - name: TCategoryName
+  - name: )
+- uid: Microsoft.Extensions.Logging
+  commentId: N:Microsoft.Extensions.Logging
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/microsoft
+  name: Microsoft.Extensions.Logging
+  nameWithType: Microsoft.Extensions.Logging
+  fullName: Microsoft.Extensions.Logging
+  spec.csharp:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+  spec.vb:
+  - uid: Microsoft
+    name: Microsoft
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft
+  - name: .
+  - uid: Microsoft.Extensions
+    name: Extensions
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions
+  - name: .
+  - uid: Microsoft.Extensions.Logging
+    name: Logging
+    isExternal: true
+    href: https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging
+- uid: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  commentId: E:System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+  parent: System.ComponentModel.INotifyPropertyChanged
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged.propertychanged
+  name: PropertyChanged
+  nameWithType: INotifyPropertyChanged.PropertyChanged
+  fullName: System.ComponentModel.INotifyPropertyChanged.PropertyChanged
+- uid: System.ComponentModel.PropertyChangedEventHandler
+  commentId: T:System.ComponentModel.PropertyChangedEventHandler
+  parent: System.ComponentModel
+  isExternal: true
+  href: https://learn.microsoft.com/dotnet/api/system.componentmodel.propertychangedeventhandler
+  name: PropertyChangedEventHandler
+  nameWithType: PropertyChangedEventHandler
+  fullName: System.ComponentModel.PropertyChangedEventHandler
+- uid: artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged*
+  commentId: Overload:artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged
+  href: artstudio.ViewModels.ImageItemViewModel.html#artstudio_ViewModels_ImageItemViewModel_OnPropertyChanged_System_String_
+  name: OnPropertyChanged
+  nameWithType: ImageItemViewModel.OnPropertyChanged
+  fullName: artstudio.ViewModels.ImageItemViewModel.OnPropertyChanged

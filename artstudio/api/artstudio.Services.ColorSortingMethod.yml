@@ -1,0 +1,247 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Services.ColorSortingMethod
+  commentId: T:artstudio.Services.ColorSortingMethod
+  id: ColorSortingMethod
+  parent: artstudio.Services
+  children:
+  - artstudio.Services.ColorSortingMethod.Brightness
+  - artstudio.Services.ColorSortingMethod.CoolorsStyle
+  - artstudio.Services.ColorSortingMethod.Hue
+  - artstudio.Services.ColorSortingMethod.None
+  - artstudio.Services.ColorSortingMethod.Professional
+  - artstudio.Services.ColorSortingMethod.Saturation
+  - artstudio.Services.ColorSortingMethod.SmoothTransitions
+  langs:
+  - csharp
+  - vb
+  name: ColorSortingMethod
+  nameWithType: ColorSortingMethod
+  fullName: artstudio.Services.ColorSortingMethod
+  type: Enum
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: ColorSortingMethod
+    path: Services/ColorSortingExtensions.cs
+    startLine: 198
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: public enum ColorSortingMethod
+    content.vb: Public Enum ColorSortingMethod
+- uid: artstudio.Services.ColorSortingMethod.None
+  commentId: F:artstudio.Services.ColorSortingMethod.None
+  id: None
+  parent: artstudio.Services.ColorSortingMethod
+  langs:
+  - csharp
+  - vb
+  name: None
+  nameWithType: ColorSortingMethod.None
+  fullName: artstudio.Services.ColorSortingMethod.None
+  type: Field
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: None
+    path: Services/ColorSortingExtensions.cs
+    startLine: 200
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: None = 0
+    return:
+      type: artstudio.Services.ColorSortingMethod
+- uid: artstudio.Services.ColorSortingMethod.Hue
+  commentId: F:artstudio.Services.ColorSortingMethod.Hue
+  id: Hue
+  parent: artstudio.Services.ColorSortingMethod
+  langs:
+  - csharp
+  - vb
+  name: Hue
+  nameWithType: ColorSortingMethod.Hue
+  fullName: artstudio.Services.ColorSortingMethod.Hue
+  type: Field
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Hue
+    path: Services/ColorSortingExtensions.cs
+    startLine: 201
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: Hue = 1
+    return:
+      type: artstudio.Services.ColorSortingMethod
+- uid: artstudio.Services.ColorSortingMethod.Brightness
+  commentId: F:artstudio.Services.ColorSortingMethod.Brightness
+  id: Brightness
+  parent: artstudio.Services.ColorSortingMethod
+  langs:
+  - csharp
+  - vb
+  name: Brightness
+  nameWithType: ColorSortingMethod.Brightness
+  fullName: artstudio.Services.ColorSortingMethod.Brightness
+  type: Field
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Brightness
+    path: Services/ColorSortingExtensions.cs
+    startLine: 202
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: Brightness = 2
+    return:
+      type: artstudio.Services.ColorSortingMethod
+- uid: artstudio.Services.ColorSortingMethod.Saturation
+  commentId: F:artstudio.Services.ColorSortingMethod.Saturation
+  id: Saturation
+  parent: artstudio.Services.ColorSortingMethod
+  langs:
+  - csharp
+  - vb
+  name: Saturation
+  nameWithType: ColorSortingMethod.Saturation
+  fullName: artstudio.Services.ColorSortingMethod.Saturation
+  type: Field
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Saturation
+    path: Services/ColorSortingExtensions.cs
+    startLine: 203
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: Saturation = 3
+    return:
+      type: artstudio.Services.ColorSortingMethod
+- uid: artstudio.Services.ColorSortingMethod.CoolorsStyle
+  commentId: F:artstudio.Services.ColorSortingMethod.CoolorsStyle
+  id: CoolorsStyle
+  parent: artstudio.Services.ColorSortingMethod
+  langs:
+  - csharp
+  - vb
+  name: CoolorsStyle
+  nameWithType: ColorSortingMethod.CoolorsStyle
+  fullName: artstudio.Services.ColorSortingMethod.CoolorsStyle
+  type: Field
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: CoolorsStyle
+    path: Services/ColorSortingExtensions.cs
+    startLine: 204
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: CoolorsStyle = 4
+    return:
+      type: artstudio.Services.ColorSortingMethod
+- uid: artstudio.Services.ColorSortingMethod.SmoothTransitions
+  commentId: F:artstudio.Services.ColorSortingMethod.SmoothTransitions
+  id: SmoothTransitions
+  parent: artstudio.Services.ColorSortingMethod
+  langs:
+  - csharp
+  - vb
+  name: SmoothTransitions
+  nameWithType: ColorSortingMethod.SmoothTransitions
+  fullName: artstudio.Services.ColorSortingMethod.SmoothTransitions
+  type: Field
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: SmoothTransitions
+    path: Services/ColorSortingExtensions.cs
+    startLine: 205
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: SmoothTransitions = 5
+    return:
+      type: artstudio.Services.ColorSortingMethod
+- uid: artstudio.Services.ColorSortingMethod.Professional
+  commentId: F:artstudio.Services.ColorSortingMethod.Professional
+  id: Professional
+  parent: artstudio.Services.ColorSortingMethod
+  langs:
+  - csharp
+  - vb
+  name: Professional
+  nameWithType: ColorSortingMethod.Professional
+  fullName: artstudio.Services.ColorSortingMethod.Professional
+  type: Field
+  source:
+    remote:
+      path: artstudio/Services/ColorSortingExtensions.cs
+      branch: main
+      repo: https://github.com/Cxmorifolium/Art-Study-App.git
+    id: Professional
+    path: Services/ColorSortingExtensions.cs
+    startLine: 206
+  assemblies:
+  - artstudio
+  namespace: artstudio.Services
+  syntax:
+    content: Professional = 6
+    return:
+      type: artstudio.Services.ColorSortingMethod
+references:
+- uid: artstudio.Services
+  commentId: N:artstudio.Services
+  href: artstudio.html
+  name: artstudio.Services
+  nameWithType: artstudio.Services
+  fullName: artstudio.Services
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Services
+    name: Services
+    href: artstudio.Services.html
+- uid: artstudio.Services.ColorSortingMethod
+  commentId: T:artstudio.Services.ColorSortingMethod
+  parent: artstudio.Services
+  href: artstudio.Services.ColorSortingMethod.html
+  name: ColorSortingMethod
+  nameWithType: ColorSortingMethod
+  fullName: artstudio.Services.ColorSortingMethod

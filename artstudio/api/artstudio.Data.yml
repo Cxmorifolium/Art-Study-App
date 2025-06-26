@@ -1,0 +1,106 @@
+### YamlMime:ManagedReference
+items:
+- uid: artstudio.Data
+  commentId: N:artstudio.Data
+  id: artstudio.Data
+  children:
+  - artstudio.Data.FavoriteImageItem
+  - artstudio.Data.FavoriteSwatch
+  - artstudio.Data.GalleryCreationData
+  - artstudio.Data.PaletteCollection
+  - artstudio.Data.PaletteColor
+  - artstudio.Data.SessionSnapshot
+  - artstudio.Data.UserUploadedImage
+  - artstudio.Data.Word
+  - artstudio.Data.WordCollection
+  langs:
+  - csharp
+  - vb
+  name: artstudio.Data
+  nameWithType: artstudio.Data
+  fullName: artstudio.Data
+  type: Namespace
+  assemblies:
+  - artstudio
+references:
+- uid: artstudio.Data.FavoriteImageItem
+  commentId: T:artstudio.Data.FavoriteImageItem
+  parent: artstudio.Data
+  href: artstudio.Data.FavoriteImageItem.html
+  name: FavoriteImageItem
+  nameWithType: FavoriteImageItem
+  fullName: artstudio.Data.FavoriteImageItem
+- uid: artstudio.Data.FavoriteSwatch
+  commentId: T:artstudio.Data.FavoriteSwatch
+  href: artstudio.Data.FavoriteSwatch.html
+  name: FavoriteSwatch
+  nameWithType: FavoriteSwatch
+  fullName: artstudio.Data.FavoriteSwatch
+- uid: artstudio.Data.GalleryCreationData
+  commentId: T:artstudio.Data.GalleryCreationData
+  parent: artstudio.Data
+  href: artstudio.Data.GalleryCreationData.html
+  name: GalleryCreationData
+  nameWithType: GalleryCreationData
+  fullName: artstudio.Data.GalleryCreationData
+- uid: artstudio.Data.PaletteCollection
+  commentId: T:artstudio.Data.PaletteCollection
+  href: artstudio.Data.PaletteCollection.html
+  name: PaletteCollection
+  nameWithType: PaletteCollection
+  fullName: artstudio.Data.PaletteCollection
+- uid: artstudio.Data.PaletteColor
+  commentId: T:artstudio.Data.PaletteColor
+  href: artstudio.Data.PaletteColor.html
+  name: PaletteColor
+  nameWithType: PaletteColor
+  fullName: artstudio.Data.PaletteColor
+- uid: artstudio.Data.SessionSnapshot
+  commentId: T:artstudio.Data.SessionSnapshot
+  parent: artstudio.Data
+  href: artstudio.Data.SessionSnapshot.html
+  name: SessionSnapshot
+  nameWithType: SessionSnapshot
+  fullName: artstudio.Data.SessionSnapshot
+- uid: artstudio.Data.UserUploadedImage
+  commentId: T:artstudio.Data.UserUploadedImage
+  parent: artstudio.Data
+  href: artstudio.Data.UserUploadedImage.html
+  name: UserUploadedImage
+  nameWithType: UserUploadedImage
+  fullName: artstudio.Data.UserUploadedImage
+- uid: artstudio.Data.Word
+  commentId: T:artstudio.Data.Word
+  href: artstudio.Data.Word.html
+  name: Word
+  nameWithType: Word
+  fullName: artstudio.Data.Word
+- uid: artstudio.Data.WordCollection
+  commentId: T:artstudio.Data.WordCollection
+  parent: artstudio.Data
+  href: artstudio.Data.WordCollection.html
+  name: WordCollection
+  nameWithType: WordCollection
+  fullName: artstudio.Data.WordCollection
+- uid: artstudio.Data
+  commentId: N:artstudio.Data
+  href: artstudio.html
+  name: artstudio.Data
+  nameWithType: artstudio.Data
+  fullName: artstudio.Data
+  spec.csharp:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html
+  spec.vb:
+  - uid: artstudio
+    name: artstudio
+    href: artstudio.html
+  - name: .
+  - uid: artstudio.Data
+    name: Data
+    href: artstudio.Data.html

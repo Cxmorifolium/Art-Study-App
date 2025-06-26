@@ -286,25 +286,29 @@ namespace artstudio.ViewModels
             {
                 var swatch = Swatches[i];
 
-                // Handle deleted swatches - restore them
-                if (swatch.IsDeleted)
-                {
-                    swatch.Color = swatch.PreviousColor;
-                    // The SwatchViewModel will handle the state updates internally
-                }
-
-                // Only update color if swatch is not locked
                 if (!swatch.IsLocked)
                 {
-                    var oldColor = swatch.Color;
+                    // Handle deleted swatches - restore them first
+                    if (swatch.IsDeleted)
+                    {
+                        swatch.ToggleDeleteCommand.Execute(null); // This will restore the deleted swatch
+                    }
+
+                    // Make sure swatch is inactive (buttons hidden) - only toggle if currently active
+                    if (swatch.IsActive)
+                    {
+                        swatch.ToggleActivateCommand.Execute(null); // This will make IsActive = false
+                    }
+
+                    // Update with new color
                     swatch.Color = newPalette[i];
 
-                    _logger.LogDebug("Swatch {Index}: {Status} - Old: {OldColor}, New: {NewColor}",
-                        i, swatch.IsLocked ? "LOCKED" : "Updated", oldColor.ToHex(), newPalette[i].ToHex());
+                    _logger.LogDebug("Swatch {Index}: Reset to default state with new color {Color}", i, newPalette[i].ToHex());
                 }
                 else
                 {
-                    _logger.LogDebug("Swatch {Index}: LOCKED - Keeping: {Color}", i, swatch.Color.ToHex());
+                    // Locked swatches keep their current state
+                    _logger.LogDebug("Swatch {Index}: LOCKED - Keeping current state and color {Color}", i, swatch.Color.ToHex());
                 }
             }
 
@@ -362,7 +366,6 @@ namespace artstudio.ViewModels
             for (int i = 0; i < activeSwatches.Count && i < sortedColors.Count; i++)
             {
                 activeSwatches[i].Color = sortedColors[i];
-                // No need to call OnPropertyChanged manually - SwatchViewModel handles it
             }
         }
 
@@ -485,6 +488,7 @@ namespace artstudio.ViewModels
                 await _paletteService.TogglePaletteFavoriteAsync(savedCollection.Id);
 
                 await _toastService.ShowToastAsync("Palette saved to favorites! ⭐");
+                await LoadFavoritesDataAsync();
                 _logger.LogInformation("Palette saved to default favorites with title: {Title}", title);
 
             }
@@ -548,7 +552,7 @@ namespace artstudio.ViewModels
 
                         await _toastService.ShowToastAsync($"Saved to '{cleanName}' collection ⭐");
                         _logger.LogInformation("Palette saved to collection: {CollectionName} with title: {Title}", cleanName, title);
-
+                        await LoadFavoritesDataAsync();
                     }
                 }
             }
@@ -618,7 +622,7 @@ namespace artstudio.ViewModels
             OnPropertyChanged(nameof(PalettesTabTextColor));
         }
 
-        // SIMPLIFIED - Load favorites using the service sorting method
+        // Load favorites using the service sorting method
         private async Task LoadFavoritesDataAsync()
         {
             try
@@ -636,7 +640,7 @@ namespace artstudio.ViewModels
                     });
                 }
 
-                // Load and group favorite palettes (unchanged)
+                // Load and group favorite palettes
                 await LoadGroupedFavoritePalettesAsync();
 
                 OnPropertyChanged(nameof(HasNoFavoriteSwatches));
@@ -672,7 +676,7 @@ namespace artstudio.ViewModels
                 {
                     var paletteItems = group.Select(p => new FavoritePaletteItem
                     {
-                        Id = p.Id, // Make sure to include the ID for database operations
+                        Id = p.Id, // ID for database operations
                         Title = p.Title ?? "Untitled",
                         Colors = p.ColorsList?.Select(c => c.ToHex()).ToList() ?? new List<string>(),
                         CreatedAt = p.CreatedAt
@@ -766,10 +770,9 @@ namespace artstudio.ViewModels
                 {
                     await _paletteService.RemoveSwatchFromFavoritesAsync(dbSwatch.Id);
 
-                    // ✅ Direct UI manipulation - no LoadFavoritesDataAsync() call!
                     FavoriteSwatches.Remove(swatchItem);
 
-                    // ✅ Update main palette swatch immediately
+                    //Update main palette swatch immediately
                     var matchingSwatch = Swatches.FirstOrDefault(s =>
                         s.Color.ToHex().Equals(swatchItem.HexColor, StringComparison.OrdinalIgnoreCase));
 
@@ -826,7 +829,6 @@ namespace artstudio.ViewModels
                             }
                         }
 
-                        // Fix: Remove from UI groups properly
                         foreach (var group in GroupedFavoritePalettes.ToList())
                         {
                             var itemToRemove = group.Palettes.FirstOrDefault(p =>
@@ -834,7 +836,7 @@ namespace artstudio.ViewModels
 
                             if (itemToRemove != null)
                             {
-                                group.Remove(itemToRemove); // Use the Remove method we added to PaletteCollectionGroup
+                                group.Remove(itemToRemove);
 
                                 // Remove empty groups
                                 if (group.Count == 0)
@@ -864,7 +866,7 @@ namespace artstudio.ViewModels
             {
                 if (isFavorited)
                 {
-                    // ✅ Add to favorites panel immediately
+                    // Add to favorites panel immediately
                     var existingItem = FavoriteSwatches.FirstOrDefault(f =>
                         f.HexColor.Equals(hexColor, StringComparison.OrdinalIgnoreCase));
 
@@ -882,7 +884,7 @@ namespace artstudio.ViewModels
                 }
                 else
                 {
-                    // ✅ Remove from favorites panel immediately
+                    // Remove from favorites panel immediately
                     var itemToRemove = FavoriteSwatches.FirstOrDefault(f =>
                         f.HexColor.Equals(hexColor, StringComparison.OrdinalIgnoreCase));
 

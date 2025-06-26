@@ -1,0 +1,1118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+      <title>Class PromptGeneratorViewModel | artstudio-study-app </title>
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <meta name="title" content="Class PromptGeneratorViewModel | artstudio-study-app ">
+      
+      
+      <link rel="icon" href="../favicon.ico">
+      <link rel="stylesheet" href="../public/docfx.min.css">
+      <link rel="stylesheet" href="../public/main.css">
+      <meta name="docfx:navrel" content="../toc.html">
+      <meta name="docfx:tocrel" content="toc.html">
+      
+      <meta name="docfx:rel" content="../">
+      
+      
+      <meta name="docfx:docurl" content="https://github.com/Cxmorifolium/Art-Study-App/new/main/apiSpec/new?filename=artstudio_ViewModels_PromptGeneratorViewModel.md&amp;value=---%0Auid%3A%20artstudio.ViewModels.PromptGeneratorViewModel%0Asummary%3A%20&#39;*You%20can%20override%20summary%20for%20the%20API%20here%20using%20*MARKDOWN*%20syntax&#39;%0A---%0A%0A*Please%20type%20below%20more%20information%20about%20this%20API%3A*%0A%0A">
+      <meta name="loc:inThisArticle" content="In this article">
+      <meta name="loc:searchResultsCount" content="{count} results for &quot;{query}&quot;">
+      <meta name="loc:searchNoResults" content="No results for &quot;{query}&quot;">
+      <meta name="loc:tocFilter" content="Filter by title">
+      <meta name="loc:nextArticle" content="Next">
+      <meta name="loc:prevArticle" content="Previous">
+      <meta name="loc:themeLight" content="Light">
+      <meta name="loc:themeDark" content="Dark">
+      <meta name="loc:themeAuto" content="Auto">
+      <meta name="loc:changeTheme" content="Change theme">
+      <meta name="loc:copy" content="Copy">
+      <meta name="loc:downloadPdf" content="Download PDF">
+
+      <script type="module" src="./../public/docfx.min.js"></script>
+
+      <script>
+        const theme = localStorage.getItem('theme') || 'auto'
+        document.documentElement.setAttribute('data-bs-theme', theme === 'auto' ? (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light') : theme)
+      </script>
+
+  </head>
+
+  <body class="tex2jax_ignore" data-layout="" data-yaml-mime="ManagedReference">
+    <header class="bg-body border-bottom">
+      <nav id="autocollapse" class="navbar navbar-expand-md" role="navigation">
+        <div class="container-xxl flex-nowrap">
+          <a class="navbar-brand" href="../index.html">
+            <img id="logo" class="svg" src="../logo.svg" alt="artstudio-study-app">
+            artstudio-study-app
+          </a>
+          <button class="btn btn-lg d-md-none border-0" type="button" data-bs-toggle="collapse" data-bs-target="#navpanel" aria-controls="navpanel" aria-expanded="false" aria-label="Toggle navigation">
+            <i class="bi bi-three-dots"></i>
+          </button>
+          <div class="collapse navbar-collapse" id="navpanel">
+            <div id="navbar">
+              <form class="search" role="search" id="search">
+                <i class="bi bi-search"></i>
+                <input class="form-control" id="search-query" type="search" disabled placeholder="Search" autocomplete="off" aria-label="Search">
+              </form>
+            </div>
+          </div>
+        </div>
+      </nav>
+    </header>
+
+    <main class="container-xxl">
+      <div class="toc-offcanvas">
+        <div class="offcanvas-md offcanvas-start" tabindex="-1" id="tocOffcanvas" aria-labelledby="tocOffcanvasLabel">
+          <div class="offcanvas-header">
+            <h5 class="offcanvas-title" id="tocOffcanvasLabel">Table of Contents</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="offcanvas" data-bs-target="#tocOffcanvas" aria-label="Close"></button>
+          </div>
+          <div class="offcanvas-body">
+            <nav class="toc" id="toc"></nav>
+          </div>
+        </div>
+      </div>
+
+      <div class="content">
+        <div class="actionbar">
+          <button class="btn btn-lg border-0 d-md-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#tocOffcanvas" aria-controls="tocOffcanvas" aria-expanded="false" aria-label="Show table of contents">
+            <i class="bi bi-list"></i>
+          </button>
+
+          <nav id="breadcrumb"></nav>
+        </div>
+
+        <article data-uid="artstudio.ViewModels.PromptGeneratorViewModel">
+
+
+
+  <h1 id="artstudio_ViewModels_PromptGeneratorViewModel" data-uid="artstudio.ViewModels.PromptGeneratorViewModel" class="text-break">
+Class PromptGeneratorViewModel  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L16"><i class="bi bi-code-slash"></i></a>
+  </h1>
+
+  <div class="facts text-secondary">
+    <dl><dt>Namespace</dt><dd><a class="xref" href="artstudio.html">artstudio</a>.<a class="xref" href="artstudio.ViewModels.html">ViewModels</a></dd></dl>
+  <dl><dt>Assembly</dt><dd>artstudio.dll</dd></dl>
+  </div>
+
+  <div class="markdown summary"></div>
+  <div class="markdown conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public class PromptGeneratorViewModel : ObservableObject, INotifyPropertyChanged, INotifyPropertyChanging</code></pre>
+  </div>
+
+
+
+
+  <dl class="typelist inheritance">
+    <dt>Inheritance</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object">object</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject">ObservableObject</a></div>
+      <div><span class="xref">PromptGeneratorViewModel</span></div>
+    </dd>
+  </dl>
+
+  <dl class="typelist implements">
+    <dt>Implements</dt>
+    <dd>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanged">INotifyPropertyChanged</a></div>
+      <div><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.componentmodel.inotifypropertychanging">INotifyPropertyChanging</a></div>
+    </dd>
+  </dl>
+
+
+  <dl class="typelist inheritedMembers">
+    <dt>Inherited Members</dt>
+    <dd>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.onpropertychanged#communitytoolkit-mvvm-componentmodel-observableobject-onpropertychanged(system-componentmodel-propertychangedeventargs)">ObservableObject.OnPropertyChanged(PropertyChangedEventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.onpropertychanging#communitytoolkit-mvvm-componentmodel-observableobject-onpropertychanging(system-componentmodel-propertychangingeventargs)">ObservableObject.OnPropertyChanging(PropertyChangingEventArgs)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.onpropertychanged#communitytoolkit-mvvm-componentmodel-observableobject-onpropertychanged(system-string)">ObservableObject.OnPropertyChanged(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.onpropertychanging#communitytoolkit-mvvm-componentmodel-observableobject-onpropertychanging(system-string)">ObservableObject.OnPropertyChanging(string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setproperty#communitytoolkit-mvvm-componentmodel-observableobject-setproperty-1(-0@-0-system-string)">ObservableObject.SetProperty&lt;T&gt;(ref T, T, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setproperty#communitytoolkit-mvvm-componentmodel-observableobject-setproperty-1(-0@-0-system-collections-generic-iequalitycomparer((-0))-system-string)">ObservableObject.SetProperty&lt;T&gt;(ref T, T, IEqualityComparer&lt;T&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setproperty#communitytoolkit-mvvm-componentmodel-observableobject-setproperty-1(-0-0-system-action((-0))-system-string)">ObservableObject.SetProperty&lt;T&gt;(T, T, Action&lt;T&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setproperty#communitytoolkit-mvvm-componentmodel-observableobject-setproperty-1(-0-0-system-collections-generic-iequalitycomparer((-0))-system-action((-0))-system-string)">ObservableObject.SetProperty&lt;T&gt;(T, T, IEqualityComparer&lt;T&gt;, Action&lt;T&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setproperty#communitytoolkit-mvvm-componentmodel-observableobject-setproperty-2(-1-1-0-system-action((-0-1))-system-string)">ObservableObject.SetProperty&lt;TModel, T&gt;(T, T, TModel, Action&lt;TModel, T&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setproperty#communitytoolkit-mvvm-componentmodel-observableobject-setproperty-2(-1-1-system-collections-generic-iequalitycomparer((-1))-0-system-action((-0-1))-system-string)">ObservableObject.SetProperty&lt;TModel, T&gt;(T, T, IEqualityComparer&lt;T&gt;, TModel, Action&lt;TModel, T&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setpropertyandnotifyoncompletion#communitytoolkit-mvvm-componentmodel-observableobject-setpropertyandnotifyoncompletion(communitytoolkit-mvvm-componentmodel-observableobject-tasknotifier@-system-threading-tasks-task-system-string)">ObservableObject.SetPropertyAndNotifyOnCompletion(ref ObservableObject.TaskNotifier, Task, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setpropertyandnotifyoncompletion#communitytoolkit-mvvm-componentmodel-observableobject-setpropertyandnotifyoncompletion(communitytoolkit-mvvm-componentmodel-observableobject-tasknotifier@-system-threading-tasks-task-system-action((system-threading-tasks-task))-system-string)">ObservableObject.SetPropertyAndNotifyOnCompletion(ref ObservableObject.TaskNotifier, Task, Action&lt;Task&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setpropertyandnotifyoncompletion#communitytoolkit-mvvm-componentmodel-observableobject-setpropertyandnotifyoncompletion-1(communitytoolkit-mvvm-componentmodel-observableobject-tasknotifier((-0))@-system-threading-tasks-task((-0))-system-string)">ObservableObject.SetPropertyAndNotifyOnCompletion&lt;T&gt;(ref ObservableObject.TaskNotifier&lt;T&gt;, Task&lt;T&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.setpropertyandnotifyoncompletion#communitytoolkit-mvvm-componentmodel-observableobject-setpropertyandnotifyoncompletion-1(communitytoolkit-mvvm-componentmodel-observableobject-tasknotifier((-0))@-system-threading-tasks-task((-0))-system-action((system-threading-tasks-task((-0))))-system-string)">ObservableObject.SetPropertyAndNotifyOnCompletion&lt;T&gt;(ref ObservableObject.TaskNotifier&lt;T&gt;, Task&lt;T&gt;, Action&lt;Task&lt;T&gt;&gt;, string)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.propertychanged">ObservableObject.PropertyChanged</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/communitytoolkit.mvvm.componentmodel.observableobject.propertychanging">ObservableObject.PropertyChanging</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object)">object.Equals(object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.equals#system-object-equals(system-object-system-object)">object.Equals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gethashcode">object.GetHashCode()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.gettype">object.GetType()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.memberwiseclone">object.MemberwiseClone()</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.referenceequals">object.ReferenceEquals(object, object)</a>
+    </div>
+    <div>
+      <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.object.tostring">object.ToString()</a>
+    </div>
+  </dd></dl>
+
+
+
+
+
+
+  <h2 class="section" id="constructors">Constructors
+</h2>
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel__ctor_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.#ctor*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel__ctor_artstudio_Services_WordPromptService_artstudio_Services_DatabaseService_artstudio_Services_IToastService_Microsoft_Extensions_Logging_ILogger_artstudio_ViewModels_PromptGeneratorViewModel__" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.#ctor(artstudio.Services.WordPromptService,artstudio.Services.DatabaseService,artstudio.Services.IToastService,Microsoft.Extensions.Logging.ILogger{artstudio.ViewModels.PromptGeneratorViewModel})">
+  PromptGeneratorViewModel(WordPromptService, DatabaseService, IToastService, ILogger&lt;PromptGeneratorViewModel&gt;)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L38"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public PromptGeneratorViewModel(WordPromptService wordPromptService, DatabaseService databaseService, IToastService toastService, ILogger&lt;PromptGeneratorViewModel&gt; logger)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>wordPromptService</code> <a class="xref" href="artstudio.Services.WordPromptService.html">WordPromptService</a></dt>
+    <dd></dd>
+    <dt><code>databaseService</code> <a class="xref" href="artstudio.Services.DatabaseService.html">DatabaseService</a></dt>
+    <dd></dd>
+    <dt><code>toastService</code> <a class="xref" href="artstudio.Services.IToastService.html">IToastService</a></dt>
+    <dd></dd>
+    <dt><code>logger</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/microsoft.extensions.logging.ilogger-1">ILogger</a>&lt;<a class="xref" href="artstudio.ViewModels.PromptGeneratorViewModel.html">PromptGeneratorViewModel</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+  <h2 class="section" id="properties">Properties
+</h2>
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_ClearCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.ClearCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_ClearCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.ClearCommand">
+  ClearCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L148"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ClearCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_CloseFavoritesCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.CloseFavoritesCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_CloseFavoritesCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.CloseFavoritesCommand">
+  CloseFavoritesCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L157"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand CloseFavoritesCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_ExportCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.ExportCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_ExportCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.ExportCommand">
+  ExportCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L149"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ExportCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_FavoriteCollections_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.FavoriteCollections*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_FavoriteCollections" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.FavoriteCollections">
+  FavoriteCollections
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L143"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;WordCollection&gt; FavoriteCollections { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="artstudio.Data.WordCollection.html">WordCollection</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_FavoriteCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.FavoriteCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_FavoriteCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.FavoriteCommand">
+  FavoriteCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L150"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand FavoriteCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_FavoriteGroups_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.FavoriteGroups*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_FavoriteGroups" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.FavoriteGroups">
+  FavoriteGroups
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L144"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;PromptCollectionGroup&gt; FavoriteGroups { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="artstudio.ViewModels.PromptCollectionGroup.html">PromptCollectionGroup</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_GenerateCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.GenerateCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_GenerateCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.GenerateCommand">
+  GenerateCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L147"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand GenerateCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_GeneratedPrompt_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.GeneratedPrompt*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_GeneratedPrompt" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.GeneratedPrompt">
+  GeneratedPrompt
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L87"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string GeneratedPrompt { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_HasNoFavorites_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.HasNoFavorites*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_HasNoFavorites" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.HasNoFavorites">
+  HasNoFavorites
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L136"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool HasNoFavorites { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_IsFavoritesVisible_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.IsFavoritesVisible*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_IsFavoritesVisible" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.IsFavoritesVisible">
+  IsFavoritesVisible
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L124"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsFavoritesVisible { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_IsLoadingFavorites_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.IsLoadingFavorites*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_IsLoadingFavorites" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.IsLoadingFavorites">
+  IsLoadingFavorites
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L130"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public bool IsLoadingFavorites { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_LoadCollectionCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.LoadCollectionCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_LoadCollectionCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.LoadCollectionCommand">
+  LoadCollectionCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L153"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand LoadCollectionCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_LoadFavoriteCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.LoadFavoriteCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_LoadFavoriteCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.LoadFavoriteCommand">
+  LoadFavoriteCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L158"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand LoadFavoriteCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_NounCount_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.NounCount*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_NounCount" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.NounCount">
+  NounCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L99"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int NounCount { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_Nouns_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Nouns*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_Nouns" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Nouns">
+  Nouns
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L139"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;string&gt; Nouns { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_RefreshFavoritesCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.RefreshFavoritesCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_RefreshFavoritesCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.RefreshFavoritesCommand">
+  RefreshFavoritesCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L151"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand RefreshFavoritesCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_RemoveFavoriteCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.RemoveFavoriteCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_RemoveFavoriteCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.RemoveFavoriteCommand">
+  RemoveFavoriteCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L152"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand RemoveFavoriteCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_RemoveFavoriteFromFlyoutCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.RemoveFavoriteFromFlyoutCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_RemoveFavoriteFromFlyoutCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.RemoveFavoriteFromFlyoutCommand">
+  RemoveFavoriteFromFlyoutCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L159"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand RemoveFavoriteFromFlyoutCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_SettingCount_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.SettingCount*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_SettingCount" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.SettingCount">
+  SettingCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L105"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int SettingCount { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_Settings_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Settings*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_Settings" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Settings">
+  Settings
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L140"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;string&gt; Settings { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_StatusMessage_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.StatusMessage*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_StatusMessage" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.StatusMessage">
+  StatusMessage
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L93"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public string StatusMessage { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_StyleCount_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.StyleCount*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_StyleCount" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.StyleCount">
+  StyleCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L111"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int StyleCount { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_Styles_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Styles*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_Styles" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Styles">
+  Styles
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L141"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;string&gt; Styles { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_ThemeCount_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.ThemeCount*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_ThemeCount" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.ThemeCount">
+  ThemeCount
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L117"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public int ThemeCount { get; set; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.int32">int</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_Themes_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Themes*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_Themes" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Themes">
+  Themes
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L142"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ObservableCollection&lt;string&gt; Themes { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.collections.objectmodel.observablecollection-1">ObservableCollection</a>&lt;<a class="xref" href="https://learn.microsoft.com/dotnet/api/system.string">string</a>&gt;</dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_ToggleFavoritesCommand_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.ToggleFavoritesCommand*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_ToggleFavoritesCommand" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.ToggleFavoritesCommand">
+  ToggleFavoritesCommand
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L156"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">public ICommand ToggleFavoritesCommand { get; }</code></pre>
+  </div>
+
+
+
+
+
+  <h4 class="section">Property Value</h4>
+  <dl class="parameters">
+    <dt><a class="xref" href="https://learn.microsoft.com/dotnet/api/system.windows.input.icommand">ICommand</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+  <h2 class="section" id="methods">Methods
+</h2>
+
+
+  <a id="artstudio_ViewModels_PromptGeneratorViewModel_Dispose_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Dispose*"></a>
+
+  <h3 id="artstudio_ViewModels_PromptGeneratorViewModel_Dispose_System_Boolean_" data-uid="artstudio.ViewModels.PromptGeneratorViewModel.Dispose(System.Boolean)">
+  Dispose(bool)
+  <a class="header-action link-secondary" title="View source" href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L77"><i class="bi bi-code-slash"></i></a>
+  </h3>
+
+  <div class="markdown level1 summary"></div>
+  <div class="markdown level1 conceptual"></div>
+
+  <div class="codewrapper">
+    <pre><code class="lang-csharp hljs">protected virtual void Dispose(bool disposing)</code></pre>
+  </div>
+
+  <h4 class="section">Parameters</h4>
+  <dl class="parameters">
+    <dt><code>disposing</code> <a class="xref" href="https://learn.microsoft.com/dotnet/api/system.boolean">bool</a></dt>
+    <dd></dd>
+  </dl>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</article>
+
+        <div class="contribution d-print-none">
+          <a href="https://github.com/Cxmorifolium/Art-Study-App/blob/main/artstudio/ViewModels/PromptGeneratorViewModel.cs/#L16" class="edit-link">Edit this page</a>
+        </div>
+
+
+      </div>
+
+      <div class="affix">
+        <nav id="affix"></nav>
+      </div>
+    </main>
+
+    <div class="container-xxl search-results" id="search-results"></div>
+
+    <footer class="border-top text-secondary">
+      <div class="container-xxl">
+        <div class="flex-fill">
+          <span>Made with <a href="https://dotnet.github.io/docfx">docfx</a></span>
+        </div>
+      </div>
+    </footer>
+  </body>
+</html>
