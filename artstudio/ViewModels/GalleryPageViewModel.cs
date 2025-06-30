@@ -6,6 +6,7 @@ using Microsoft.Extensions.Logging;
 using System.Collections.ObjectModel;
 using System.ComponentModel;
 using System.Runtime.CompilerServices;
+using System.Diagnostics;
 using static artstudio.ViewModels.GalleryCreationViewModel;
 
 namespace artstudio.ViewModels
@@ -85,7 +86,6 @@ namespace artstudio.ViewModels
         private void InitializeCommands()
         {
             RefreshCommand = new AsyncRelayCommand(ExecuteRefreshAsync);
-            ShowFilterCommand = new AsyncRelayCommand(ExecuteShowFilterAsync);
             AddToGalleryCommand = new AsyncRelayCommand(ExecuteAddToGalleryAsync);
             SearchCommand = new AsyncRelayCommand(ExecuteSearchAsync);
             ClearSearchCommand = new RelayCommand(ExecuteClearSearch);
@@ -103,35 +103,22 @@ namespace artstudio.ViewModels
             await LoadGalleryAsync();
             IsRefreshing = false;
         }
-
-        private async Task ExecuteShowFilterAsync()
-        {
-            // TODO: Implement filter/sort options
-            // Could show a popup with:
-            // - Sort by: Date, Title, Tags
-            // - Filter by: Has Words, Has Palette, Has Images
-            // - Date range picker
-            await DisplayAlertAsync("Filter", "Filter options coming soon!", "OK");
-        }
-
         private async Task ExecuteAddToGalleryAsync()
         {
             try
-            {
-                System.Diagnostics.Debug.WriteLine("=== ADD BUTTON CLICKED ===");
+            { 
                 _logger.LogDebug("Add to Gallery command executed");
 
                 // Test with alert first
-                await DisplayAlertAsync("Debug", "Add command called!", "OK");
+                //await DisplayAlertAsync("Debug", "Add command called!", "OK");
 
                 // Then try navigation
                 await Shell.Current.GoToAsync("GalleryCreation");
 
-                System.Diagnostics.Debug.WriteLine("=== NAVIGATION COMPLETED ===");
+                //Debug.WriteLine("Navigation Completed");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"=== ERROR: {ex.Message} ===");
                 _logger.LogError(ex, "Error navigating to gallery creation");
                 await DisplayAlertAsync("Error", $"Navigation failed: {ex.Message}", "OK");
             }
@@ -151,17 +138,14 @@ namespace artstudio.ViewModels
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("=== STUDY BUTTON CLICKED ===");
                 _logger.LogDebug("Navigating to Study Mode");
 
                 // Use the exact FlyoutItem Title from your AppShell.xaml
                 await Shell.Current.GoToAsync("StudyMode");
 
-                System.Diagnostics.Debug.WriteLine("=== STUDY NAVIGATION COMPLETED ===");
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"=== STUDY NAVIGATION ERROR: {ex.Message} ===");
                 _logger.LogError(ex, "Error navigating to study page");
                 await DisplayAlertAsync("Error", $"Unable to open study page: {ex.Message}", "OK");
             }
@@ -285,20 +269,17 @@ namespace artstudio.ViewModels
         #region Message Handlers
         private void OnGalleryItemAdded(object recipient, GalleryItemAddedMessage message)
         {
-            System.Diagnostics.Debug.WriteLine("=== GALLERY REFRESH MESSAGE RECEIVED ===");
+            //Debug.WriteLine("=== GALLERY REFRESH MESSAGE RECEIVED ===");
             // Use fire-and-forget for async operation to avoid blocking
             _ = Task.Run(async () =>
             {
                 try
                 {
-                    System.Diagnostics.Debug.WriteLine("=== REFRESHING GALLERY DATA ===");
                     await LoadGalleryAsync();
-                    System.Diagnostics.Debug.WriteLine("=== GALLERY REFRESH COMPLETED ===");
                 }
                 catch (Exception ex)
                 {
                     _logger.LogError(ex, "Error refreshing gallery after item added");
-                    System.Diagnostics.Debug.WriteLine($"=== GALLERY REFRESH ERROR: {ex.Message} ===");
                 }
             });
         }

@@ -85,12 +85,12 @@ namespace artstudio.ViewModels
 
         #endregion
 
-        public ImagePromptViewModel(ILogger<ImagePromptViewModel> logger, DatabaseService databaseService, IToastService toastService)
+        public ImagePromptViewModel(ILogger<ImagePromptViewModel> logger, DatabaseService databaseService, IToastService toastService, Unsplash unsplashService)
         {
             _logger = logger;
             _databaseService = databaseService;
             _toastService = toastService;
-            _unsplashService = new Unsplash();
+            _unsplashService = unsplashService;
 
             LoadInitialImagesCommand = new RelayCommand(ExecuteLoadInitialImages, () => !IsLoading);
             AddImagesCommand = new RelayCommand(ExecuteAddImages, () => !IsLoading);

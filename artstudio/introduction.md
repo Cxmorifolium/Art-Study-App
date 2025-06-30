@@ -52,7 +52,7 @@ I got free resources for you!
 -[Coolors](https://coolors.co/)
 
 **Apps**
-- [PureRef](https://www.pureref.com/) : An amazing app to load all your refernces in one canvas, drag and drop style
+- [PureRef](https://www.pureref.com/) : An amazing app to load all your references in one canvas, drag and drop style
 
 **Youtube**
 - [Proko](https://www.youtube.com/@ProkoTV)

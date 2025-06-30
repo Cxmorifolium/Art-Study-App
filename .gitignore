@@ -4,6 +4,9 @@ obj/
 [Bb]uild*/
 [Ll]ogs/
 
+# DocFX
+artstudio/api/
+artstudio/_site/
 # Folders
 python/
 Documentation/

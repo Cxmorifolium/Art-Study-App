@@ -49,13 +49,11 @@ public partial class PromptGeneratorPage : ContentPage
                 }
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             // Handle the exception gracefully to prevent app crashes
             await DisplayAlert("Error", "An error occurred while processing your request. Please try again.", "OK");
-            // Log the exception for debugging
-            Debug.WriteLine($"Error in OnFavoriteOptionsClickedAsync: {ex.Message}");
-            Debug.WriteLine($"Stack trace: {ex.StackTrace}");
+
         }
     }
 }

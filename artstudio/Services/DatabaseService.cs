@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using artstudio.Data;
 using artstudio.Models;
+using Microsoft.Extensions.Logging;
 
 namespace artstudio.Services
 {
@@ -9,12 +10,14 @@ namespace artstudio.Services
     {
         private SQLiteAsyncConnection? _database;
         private readonly string _dbPath;
+        private readonly ILogger<DatabaseService> _logger;
         private const int CurrentDatabaseVersion = 10; // Increment this when schema changes: (added new column for session user enter name)
 
-        public DatabaseService()
+        public DatabaseService(ILogger<DatabaseService> logger)
         {
+            _logger = logger;
             _dbPath = Path.Combine(FileSystem.AppDataDirectory, "artstudio.db3");
-            DebugLog($"Database path: {_dbPath}");
+            _logger.LogDebug("Database path: {DbPath}", _dbPath);
         }
 
         public async Task<SQLiteAsyncConnection> GetDatabaseAsync()
@@ -34,30 +37,31 @@ namespace artstudio.Services
         {
             try
             {
-                DebugLog("Initializing database...");
+                _logger.LogInformation("Initializing database...");
 
                 // Get current database version
                 int currentVersion = await GetDatabaseVersionAsync();
-                DebugLog($"Current database version: {currentVersion}");
+                _logger.LogInformation("Current database version: {Version}", currentVersion);
 
                 if (currentVersion == 0)
                 {
                     // Fresh database - create all tables
                     await CreateTablesAsync();
                     await SetDatabaseVersionAsync(CurrentDatabaseVersion);
-                    DebugLog("Created fresh database with all tables");
+                    _logger.LogInformation("Created fresh database with all tables");
                 }
                 else if (currentVersion < CurrentDatabaseVersion)
                 {
                     // Migration needed
                     await MigrateDatabaseAsync(currentVersion);
                     await SetDatabaseVersionAsync(CurrentDatabaseVersion);
-                    DebugLog($"Migrated database from version {currentVersion} to {CurrentDatabaseVersion}");
+                    _logger.LogInformation("Migrated database from version {FromVersion} to {ToVersion}",
+                        currentVersion, CurrentDatabaseVersion);
                 }
             }
             catch (Exception ex)
             {
-                DebugLog($"Error initializing database: {ex.Message}");
+                _logger.LogError(ex, "Error initializing database");
                 throw;
             }
         }
@@ -74,7 +78,7 @@ namespace artstudio.Services
             await _database.CreateTableAsync<PaletteCollection>();
             await _database.CreateTableAsync<PaletteColor>();
             await _database.CreateTableAsync<FavoriteSwatch>();
-            
+
             // Gallery
             await _database.CreateTableAsync<UserUploadedImage>();
 
@@ -84,14 +88,14 @@ namespace artstudio.Services
             // Image favoriting
             await _database.CreateTableAsync<FavoriteImageItem>();
 
-            DebugLog("Created all tables: WordCollection, Word, PaletteCollection, PaletteColor, FavoriteSwatch, and Gallery");
+            _logger.LogDebug("Created all tables: WordCollection, Word, PaletteCollection, PaletteColor, FavoriteSwatch, UserUploadedImage, SessionSnapshot, FavoriteImageItem");
         }
 
         private async Task MigrateDatabaseAsync(int fromVersion)
         {
             if (_database == null) return;
 
-            DebugLog($"Starting database migration from version {fromVersion}");
+            _logger.LogInformation("Starting database migration from version {FromVersion}", fromVersion);
 
             if (fromVersion < 2)
             {
@@ -99,35 +103,35 @@ namespace artstudio.Services
                 try
                 {
                     await _database.ExecuteAsync("ALTER TABLE WordCollection ADD COLUMN IsFavorite INTEGER DEFAULT 0");
-                    DebugLog("Added IsFavorite column to WordCollection table");
+                    _logger.LogDebug("Added IsFavorite column to WordCollection table");
                 }
                 catch (Exception ex)
                 {
                     if (!ex.Message.Contains("duplicate column"))
                     {
-                        DebugLog($"Error adding IsFavorite column: {ex.Message}");
+                        _logger.LogError(ex, "Error adding IsFavorite column");
                         throw;
                     }
                     else
                     {
-                        DebugLog("IsFavorite column already exists");
+                        _logger.LogDebug("IsFavorite column already exists");
                     }
                 }
 
                 try
                 {
                     await _database.ExecuteAsync("ALTER TABLE WordCollection ADD COLUMN ExpiresAt TEXT");
-                    DebugLog("Added ExpiresAt column to WordCollection table");
+                    _logger.LogDebug("Added ExpiresAt column to WordCollection table");
                 }
                 catch (Exception ex)
                 {
                     if (!ex.Message.Contains("duplicate column"))
                     {
-                        DebugLog($"Error adding ExpiresAt column: {ex.Message}");
+                        _logger.LogWarning(ex, "Error adding ExpiresAt column");
                     }
                     else
                     {
-                        DebugLog("ExpiresAt column already exists");
+                        _logger.LogDebug("ExpiresAt column already exists");
                     }
                 }
 
@@ -135,11 +139,11 @@ namespace artstudio.Services
                 try
                 {
                     await _database.CreateTableAsync<Word>();
-                    DebugLog("Created Word table during migration");
+                    _logger.LogDebug("Created Word table during migration");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Word table might already exist: {ex.Message}");
+                    _logger.LogWarning(ex, "Error recreating FavoriteImageItem table");
                 }
             }
 
@@ -151,11 +155,11 @@ namespace artstudio.Services
                     await _database.CreateTableAsync<PaletteCollection>();
                     await _database.CreateTableAsync<PaletteColor>();
                     await _database.CreateTableAsync<FavoriteSwatch>();
-                    DebugLog("Added palette tables: PaletteCollection, PaletteColor, FavoriteSwatch");
+                    _logger.LogDebug("Added palette tables: PaletteCollection, PaletteColor, FavoriteSwatch");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Error creating palette tables: {ex.Message}");
+                    _logger.LogWarning(ex, "Error recreating FavoriteImageItem table");
                     // Tables might already exist, continue
                 }
 
@@ -163,11 +167,11 @@ namespace artstudio.Services
                 try
                 {
                     await _database.CreateTableAsync<Word>();
-                    DebugLog("Ensured Word table exists in version 3 migration");
+                    _logger.LogDebug("Ensured Word table exists in version 3 migration");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Word table creation in v3 migration: {ex.Message}");
+                    _logger.LogWarning(ex, "Word table creation in v3 migration");
                 }
             }
 
@@ -177,11 +181,11 @@ namespace artstudio.Services
                 try
                 {
                     await _database.CreateTableAsync<Word>();
-                    DebugLog("Created Word table in version 4 migration");
+                    _logger.LogDebug("Created Word table in version 4 migration");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Word table creation in v4 migration: {ex.Message}");
+                    _logger.LogWarning(ex, "Word table creation in v4 migration");
                     // Table might already exist, continue
                 }
             }
@@ -192,11 +196,11 @@ namespace artstudio.Services
                 try
                 {
                     await _database.CreateTableAsync<UserUploadedImage>();
-                    DebugLog("Added gallery tables: UserUploadedImage, ImageReference");
+                    _logger.LogDebug("Added gallery tables: UserUploadedImage, ImageReference");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Error creating gallery tables: {ex.Message}");
+                    _logger.LogWarning(ex, "Error creating gallery tables}");
                     // Tables might already exist, continue
                 }
             }
@@ -213,11 +217,11 @@ namespace artstudio.Services
                     // Create table with complete schema
                     await _database.CreateTableAsync<UserUploadedImage>();
 
-                    DebugLog("Successfully created UserUploadedImage table with all required columns");
+                    _logger.LogDebug("Successfully created UserUploadedImage table with all required columns");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Error recreating UserUploadedImage table: {ex.Message}");
+                    _logger.LogWarning(ex, "Word table creation in v3 migration");
                     throw;
                 }
             }
@@ -228,11 +232,11 @@ namespace artstudio.Services
                 try
                 {
                     await _database.CreateTableAsync<SessionSnapshot>();
-                    DebugLog("Added SessionSnapshot table for session saving functionality");
+                    _logger.LogDebug("Added SessionSnapshot table for session saving functionality");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Error creating SessionSnapshot table: {ex.Message}");
+                    _logger.LogWarning(ex, "Error creating SessionSnapshot table");
                     // Table might already exist, continue
                 }
             }
@@ -243,11 +247,11 @@ namespace artstudio.Services
                 try
                 {
                     await _database.CreateTableAsync<FavoriteImageItem>();
-                    DebugLog("Added FavoriteImageItem table for image favoriting functionality");
+                    _logger.LogDebug("Added FavoriteImageItem table for image favoriting functionality");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Error creating FavoriteImageItem table: {ex.Message}");
+                    _logger.LogWarning(ex, "Error creating FavoriteImageItem table");
                     // Table might already exist, continue
                 }
             }
@@ -261,11 +265,11 @@ namespace artstudio.Services
                     // Create table with proper schema
                     await _database.CreateTableAsync<FavoriteImageItem>();
 
-                    DebugLog("Recreated FavoriteImageItem table with proper primary key");
+                    _logger.LogDebug("Recreated FavoriteImageItem table with proper primary key");
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Error recreating FavoriteImageItem table: {ex.Message}");
+                    _logger.LogWarning(ex, "Error recreating FavoriteImageItem table");
                     // Continue - table might not have existed
                 }
             }
@@ -281,16 +285,16 @@ namespace artstudio.Services
                     if (!titleColumnExists)
                     {
                         await _database.ExecuteAsync("ALTER TABLE SessionSnapshot ADD COLUMN Title TEXT");
-                        DebugLog("Added Title column to SessionSnapshot table for custom session naming");
+                        _logger.LogInformation("Added Title column to SessionSnapshot table for custom session naming");
                     }
                     else
                     {
-                        DebugLog("Title column already exists in SessionSnapshot table");
+                        _logger.LogDebug("Title column already exists in SessionSnapshot table");
                     }
                 }
                 catch (Exception ex)
                 {
-                    DebugLog($"Error adding Title column to SessionSnapshot table: {ex.Message}");
+                    _logger.LogWarning($"Error adding Title column to SessionSnapshot table: {ex.Message}");
                     // Continue - column might already exist or table structure is different
                 }
             }
@@ -340,12 +344,12 @@ namespace artstudio.Services
                 WHERE COALESCE(IsFavorite, 0) = 1 
                 ORDER BY CreatedAt DESC");
 
-                DebugLog($"Retrieved {collections.Count} favorite word collections");
+                _logger.LogDebug("Retrieved {Count} favorite word collections", collections.Count);
                 return collections;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting favorites: {ex.Message}");
+                _logger.LogError(ex, "Error getting favorites");
                 return [];
             }
         }
@@ -359,11 +363,11 @@ namespace artstudio.Services
                 await db.ExecuteAsync("DELETE FROM Word WHERE WordCollectionId = ?", collectionId);
                 await db.ExecuteAsync("DELETE FROM WordCollection WHERE Id = ?", collectionId);
 
-                DebugLog($"Deleted word collection {collectionId}");
+                _logger.LogInformation("Deleted word collection {CollectionId}", collectionId);
             }
             catch (Exception ex)
             {
-                DebugLog($"Error deleting word collection {collectionId}: {ex.Message}");
+                _logger.LogError(ex, "Error deleting word collection {CollectionId}", collectionId);
                 throw;
             }
         }
@@ -389,12 +393,12 @@ namespace artstudio.Services
                     WHERE COALESCE(IsFavorite, 0) = 1 
                     ORDER BY CreatedAt DESC");
 
-                DebugLog($"Retrieved {collections.Count} favorite palette collections");
+                _logger.LogDebug("Retrieved {Count} favorite word collections", collections.Count);
                 return collections;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting favorite palettes: {ex.Message}");
+                _logger.LogError(ex, "Error getting favorites");
                 return [];
             }
         }
@@ -411,11 +415,11 @@ namespace artstudio.Services
                 // Delete the collection
                 await db.ExecuteAsync("DELETE FROM PaletteCollection WHERE Id = ?", collectionId);
 
-                DebugLog($"Deleted palette collection {collectionId}");
+                _logger.LogInformation($"Deleted palette collection {collectionId}");
             }
             catch (Exception ex)
             {
-                DebugLog($"Error deleting palette collection {collectionId}: {ex.Message}");
+                _logger.LogError(ex, "Error deleting palette {CollectionId}", collectionId);
                 throw;
             }
         }
@@ -443,13 +447,14 @@ namespace artstudio.Services
                         collection);
                 }
 
-                DebugLog($"Retrieved {swatches.Count} favorite swatches" +
-                    (collection != null ? $" from collection '{collection}'" : ""));
+                _logger.LogDebug("Retrieved {Count} favorite swatches{FromCollection}",
+                        swatches.Count,
+                        collection != null ? $" from collection '{collection}'" : string.Empty);
                 return swatches;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting favorite swatches: {ex.Message}");
+                _logger.LogError(ex, "Error getting favorite swatches");
                 return [];
             }
         }
@@ -464,12 +469,12 @@ namespace artstudio.Services
                         "SELECT DISTINCT Collection FROM FavoriteSwatch WHERE IsFavorite = 1 ORDER BY Collection");
                 var collectionNames = collections.Select(c => c.Collection ?? string.Empty).ToList();
 
-                DebugLog($"Found {collections.Count} swatch collections");
+                _logger.LogDebug("Found {Count} swatch collections", collections.Count);
                 return collectionNames;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting swatch collection names: {ex.Message}");
+                _logger.LogError(ex, "Error getting swatch collection names");
                 return [];
             }
         }
@@ -481,11 +486,11 @@ namespace artstudio.Services
                 var db = await GetDatabaseAsync();
                 await db.DeleteAsync<FavoriteSwatch>(swatchId);
 
-                DebugLog($"Deleted favorite swatch {swatchId}");
+                _logger.LogInformation("Deleted favorite swatch {SwatchId}", swatchId);
             }
             catch (Exception ex)
             {
-                DebugLog($"Error deleting favorite swatch {swatchId}: {ex.Message}");
+                _logger.LogError(ex, "Error deleting favorite swatch {SwatchId}", swatchId);
                 throw;
             }
         }
@@ -510,6 +515,7 @@ namespace artstudio.Services
                                   .Where(f => f.IsFavorite)
                                   .OrderByDescending(f => f.CreatedAt)
                                   .ToListAsync();
+
         }
 
         public async Task<int> DeleteFavoriteImageAsync(int favoriteImageId)
@@ -519,25 +525,25 @@ namespace artstudio.Services
                 if (_database == null)
                     throw new InvalidOperationException("Database not initialized");
 
-                DebugLog($"Attempting to delete favorite image with ID: {favoriteImageId}");
+                _logger.LogDebug("Attempting to delete favorite image with ID: {FavoriteImageId}", favoriteImageId);
 
                 // First verify the record exists
                 var existingFavorite = await _database.FindAsync<FavoriteImageItem>(favoriteImageId);
                 if (existingFavorite == null)
                 {
-                    DebugLog($"Favorite image with ID {favoriteImageId} not found");
+                    _logger.LogDebug("Favorite image with ID {FavoriteImageId} not found", favoriteImageId);
                     return 0;
                 }
 
                 // Delete the record
                 var result = await _database.DeleteAsync<FavoriteImageItem>(favoriteImageId);
-                DebugLog($"Successfully deleted favorite image {favoriteImageId}, rows affected: {result}");
+                _logger.LogInformation("Successfully deleted favorite image {FavoriteImageId}, rows affected: {Result}", favoriteImageId, result);
 
                 return result;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error deleting favorite image {favoriteImageId}: {ex.Message}");
+                _logger.LogError(ex, "Error deleting favorite image {FavoriteImageId}", favoriteImageId);
                 throw;
             }
         }
@@ -548,19 +554,19 @@ namespace artstudio.Services
                 if (_database == null)
                     throw new InvalidOperationException("Database not initialized");
 
-                DebugLog($"Attempting to delete favorite image with UnsplashId: {unsplashId}");
+                _logger.LogDebug("Attempting to delete favorite image with UnsplashId: {UnsplashId}", unsplashId);
 
                 // Find and delete by UnsplashId
                 var result = await _database.ExecuteAsync(
                     "DELETE FROM FavoriteImageItem WHERE UnsplashId = ?",
                     unsplashId);
 
-                DebugLog($"Successfully deleted favorite image {unsplashId}, rows affected: {result}");
+                _logger.LogInformation("Successfully deleted favorite image {UnsplashId}, rows affected: {Result}", unsplashId, result);
                 return result;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error deleting favorite image by UnsplashId {unsplashId}: {ex.Message}");
+                _logger.LogError(ex, "Error deleting favorite image by UnsplashId {UnsplashId}", unsplashId);
                 throw;
             }
         }
@@ -575,7 +581,7 @@ namespace artstudio.Services
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting favorite by UnsplashId {unsplashId}: {ex.Message}");
+                _logger.LogError(ex,"Error getting favorite by UnsplashId {UnsplashId}", unsplashId);
                 return null;
             }
         }
@@ -592,12 +598,12 @@ namespace artstudio.Services
             SELECT * FROM UserUploadedImage 
             ORDER BY CreatedAt DESC");
 
-                DebugLog($"Retrieved {images.Count} user uploaded images");
+                _logger.LogDebug("Retrieved {ImagesCount} user uploaded images", images.Count);
                 return images;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting user images: {ex.Message}");
+                _logger.LogError(ex, "Error getting user images");
                 return [];
             }
         }
@@ -611,18 +617,18 @@ namespace artstudio.Services
 
                 if (image != null)
                 {
-                    DebugLog($"Retrieved user uploaded image: {image.Id}");
+                    _logger.LogDebug("Retrieved user uploaded image: {ImageId}", image.Id);
                 }
                 else
                 {
-                    DebugLog($"User uploaded image {imageId} not found");
+                    _logger.LogWarning("User uploaded image {ImageId} not found", imageId);
                 }
 
                 return image;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting user image {imageId}: {ex.Message}");
+                _logger.LogError(ex, "Error getting user image {ImageId}", imageId);
                 return null;
             }
         }
@@ -638,20 +644,20 @@ namespace artstudio.Services
                     // New image
                     image.CreatedAt = DateTime.Now;
                     await db.InsertAsync(image);
-                    DebugLog($"Saved new user uploaded image: {image.DisplayTitle} (ID: {image.Id})");
+                    _logger.LogInformation("Saved new user uploaded image: {ImageDisplayTitle} (ID: {ImageId})", image.DisplayTitle, image.Id);
                 }
                 else
                 {
                     // Update existing image
                     await db.UpdateAsync(image);
-                    DebugLog($"Updated user uploaded image: {image.Id}");
+                    _logger.LogInformation("Updated user uploaded image: {ImageId}", image.Id);
                 }
 
                 return image.Id;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error saving user image: {ex.Message}");
+               _logger.LogError(ex, "Error saving user image");
                 throw;
             }
         }
@@ -663,11 +669,11 @@ namespace artstudio.Services
                 var db = await GetDatabaseAsync();
                 await db.UpdateAsync(image);
 
-                DebugLog($"Updated user uploaded image: {image.Id}");
+                _logger.LogInformation("Updated user uploaded image: {ImageId}", image.Id);
             }
             catch (Exception ex)
             {
-                DebugLog($"Error updating user image: {ex.Message}");
+                _logger.LogError(ex, "Error searching gallery");
                 throw;
             }
         }
@@ -689,11 +695,11 @@ namespace artstudio.Services
                 // Delete from database
                 await db.DeleteAsync<UserUploadedImage>(imageId);
 
-                DebugLog($"Deleted user uploaded image {imageId}");
+                _logger.LogInformation("Deleted user uploaded image {ImageId}", imageId);
             }
             catch (Exception ex)
             {
-                DebugLog($"Error deleting user image {imageId}: {ex.Message}");
+                _logger.LogError(ex, "Error deleting user image {ImageId}", imageId);
                 throw;
             }
         }
@@ -721,12 +727,12 @@ namespace artstudio.Services
             ORDER BY CreatedAt DESC",
                     $"%{searchLower}%", $"%{searchLower}%", $"%{searchLower}%", $"%{searchLower}%");
 
-                DebugLog($"Search for '{searchTerm}' returned {images.Count} results");
+                _logger.LogDebug("Found {ImagesCount} images with tag '{Tag}'", searchTerm, images.Count);
                 return images;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error searching gallery: {ex.Message}");
+                _logger.LogError(ex, "Error searching gallery");
                 return [];
             }
         }
@@ -744,12 +750,12 @@ namespace artstudio.Services
             ORDER BY CreatedAt DESC",
                     $"%{tagLower}%");
 
-                DebugLog($"Found {images.Count} images with tag '{tag}'");
+                _logger.LogDebug("Found {ImagesCount} images with tag '{Tag}'", images.Count, tag);
                 return images;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting images by tag '{tag}': {ex.Message}");
+                _logger.LogError(ex, "Error getting images by tag '{Tag}'", tag);
                 return [];
             }
         }
@@ -785,18 +791,18 @@ namespace artstudio.Services
                         }
                         catch (Exception ex)
                         {
-                            DebugLog($"Error parsing tags from image: {ex.Message}");
+                            _logger.LogError(ex, "Error searching gallery");
                         }
                     }
                 }
 
                 var result = allTags.OrderBy(tag => tag).ToList();
-                DebugLog($"Found {result.Count} unique custom tags");
+                _logger.LogDebug("Found {ResultCount} unique custom tags", result.Count);
                 return result;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting all custom tags: {ex.Message}");
+                _logger.LogError(ex, "Error getting all custom tags");
                 return [];
             }
         }
@@ -809,11 +815,11 @@ namespace artstudio.Services
                     return;
 
                 await Task.Run(() => File.Delete(imagePath));
-                DebugLog($"Deleted image file: {imagePath}");
+                _logger.LogInformation("Deleted image file: {ImagePath}", imagePath);
             }
             catch (Exception ex)
             {
-                DebugLog($"Error deleting image file {imagePath}: {ex.Message}");
+                _logger.LogError(ex, "Error deleting image file {ImagePath}", imagePath);
                 // Don't throw - file deletion failure shouldn't prevent database deletion
             }
         }
@@ -904,7 +910,7 @@ namespace artstudio.Services
                             }
                             catch (Exception ex)
                             {
-                                DebugLog($"Failed to delete old image file {file}: {ex.Message}");
+                                _logger.LogError(ex, "Failed to delete old image file {File}", file);
                             }
                         }
                     }
@@ -912,12 +918,12 @@ namespace artstudio.Services
 
                 if (deletedCount > 0)
                 {
-                    DebugLog($"Cleaned up {deletedCount} old session image files");
+                    _logger.LogDebug("Cleaned up {DeletedCount} old session image files", deletedCount);
                 }
             }
             catch (Exception ex)
             {
-                DebugLog($"Error during session images cleanup: {ex.Message}");
+                _logger.LogError(ex, "Error during session images cleanup");
             }
         }
         public async Task<int> DeleteOldSessionSnapshotsAsync(int keepCount = 20)
@@ -971,15 +977,7 @@ namespace artstudio.Services
             if (_database == null) return;
 
             await _database.ExecuteAsync($"PRAGMA user_version = {version}");
-            DebugLog($"Set database version to {version}");
-        }
-
-        private static void DebugLog(string message)
-        {
-            var timestamp = DateTime.Now.ToString("HH:mm:ss.fff");
-            var logMessage = $"[DB {timestamp}] {message}";
-            Debug.WriteLine(logMessage);
-            System.Console.WriteLine(logMessage);
+            _logger.LogDebug("Set database version to {Version}", version);
         }
 
         public void Dispose()

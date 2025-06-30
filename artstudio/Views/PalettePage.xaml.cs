@@ -1,6 +1,5 @@
 using artstudio.ViewModels;
 using artstudio.Services;
-using System.Diagnostics;
 
 namespace artstudio.Views;
 
@@ -45,7 +44,6 @@ public partial class PalettePage : ContentPage
         }
     }
 
-    // Updated to avoid async void and call the renamed method
     private void OnSwatchDoubleTapped(object sender, TappedEventArgs e)
     {
         _ = HandleSwatchDoubleTappedAsync(sender, e);
@@ -53,32 +51,17 @@ public partial class PalettePage : ContentPage
 
     private async Task OnSwatchRemoveClickedAsync(object sender, TappedEventArgs e)
     {
-        Debug.WriteLine("=== OnSwatchRemoveClickedAsync fired ===");
-
         if (sender is Border border && border.BindingContext is FavoriteSwatchItem swatchItem)
         {
-            Debug.WriteLine($"Found swatch item: {swatchItem.HexColor}");
-
             var viewModel = BindingContext as PaletteViewModel;
             if (viewModel != null)
             {
-                Debug.WriteLine("ViewModel found, executing command");
-
                 // Simulate async behavior to resolve CS1998
                 await Task.Run(() => viewModel.RemoveFavoriteSwatchCommand.Execute(swatchItem));
             }
-            else
-            {
-                Debug.WriteLine("ViewModel is null!");
-            }
-        }
-        else
-        {
-            Debug.WriteLine("Border or BindingContext is null!");
         }
     }
 
-    // Updated to avoid async void and call the renamed method
     private void OnSwatchRemoveClicked(object sender, TappedEventArgs e)
     {
         _ = OnSwatchRemoveClickedAsync(sender, e);
@@ -130,30 +113,16 @@ public partial class PalettePage : ContentPage
     {
         try
         {
-            System.Diagnostics.Debug.WriteLine("=== OnPaletteLoadClicked fired ===");
             if (sender is Border border && border.BindingContext is FavoritePaletteItem paletteItem)
             {
-                System.Diagnostics.Debug.WriteLine($"Found palette item: {paletteItem.Title}");
                 var viewModel = BindingContext as PaletteViewModel;
-                if (viewModel != null)
-                {
-                    System.Diagnostics.Debug.WriteLine("ViewModel found, executing command");
-                    // Remove unnecessary Task.Run - the command handles async internally
-                    viewModel.LoadFavoritePaletteCommand.Execute(paletteItem);
-                }
-                else
-                {
-                    System.Diagnostics.Debug.WriteLine("ViewModel is null!");
-                }
-            }
-            else
-            {
-                System.Diagnostics.Debug.WriteLine("Border or BindingContext is null!");
+                viewModel?.LoadFavoritePaletteCommand.Execute(paletteItem);
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            System.Diagnostics.Debug.WriteLine($"Error in OnPaletteLoadClicked: {ex.Message}");
+            // If you need logging here, consider showing user feedback instead
+            _ = DisplayAlert("Error", "Failed to load palette", "OK");
         }
     }
 
@@ -195,36 +164,9 @@ public partial class PalettePage : ContentPage
                     break;
             }
         }
-        catch (Exception ex)
+        catch (Exception)
         {
-            // Log the exception or handle it appropriately
-            System.Diagnostics.Debug.WriteLine($"Error in palette options: {ex.Message}");
-            // Optionally show user-friendly error message
-        }
-    }
-
-    #endregion
-
-    #region Debug Methods (Optional - for troubleshooting)
-
-    // Add this temporarily if you need to debug palette data
-    private void DebugPaletteData(object sender, EventArgs e)
-    {
-        if (ViewModel?.GroupedFavoritePalettes != null)
-        {
-            Debug.WriteLine($"=== MANUAL DEBUG: {ViewModel.GroupedFavoritePalettes.Count} groups ===");
-
-            foreach (var group in ViewModel.GroupedFavoritePalettes)
-            {
-                Debug.WriteLine($"Group: {group.DisplayName} ({group.Count} palettes)");
-
-                foreach (var palette in group.Palettes.Take(2))
-                {
-                    Debug.WriteLine($"  Palette: {palette.Title}");
-                    Debug.WriteLine($"  Colors count: {palette.Colors?.Count ?? 0}");
-                    Debug.WriteLine($"  Colors: [{string.Join(", ", palette.Colors ?? new List<string>())}]");
-                }
-            }
+            await DisplayAlert("Error", "An error occurred. Please try again.", "OK");
         }
     }
 

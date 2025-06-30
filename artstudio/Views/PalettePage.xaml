@@ -318,11 +318,6 @@
                                                 <Border.StrokeShape>
                                                     <RoundRectangle CornerRadius="8" />
                                                 </Border.StrokeShape>
-                                                <Border.GestureRecognizers>
-                                                    <!-- Single tap to load -->
-                                                    <TapGestureRecognizer Command="{Binding Source={RelativeSource AncestorType={x:Type local:PaletteViewModel}}, Path=LoadSwatchColorCommand}"
-                                                                         CommandParameter="{Binding HexColor}" />
-                                                </Border.GestureRecognizers>
 
                                                 <!-- Small X button overlay for removal with semi-transparent background -->
                                                 <Border BackgroundColor="#80000000"

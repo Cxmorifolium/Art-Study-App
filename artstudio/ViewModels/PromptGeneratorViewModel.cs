@@ -2,13 +2,9 @@
 using artstudio.Services;
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Extensions.Logging;
-using Serilog.Core;
 using System.Collections.ObjectModel;
-using System.Diagnostics;
 using System.IO;
-using System.Reflection.Emit;
 using System.Windows.Input;
-using static System.Net.WebRequestMethods;
 using ObservableObject = CommunityToolkit.Mvvm.ComponentModel.ObservableObject;
 
 namespace artstudio.ViewModels
@@ -38,7 +34,7 @@ namespace artstudio.ViewModels
         public PromptGeneratorViewModel(WordPromptService wordPromptService, DatabaseService databaseService, IToastService toastService, ILogger<PromptGeneratorViewModel> logger)
         {
             _logger = logger;
-            _logger.LogDebug("PromptGeneratorViewModel Constructor Started!");
+            _logger.LogDebug("PromptGeneratorViewModel Constructor Started");
 
             _wordPromptService = wordPromptService;
             _databaseService = databaseService;
@@ -70,7 +66,7 @@ namespace artstudio.ViewModels
             // Initialize the prompt generator asynchronously  
             _ = InitializeGeneratorAsync();
 
-            _logger.LogDebug("PromptGeneratorViewModel Constructor Completed!");
+            _logger.LogDebug("PromptGeneratorViewModel Constructor Completed");
         }
 
         #endregion
@@ -177,7 +173,7 @@ namespace artstudio.ViewModels
             }
             catch (Exception ex)
             {
-                _logger.LogDebug(ex, "Error toggling favorites");
+                _logger.LogError(ex, "Error toggling favorites");
                 await _toastService.ShowToastAsync("Error loading favorites");
             }
         }
@@ -211,12 +207,13 @@ namespace artstudio.ViewModels
                     FavoriteGroups.Add(group);
                 }
 
-                DebugLog($"Loaded {favorites.Count} favorite prompts in {grouped.Count} groups with words populated");
+                _logger.LogDebug("Loaded {FavoritesCount} favorite prompts in {GroupsCount} groups with words populated",
+                    favorites.Count, grouped.Count);
 
                 // Log some details about what was loaded
                 foreach (var favorite in favorites)
                 {
-                    DebugLog($"Favorite '{favorite.Title}': {favorite.WordsList?.Count ?? 0} words");
+                    _logger.LogDebug("Favorite '{FavoriteTitle}': {WordsCount} words", favorite.Title, favorite.WordsList?.Count ?? 0);
                 }
             }
             catch (Exception ex)
@@ -323,7 +320,7 @@ namespace artstudio.ViewModels
         {
             try
             {
-                _logger.LogDebug("Initializing PromptGenerator...");
+                _logger.LogDebug("Initializing PromptGenerator");
 
                 string dataPath = Path.Combine(FileSystem.AppDataDirectory, "prompt_data");
                 _logger.LogDebug("Data path: {DataPath}", dataPath);
@@ -365,7 +362,7 @@ namespace artstudio.ViewModels
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Error initializing PromptGenerator.");
+                _logger.LogError(ex, "Error initializing PromptGenerator");
                 StatusMessage = "Error during initialization";
 
                 // Try to create with defaults anyway
@@ -391,16 +388,16 @@ namespace artstudio.ViewModels
                 await Task.Run(() =>
                 {
                     var dirs = Directory.GetDirectories(dataPath);
-                    _logger.LogDebug("Found {DirectoryCount} subdirectories:", dirs.Length);
+                    _logger.LogDebug("Found {DirectoryCount} subdirectories", dirs.Length);
                     foreach (var dir in dirs)
                     {
-                        _logger.LogDebug("  - {DirectoryName}", Path.GetFileName(dir));
+                        _logger.LogDebug("Directory: {DirectoryName}", Path.GetFileName(dir));
                         var files = Directory.GetFiles(dir, "*.json");
-                        _logger.LogDebug("    Files: {FileCount}", files.Length);
+                        _logger.LogDebug("Files count: {FileCount}", files.Length);
                         foreach (var file in files)
                         {
                             var fileInfo = new FileInfo(file);
-                            _logger.LogDebug("      - {FileName} ({FileSize} bytes)", Path.GetFileName(file), fileInfo.Length);
+                            _logger.LogDebug("File: {FileName} ({FileSize} bytes)", Path.GetFileName(file), fileInfo.Length);
                         }
                     }
                 });
@@ -422,7 +419,8 @@ namespace artstudio.ViewModels
                     return;
                 }
 
-                _logger.LogDebug("Generating prompt with counts - Nouns: {NounCount}, Settings: {SettingCount}, Styles: {StyleCount}, Themes: {ThemeCount}", NounCount, SettingCount, StyleCount, ThemeCount);
+                _logger.LogDebug("Generating prompt with counts - Nouns: {NounCount}, Settings: {SettingCount}, Styles: {StyleCount}, Themes: {ThemeCount}",
+                    NounCount, SettingCount, StyleCount, ThemeCount);
 
                 var (prompt, components) = _generator.GenerateCustomPrompt(
                     nounCount: NounCount,
@@ -448,7 +446,7 @@ namespace artstudio.ViewModels
             }
             catch (Exception ex)
             {
-                _logger.LogDebug(ex, "Error generating prompt");
+                _logger.LogError(ex, "Error generating prompt");
                 GeneratedPrompt = "Error generating prompt. Please try again.";
             }
         }
@@ -459,7 +457,7 @@ namespace artstudio.ViewModels
             {
                 if (_generator == null) return;
 
-                _logger.LogDebug("=== Testing Generator ===");
+                _logger.LogDebug("Testing Generator");
 
                 await Task.Run(() =>
                 {
@@ -474,7 +472,7 @@ namespace artstudio.ViewModels
                         if (count > 0)
                         {
                             var sample = _generator.GetRandomItems(category, count: Math.Min(3, count));
-                            _logger.LogDebug("  Sample items: {SampleItems}", string.Join(", ", sample));
+                            _logger.LogDebug("Sample items: {SampleItems}", string.Join(", ", sample));
                         }
                     }
                 });
@@ -563,7 +561,7 @@ namespace artstudio.ViewModels
             }
             catch (Exception ex)
             {
-                _logger.LogDebug(ex, "Error in SaveToFavoritesAsync");
+                _logger.LogError(ex, "Error in SaveToFavoritesAsync");
                 await _toastService.ShowToastAsync("Error saving to favorites");
             }
         }
@@ -692,29 +690,28 @@ namespace artstudio.ViewModels
         {
             try
             {
-                DebugLog("=== RefreshFavoritesAfterSaveAsync START ===");
+                _logger.LogDebug("RefreshFavoritesAfterSaveAsync START");
 
                 // If the favorites flyout is currently visible, refresh it
                 if (IsFavoritesVisible)
                 {
-                    DebugLog("Flyout is visible, refreshing groups...");
+                    _logger.LogDebug("Flyout is visible, refreshing groups");
                     await LoadFavoriteGroupsAsync();
                 }
                 else
                 {
-                    DebugLog("Flyout is not visible, skipping refresh");
+                    _logger.LogDebug("Flyout is not visible, skipping refresh");
                 }
 
                 // Always refresh the main favorites collection for other UI elements
-                DebugLog("Refreshing main favorites collection...");
+                _logger.LogDebug("Refreshing main favorites collection");
                 await LoadFavoritesAsync();
 
-                DebugLog("=== RefreshFavoritesAfterSaveAsync COMPLETE ===");
+                _logger.LogDebug("RefreshFavoritesAfterSaveAsync COMPLETE");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error refreshing favorites after save");
-                DebugLog($"ERROR in RefreshFavoritesAfterSaveAsync: {ex.Message}");
             }
         }
 
@@ -789,33 +786,9 @@ namespace artstudio.ViewModels
                 await _toastService.ShowToastAsync("Error loading collection");
             }
         }
-
-
-        // Simple debug logging method
-        private static void DebugLog(string message)
-        {
-            var timestamp = DateTime.Now.ToString("HH:mm:ss.fff");
-            var logMessage = $"[VM {timestamp}] {message}";
-
-            // Output to multiple channels to ensure visibility
-            Debug.WriteLine(logMessage);
-            System.Console.WriteLine(logMessage);
-
-            // Also try to write to a log file
-            try
-            {
-                var logPath = Path.Combine(FileSystem.AppDataDirectory, "viewmodel_log.txt");
-                System.IO.File.AppendAllText(logPath, logMessage + Environment.NewLine);
-            }
-            catch
-            {
-                // Ignore file write errors
-            }
-        }
     }
 
-
-   // Helper classes for grouping
+    // Helper classes for grouping
     public partial class PromptCollectionGroup(string collectionName, IEnumerable<WordCollection> prompts)
         : ObservableCollection<WordCollection>(prompts)
     {

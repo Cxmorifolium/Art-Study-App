@@ -1,4 +1,5 @@
 ﻿using artstudio.Models;
+using Microsoft.Extensions.Logging;
 using System.Net;
 using System.Net.Http.Headers;
 using System.Text.Json;
@@ -10,6 +11,7 @@ namespace artstudio.Services
         private const string BaseUrl = "https://api.unsplash.com/";
         private readonly HttpClient _httpClient;
         private readonly string _accessKey;
+        private readonly ILogger<Unsplash> _logger;
         private bool _disposed = false;
 
         // Cache JsonSerializerOptions to avoid recreating on every operation
@@ -19,8 +21,9 @@ namespace artstudio.Services
             PropertyNamingPolicy = JsonNamingPolicy.SnakeCaseLower
         };
 
-        public Unsplash()
+        public Unsplash(ILogger<Unsplash> logger)
         {
+            _logger = logger;
             _accessKey = Environment.GetEnvironmentVariable("UNSPLASH_ACCESS_KEY")
                          ?? throw new InvalidOperationException("Missing Unsplash API key. Set UNSPLASH_ACCESS_KEY as an environment variable.");
 
@@ -42,25 +45,33 @@ namespace artstudio.Services
 
             try
             {
+                _logger.LogDebug("Requesting {Count} random images from Unsplash API", count);
+
                 using var response = await _httpClient.GetAsync($"photos/random?count={count}");
 
                 // Handle specific HTTP status codes
                 switch (response.StatusCode)
                 {
                     case HttpStatusCode.OK:
+                        _logger.LogDebug("Successfully received response from Unsplash API");
                         break;
                     case HttpStatusCode.Unauthorized:
+                        _logger.LogError("Unauthorized access to Unsplash API - invalid API key");
                         throw new UnauthorizedAccessException("Invalid Unsplash API key or insufficient permissions");
                     case HttpStatusCode.Forbidden:
+                        _logger.LogError("Forbidden access to Unsplash API - check permissions");
                         throw new InvalidOperationException("Access forbidden. Check API key permissions");
                     case HttpStatusCode.TooManyRequests:
+                        _logger.LogWarning("Unsplash API rate limit exceeded");
                         throw new InvalidOperationException("Rate limit exceeded. Please try again later");
                     case HttpStatusCode.InternalServerError:
                     case HttpStatusCode.BadGateway:
                     case HttpStatusCode.ServiceUnavailable:
                     case HttpStatusCode.GatewayTimeout:
+                        _logger.LogWarning("Unsplash service temporarily unavailable: {StatusCode}", response.StatusCode);
                         throw new HttpRequestException($"Unsplash service is temporarily unavailable (Status: {response.StatusCode})");
                     default:
+                        _logger.LogError("Unsplash API request failed with status: {StatusCode}", response.StatusCode);
                         throw new HttpRequestException($"Unsplash API request failed with status: {response.StatusCode}");
                 }
 
@@ -68,26 +79,32 @@ namespace artstudio.Services
 
                 if (string.IsNullOrWhiteSpace(content))
                 {
+                    _logger.LogError("Empty response received from Unsplash API");
                     throw new InvalidOperationException("Empty response received from Unsplash API");
                 }
 
-                return DeserializeImages(content);
+                var images = DeserializeImages(content);
+                _logger.LogDebug("Successfully parsed {ImageCount} images from Unsplash API response", images.Count);
+                return images;
             }
             catch (TaskCanceledException ex) when (ex.InnerException is TimeoutException)
             {
+                _logger.LogError(ex, "Request to Unsplash API timed out");
                 throw new TimeoutException("Request to Unsplash API timed out", ex);
             }
             catch (HttpRequestException ex)
             {
+                _logger.LogError(ex, "Network error while contacting Unsplash API");
                 throw new HttpRequestException($"Network error while contacting Unsplash API: {ex.Message}", ex);
             }
             catch (JsonException ex)
             {
+                _logger.LogError(ex, "Failed to parse response from Unsplash API");
                 throw new InvalidOperationException($"Failed to parse response from Unsplash API: {ex.Message}", ex);
             }
         }
 
-        private static List<UnsplashImage> DeserializeImages(string content)
+        private List<UnsplashImage> DeserializeImages(string content)
         {
             try
             {
@@ -95,6 +112,7 @@ namespace artstudio.Services
 
                 if (apiImages == null || apiImages.Count == 0)
                 {
+                    _logger.LogDebug("No images found in API response");
                     return [];
                 }
 
@@ -108,11 +126,15 @@ namespace artstudio.Services
                         {
                             images.Add(convertedImage);
                         }
+                        else
+                        {
+                            _logger.LogDebug("Skipped invalid image: {ImageId}", apiImage?.Id);
+                        }
                     }
                     catch (Exception ex)
                     {
                         // Log the error but continue processing other images
-                        Console.WriteLine($"Warning: Failed to convert image {apiImage?.Id}: {ex.Message}");
+                        _logger.LogWarning(ex, "Failed to convert image {ImageId}", apiImage?.Id);
                     }
                 }
 

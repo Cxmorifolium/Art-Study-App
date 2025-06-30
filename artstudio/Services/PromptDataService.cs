@@ -96,7 +96,7 @@ public class PromptDataService : IPromptDataService
             }
         }
 
-        _logger.LogInformation("Copy operation completed: {SuccessCount} copied, {SkipCount} skipped, {ErrorCount} errors",
+        _logger.LogDebug("Copy operation completed: {SuccessCount} copied, {SkipCount} skipped, {ErrorCount} errors",
             successCount, skipCount, errorCount);
     }
 

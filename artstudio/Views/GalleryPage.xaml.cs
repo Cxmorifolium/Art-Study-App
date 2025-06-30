@@ -14,7 +14,6 @@ public partial class GalleryPage : ContentPage
     {
         base.OnAppearing();
 
-        System.Diagnostics.Debug.WriteLine("=== GALLERY PAGE APPEARING ===");
 
         if (BindingContext is GalleryPageViewModel viewModel)
         {

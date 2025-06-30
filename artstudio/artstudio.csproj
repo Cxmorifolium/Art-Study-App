@@ -212,9 +212,6 @@
 	  <MauiXaml Update="Views\StudyPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>
-	  <MauiXaml Update="Views\UnderConstruction.xaml">
-	    <Generator>MSBuild:Compile</Generator>
-	  </MauiXaml>
 	  <MauiXaml Update="Views\PromptGeneratorPage.xaml">
 	    <Generator>MSBuild:Compile</Generator>
 	  </MauiXaml>

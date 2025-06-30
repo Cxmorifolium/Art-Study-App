@@ -75,7 +75,7 @@ namespace artstudio.ViewModels
             _logger = logger;
 
             InitializeCommands(); 
-            DebugPromptGenerator();
+            //DebugPromptGenerator();
 
         }
 
@@ -424,33 +424,33 @@ namespace artstudio.ViewModels
         }
 
         // Leaving debug here just in case; problem solved mixmatch directories hence why it was using default
-        private void DebugPromptGenerator()
-        {
-            try
-            {
-                _logger.LogDebug("Debugging PromptGenerator...");
+        //private void DebugPromptGenerator()
+        //{
+        //    try
+        //    {
+        //        _logger.LogDebug("Debugging PromptGenerator...");
 
-                // Check available categories
-                var categories = _promptGenerator.GetAvailableCategories();
-                _logger.LogDebug("Available categories: {Categories}", string.Join(", ", categories));
+        //        // Check available categories
+        //        var categories = _promptGenerator.GetAvailableCategories();
+        //        _logger.LogDebug("Available categories: {Categories}", string.Join(", ", categories));
 
-                // Check item counts
-                foreach (var category in categories)
-                {
-                    var count = _promptGenerator.GetCategoryItemsCount(category);
-                    _logger.LogDebug("Category '{Category}' has {Count} items", category, count);
-                }
+        //        // Check item counts
+        //        foreach (var category in categories)
+        //        {
+        //            var count = _promptGenerator.GetCategoryItemsCount(category);
+        //            _logger.LogDebug("Category '{Category}' has {Count} items", category, count);
+        //        }
 
-                // Test a simple generation
-                var (testPrompt, testComponents) = _promptGenerator.GenerateDefaultPrompt();
-                _logger.LogDebug("Test prompt: '{TestPrompt}'", testPrompt);
-                _logger.LogDebug("Test components count: {ComponentCount}", testComponents.Count);
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error in DebugPromptGenerator");
-            }
-        }
+        //        // Test a simple generation
+        //        var (testPrompt, testComponents) = _promptGenerator.GenerateDefaultPrompt();
+        //        _logger.LogDebug("Test prompt: '{TestPrompt}'", testPrompt);
+        //        _logger.LogDebug("Test components count: {ComponentCount}", testComponents.Count);
+        //    }
+        //    catch (Exception ex)
+        //    {
+        //        _logger.LogError(ex, "Error in DebugPromptGenerator");
+        //    }
+        //}
 
         private void GenerateWords()
         {
@@ -587,7 +587,7 @@ namespace artstudio.ViewModels
         {
             try
             {
-                _logger.LogInformation("=== STARTING SESSION SAVE ===");
+                _logger.LogDebug("=== STARTING SESSION SAVE ===");
 
                 if (!CanSaveSession)
                 {
@@ -595,20 +595,20 @@ namespace artstudio.ViewModels
                     return;
                 }
 
-                _logger.LogInformation("CanSaveSession check passed");
+                _logger.LogDebug("CanSaveSession check passed");
 
                 // Prompt user for session name
                 var sessionName = await PromptForSessionNameAsync();
                 if (sessionName == null)
                 {
-                    _logger.LogInformation("User cancelled session save");
+                    _logger.LogDebug("User cancelled session save");
                     return; // User cancelled
                 }
 
-                _logger.LogInformation("User provided session name: '{SessionName}'", sessionName);
+                _logger.LogDebug("User provided session name: '{SessionName}'", sessionName);
 
                 // Cache images locally before saving
-                _logger.LogInformation("Caching {ImageCount} images locally...", CurrentImages.Count);
+                _logger.LogDebug("Caching {ImageCount} images locally...", CurrentImages.Count);
                 var cachedImages = await CacheImagesForSessionAsync(CurrentImages.ToList());
 
                 // Get current session info
@@ -627,25 +627,25 @@ namespace artstudio.ViewModels
                     customTitle: sessionName // Pass the user-provided name
                 );
 
-                _logger.LogInformation("About to call database save...");
+                _logger.LogDebug("About to call database save...");
                 await _databaseService.SaveSessionSnapshotAsync(sessionSnapshot);
-                _logger.LogInformation("Database save completed successfully");
+                _logger.LogDebug("Database save completed successfully");
 
                 await _databaseService.DeleteOldSessionSnapshotsAsync(20);
-                _logger.LogInformation("Old sessions cleanup completed");
+                _logger.LogDebug("Old sessions cleanup completed");
 
-                _logger.LogInformation("About to show success toast...");
+                _logger.LogDebug("About to show success toast...");
                 await _toastService.ShowToastAsync($"Session '{sessionName}' saved! Load it in Gallery Creation.");
-                _logger.LogInformation("Toast call completed - should be visible now");
+                _logger.LogDebug("Toast call completed - should be visible now");
 
-                _logger.LogInformation("=== SESSION SAVE COMPLETED ===");
+                _logger.LogDebug("=== SESSION SAVE COMPLETED ===");
             }
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error in ExecuteSaveSessionAsync");
-                _logger.LogInformation("About to show error toast...");
+                _logger.LogDebug("About to show error toast...");
                 await _toastService.ShowToastAsync("Failed to save session");
-                _logger.LogInformation("Error toast call completed");
+                _logger.LogDebug("Error toast call completed");
             }
         }
 

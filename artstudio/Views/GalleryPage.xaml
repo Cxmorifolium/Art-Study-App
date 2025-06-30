@@ -5,14 +5,8 @@
              Title="Gallery">
 
     <ContentPage.ToolbarItems>
-        <!-- Search/Filter -->
-        <ToolbarItem Text="Filter" 
-                     IconImageSource="filter_icon.png"
-                     Command="{Binding ShowFilterCommand}" />
-
         <!-- Add to Gallery -->
         <ToolbarItem Text="Add" 
-                     IconImageSource="add_icon.png"
                      Command="{Binding AddToGalleryCommand}" />
     </ContentPage.ToolbarItems>
 

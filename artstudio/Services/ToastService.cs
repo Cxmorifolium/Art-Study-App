@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using CommunityToolkit.Maui.Alerts;
 using CommunityToolkit.Maui.Core;
+using Microsoft.Extensions.Logging;
 
 namespace artstudio.Services
 {
@@ -16,6 +17,13 @@ namespace artstudio.Services
 
     public class ToastService : IToastService
     {
+        private readonly ILogger<ToastService> _logger;
+
+        public ToastService(ILogger<ToastService> logger)
+        {
+            _logger = logger;
+        }
+
         public async Task ShowToastAsync(string message)
         {
             await ShowToastAsync(message, 3000);
@@ -40,7 +48,7 @@ namespace artstudio.Services
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"Toast/Snackbar failed: {ex.Message}");
+                _logger.LogWarning(ex, "Toast/Snackbar failed: {Message}", message);
                 try
                 {
                     await MainThread.InvokeOnMainThreadAsync(async () =>
@@ -54,7 +62,7 @@ namespace artstudio.Services
                 }
                 catch (Exception fallbackEx)
                 {
-                    System.Diagnostics.Debug.WriteLine($"Fallback alert also failed: {fallbackEx.Message}");
+                    _logger.LogError(fallbackEx, "Fallback alert also failed for message: {Message}", message);
                 }
             }
         }
@@ -62,6 +70,13 @@ namespace artstudio.Services
 
     public class WindowsToastService : IToastService
     {
+        private readonly ILogger<WindowsToastService> _logger;
+
+        public WindowsToastService(ILogger<WindowsToastService> logger)
+        {
+            _logger = logger;
+        }
+
         public async Task ShowToastAsync(string message)
         {
             await ShowToastAsync(message, 3000);
@@ -71,7 +86,7 @@ namespace artstudio.Services
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine($"WindowsToastService: Attempting to show snackbar: {message}");
+                _logger.LogDebug("Attempting to show snackbar: {Message}", message);
 
                 var snackbarOptions = new SnackbarOptions
                 {
@@ -85,11 +100,11 @@ namespace artstudio.Services
                 var snackbar = Snackbar.Make(message, duration: TimeSpan.FromMilliseconds(durationMs), visualOptions: snackbarOptions);
                 await snackbar.Show();
 
-                System.Diagnostics.Debug.WriteLine($"WindowsToastService: Snackbar.Show() completed");
+                _logger.LogDebug("Snackbar.Show() completed for message: {Message}", message);
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"WindowsToastService: Snackbar failed: {ex.Message}");
+                _logger.LogWarning(ex, "Snackbar failed for message: {Message}", message);
                 try
                 {
                     await MainThread.InvokeOnMainThreadAsync(async () =>
@@ -103,7 +118,7 @@ namespace artstudio.Services
                 }
                 catch (Exception fallbackEx)
                 {
-                    System.Diagnostics.Debug.WriteLine($"WindowsToastService: Fallback also failed: {fallbackEx.Message}");
+                    _logger.LogError(fallbackEx, "Fallback also failed for message: {Message}", message);
                 }
             }
         }

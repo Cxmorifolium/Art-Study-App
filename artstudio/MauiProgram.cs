@@ -104,9 +104,6 @@ public static class MauiProgram
         services.AddScoped<Unsplash>();
         services.AddTransient<PaletteModel>();
 
-        // Debug service
-        services.AddSingleton<IDebugService, DebugService>();
-
         // Export service
         services.AddSingleton<Export>();
 

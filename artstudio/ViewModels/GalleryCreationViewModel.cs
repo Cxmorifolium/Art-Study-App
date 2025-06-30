@@ -103,7 +103,7 @@ namespace artstudio.ViewModels
             {
                 if (SetProperty(ref _artworkImagePath, value))
                 {
-                    System.Diagnostics.Debug.WriteLine($"=== ArtworkImagePath changed to: {value} ===");
+                    _logger.LogDebug("ArtworkImagePath changed to: {Value}", value);
                     OnPropertyChanged(nameof(HasArtworkImage));
                     OnPropertyChanged(nameof(ArtworkImageSource));
                     OnPropertyChanged(nameof(CanSave));
@@ -120,19 +120,20 @@ namespace artstudio.ViewModels
 
                 if (string.IsNullOrEmpty(pathToUse) || !File.Exists(pathToUse))
                 {
-                    System.Diagnostics.Debug.WriteLine($"=== ArtworkImageSource: No valid path. Temp: '{_tempPreviewPath}', Main: '{ArtworkImagePath}' ===");
+                    _logger.LogDebug("=== ArtworkImageSource: No valid path. Temp: '{TempPreviewPath}', Main: '{ArtworkImagePath}' ===",
+                                    _tempPreviewPath,
+                                    ArtworkImagePath);
                     return null;
                 }
 
                 try
                 {
-                    System.Diagnostics.Debug.WriteLine($"=== ArtworkImageSource: Using path: {pathToUse} ===");
                     var imageSource = ImageSource.FromFile(pathToUse);
                     return imageSource;
                 }
                 catch (Exception ex)
                 {
-                    System.Diagnostics.Debug.WriteLine($"=== ArtworkImageSource Error: {ex.Message} ===");
+                    _logger.LogError(ex,"ArtworkImageSource Error");
                     return null;
                 }
             }
@@ -149,7 +150,6 @@ namespace artstudio.ViewModels
             get
             {
                 var hasImage = !string.IsNullOrEmpty(ArtworkImagePath) && File.Exists(ArtworkImagePath);
-                System.Diagnostics.Debug.WriteLine($"=== HasArtworkImage check: Path='{ArtworkImagePath}', Exists={File.Exists(ArtworkImagePath ?? "")}, Result={hasImage} ===");
                 return hasImage;
             }
         }
@@ -698,7 +698,7 @@ namespace artstudio.ViewModels
         {
             try
             {
-                System.Diagnostics.Debug.WriteLine("=== PICK IMAGE STARTED ===");
+                _logger.LogDebug("PICK IMAGE STARTED");
                 await _toastService.ShowToastAsync("Opening file picker...");
 
                 var result = await MediaPicker.PickPhotoAsync(new MediaPickerOptions
@@ -708,7 +708,7 @@ namespace artstudio.ViewModels
 
                 if (result != null)
                 {
-                    System.Diagnostics.Debug.WriteLine($"=== FILE SELECTED: {result.FileName} ===");
+                    _logger.LogDebug("FILE SELECTED: {FileNameResult} ===", result.FileName);
 
                     var savedPath = await SaveImageAsync(result);
                     ArtworkImagePath = savedPath;
@@ -717,9 +717,9 @@ namespace artstudio.ViewModels
                     OnPropertyChanged(nameof(CanSave));
                     SaveCommand.NotifyCanExecuteChanged();
 
-                    System.Diagnostics.Debug.WriteLine($"=== IMAGE PATH SET: {savedPath} ===");
-                    System.Diagnostics.Debug.WriteLine($"=== HasArtworkImage: {HasArtworkImage} ===");
-                    System.Diagnostics.Debug.WriteLine($"=== CanSave: {CanSave} ===");
+                    _logger.LogDebug("IMAGE PATH SET: {SavedPath}", savedPath);
+                    _logger.LogDebug("HasArtworkImage: {HasArtworkImage}", HasArtworkImage);
+                    _logger.LogDebug("CanSave: {CanSave}", CanSave);
 
                     await _toastService.ShowToastAsync("Image loaded successfully!");
                 }
@@ -730,7 +730,6 @@ namespace artstudio.ViewModels
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"=== PICK IMAGE ERROR: {ex.Message} ===");
                 _logger.LogError(ex, "Error picking image");
                 await _toastService.ShowToastAsync($"Error loading image: {ex.Message}");
             }
@@ -759,9 +758,9 @@ namespace artstudio.ViewModels
                 // Navigate back to gallery and trigger refresh
                 await Shell.Current.GoToAsync("//Gallery");
 
-                System.Diagnostics.Debug.WriteLine("=== SENDING GALLERY REFRESH MESSAGE ===");
+                _logger.LogDebug("=== SENDING GALLERY REFRESH MESSAGE ===");
                 WeakReferenceMessenger.Default.Send(new GalleryItemAddedMessage());
-                System.Diagnostics.Debug.WriteLine("=== MESSAGE SENT ===");
+                _logger.LogDebug("=== MESSAGE SENT ===");
             }
             catch (Exception ex)
             {
@@ -770,6 +769,7 @@ namespace artstudio.ViewModels
             }
         }
 
+        // Builds the gallery item from the current form data
         public class GalleryItemAddedMessage
         {
         }
@@ -1122,15 +1122,15 @@ namespace artstudio.ViewModels
 
                 File.Copy(targetPath, tempPath, true);
 
-                System.Diagnostics.Debug.WriteLine($"=== Main file: {targetPath} ===");
-                System.Diagnostics.Debug.WriteLine($"=== Temp file: {tempPath} ===");
+                _logger.LogDebug("=== Main file: {TargetPath} ===", targetPath);
+                _logger.LogDebug("=== Temp file: {TempPath} ===", tempPath);
 
                 // Store temp path for preview
                 _tempPreviewPath = tempPath;
             }
             catch (Exception ex)
             {
-                System.Diagnostics.Debug.WriteLine($"=== Temp copy failed: {ex.Message} ===");
+                _logger.LogError(ex, "Temp copy failed");
                 // If temp copy fails, just use original path
                 _tempPreviewPath = string.Empty;
             }

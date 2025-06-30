@@ -24,9 +24,8 @@ namespace artstudio.Converters
 
                 return Color.FromArgb(hexString);
             }
-            catch (Exception ex)
+            catch (Exception)
             {
-                System.Diagnostics.Debug.WriteLine($"HexToColorConverter error: {ex.Message} for value: {hexString}");
                 return Colors.Transparent;
             }
         }

@@ -4,7 +4,7 @@ _layout: landing
 
 # ArtStudio Documentation
 
-* A .NET MAUI project that evolved from my inability to come up with cool themes. So why not RNG everything? *
+*A .NET MAUI project that evolved from my inability to come up with cool themes. So why not RNG everything?*
 
 ## Intro
 ArtStudio started as my journey into .NET MAUI development. This documentation serves as both a reference for the app and a showcase of what you can build while learning MAUI. 

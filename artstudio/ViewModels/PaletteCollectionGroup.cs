@@ -10,7 +10,6 @@ namespace artstudio.ViewModels
         public ObservableCollection<FavoriteSwatch> Swatches { get; }
         public int Count => Swatches.Count;
         public string DisplayText => $"{CollectionName} ({Count})";
-
         public SwatchCollectionGroup(string collectionName, IEnumerable<FavoriteSwatch> swatches)
         {
             CollectionName = collectionName;
@@ -90,7 +89,7 @@ namespace artstudio.ViewModels
 
         // Helper property for display
         public string DisplayTitle =>
-            Title.Length > 40 ? Title.Substring(0, 37) + "..." : Title;
+                    Title.Length > 40 ? string.Concat(Title.AsSpan(0, 37), "...") : Title;
     }
     #endregion
 }

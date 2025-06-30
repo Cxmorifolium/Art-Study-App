@@ -1,15 +1,17 @@
 ﻿using artstudio.Data;
-using System.Diagnostics;
+using Microsoft.Extensions.Logging;
 
 namespace artstudio.Services
 {
     public class WordPromptService
     {
         private readonly DatabaseService _databaseService;
+        private readonly ILogger<WordPromptService> _logger;
 
-        public WordPromptService(DatabaseService databaseService)
+        public WordPromptService(DatabaseService databaseService, ILogger<WordPromptService> logger)
         {
             _databaseService = databaseService;
+            _logger = logger;
         }
 
         public async Task<WordCollection> SaveWordCollectionWithCategoriesAsync(
@@ -19,10 +21,10 @@ namespace artstudio.Services
         {
             try
             {
-                DebugLog("=== SaveWordCollectionWithCategoriesAsync START ===");
-                DebugLog($"Title: {title}");
-                DebugLog($"PromptType: {promptType}");
-                DebugLog($"Categories count: {categorizedWords.Count}");
+                _logger.LogDebug("SaveWordCollectionWithCategoriesAsync START");
+                _logger.LogDebug("Title: {Title}", title);
+                _logger.LogDebug("PromptType: {PromptType}", promptType);
+                _logger.LogDebug("Categories count: {CategoriesCount}", categorizedWords.Count);
 
                 // Create the word collection
                 var collection = new WordCollection
@@ -37,21 +39,20 @@ namespace artstudio.Services
                 var allWords = new List<string>();
                 foreach (var category in categorizedWords)
                 {
-                    DebugLog($"Category '{category.Key}': {category.Value.Count} words");
-                    DebugLog($"  Words: {string.Join(", ", category.Value)}");
+                    _logger.LogDebug("Category '{CategoryKey}': {WordCount} words", category.Key, category.Value.Count);
+                    _logger.LogDebug("Words: {Words}", string.Join(", ", category.Value));
                     allWords.AddRange(category.Value);
                 }
 
                 collection.WordsList = allWords;
-                DebugLog($"Total words in collection: {allWords.Count}");
-                DebugLog($"All words: {string.Join(", ", allWords)}");
+                _logger.LogDebug("Total words in collection: {TotalWords}", allWords.Count);
+                _logger.LogDebug("All words: {AllWords}", string.Join(", ", allWords));
 
                 // Save to database
                 var db = await _databaseService.GetDatabaseAsync();
-
                 // Insert the collection and get the ID
                 await db.InsertAsync(collection);
-                DebugLog($"Saved collection with ID: {collection.Id}");
+                _logger.LogDebug("Saved collection with ID: {CollectionId}", collection.Id);
 
                 // Save individual words with categories
                 foreach (var category in categorizedWords)
@@ -65,19 +66,17 @@ namespace artstudio.Services
                             Category = category.Key,
                             CreatedAt = DateTime.Now
                         };
-
                         await db.InsertAsync(word);
-                        DebugLog($"Saved word: '{wordText}' in category '{category.Key}'");
+                        _logger.LogDebug("Saved word: '{WordText}' in category '{CategoryKey}'", wordText, category.Key);
                     }
                 }
 
-                DebugLog("=== SaveWordCollectionWithCategoriesAsync COMPLETE ===");
+                _logger.LogDebug("SaveWordCollectionWithCategoriesAsync COMPLETE");
                 return collection;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error in SaveWordCollectionWithCategoriesAsync: {ex.Message}");
-                DebugLog($"Stack trace: {ex.StackTrace}");
+                _logger.LogError(ex, "Error in SaveWordCollectionWithCategoriesAsync");
                 throw;
             }
         }
@@ -90,7 +89,7 @@ namespace artstudio.Services
             }
             catch (Exception ex)
             {
-                DebugLog($"Error in GetFavoritesAsync: {ex.Message}");
+                _logger.LogError(ex, "Error in GetFavoritesAsync");
                 return new List<WordCollection>();
             }
         }
@@ -99,11 +98,11 @@ namespace artstudio.Services
         {
             try
             {
-                DebugLog("=== GetFavoritesWithWordsAsync START ===");
+                _logger.LogDebug("GetFavoritesWithWordsAsync START");
 
                 // Get all favorite collections
                 var favorites = await GetFavoritesAsync();
-                DebugLog($"Found {favorites.Count} favorite collections");
+                _logger.LogDebug("Found {FavoritesCount} favorite collections", favorites.Count);
 
                 // For each collection, populate the WordsList property
                 foreach (var collection in favorites)
@@ -112,27 +111,26 @@ namespace artstudio.Services
                     {
                         // Get all words for this collection
                         var words = await GetWordsForCollectionAsync(collection.Id);
-
                         // Populate the WordsList property
                         collection.WordsList = words.Select(w => w.Text).ToList();
-
-                        DebugLog($"Loaded {words.Count} words for collection '{collection.Title}' (ID: {collection.Id})");
-                        DebugLog($"  Words: {string.Join(", ", collection.WordsList)}");
+                        _logger.LogDebug("Loaded {WordCount} words for collection '{CollectionTitle}' (ID: {CollectionId})",
+                            words.Count, collection.Title, collection.Id);
+                        _logger.LogDebug("Words: {Words}", string.Join(", ", collection.WordsList));
                     }
                     catch (Exception ex)
                     {
-                        DebugLog($"Error loading words for collection {collection.Id}: {ex.Message}");
+                        _logger.LogError(ex, "Error loading words for collection {CollectionId}", collection.Id);
                         // Continue with empty word list if there's an error
                         collection.WordsList = new List<string>();
                     }
                 }
 
-                DebugLog("=== GetFavoritesWithWordsAsync COMPLETE ===");
+                _logger.LogDebug("GetFavoritesWithWordsAsync COMPLETE");
                 return favorites;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error in GetFavoritesWithWordsAsync: {ex.Message}");
+                _logger.LogError(ex, "Error in GetFavoritesWithWordsAsync");
                 return new List<WordCollection>();
             }
         }
@@ -143,18 +141,15 @@ namespace artstudio.Services
             try
             {
                 var db = await _databaseService.GetDatabaseAsync();
-
                 var words = await db.QueryAsync<Word>(
                     "SELECT * FROM Word WHERE WordCollectionId = ? ORDER BY Category, Id",
                     collectionId);
-
-                DebugLog($"Retrieved {words.Count} words for collection {collectionId}");
+                _logger.LogDebug("Retrieved {WordCount} words for collection {CollectionId}", words.Count, collectionId);
                 return words;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting words for collection {collectionId}: {ex.Message}");
-                DebugLog($"This might be because the Word table doesn't exist yet");
+                _logger.LogError(ex, "Error getting words for collection {CollectionId} - this might be because the Word table doesn't exist yet", collectionId);
                 return new List<Word>();
             }
         }
@@ -164,22 +159,20 @@ namespace artstudio.Services
             try
             {
                 var db = await _databaseService.GetDatabaseAsync();
-
                 // Get current state
                 var collection = await db.FindAsync<WordCollection>(collectionId);
                 if (collection != null)
                 {
                     // Toggle favorite status
                     collection.IsFavorite = !collection.IsFavorite;
-
                     await db.UpdateAsync(collection);
-
-                    DebugLog($"Toggled favorite for collection {collectionId}: IsFavorite = {collection.IsFavorite}");
+                    _logger.LogDebug("Toggled favorite for collection {CollectionId}: IsFavorite = {IsFavorite}",
+                        collectionId, collection.IsFavorite);
                 }
             }
             catch (Exception ex)
             {
-                DebugLog($"Error toggling favorite for collection {collectionId}: {ex.Message}");
+                _logger.LogError(ex, "Error toggling favorite for collection {CollectionId}", collectionId);
                 throw;
             }
         }
@@ -189,41 +182,29 @@ namespace artstudio.Services
             try
             {
                 var words = await GetWordsForCollectionAsync(collection.Id);
-
                 // Also populate the collection's WordsList property for display purposes
                 collection.WordsList = words.Select(w => w.Text).ToList();
 
                 var categorizedWords = new Dictionary<string, List<string>>();
-
                 foreach (var word in words)
                 {
                     var category = word.Category ?? "general";
-
                     if (!categorizedWords.ContainsKey(category))
                     {
                         categorizedWords[category] = new List<string>();
                     }
-
                     categorizedWords[category].Add(word.Text);
                 }
 
-                DebugLog($"Retrieved words for collection {collection.Id}: {categorizedWords.Count} categories, {words.Count} total words");
-
+                _logger.LogDebug("Retrieved words for collection {CollectionId}: {CategoriesCount} categories, {TotalWords} total words",
+                    collection.Id, categorizedWords.Count, words.Count);
                 return categorizedWords;
             }
             catch (Exception ex)
             {
-                DebugLog($"Error getting words by category for collection {collection.Id}: {ex.Message}");
+                _logger.LogError(ex, "Error getting words by category for collection {CollectionId}", collection.Id);
                 return new Dictionary<string, List<string>>();
             }
-        }
-
-        private static void DebugLog(string message)
-        {
-            var timestamp = DateTime.Now.ToString("HH:mm:ss.fff");
-            var logMessage = $"[WPS {timestamp}] {message}";
-            Debug.WriteLine(logMessage);
-            System.Console.WriteLine(logMessage);
         }
     }
 }

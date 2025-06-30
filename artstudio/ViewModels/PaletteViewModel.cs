@@ -142,7 +142,6 @@ namespace artstudio.ViewModels
         public ICommand CloseFavoritesPanelCommand { get; }
         public ICommand SelectSwatchesFavTabCommand { get; }
         public ICommand SelectPalettesFavTabCommand { get; }
-        public ICommand LoadSwatchColorCommand { get; }
         public ICommand LoadFavoritePaletteCommand { get; }
         public ICommand RemoveFavoriteSwatchCommand { get; }
         public ICommand RemoveFavoritePaletteCommand { get; }
@@ -214,7 +213,6 @@ namespace artstudio.ViewModels
             CloseFavoritesPanelCommand = new Command(CloseFavoritesPanel);
             SelectSwatchesFavTabCommand = new Command(() => CurrentFavTab = FavTabType.Swatches);
             SelectPalettesFavTabCommand = new Command(() => CurrentFavTab = FavTabType.Palettes);
-            LoadSwatchColorCommand = new Command<string>(LoadSwatchColor);
             LoadFavoritePaletteCommand = new AsyncRelayCommand<FavoritePaletteItem>(LoadFavoritePaletteAsync);
             RemoveFavoriteSwatchCommand = new AsyncRelayCommand<FavoriteSwatchItem>(RemoveFavoriteSwatchAsync);
             RemoveFavoritePaletteCommand = new AsyncRelayCommand<FavoritePaletteItem>(RemoveFavoritePaletteAsync);
@@ -695,32 +693,6 @@ namespace artstudio.ViewModels
             catch (Exception ex)
             {
                 _logger.LogError(ex, "Error loading grouped favorite palettes");
-            }
-        }
-
-        private void LoadSwatchColor(string hexColor)
-        {
-            try
-            {
-                if (string.IsNullOrEmpty(hexColor)) return;
-
-                // Apply this color to an unlocked swatch in the current palette
-                var unlockedSwatch = Swatches.FirstOrDefault(s => !s.IsLocked && !s.IsDeleted);
-                if (unlockedSwatch != null)
-                {
-                    var color = Color.FromArgb(hexColor);
-                    unlockedSwatch.Color = color;
-                    _ = _toastService.ShowToastAsync($"Applied color {hexColor}");
-                }
-                else
-                {
-                    _ = _toastService.ShowToastAsync("No available swatch to apply color to");
-                }
-            }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, "Error loading swatch color: {HexColor}", hexColor);
-                _ = _toastService.ShowToastAsync("Error applying color");
             }
         }
 
