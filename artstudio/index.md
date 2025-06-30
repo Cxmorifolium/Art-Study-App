@@ -1,7 +1,3 @@
----
-_layout: landing
----
-
 # ArtStudio Documentation
 
 *A .NET MAUI project that evolved from my inability to come up with cool themes. So why not RNG everything?*
