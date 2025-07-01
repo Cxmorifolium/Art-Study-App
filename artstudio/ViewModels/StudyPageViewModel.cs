@@ -58,7 +58,8 @@ namespace artstudio.ViewModels
             "1.5 hr",
             "2 hr",
             "2.5 hr",
-            "3 hr"
+            "3 hr",
+            "Custom"
         };
 
         #endregion
@@ -161,9 +162,19 @@ namespace artstudio.ViewModels
             get => _selectedQuickTime;
             set
             {
-                _selectedQuickTime = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(CurrentModeDisplay));
+                if (_selectedQuickTime != value)
+                {
+                    _selectedQuickTime = value;
+
+                    // Reset timer if it's currently running and in Quick mode
+                    if (_isRunning && IsQuickMode)
+                    {
+                        ResetTimerOnTimeChange();
+                    }
+
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(CurrentModeDisplay));
+                }
             }
         }
 
@@ -172,12 +183,22 @@ namespace artstudio.ViewModels
             get => _selectedSessionTime;
             set
             {
-                _selectedSessionTime = value;
-                _useCustomTime = value == "Custom";
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(UseCustomTime));
-                OnPropertyChanged(nameof(ShowCustomDuration));
-                OnPropertyChanged(nameof(CurrentModeDisplay));
+                if (_selectedSessionTime != value)
+                {
+                    _selectedSessionTime = value;
+                    _useCustomTime = value == "Custom";
+
+                    // Reset timer if it's currently running and in Session mode
+                    if (_isRunning && IsSessionMode)
+                    {
+                        ResetTimerOnTimeChange();
+                    }
+
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(UseCustomTime));
+                    OnPropertyChanged(nameof(ShowCustomDuration));
+                    OnPropertyChanged(nameof(CurrentModeDisplay));
+                }
             }
         }
 
@@ -200,10 +221,50 @@ namespace artstudio.ViewModels
             get => _customDuration;
             set
             {
-                _customDuration = value;
-                OnPropertyChanged();
-                OnPropertyChanged(nameof(CurrentModeDisplay));
+                if (_customDuration != value)
+                {
+                    _customDuration = value;
+
+                    // Reset timer if it's currently running, in Session mode, and using custom time
+                    if (_isRunning && IsSessionMode && _useCustomTime)
+                    {
+                        ResetTimerOnTimeChange();
+                    }
+
+                    OnPropertyChanged();
+                    OnPropertyChanged(nameof(CurrentModeDisplay));
+                }
             }
+        }
+
+        private void ResetTimerOnTimeChange()
+        {
+            _logger.LogDebug("Time selection changed while timer running - resetting timer");
+
+            // Stop the current timer
+            _timer?.Dispose();
+            _isRunning = false;
+            _isPaused = false;
+            _timeLeft = 0;
+            _totalTime = 0;
+
+            // Update UI to show reset state
+            OnPropertyChanged(nameof(TimeLeftDisplay));
+            OnPropertyChanged(nameof(PlayPauseButtonText));
+            OnPropertyChanged(nameof(PlayPauseButtonColor));
+
+            // Optionally show a toast to inform the user
+            _ = Task.Run(async () =>
+            {
+                try
+                {
+                    await _toastService.ShowToastAsync("Timer reset due to time change. Press Start to begin with new duration.");
+                }
+                catch (Exception ex)
+                {
+                    _logger.LogError(ex, "Failed to show timer reset toast");
+                }
+            });
         }
 
         public ObservableCollection<Color> CurrentPalette { get; private set; } = new();

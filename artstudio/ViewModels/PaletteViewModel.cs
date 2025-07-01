@@ -754,7 +754,7 @@ namespace artstudio.ViewModels
                     }
 
                     OnPropertyChanged(nameof(HasNoFavoriteSwatches));
-                    await _toastService.ShowToastAsync("Color removed from favorites ✓");
+                    //await _toastService.ShowToastAsync("Color removed from favorites ✓");
 
                     _logger.LogInformation("Successfully removed swatch {HexColor}", swatchItem.HexColor);
                 }
@@ -820,7 +820,7 @@ namespace artstudio.ViewModels
                         }
 
                         OnPropertyChanged(nameof(HasNoFavoritePalettes));
-                        await _toastService.ShowToastAsync("Palette removed from favorites ✓");
+                        //await _toastService.ShowToastAsync("Palette removed from favorites ✓");
                         _logger.LogInformation("Removed favorite palette: {PaletteTitle}", paletteItem.Title);
                     }
                 }

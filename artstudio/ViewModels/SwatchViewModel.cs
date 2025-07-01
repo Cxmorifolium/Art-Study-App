@@ -164,7 +164,7 @@ namespace artstudio.ViewModels
                     {
                         // Direct state update 
                         IsFavoriteColor = true;
-                        await _toastService.ShowToastAsync($"Added {hexColor} to favorites! ⭐");
+                        //await _toastService.ShowToastAsync($"Added {hexColor} to favorites! ⭐");
                         _logger.LogInformation("Successfully added {HexColor} to favorites", hexColor);
 
                         // Fire event for immediate UI update
@@ -174,7 +174,7 @@ namespace artstudio.ViewModels
                     {
                         // Color was already favorited
                         IsFavoriteColor = true;
-                        await _toastService.ShowToastAsync($"{hexColor} is already in favorites!");
+                        //await _toastService.ShowToastAsync($"{hexColor} is already in favorites!");
                         _logger.LogInformation("Color {HexColor} was already favorited", hexColor);
                     }
                 }
@@ -189,12 +189,10 @@ namespace artstudio.ViewModels
                     {
                         await _paletteService.RemoveSwatchFromFavoritesAsync(existingSwatch.Id);
 
-                        // ✅ Direct state update - no refresh calls
                         IsFavoriteColor = false;
                         await _toastService.ShowToastAsync($"Removed {hexColor} from favorites");
                         _logger.LogInformation("Removed {HexColor} from favorites", hexColor);
 
-                        // ✅ Fire event for immediate UI update
                         FavoriteChanged?.Invoke(hexColor, false);
                     }
                 }

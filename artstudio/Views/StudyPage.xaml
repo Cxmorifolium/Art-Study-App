@@ -55,14 +55,18 @@
                     TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
                     BackgroundColor="{AppThemeBinding Light={StaticResource LightBoxBackground}, Dark={StaticResource DarkBoxBackground}}" />
 
-            <!-- Custom Duration -->
+            <!-- Entry-based Custom Duration -->
             <Label Grid.Row="2" Grid.Column="0" Text="Duration (min)" 
-                   IsVisible="{Binding ShowCustomDuration}" VerticalOptions="Center"
-                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
-            <Stepper Grid.Row="2" Grid.Column="1" 
-                     Minimum="1" Maximum="180" Increment="5"
-                     Value="{Binding CustomDuration}" 
-                     IsVisible="{Binding ShowCustomDuration}" />
+                    IsVisible="{Binding ShowCustomDuration}" VerticalOptions="Center"
+                    TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}" />
+
+            <Entry Grid.Row="2" Grid.Column="1"
+                   Text="{Binding CustomDuration}" 
+                   Keyboard="Numeric"
+                   IsVisible="{Binding ShowCustomDuration}"
+                   Placeholder="Enter minutes (1-180)"
+                   TextColor="{AppThemeBinding Light={StaticResource LightTextColor}, Dark={StaticResource DarkTextColor}}"
+                   BackgroundColor="{AppThemeBinding Light={StaticResource LightBoxBackground}, Dark={StaticResource DarkBoxBackground}}" />
 
             <!-- Time Display -->
             <Label Grid.Row="3" Grid.ColumnSpan="2" Text="{Binding TimeLeftDisplay}"

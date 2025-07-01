@@ -90,6 +90,9 @@ After creating artwork, click the "Add" button in the Gallery to:
     dotnet run
     ```
     *Or press F5 in Visual Studio*
+
+Note: This app does use toast notification so you can easily change to Display Alert. If you have notification set to Do Not Disturb, you won't see any of the toast notifications.
+
 ## Technical Overview
 ArtStudio started as my journey into .NET MAUI development. This documentation serves as both a reference for the app and a showcase of what you can build while learning MAUI.
 
