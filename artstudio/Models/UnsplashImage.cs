@@ -25,8 +25,11 @@ namespace artstudio.Models
         public class User
         {
             public string? Name { get; set; }
-            // Changed from Portfolio_Url to follow C# naming conventions
             public string? PortfolioUrl { get; set; }
+            public string? Username { get; set; }
+            public string UnsplashProfileUrl => !string.IsNullOrEmpty(Username)
+        ? $"https://unsplash.com/@{Username}"
+        : "https://unsplash.com";
         }
     }
 }

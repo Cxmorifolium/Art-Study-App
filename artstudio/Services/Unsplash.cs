@@ -165,6 +165,7 @@ namespace artstudio.Services
                 user = apiResponse.User != null ? new UnsplashImage.User
                 {
                     Name = apiResponse.User.Name ?? "Unknown",
+                    Username = apiResponse.User.Username, // Added username mapping
                     PortfolioUrl = apiResponse.User.Portfolio_Url
                 } : new UnsplashImage.User { Name = "Unknown" }
             };
@@ -215,6 +216,7 @@ namespace artstudio.Services
     internal class ApiUser
     {
         public string? Name { get; set; }
+        public string? Username { get; set; } 
         public string? Portfolio_Url { get; set; }
     }
 }

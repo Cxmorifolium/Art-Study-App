@@ -204,7 +204,6 @@ namespace artstudio.ViewModels
                         OnPropertyChanged(nameof(FavoriteImages));
                     });
 
-                    await _toastService.ShowToastAsync("Removed from favorites");
                     _logger.LogDebug("Successfully removed image from favorites: {ImageId}", image.Id);
                 }
                 else
@@ -219,7 +218,7 @@ namespace artstudio.ViewModels
                         Title = image.Description ?? "Untitled Image",
                         Description = image.Description,
                         UserName = image.user?.Name,
-                        UserPortfolioUrl = image.user?.PortfolioUrl,
+                        UserPortfolioUrl = image.user?.UnsplashProfileUrl,
                         LocalImagePath = cachedImage.urls?.Thumb,
                         OriginalUrl = image.urls?.Regular,
                         CreatedAt = DateTime.Now,
@@ -244,7 +243,6 @@ namespace artstudio.ViewModels
                         OnPropertyChanged(nameof(FavoriteImages));
                     });
 
-                    await _toastService.ShowToastAsync($"Added to favorites: {favoriteImage.DisplayTitle}");
                     _logger.LogDebug("Successfully added image to favorites: {ImageId}", image.Id);
                 }
             }
@@ -286,6 +284,7 @@ namespace artstudio.ViewModels
                     user = new UnsplashImage.User
                     {
                         Name = favoriteImage.UserName,
+                        Username = favoriteImage.Username,
                         PortfolioUrl = favoriteImage.UserPortfolioUrl
                     },
                     urls = new UnsplashImage.Urls

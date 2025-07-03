@@ -71,7 +71,10 @@ namespace artstudio.ViewModels
 
         // Add properties for attribution and URL handling
         public string AttributionText => $"By {UnsplashImage.user?.Name ?? "Unknown"}";
-        public string UserProfileUrl => UnsplashImage.user?.PortfolioUrl ?? string.Empty;
+        // This one links to direct social media
+        // public string UserProfileUrl => UnsplashImage.user?.PortfolioUrl ?? string.Empty;
+        // this one links to Unsplash profile
+        public string UserProfileUrl => UnsplashImage?.user?.UnsplashProfileUrl ?? UnsplashImage?.user?.PortfolioUrl ?? string.Empty;
         public bool HasUserUrl => !string.IsNullOrEmpty(UserProfileUrl);
 
         // Add properties for image URL handling

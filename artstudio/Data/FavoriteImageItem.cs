@@ -17,6 +17,7 @@ namespace artstudio.Data
         public string? Title { get; set; }
         public string? Description { get; set; }
         public string? UserName { get; set; }
+        public string? Username { get; set; } // For unsplash profile URL
         public string? UserPortfolioUrl { get; set; }
         public string? LocalImagePath { get; set; }
         public string? OriginalUrl { get; set; }
