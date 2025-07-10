@@ -8,7 +8,9 @@ Welcome! This is a .NET MAUI project I took upon myself to learn cross-platform 
 - [Core Workflow](#core-workflow)
 - [Getting Started](#getting-started)
 - [Technical Overview](#technical-overview)
+- [Future Implementation] (#future-implementation)
 - [Resources](#and-if-all-else-fails)
+
 
 ## What ArtStudio Does
 ArtStudio helps decision paralysis artists, art blocks, or artists who don't want to think (like me) organize and enhance their practice sessions by providing **limited** curated inspiration. Whether you can't decide on the theme, palette, or visual reference, ArtStudio provides it all in one app!
@@ -138,6 +140,9 @@ ArtStudio started as my journey into .NET MAUI development. This documentation s
 - **User Experience**: Onboarding tooltips for first-time users, enhanced accessibility features, smoother loading states and page transitions
 - **Advanced Features**: Machine learning-powered palette generation, user-defined prompt categories, collaborative study sessions, cloud synchronization
 - **Cross-Platform**: Currently developed for Windows application, but can easily be developed for mobile application
+
+## Future Implementation
+I do plan to make a webapp version (because I'm a web browser type person), so that's in queue with among my millions of to-dos. It's going to be outside the .NET ecosystem (time to learn something new!). 
 
 ## And If All Else Fails...
 I got free resources for you!
